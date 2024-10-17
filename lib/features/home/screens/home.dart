@@ -1,11 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_getx/features/home/repositories/home_repository.dart';
 import 'package:flutter_getx/main.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
   const Home({super.key});
 
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+
+
+class _HomeState extends State<Home> {
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    HomeRepository.getCategory();
+
+
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -92,7 +109,7 @@ class Home extends StatelessWidget {
                     "/plv"
                 );
               },
-              child: const Text("Internationalization"),
+              child: const Text("Fetch Data"),
             ),
         ],),
       ),

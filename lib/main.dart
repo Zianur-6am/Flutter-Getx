@@ -15,7 +15,7 @@ import 'package:flutter_getx/widgets/snackbar.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 
-import 'home.dart';
+import 'features/home/screens/home.dart';
 
 void main() {
   runApp(const MyApp());

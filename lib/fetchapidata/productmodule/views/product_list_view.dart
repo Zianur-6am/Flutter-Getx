@@ -1,7 +1,9 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_getx/fetchapidata/commonmodule/AppColor.dart';
 import 'package:flutter_getx/fetchapidata/productmodule/controllers/product_controller.dart';
+import 'package:flutter_getx/fetchapidata/productmodule/models/product_model.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
@@ -9,9 +11,10 @@ class ProductListView extends StatelessWidget {
   // const ProductListView({super.key});
 
   final ProductController productController = Get.put(ProductController());
-
   @override
   Widget build(BuildContext context) {
+
+
     return Scaffold(
       appBar: AppBar(title: Text("Product List"),),
       body: Obx((){
@@ -32,15 +35,19 @@ class ProductListView extends StatelessWidget {
                           margin: EdgeInsets.fromLTRB(16, 8, 8, 8),
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(8),
-                            child: Image.network(
-                              productController.productList[index].imageLink,
-                              width: 150,
-                              height: 100,
-                              fit: BoxFit.fill,
-                              color: AppColor.purpleColor,
-                              colorBlendMode: BlendMode.color,
-
+                            child: CachedNetworkImage(
+                              imageUrl: productController.productList[index].imageLink,
+                              placeholder: (context, url) => new Icon(Icons.error),
+                              errorWidget: (context, url, error) => new Icon(Icons.error),
                             ),
+                            // Image.network(
+                            //   productController.productList[index].imageLink,
+                            //   width: 150,
+                            //   height: 100,
+                            //   fit: BoxFit.fill,
+                            //   color: AppColor.purpleColor,
+                            //   colorBlendMode: BlendMode.color,
+                            // ),
 
                           ),
                         ),
