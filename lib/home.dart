@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_getx/features/home/repositories/home_repository.dart';
+import 'package:flutter_getx/Food_Delivery_App_Design/features/home/repositories/home_repository.dart';
 import 'package:flutter_getx/main.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -110,6 +110,15 @@ class _HomeState extends State<Home> {
                 );
               },
               child: const Text("Fetch Data"),
+            ),
+
+            ElevatedButton(
+              onPressed: (){
+                Get.toNamed(
+                    "/fdhome"
+                );
+              },
+              child: const Text("Food Delivery App Design"),
             ),
         ],),
       ),

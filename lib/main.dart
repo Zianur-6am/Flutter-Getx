@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_getx/Food_Delivery_App_Design/features/home/screens/fd_home.dart';
 import 'package:flutter_getx/Internationalization/ihome.dart';
 import 'package:flutter_getx/Internationalization/messages.dart';
 import 'package:flutter_getx/fetchapidata/productmodule/views/product_list_view.dart';
@@ -15,7 +16,8 @@ import 'package:flutter_getx/widgets/snackbar.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 
-import 'features/home/screens/home.dart';
+import 'Food_Delivery_App_Design/features/home/screens/bottom_nav_bar.dart';
+import 'home.dart';
 
 void main() {
   runApp(const MyApp());
@@ -28,6 +30,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
       // title: 'Snackbar',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
@@ -60,6 +63,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/ssm', page: () => SimpleSMClass()),
         GetPage(name: '/ihome', page: () => Ihome()),
         GetPage(name: '/plv', page: () => ProductListView()),
+        GetPage(name: '/fdhome', page: () => BottomNavBar()),
       ],
       //to use unknownroute initialRoute cannot be /
       unknownRoute: GetPage(name: '/notfound', page: () => UnknownRoute()),
