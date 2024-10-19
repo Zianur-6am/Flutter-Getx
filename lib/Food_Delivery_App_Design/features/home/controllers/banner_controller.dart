@@ -9,19 +9,23 @@ class BannerController extends GetxController {
   int currentPage = 0;
 
   Future<void> getBannerList() async {
+    try{
+      List<Banners>? fetchedList = await HomeRepository.getBanner();
 
-    List<Banners>? fetchedList = await HomeRepository.getBanner();
+      // print('BannerList==============================>${fetchedList}');
+      if(fetchedList != null){
+        bannerList = fetchedList;
+      }
+      else{
+        bannerList = [];
+      }
 
-    // print('BannerList==============================>${fetchedList}');
+      update();
 
-    if(fetchedList != null){
-      bannerList = fetchedList;
+    }catch(e){
+      print('Could not get banner the error is $e');
     }
-    else{
-      bannerList = [];
-    }
 
-    update();
 
   }
 

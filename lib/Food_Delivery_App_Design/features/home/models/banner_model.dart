@@ -17,12 +17,12 @@ class BannerModel {
   set banners(List<Banners>? banners) => _banners = banners;
 
   BannerModel.fromJson(Map<String, dynamic> json) {
-    if (json['campaigns'] != null) {
-      _campaigns = <Null>[];
-      json['campaigns'].forEach((v) {
-        _campaigns!.add(new Banners.fromJson(v));
-      });
-    }
+    // if (json['campaigns'] != null) {
+    //   _campaigns = <Null>[];
+    //   json['campaigns'].forEach((v) {
+    //     _campaigns!.add(new Banners.fromJson(v));
+    //   });
+    // }
     if (json['banners'] != null) {
       _banners = <Banners>[];
       json['banners'].forEach((v) {
