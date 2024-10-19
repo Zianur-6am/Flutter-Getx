@@ -84,7 +84,9 @@ class FoodCampaign extends StatelessWidget {
                                           overflow: TextOverflow.ellipsis,)
                                     ),
 
-                                    Text('\$${foodCampaignController.foodCampaignList[index].discount}', style: TextStyle(color: Colors.black38, decoration: TextDecoration.lineThrough),),
+                                    Text(
+                                      '\$${foodCampaignController.foodCampaignList[index].discount}',
+                                      style: TextStyle(color: Colors.black38, decoration: TextDecoration.lineThrough),),
                                   ],),
                                 ),
 

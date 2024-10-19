@@ -22,8 +22,6 @@ class Categories extends StatelessWidget {
             itemBuilder: (context, index){
              return Container(
                width: 80,
-               margin: EdgeInsets.only(right: 8),
-               // margin: EdgeInsets.only(right: 5),
                child: Column(
                  children: [
                  Card(

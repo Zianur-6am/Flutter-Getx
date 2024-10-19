@@ -716,7 +716,7 @@ class Restaurant {
     _delivery = json['delivery'];
     _takeAway = json['take_away'];
     _foodSection = json['food_section'];
-    _tax = json['tax'];
+    _tax = double.parse(json['tax'].toString());
     _zoneId = json['zone_id'];
     _reviewsSection = json['reviews_section'];
     _active = json['active'];
@@ -763,7 +763,7 @@ class Restaurant {
       });
     }
     _ratings = json['ratings'].cast<int>();
-    _avgRating = json['avg_rating'];
+    _avgRating = double.parse(json['avg_rating'].toString());
     _ratingCount = json['rating_count'];
     _positiveRating = json['positive_rating'];
     _customerOrderDate = json['customer_order_date'];

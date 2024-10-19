@@ -1,8 +1,10 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_getx/Food_Delivery_App_Design/features/home/controllers/banner_controller.dart';
 import 'package:flutter_getx/Food_Delivery_App_Design/features/home/controllers/category_controller.dart';
 import 'package:flutter_getx/Food_Delivery_App_Design/features/home/controllers/food_campaign_controller.dart';
 import 'package:flutter_getx/Food_Delivery_App_Design/features/home/controllers/popular_food_controller.dart';
+import 'package:flutter_getx/Food_Delivery_App_Design/widgets/banners.dart';
 import 'package:flutter_getx/Food_Delivery_App_Design/widgets/categories.dart';
 import 'package:flutter_getx/Food_Delivery_App_Design/widgets/food_campaign.dart';
 import 'package:flutter_getx/Food_Delivery_App_Design/widgets/popular_food_nearby.dart';
@@ -18,6 +20,7 @@ class _FDHomeState extends State<FDHome> {
   CategoryController categoryController = Get.put(CategoryController());
   FoodCampaignController foodCampaignController = Get.put(FoodCampaignController());
   PopularFoodController popularFoodController = Get.put(PopularFoodController());
+  BannerController bannerController = Get.put(BannerController());
 
   @override
   void initState() {
@@ -26,6 +29,7 @@ class _FDHomeState extends State<FDHome> {
     categoryController.getCategories();
     foodCampaignController.getFoodsCampaign();
     popularFoodController.getProduct();
+    bannerController.getBannerList();
 
   }
 
@@ -95,19 +99,7 @@ class _FDHomeState extends State<FDHome> {
             SizedBox(height: 10,),
 
             //banner
-            Container(
-              height: 100,
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                children: <Widget>[
-                  Container(width: 160.0, color: Colors.red),
-                  Container(width: 160.0, color: Colors.blue),
-                  Container(width: 160.0, color: Colors.green),
-                  Container(width: 160.0, color: Colors.yellow),
-                  Container(width: 160.0, color: Colors.orange),
-                ],
-              ),
-            ),
+            Banners(),
             SizedBox(height: 10,),
 
 
