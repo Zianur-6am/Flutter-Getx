@@ -20,6 +20,7 @@ class CategoryController extends GetxController {
 
       // Notify listeners that the state has changed
       update();
+
     } catch (e) {
       // Handle errors (e.g., network issues)
       print('Error fetching categories: $e');

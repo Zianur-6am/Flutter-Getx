@@ -1,72 +1,108 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_getx/Food_Delivery_App_Design/features/home/controllers/popular_food_controller.dart';
+import 'package:get/get.dart';
 
 class PopularFoodNearby extends StatelessWidget {
-  const PopularFoodNearby({super.key});
+
+  PopularFoodController popularFoodController = Get.find();
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      scrollDirection: Axis.horizontal,
-      children: [
-        SizedBox(
-          child: Container(
+    // print('==================================+>>>>>>>${popularFoodController.productList.length}');
+    return GetBuilder(
+      builder: (PopularFoodController popularFoodController) {
+        return ListView.builder(
+          scrollDirection: Axis.horizontal,
+          itemCount: popularFoodController.productList.length,
+            itemBuilder: (context, index) {
+          return SizedBox(
             width: 200,
             child: Card(
-              child: Column(children: [
-                Icon(Icons.home),
+              color: Colors.white,
+              child: Column(
+                children: [
+                  Expanded(
+                      flex: 5,
+                      child: ClipRRect(
+                        child: CachedNetworkImage(
+                          width: 200,
+                          fit: BoxFit.fill,
+                          imageUrl: popularFoodController.productList[index].imageFullUrl.toString(),
+                          placeholder: (context, url) => new CircularProgressIndicator(),
+                          errorWidget: (context, url, error) => new Icon(Icons.error),
+                        ),
+                      ),
+                  ),
+                  Expanded(
+                    flex: 4,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Expanded(
+                            child: Text(
+                              '${popularFoodController.productList[index].name}',
+                              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16,), overflow: TextOverflow.ellipsis,),
+                          ),
 
-                Text('Fried Noodles'),
+                          Expanded(
+                            child: Text(
+                              '${popularFoodController.productList[index].restaurantName}',
+                              style: TextStyle(fontSize: 12, color: Colors.black38,), overflow: TextOverflow.ellipsis,),
+                          ),
 
-                Text('Mc Donalds'),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Expanded(
+                                    child: Text(
+                                      '\$${popularFoodController.productList[index].price}',
+                                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold,),
+                                      overflow: TextOverflow.ellipsis,),
+                                  ),
+                                ],),
+                              ),
 
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(children: [
-                    Text('\$7.56'),
 
-                    Expanded(child: Container(),),
+                              Expanded(
+                                child: Container(),
+                              ),
 
-                    Icon(Icons.star, color: Colors.green,),
-                    Text('4.9', style: TextStyle(color: Colors.green),),
-                  ],),
-                )
-              ],),
+                              Expanded(
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                  Icon(
+                                    Icons.star,
+                                    color: Colors.green,
+                                  ),
+                                
+                                  Expanded(
+                                    child: Text(
+                                      '${popularFoodController.productList[index].avgRating?.toStringAsFixed(1)}',
+                                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold,), overflow: TextOverflow.ellipsis,),
+                                  ),
+                                ],),
+                              ),
+
+
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
-        ),
-
-        SizedBox(
-          width: 200,
-          child: Card(
-            child: Column(
-              children: [
-                // Expanded(flex: 3,
-                //   child: Image.asset('assets/images/bangla.png'),),
-                Expanded(
-                  flex: 2,
-                  child: Column(children: [
-                    Text('Fried Noodles'),
-
-                    Text('Mc Donalds'),
-
-                    Padding(
-                      padding: const EdgeInsets.only(left: 10, right: 10),
-                      child: Row(children: [
-                        Text('\$7.56'),
-                    
-                        Expanded(child: Container(),),
-                    
-                        Icon(Icons.star, color: Colors.green,),
-                        Text('4.9', style: TextStyle(color: Colors.green),),
-                      ],),
-                    )
-                  ],),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ],
+          );
+        });
+      },
     );
   }
 }

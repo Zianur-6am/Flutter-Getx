@@ -18,33 +18,37 @@ class Categories extends StatelessWidget {
         return ListView.builder(
           scrollDirection: Axis.horizontal,
             itemCount: categoryController.categoryList.length,
-            itemBuilder: (context, index){
-             return Padding(
-                padding: const EdgeInsets.only(right: 8,),
-                child: Column(children: [
-                  Card(
-                    // elevation: 10,
-                    color: Colors.white,
-                    //Use cacheImageNetwork here
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: CachedNetworkImage(
-                        height: 40,
-                        width: 40,
-                        fit: BoxFit.contain,
-                        imageUrl: categoryController.categoryList[index].imageFullUrl.toString(),
-                        placeholder: (context, url) => new CircularProgressIndicator(),
-                        errorWidget: (context, url, error) => new Icon(Icons.error),
-                      ),
-                    ),
-                  ),
 
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text('${categoryController.categoryList[index]!.name.toString()}'),
-                  ),
-                ],),
-              );
+            itemBuilder: (context, index){
+             return Container(
+               width: 80,
+               margin: EdgeInsets.only(right: 8),
+               // margin: EdgeInsets.only(right: 5),
+               child: Column(
+                 children: [
+                 Card(
+                   elevation: 10,
+                   color: Colors.white,
+                   //Use cacheImageNetwork here
+                   child: CachedNetworkImage(
+                     height: 60,
+                     width: 60,
+                     fit: BoxFit.contain,
+                     imageUrl: categoryController.categoryList[index].imageFullUrl.toString(),
+                     placeholder: (context, url) => new CircularProgressIndicator(),
+                     errorWidget: (context, url, error) => new Icon(Icons.error),
+                   ),
+                 ),
+
+                 Padding(
+                   padding: const EdgeInsets.only(top: 5),
+                   child: Text(
+                     '${categoryController.categoryList[index]!.name.toString()}',
+                     style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                     overflow: TextOverflow.ellipsis,),
+                 ),
+               ],),
+             );
             }
         );
       },

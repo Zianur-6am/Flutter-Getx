@@ -1,7 +1,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_getx/Food_Delivery_App_Design/features/home/controllers/category_controller.dart';
+import 'package:flutter_getx/Food_Delivery_App_Design/features/home/controllers/food_campaign_controller.dart';
+import 'package:flutter_getx/Food_Delivery_App_Design/features/home/controllers/popular_food_controller.dart';
 import 'package:flutter_getx/Food_Delivery_App_Design/widgets/categories.dart';
+import 'package:flutter_getx/Food_Delivery_App_Design/widgets/food_campaign.dart';
 import 'package:flutter_getx/Food_Delivery_App_Design/widgets/popular_food_nearby.dart';
 import 'package:get/get.dart';
 
@@ -13,12 +16,17 @@ class FDHome extends StatefulWidget {
 class _FDHomeState extends State<FDHome> {
   // const FDHome({super.key});
   CategoryController categoryController = Get.put(CategoryController());
+  FoodCampaignController foodCampaignController = Get.put(FoodCampaignController());
+  PopularFoodController popularFoodController = Get.put(PopularFoodController());
 
   @override
   void initState() {
     // TODO: implement initState
 
     categoryController.getCategories();
+    foodCampaignController.getFoodsCampaign();
+    popularFoodController.getProduct();
+
   }
 
   @override
@@ -29,9 +37,11 @@ class _FDHomeState extends State<FDHome> {
         title: Row(children: [
         Icon(Icons.home, color: Colors.black38,),
 
-        Padding(
-          padding: const EdgeInsets.all(4),
-          child: Text('76,A eighth evenue, New York, US', style: TextStyle(color: Colors.black38, fontSize: 16), overflow: TextOverflow.ellipsis,),
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.all(4),
+            child: Text('76,A eighth evenue, New York, US', style: TextStyle(color: Colors.black38, fontSize: 16), overflow: TextOverflow.ellipsis,),
+          ),
         ),
 
         // Icon(Icons.notifications),
@@ -119,7 +129,7 @@ class _FDHomeState extends State<FDHome> {
 
             Padding(
               padding: const EdgeInsets.only(left: 10),
-              child: Container(
+              child: SizedBox(
                 height: 100,
                 child: Categories(),
               ),
@@ -144,7 +154,7 @@ class _FDHomeState extends State<FDHome> {
             Padding(
               padding: const EdgeInsets.only(left: 10),
               child: Container(
-                height: 180,
+                height: 200,
                 child: PopularFoodNearby(),
                 // ListView(
                 //   scrollDirection: Axis.horizontal,
@@ -179,16 +189,7 @@ class _FDHomeState extends State<FDHome> {
               padding: const EdgeInsets.only(left: 10),
               child: Container(
                 height: 100,
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  children: <Widget>[
-                    Container(width: 160.0, color: Colors.red),
-                    Container(width: 160.0, color: Colors.blue),
-                    Container(width: 160.0, color: Colors.green),
-                    Container(width: 160.0, color: Colors.yellow),
-                    Container(width: 160.0, color: Colors.orange),
-                  ],
-                ),
+                child: FoodCampaign(),
               ),
             ),
             SizedBox(height: 10,),
