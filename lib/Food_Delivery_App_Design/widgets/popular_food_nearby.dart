@@ -37,7 +37,7 @@ class PopularFoodNearby extends StatelessWidget {
                   Expanded(
                     flex: 4,
                     child: Padding(
-                      padding: const EdgeInsets.all(8),
+                      padding: const EdgeInsets.only(left: 8, right: 8),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -81,7 +81,7 @@ class PopularFoodNearby extends StatelessWidget {
                                     Icons.star,
                                     color: Colors.green,
                                   ),
-                                
+
                                   Expanded(
                                     child: Text(
                                       '${popularFoodController.productList[index].avgRating?.toStringAsFixed(1)}',

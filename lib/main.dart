@@ -70,7 +70,7 @@ class MyApp extends StatelessWidget {
 
 
 
-      ///Internalization
+      ///Internationalization
       translations: Messages(), //your translation class
       locale: Locale('en', 'US'),//default locale //to get device locale Get.deviceLocale()
       fallbackLocale: Locale('en', 'US'),

@@ -10,16 +10,15 @@ class FoodCampaign extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: GetBuilder(
-        builder: (FoodCampaignController foodCampaignController){
-          return ListView.builder(
+    return  GetBuilder(
+      builder: (FoodCampaignController foodCampaignController){
+        return ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: foodCampaignController.foodCampaignList.length,
-              itemBuilder: (context, index){
+            itemBuilder: (context, index){
               return SizedBox(
-                height: 100,
                 width: 250,
+                height: 110,
                 child: Card(
                   color: Colors.white,
                   child: Row(children: [
@@ -30,6 +29,7 @@ class FoodCampaign extends StatelessWidget {
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(10),
                             child: CachedNetworkImage(
+                              height: 80,
                               imageUrl: foodCampaignController.foodCampaignList[index].imageFullUrl.toString(),
                               fit: BoxFit.cover,
                               placeholder: (context, url) => new CircularProgressIndicator(),
@@ -47,67 +47,66 @@ class FoodCampaign extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                          Expanded(
-                            child: Text(
-                              '${foodCampaignController.foodCampaignList[index].name}',
-                              style: TextStyle(fontWeight: FontWeight.bold), overflow: TextOverflow.ellipsis,),
-                          ),
+                            Expanded(
+                              child: Text(
+                                '${foodCampaignController.foodCampaignList[index].name}',
+                                style: TextStyle(fontWeight: FontWeight.bold), overflow: TextOverflow.ellipsis,),
+                            ),
 
-                          Expanded(
-                            child: Text(
-                              '${foodCampaignController.foodCampaignList[index].restaurantName}',
-                              style: TextStyle(fontSize: 10, color: Colors.black38), overflow: TextOverflow.ellipsis,),
-                          ),
+                            Expanded(
+                              child: Text(
+                                '${foodCampaignController.foodCampaignList[index].restaurantName}',
+                                style: TextStyle(fontSize: 10, color: Colors.black38), overflow: TextOverflow.ellipsis,),
+                            ),
 
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                            Icon(Icons.star, color: Colors.green, size: 14,),
-                            Icon(Icons.star, color: Colors.green, size: 14,),
-                            Icon(Icons.star, color: Colors.green, size: 14,),
-                            Icon(Icons.star, color: Colors.green, size: 14,),
-                            Icon(Icons.star, color: Colors.green, size: 14,),
-                          ],),
-
-                          Padding(
-                            padding: const EdgeInsets.only(top: 4),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
                               children: [
-                                Expanded(
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                Icon(Icons.star, color: Colors.green, size: 14,),
+                                Icon(Icons.star, color: Colors.green, size: 14,),
+                                Icon(Icons.star, color: Colors.green, size: 14,),
+                                Icon(Icons.star, color: Colors.green, size: 14,),
+                                Icon(Icons.star, color: Colors.green, size: 14,),
+                              ],),
+
+                            Padding(
+                              padding: const EdgeInsets.only(top: 2),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                children: [
+                                  Expanded(
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Expanded(
+                                            child: Text('\$${foodCampaignController.foodCampaignList[index].price}',
+                                              style: TextStyle(fontWeight: FontWeight.bold),
+                                              overflow: TextOverflow.ellipsis,)
+                                        ),
+
+                                        Text(
+                                          '\$${foodCampaignController.foodCampaignList[index].discount}',
+                                          style: TextStyle(color: Colors.black38, decoration: TextDecoration.lineThrough),),
+                                      ],),
+                                  ),
+
+                                  Expanded(child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
                                     children: [
-                                    Expanded(
-                                        child: Text('\$${foodCampaignController.foodCampaignList[index].price}',
-                                          style: TextStyle(fontWeight: FontWeight.bold),
-                                          overflow: TextOverflow.ellipsis,)
-                                    ),
-
-                                    Text(
-                                      '\$${foodCampaignController.foodCampaignList[index].discount}',
-                                      style: TextStyle(color: Colors.black38, decoration: TextDecoration.lineThrough),),
-                                  ],),
-                                ),
-
-                                Expanded(child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [
-                                    Icon(Icons.add),
-                                  ],
-                                )),
-                            ],),
-                          )
-                        ],),
+                                      Icon(Icons.add),
+                                    ],
+                                  )),
+                                ],),
+                            )
+                          ],),
                       ),
                     )
                   ],),
                 ),
               );
             }
-          );
-        },
-      )
-    ) ;
+        );
+      },
+    );
   }
 }
