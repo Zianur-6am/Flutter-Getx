@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_getx/widgets/route_navigation/un_named_navigation/page1.dart';
+import 'package:flutter_getx/route_navigation/un_named_navigation/page1.dart';
 import 'package:get/get.dart';
 
 class BottomSheetClass extends StatelessWidget {

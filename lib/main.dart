@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_getx/Food_Delivery_App_Design/features/home/screens/fd_home.dart';
 import 'package:flutter_getx/Internationalization/ihome.dart';
 import 'package:flutter_getx/Internationalization/messages.dart';
 import 'package:flutter_getx/fetchapidata/productmodule/views/product_list_view.dart';
+import 'package:flutter_getx/route_navigation/named_navigation/route_home.dart';
+import 'package:flutter_getx/route_navigation/named_navigation/screen1.dart';
+import 'package:flutter_getx/route_navigation/named_navigation/screen2.dart';
+import 'package:flutter_getx/route_navigation/named_navigation/unknown_route.dart';
+import 'package:flutter_getx/route_navigation/un_named_navigation/page1.dart';
 import 'package:flutter_getx/state_management/reactive_state_manager/reactive_sm.dart';
 import 'package:flutter_getx/state_management/simple_state_manager/simple_sm.dart';
 import 'package:flutter_getx/widgets/bottom_sheet.dart';
-import 'package:flutter_getx/widgets/route_navigation/named_navigation/route_home.dart';
-import 'package:flutter_getx/widgets/route_navigation/named_navigation/screen1.dart';
-import 'package:flutter_getx/widgets/route_navigation/named_navigation/screen2.dart';
-import 'package:flutter_getx/widgets/route_navigation/named_navigation/unknown_route.dart';
-import 'package:flutter_getx/widgets/route_navigation/un_named_navigation/page1.dart';
+import 'package:flutter_getx/widgets/expantion_tile.dart';
 import 'package:flutter_getx/widgets/show_dialog.dart';
 import 'package:flutter_getx/widgets/snackbar.dart';
 import 'package:get/get.dart';
@@ -64,6 +64,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/ihome', page: () => Ihome()),
         GetPage(name: '/plv', page: () => ProductListView()),
         GetPage(name: '/fdhome', page: () => BottomNavBar()),
+        GetPage(name: '/exptl', page: () => ExpantionTileExample()),
       ],
       //to use unknownroute initialRoute cannot be /
       unknownRoute: GetPage(name: '/notfound', page: () => UnknownRoute()),

@@ -119,6 +119,15 @@ class _HomeState extends State<Home> {
               },
               child: const Text("Food Delivery App Design"),
             ),
+
+            ElevatedButton(
+              onPressed: (){
+                Get.toNamed(
+                    "/exptl"
+                );
+              },
+              child: const Text("Expansion Tile"),
+            ),
         ],),
       ),
     );

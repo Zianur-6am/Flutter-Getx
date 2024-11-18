@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_getx/widgets/route_navigation/un_named_navigation/page2.dart';
+import 'package:flutter_getx/route_navigation/un_named_navigation/page2.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
