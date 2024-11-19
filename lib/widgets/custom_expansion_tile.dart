@@ -721,29 +721,30 @@ class _CustomExpansionTileState extends State<CustomExpansionTile> with SingleTi
           Semantics(
             hint: semanticsHint,
             onTapHint: onTapHint,
-            child:  Padding(
-              padding: const EdgeInsets.all(20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Row(children: [
-                    Expanded(child: SizedBox(child: widget.title)),
-                    // Expanded(child: SizedBox()),
+            child:  InkWell(
+              highlightColor: Theme.of(context).primaryColor.withOpacity(0),
+              splashColor: Theme.of(context).primaryColor.withOpacity(0),
+              onTap: () {_handleTap();},
+              child: Padding(
+                padding: const EdgeInsets.all(20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Row(children: [
+                      Expanded(child: SizedBox(child: widget.title)),
 
-                    if (widget.showTrailingIcon) Transform.translate(offset: const Offset(0, -11),
-                        child: InkWell(
-                            highlightColor: Theme.of(context).primaryColor.withOpacity(0),
-                            splashColor: Theme.of(context).primaryColor.withOpacity(0),
-                            onTap: () {_handleTap();},
-                            child: SizedBox(
-                              child: widget.trailing,))),
+                      if (widget.showTrailingIcon && widget.trailing != null)
+                        Transform.translate(offset: const Offset(0, -11),
+                          child: SizedBox(
+                            child: widget.trailing,)) else Icon(_isExpanded ? Icons.keyboard_arrow_up : Icons.keyboard_arrow_down),
+                    ],),
+
+                    SizedBox(child: widget.subtitle,),
+
+
                   ],),
-
-                  SizedBox(child: widget.subtitle,),
-
-
-                ],),
+              ),
             ),
           ),
           ClipRect(
