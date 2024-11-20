@@ -6,7 +6,7 @@ class UnknownRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Page not found"),),
+      appBar: AppBar(title: const Text("Page not found"),),
 
       body: Center(
         child: Column(

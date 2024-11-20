@@ -4,7 +4,6 @@ import 'package:flutter_getx/Food_Delivery_App_Design/features/home/models/banne
 import 'package:flutter_getx/Food_Delivery_App_Design/features/home/models/category_model.dart';
 import 'package:flutter_getx/Food_Delivery_App_Design/features/home/models/food_campaign_model.dart';
 import 'package:flutter_getx/Food_Delivery_App_Design/features/home/models/popular_food_model.dart';
-import 'package:flutter_getx/Food_Delivery_App_Design/widgets/popular_food_nearby.dart';
 import 'package:flutter_getx/utils/app_constant.dart';
 import 'package:http/http.dart' as http;
 
@@ -32,9 +31,9 @@ class HomeRepository {
       List<dynamic> jsonString = jsonDecode(response.body);
       // dynamic jsonString = jsonDecode(response.body);//works
 
-      jsonString.forEach((category) {
-        categoryList!.add(CategoriesModel.fromJson(category));
-      });
+      for (var category in jsonString) {
+        categoryList.add(CategoriesModel.fromJson(category));
+      }
 
       // print('${categoryList}');
 
@@ -65,9 +64,9 @@ class HomeRepository {
       List<dynamic> jsonString = jsonDecode(response.body);
       // dynamic jsonString = jsonDecode(response.body);
 
-      jsonString.forEach((food) {
-        foodCampaignList!.add(FoodCampaignModel.fromJson(food));
-      });
+      for (var food in jsonString) {
+        foodCampaignList.add(FoodCampaignModel.fromJson(food));
+      }
 
       // print('${foodCampaignList}');
 

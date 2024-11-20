@@ -6,11 +6,11 @@ class PopularFoodModel {
   PopularFoodModel(
       {int? totalSize, List<Products>? products}) {
     if (totalSize != null) {
-      this._totalSize = totalSize;
+      _totalSize = totalSize;
     }
 
     if (products != null) {
-      this._products = products;
+      _products = products;
     }
   }
 
@@ -24,16 +24,16 @@ class PopularFoodModel {
     if (json['products'] != null) {
       _products = <Products>[];
       json['products'].forEach((v) {
-        _products!.add(new Products.fromJson(v));
+        _products!.add(Products.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['total_size'] = this._totalSize;
-    if (this._products != null) {
-      data['products'] = this._products!.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['total_size'] = _totalSize;
+    if (_products != null) {
+      data['products'] = _products!.map((v) => v.toJson()).toList();
     }
     return data;
   }
@@ -67,7 +67,7 @@ class Products {
   int? _ratingCount;
   int? _recommended;
   String? _slug;
-  Null? _maximumCartQuantity;
+  Null _maximumCartQuantity;
   int? _isHalal;
   int? _itemStock;
   int? _sellCount;
@@ -142,157 +142,157 @@ class Products {
         String? imageFullUrl,
         List<Translations>? translations,}) {
     if (id != null) {
-      this._id = id;
+      _id = id;
     }
     if (name != null) {
-      this._name = name;
+      _name = name;
     }
     if (description != null) {
-      this._description = description;
+      _description = description;
     }
     if (image != null) {
-      this._image = image;
+      _image = image;
     }
     if (categoryId != null) {
-      this._categoryId = categoryId;
+      _categoryId = categoryId;
     }
     if (categoryIds != null) {
-      this._categoryIds = categoryIds;
+      _categoryIds = categoryIds;
     }
     if (variations != null) {
-      this._variations = variations;
+      _variations = variations;
     }
     if (addOns != null) {
-      this._addOns = addOns;
+      _addOns = addOns;
     }
     if (attributes != null) {
-      this._attributes = attributes;
+      _attributes = attributes;
     }
     if (choiceOptions != null) {
-      this._choiceOptions = choiceOptions;
+      _choiceOptions = choiceOptions;
     }
     if (price != null) {
-      this._price = price;
+      _price = price;
     }
     if (tax != null) {
-      this._tax = tax;
+      _tax = tax;
     }
     if (taxType != null) {
-      this._taxType = taxType;
+      _taxType = taxType;
     }
     if (discount != null) {
-      this._discount = discount;
+      _discount = discount;
     }
     if (discountType != null) {
-      this._discountType = discountType;
+      _discountType = discountType;
     }
     if (availableTimeStarts != null) {
-      this._availableTimeStarts = availableTimeStarts;
+      _availableTimeStarts = availableTimeStarts;
     }
     if (availableTimeEnds != null) {
-      this._availableTimeEnds = availableTimeEnds;
+      _availableTimeEnds = availableTimeEnds;
     }
     if (veg != null) {
-      this._veg = veg;
+      _veg = veg;
     }
     if (status != null) {
-      this._status = status;
+      _status = status;
     }
     if (restaurantId != null) {
-      this._restaurantId = restaurantId;
+      _restaurantId = restaurantId;
     }
     if (createdAt != null) {
-      this._createdAt = createdAt;
+      _createdAt = createdAt;
     }
     if (updatedAt != null) {
-      this._updatedAt = updatedAt;
+      _updatedAt = updatedAt;
     }
     if (orderCount != null) {
-      this._orderCount = orderCount;
+      _orderCount = orderCount;
     }
     if (avgRating != null) {
-      this._avgRating = avgRating;
+      _avgRating = avgRating;
     }
     if (ratingCount != null) {
-      this._ratingCount = ratingCount;
+      _ratingCount = ratingCount;
     }
     if (recommended != null) {
-      this._recommended = recommended;
+      _recommended = recommended;
     }
     if (slug != null) {
-      this._slug = slug;
+      _slug = slug;
     }
     if (maximumCartQuantity != null) {
-      this._maximumCartQuantity = maximumCartQuantity;
+      _maximumCartQuantity = maximumCartQuantity;
     }
     if (isHalal != null) {
-      this._isHalal = isHalal;
+      _isHalal = isHalal;
     }
     if (itemStock != null) {
-      this._itemStock = itemStock;
+      _itemStock = itemStock;
     }
     if (sellCount != null) {
-      this._sellCount = sellCount;
+      _sellCount = sellCount;
     }
     if (stockType != null) {
-      this._stockType = stockType;
+      _stockType = stockType;
     }
     if (tempAvailable != null) {
-      this._tempAvailable = tempAvailable;
+      _tempAvailable = tempAvailable;
     }
     if (open != null) {
-      this._open = open;
+      _open = open;
     }
     if (reviewsCount != null) {
-      this._reviewsCount = reviewsCount;
+      _reviewsCount = reviewsCount;
     }
     if (tags != null) {
-      this._tags = tags;
+      _tags = tags;
     }
     if (restaurantName != null) {
-      this._restaurantName = restaurantName;
+      _restaurantName = restaurantName;
     }
     if (restaurantStatus != null) {
-      this._restaurantStatus = restaurantStatus;
+      _restaurantStatus = restaurantStatus;
     }
     if (restaurantDiscount != null) {
-      this._restaurantDiscount = restaurantDiscount;
+      _restaurantDiscount = restaurantDiscount;
     }
     if (restaurantOpeningTime != null) {
-      this._restaurantOpeningTime = restaurantOpeningTime;
+      _restaurantOpeningTime = restaurantOpeningTime;
     }
     if (restaurantClosingTime != null) {
-      this._restaurantClosingTime = restaurantClosingTime;
+      _restaurantClosingTime = restaurantClosingTime;
     }
     if (scheduleOrder != null) {
-      this._scheduleOrder = scheduleOrder;
+      _scheduleOrder = scheduleOrder;
     }
     if (minDeliveryTime != null) {
-      this._minDeliveryTime = minDeliveryTime;
+      _minDeliveryTime = minDeliveryTime;
     }
     if (maxDeliveryTime != null) {
-      this._maxDeliveryTime = maxDeliveryTime;
+      _maxDeliveryTime = maxDeliveryTime;
     }
     if (freeDelivery != null) {
-      this._freeDelivery = freeDelivery;
+      _freeDelivery = freeDelivery;
     }
     if (halalTagStatus != null) {
-      this._halalTagStatus = halalTagStatus;
+      _halalTagStatus = halalTagStatus;
     }
     if (cuisines != null) {
-      this._cuisines = cuisines;
+      _cuisines = cuisines;
     }
     if (imageFullUrl != null) {
-      this._imageFullUrl = imageFullUrl;
+      _imageFullUrl = imageFullUrl;
     }
     if (translations != null) {
-      this._translations = translations;
+      _translations = translations;
     }
     if (storage != null) {
-      this._storage = storage;
+      _storage = storage;
     }
     if (newVariations != null) {
-      this._newVariations = newVariations;
+      _newVariations = newVariations;
     }
   }
 
@@ -352,8 +352,8 @@ class Products {
   set recommended(int? recommended) => _recommended = recommended;
   String? get slug => _slug;
   set slug(String? slug) => _slug = slug;
-  Null? get maximumCartQuantity => _maximumCartQuantity;
-  set maximumCartQuantity(Null? maximumCartQuantity) =>
+  Null get maximumCartQuantity => _maximumCartQuantity;
+  set maximumCartQuantity(Null maximumCartQuantity) =>
       _maximumCartQuantity = maximumCartQuantity;
   int? get isHalal => _isHalal;
   set isHalal(int? isHalal) => _isHalal = isHalal;
@@ -420,19 +420,19 @@ class Products {
     if (json['category_ids'] != null) {
       _categoryIds = <CategoryIds>[];
       json['category_ids'].forEach((v) {
-        _categoryIds!.add(new CategoryIds.fromJson(v));
+        _categoryIds!.add(CategoryIds.fromJson(v));
       });
     }
     if (json['variations'] != null) {
       _variations = <Variations>[];
       json['variations'].forEach((v) {
-        _variations!.add(new Variations.fromJson(v));
+        _variations!.add(Variations.fromJson(v));
       });
     }
     if (json['add_ons'] != null) {
       _addOns = <AddOns>[];
       json['add_ons'].forEach((v) {
-        _addOns!.add(new AddOns.fromJson(v));
+        _addOns!.add(AddOns.fromJson(v));
       });
     }
     _attributes = json['attributes'];
@@ -465,7 +465,7 @@ class Products {
     if (json['tags'] != null) {
       _tags = <Tags>[];
       json['tags'].forEach((v) {
-        _tags!.add(new Tags.fromJson(v));
+        _tags!.add(Tags.fromJson(v));
       });
     }
     _restaurantName = json['restaurant_name'];
@@ -481,81 +481,81 @@ class Products {
     if (json['cuisines'] != null) {
       _cuisines = <Cuisines>[];
       json['cuisines'].forEach((v) {
-        _cuisines!.add(new Cuisines.fromJson(v));
+        _cuisines!.add(Cuisines.fromJson(v));
       });
     }
     _imageFullUrl = json['image_full_url'];
     if (json['translations'] != null) {
       _translations = <Translations>[];
       json['translations'].forEach((v) {
-        _translations!.add(new Translations.fromJson(v));
+        _translations!.add(Translations.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this._id;
-    data['name'] = this._name;
-    data['description'] = this._description;
-    data['image'] = this._image;
-    data['category_id'] = this._categoryId;
-    if (this._categoryIds != null) {
-      data['category_ids'] = this._categoryIds!.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = _id;
+    data['name'] = _name;
+    data['description'] = _description;
+    data['image'] = _image;
+    data['category_id'] = _categoryId;
+    if (_categoryIds != null) {
+      data['category_ids'] = _categoryIds!.map((v) => v.toJson()).toList();
     }
-    if (this._variations != null) {
-      data['variations'] = this._variations!.map((v) => v.toJson()).toList();
+    if (_variations != null) {
+      data['variations'] = _variations!.map((v) => v.toJson()).toList();
     }
-    if (this._addOns != null) {
-      data['add_ons'] = this._addOns!.map((v) => v.toJson()).toList();
+    if (_addOns != null) {
+      data['add_ons'] = _addOns!.map((v) => v.toJson()).toList();
     }
-    data['attributes'] = this._attributes;
-    data['choice_options'] = this._choiceOptions;
-    data['price'] = this._price;
-    data['tax'] = this._tax;
-    data['tax_type'] = this._taxType;
-    data['discount'] = this._discount;
-    data['discount_type'] = this._discountType;
-    data['available_time_starts'] = this._availableTimeStarts;
-    data['available_time_ends'] = this._availableTimeEnds;
-    data['veg'] = this._veg;
-    data['status'] = this._status;
-    data['restaurant_id'] = this._restaurantId;
-    data['created_at'] = this._createdAt;
-    data['updated_at'] = this._updatedAt;
-    data['order_count'] = this._orderCount;
-    data['avg_rating'] = this._avgRating;
-    data['rating_count'] = this._ratingCount;
-    data['recommended'] = this._recommended;
-    data['slug'] = this._slug;
-    data['maximum_cart_quantity'] = this._maximumCartQuantity;
-    data['is_halal'] = this._isHalal;
-    data['item_stock'] = this._itemStock;
-    data['sell_count'] = this._sellCount;
-    data['stock_type'] = this._stockType;
-    data['temp_available'] = this._tempAvailable;
-    data['open'] = this._open;
-    data['reviews_count'] = this._reviewsCount;
-    if (this._tags != null) {
-      data['tags'] = this._tags!.map((v) => v.toJson()).toList();
+    data['attributes'] = _attributes;
+    data['choice_options'] = _choiceOptions;
+    data['price'] = _price;
+    data['tax'] = _tax;
+    data['tax_type'] = _taxType;
+    data['discount'] = _discount;
+    data['discount_type'] = _discountType;
+    data['available_time_starts'] = _availableTimeStarts;
+    data['available_time_ends'] = _availableTimeEnds;
+    data['veg'] = _veg;
+    data['status'] = _status;
+    data['restaurant_id'] = _restaurantId;
+    data['created_at'] = _createdAt;
+    data['updated_at'] = _updatedAt;
+    data['order_count'] = _orderCount;
+    data['avg_rating'] = _avgRating;
+    data['rating_count'] = _ratingCount;
+    data['recommended'] = _recommended;
+    data['slug'] = _slug;
+    data['maximum_cart_quantity'] = _maximumCartQuantity;
+    data['is_halal'] = _isHalal;
+    data['item_stock'] = _itemStock;
+    data['sell_count'] = _sellCount;
+    data['stock_type'] = _stockType;
+    data['temp_available'] = _tempAvailable;
+    data['open'] = _open;
+    data['reviews_count'] = _reviewsCount;
+    if (_tags != null) {
+      data['tags'] = _tags!.map((v) => v.toJson()).toList();
     }
-    data['restaurant_name'] = this._restaurantName;
-    data['restaurant_status'] = this._restaurantStatus;
-    data['restaurant_discount'] = this._restaurantDiscount;
-    data['restaurant_opening_time'] = this._restaurantOpeningTime;
-    data['restaurant_closing_time'] = this._restaurantClosingTime;
-    data['schedule_order'] = this._scheduleOrder;
-    data['min_delivery_time'] = this._minDeliveryTime;
-    data['max_delivery_time'] = this._maxDeliveryTime;
-    data['free_delivery'] = this._freeDelivery;
-    data['halal_tag_status'] = this._halalTagStatus;
-    if (this._cuisines != null) {
-      data['cuisines'] = this._cuisines!.map((v) => v.toJson()).toList();
+    data['restaurant_name'] = _restaurantName;
+    data['restaurant_status'] = _restaurantStatus;
+    data['restaurant_discount'] = _restaurantDiscount;
+    data['restaurant_opening_time'] = _restaurantOpeningTime;
+    data['restaurant_closing_time'] = _restaurantClosingTime;
+    data['schedule_order'] = _scheduleOrder;
+    data['min_delivery_time'] = _minDeliveryTime;
+    data['max_delivery_time'] = _maxDeliveryTime;
+    data['free_delivery'] = _freeDelivery;
+    data['halal_tag_status'] = _halalTagStatus;
+    if (_cuisines != null) {
+      data['cuisines'] = _cuisines!.map((v) => v.toJson()).toList();
     }
-    data['image_full_url'] = this._imageFullUrl;
-    if (this._translations != null) {
+    data['image_full_url'] = _imageFullUrl;
+    if (_translations != null) {
       data['translations'] =
-          this._translations!.map((v) => v.toJson()).toList();
+          _translations!.map((v) => v.toJson()).toList();
     }
     return data;
   }
@@ -567,10 +567,10 @@ class CategoryIds {
 
   CategoryIds({String? id, int? position}) {
     if (id != null) {
-      this._id = id;
+      _id = id;
     }
     if (position != null) {
-      this._position = position;
+      _position = position;
     }
   }
 
@@ -585,9 +585,9 @@ class CategoryIds {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this._id;
-    data['position'] = this._position;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = _id;
+    data['position'] = _position;
     return data;
   }
 }
@@ -610,25 +610,25 @@ class Variations {
         String? required,
         List<Values>? values}) {
     if (variationId != null) {
-      this._variationId = variationId;
+      _variationId = variationId;
     }
     if (name != null) {
-      this._name = name;
+      _name = name;
     }
     if (type != null) {
-      this._type = type;
+      _type = type;
     }
     if (min != null) {
-      this._min = min;
+      _min = min;
     }
     if (max != null) {
-      this._max = max;
+      _max = max;
     }
     if (required != null) {
-      this._required = required;
+      _required = required;
     }
     if (values != null) {
-      this._values = values;
+      _values = values;
     }
   }
 
@@ -657,21 +657,21 @@ class Variations {
     if (json['values'] != null) {
       _values = <Values>[];
       json['values'].forEach((v) {
-        _values!.add(new Values.fromJson(v));
+        _values!.add(Values.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['variation_id'] = this._variationId;
-    data['name'] = this._name;
-    data['type'] = this._type;
-    data['min'] = this._min;
-    data['max'] = this._max;
-    data['required'] = this._required;
-    if (this._values != null) {
-      data['values'] = this._values!.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['variation_id'] = _variationId;
+    data['name'] = _name;
+    data['type'] = _type;
+    data['min'] = _min;
+    data['max'] = _max;
+    data['required'] = _required;
+    if (_values != null) {
+      data['values'] = _values!.map((v) => v.toJson()).toList();
     }
     return data;
   }
@@ -695,25 +695,25 @@ class Values {
         int? optionId,
         int? currentStock}) {
     if (label != null) {
-      this._label = label;
+      _label = label;
     }
     if (optionPrice != null) {
-      this._optionPrice = optionPrice;
+      _optionPrice = optionPrice;
     }
     if (totalStock != null) {
-      this._totalStock = totalStock;
+      _totalStock = totalStock;
     }
     if (stockType != null) {
-      this._stockType = stockType;
+      _stockType = stockType;
     }
     if (sellCount != null) {
-      this._sellCount = sellCount;
+      _sellCount = sellCount;
     }
     if (optionId != null) {
-      this._optionId = optionId;
+      _optionId = optionId;
     }
     if (currentStock != null) {
-      this._currentStock = currentStock;
+      _currentStock = currentStock;
     }
   }
 
@@ -743,14 +743,14 @@ class Values {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['label'] = this._label;
-    data['optionPrice'] = this._optionPrice;
-    data['total_stock'] = this._totalStock;
-    data['stock_type'] = this._stockType;
-    data['sell_count'] = this._sellCount;
-    data['option_id'] = this._optionId;
-    data['current_stock'] = this._currentStock;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['label'] = _label;
+    data['optionPrice'] = _optionPrice;
+    data['total_stock'] = _totalStock;
+    data['stock_type'] = _stockType;
+    data['sell_count'] = _sellCount;
+    data['option_id'] = _optionId;
+    data['current_stock'] = _currentStock;
     return data;
   }
 }
@@ -781,37 +781,37 @@ class AddOns {
         int? sellCount,
         List<Translations>? translations}) {
     if (id != null) {
-      this._id = id;
+      _id = id;
     }
     if (name != null) {
-      this._name = name;
+      _name = name;
     }
     if (price != null) {
-      this._price = price;
+      _price = price;
     }
     if (createdAt != null) {
-      this._createdAt = createdAt;
+      _createdAt = createdAt;
     }
     if (updatedAt != null) {
-      this._updatedAt = updatedAt;
+      _updatedAt = updatedAt;
     }
     if (restaurantId != null) {
-      this._restaurantId = restaurantId;
+      _restaurantId = restaurantId;
     }
     if (status != null) {
-      this._status = status;
+      _status = status;
     }
     if (stockType != null) {
-      this._stockType = stockType;
+      _stockType = stockType;
     }
     if (addonStock != null) {
-      this._addonStock = addonStock;
+      _addonStock = addonStock;
     }
     if (sellCount != null) {
-      this._sellCount = sellCount;
+      _sellCount = sellCount;
     }
     if (translations != null) {
-      this._translations = translations;
+      _translations = translations;
     }
   }
 
@@ -853,26 +853,26 @@ class AddOns {
     if (json['translations'] != null) {
       _translations = <Translations>[];
       json['translations'].forEach((v) {
-        _translations!.add(new Translations.fromJson(v));
+        _translations!.add(Translations.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this._id;
-    data['name'] = this._name;
-    data['price'] = this._price;
-    data['created_at'] = this._createdAt;
-    data['updated_at'] = this._updatedAt;
-    data['restaurant_id'] = this._restaurantId;
-    data['status'] = this._status;
-    data['stock_type'] = this._stockType;
-    data['addon_stock'] = this._addonStock;
-    data['sell_count'] = this._sellCount;
-    if (this._translations != null) {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = _id;
+    data['name'] = _name;
+    data['price'] = _price;
+    data['created_at'] = _createdAt;
+    data['updated_at'] = _updatedAt;
+    data['restaurant_id'] = _restaurantId;
+    data['status'] = _status;
+    data['stock_type'] = _stockType;
+    data['addon_stock'] = _addonStock;
+    data['sell_count'] = _sellCount;
+    if (_translations != null) {
       data['translations'] =
-          this._translations!.map((v) => v.toJson()).toList();
+          _translations!.map((v) => v.toJson()).toList();
     }
     return data;
   }
@@ -885,8 +885,8 @@ class Translations {
   String? _locale;
   String? _key;
   String? _value;
-  Null? _createdAt;
-  Null? _updatedAt;
+  Null _createdAt;
+  Null _updatedAt;
 
   Translations(
       {int? id,
@@ -895,31 +895,31 @@ class Translations {
         String? locale,
         String? key,
         String? value,
-        Null? createdAt,
-        Null? updatedAt}) {
+        Null createdAt,
+        Null updatedAt}) {
     if (id != null) {
-      this._id = id;
+      _id = id;
     }
     if (translationableType != null) {
-      this._translationableType = translationableType;
+      _translationableType = translationableType;
     }
     if (translationableId != null) {
-      this._translationableId = translationableId;
+      _translationableId = translationableId;
     }
     if (locale != null) {
-      this._locale = locale;
+      _locale = locale;
     }
     if (key != null) {
-      this._key = key;
+      _key = key;
     }
     if (value != null) {
-      this._value = value;
+      _value = value;
     }
     if (createdAt != null) {
-      this._createdAt = createdAt;
+      _createdAt = createdAt;
     }
     if (updatedAt != null) {
-      this._updatedAt = updatedAt;
+      _updatedAt = updatedAt;
     }
   }
 
@@ -937,10 +937,10 @@ class Translations {
   set key(String? key) => _key = key;
   String? get value => _value;
   set value(String? value) => _value = value;
-  Null? get createdAt => _createdAt;
-  set createdAt(Null? createdAt) => _createdAt = createdAt;
-  Null? get updatedAt => _updatedAt;
-  set updatedAt(Null? updatedAt) => _updatedAt = updatedAt;
+  Null get createdAt => _createdAt;
+  set createdAt(Null createdAt) => _createdAt = createdAt;
+  Null get updatedAt => _updatedAt;
+  set updatedAt(Null updatedAt) => _updatedAt = updatedAt;
 
   Translations.fromJson(Map<String, dynamic> json) {
     _id = json['id'];
@@ -954,15 +954,15 @@ class Translations {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this._id;
-    data['translationable_type'] = this._translationableType;
-    data['translationable_id'] = this._translationableId;
-    data['locale'] = this._locale;
-    data['key'] = this._key;
-    data['value'] = this._value;
-    data['created_at'] = this._createdAt;
-    data['updated_at'] = this._updatedAt;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = _id;
+    data['translationable_type'] = _translationableType;
+    data['translationable_id'] = _translationableId;
+    data['locale'] = _locale;
+    data['key'] = _key;
+    data['value'] = _value;
+    data['created_at'] = _createdAt;
+    data['updated_at'] = _updatedAt;
     return data;
   }
 }
@@ -981,19 +981,19 @@ class Tags {
         String? updatedAt,
         Pivot? pivot}) {
     if (id != null) {
-      this._id = id;
+      _id = id;
     }
     if (tag != null) {
-      this._tag = tag;
+      _tag = tag;
     }
     if (createdAt != null) {
-      this._createdAt = createdAt;
+      _createdAt = createdAt;
     }
     if (updatedAt != null) {
-      this._updatedAt = updatedAt;
+      _updatedAt = updatedAt;
     }
     if (pivot != null) {
-      this._pivot = pivot;
+      _pivot = pivot;
     }
   }
 
@@ -1013,17 +1013,17 @@ class Tags {
     _tag = json['tag'];
     _createdAt = json['created_at'];
     _updatedAt = json['updated_at'];
-    _pivot = json['pivot'] != null ? new Pivot.fromJson(json['pivot']) : null;
+    _pivot = json['pivot'] != null ? Pivot.fromJson(json['pivot']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this._id;
-    data['tag'] = this._tag;
-    data['created_at'] = this._createdAt;
-    data['updated_at'] = this._updatedAt;
-    if (this._pivot != null) {
-      data['pivot'] = this._pivot!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = _id;
+    data['tag'] = _tag;
+    data['created_at'] = _createdAt;
+    data['updated_at'] = _updatedAt;
+    if (_pivot != null) {
+      data['pivot'] = _pivot!.toJson();
     }
     return data;
   }
@@ -1035,10 +1035,10 @@ class Pivot {
 
   Pivot({int? foodId, int? tagId}) {
     if (foodId != null) {
-      this._foodId = foodId;
+      _foodId = foodId;
     }
     if (tagId != null) {
-      this._tagId = tagId;
+      _tagId = tagId;
     }
   }
 
@@ -1053,9 +1053,9 @@ class Pivot {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['food_id'] = this._foodId;
-    data['tag_id'] = this._tagId;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['food_id'] = _foodId;
+    data['tag_id'] = _tagId;
     return data;
   }
 }
@@ -1067,13 +1067,13 @@ class Cuisines {
 
   Cuisines({int? id, String? name, String? image}) {
     if (id != null) {
-      this._id = id;
+      _id = id;
     }
     if (name != null) {
-      this._name = name;
+      _name = name;
     }
     if (image != null) {
-      this._image = image;
+      _image = image;
     }
   }
 
@@ -1091,10 +1091,10 @@ class Cuisines {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this._id;
-    data['name'] = this._name;
-    data['image'] = this._image;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = _id;
+    data['name'] = _name;
+    data['image'] = _image;
     return data;
   }
 }

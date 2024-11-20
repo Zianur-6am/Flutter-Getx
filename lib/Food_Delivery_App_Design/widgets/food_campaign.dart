@@ -2,11 +2,12 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_getx/Food_Delivery_App_Design/features/home/controllers/food_campaign_controller.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/src/simple/get_state.dart';
 
 class FoodCampaign extends StatelessWidget {
 
   FoodCampaignController foodCampaignController = Get.find();
+
+  FoodCampaign({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -32,8 +33,8 @@ class FoodCampaign extends StatelessWidget {
                               height: 80,
                               imageUrl: foodCampaignController.foodCampaignList[index].imageFullUrl.toString(),
                               fit: BoxFit.cover,
-                              placeholder: (context, url) => new CircularProgressIndicator(),
-                              errorWidget: (context, url, error) => new Icon(Icons.error),
+                              placeholder: (context, url) => const CircularProgressIndicator(),
+                              errorWidget: (context, url, error) => const Icon(Icons.error),
 
                             ),
                           ),
@@ -50,16 +51,16 @@ class FoodCampaign extends StatelessWidget {
                             Expanded(
                               child: Text(
                                 '${foodCampaignController.foodCampaignList[index].name}',
-                                style: TextStyle(fontWeight: FontWeight.bold), overflow: TextOverflow.ellipsis,),
+                                style: const TextStyle(fontWeight: FontWeight.bold), overflow: TextOverflow.ellipsis,),
                             ),
 
                             Expanded(
                               child: Text(
                                 '${foodCampaignController.foodCampaignList[index].restaurantName}',
-                                style: TextStyle(fontSize: 10, color: Colors.black38), overflow: TextOverflow.ellipsis,),
+                                style: const TextStyle(fontSize: 10, color: Colors.black38), overflow: TextOverflow.ellipsis,),
                             ),
 
-                            Row(
+                            const Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 Icon(Icons.star, color: Colors.green, size: 14,),
@@ -80,17 +81,17 @@ class FoodCampaign extends StatelessWidget {
                                       children: [
                                         Expanded(
                                             child: Text('\$${foodCampaignController.foodCampaignList[index].price}',
-                                              style: TextStyle(fontWeight: FontWeight.bold),
+                                              style: const TextStyle(fontWeight: FontWeight.bold),
                                               overflow: TextOverflow.ellipsis,)
                                         ),
 
                                         Text(
                                           '\$${foodCampaignController.foodCampaignList[index].discount}',
-                                          style: TextStyle(color: Colors.black38, decoration: TextDecoration.lineThrough),),
+                                          style: const TextStyle(color: Colors.black38, decoration: TextDecoration.lineThrough),),
                                       ],),
                                   ),
 
-                                  Expanded(child: Row(
+                                  const Expanded(child: Row(
                                     mainAxisAlignment: MainAxisAlignment.end,
                                     children: [
                                       Icon(Icons.add),

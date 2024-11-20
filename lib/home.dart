@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_getx/Food_Delivery_App_Design/features/home/repositories/home_repository.dart';
-import 'package:flutter_getx/main.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -25,18 +22,27 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Home Screen"),),
+      appBar: AppBar(title: const Text("Home Screen"),),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            ElevatedButton(
+              onPressed: (){
+                Get.toNamed(
+                    "/explore"
+                );
+              },
+              child: const Text("Explore Screen"),
+            ),
+
             ElevatedButton(
                 onPressed: (){
                   Get.toNamed(
                     "/named_route_home"
                   );
                 },
-                child: Text("Named Route"),
+                child: const Text("Named Route"),
             ),
 
             ElevatedButton(
@@ -45,7 +51,7 @@ class _HomeState extends State<Home> {
                   "/unnamed_route"
                 );
               },
-              child: Text("Unamed Route"),
+              child: const Text("Unamed Route"),
             ),
 
             ElevatedButton(
@@ -54,7 +60,7 @@ class _HomeState extends State<Home> {
                   "/dialog"
                 );
               },
-              child: Text("Dialog"),
+              child: const Text("Dialog"),
             ),
 
             ElevatedButton(
@@ -63,7 +69,7 @@ class _HomeState extends State<Home> {
                     "/snackbar"
                 );
               },
-              child: Text("Snackbar"),
+              child: const Text("Snackbar"),
             ),
 
             ElevatedButton(
@@ -72,7 +78,7 @@ class _HomeState extends State<Home> {
                     "/bottomsheet"
                 );
               },
-              child: Text("Bottomsheet"),
+              child: const Text("Bottomsheet"),
             ),
 
             ElevatedButton(
@@ -81,7 +87,7 @@ class _HomeState extends State<Home> {
                     "/rsm"
                 );
               },
-              child: Text("Reactive State Manager"),
+              child: const Text("Reactive State Manager"),
             ),
 
             ElevatedButton(
@@ -90,7 +96,7 @@ class _HomeState extends State<Home> {
                     "/ssm"
                 );
               },
-              child: Text("Simple State Manager"),
+              child: const Text("Simple State Manager"),
             ),
 
             ElevatedButton(
@@ -128,6 +134,7 @@ class _HomeState extends State<Home> {
               },
               child: const Text("Expansion Tile"),
             ),
+
         ],),
       ),
     );

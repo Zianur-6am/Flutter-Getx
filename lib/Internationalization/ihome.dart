@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_getx/Internationalization/icontroller.dart';
 import 'package:get/get.dart';
@@ -7,6 +6,8 @@ class Ihome extends StatelessWidget {
   // const Ihome({super.key});
   
   Icontroller icontroller = Get.put(Icontroller());
+
+  Ihome({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +18,7 @@ class Ihome extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             //must put .tr
-            Text('hello'.tr, style: TextStyle(fontSize: 25, color: Colors.purple),),
+            Text('hello'.tr, style: const TextStyle(fontSize: 25, color: Colors.purple),),
 
             ElevatedButton(
                 onPressed: (){
@@ -25,7 +26,7 @@ class Ihome extends StatelessWidget {
                 },
                 child: const Text("Hindi")
             ),
-            SizedBox(height: 10,),
+            const SizedBox(height: 10,),
 
             ElevatedButton(
                 onPressed: (){
@@ -33,7 +34,7 @@ class Ihome extends StatelessWidget {
                 },
                 child: const Text("French")
             ),
-            SizedBox(height: 10,),
+            const SizedBox(height: 10,),
 
             ElevatedButton(
                 onPressed: (){

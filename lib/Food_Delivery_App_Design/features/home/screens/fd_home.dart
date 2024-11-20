@@ -11,6 +11,8 @@ import 'package:flutter_getx/Food_Delivery_App_Design/widgets/popular_food_nearb
 import 'package:get/get.dart';
 
 class FDHome extends StatefulWidget {
+  const FDHome({super.key});
+
   @override
   State<FDHome> createState() => _FDHomeState();
 }
@@ -38,12 +40,12 @@ class _FDHomeState extends State<FDHome> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        title: Row(children: [
+        title: const Row(children: [
         Icon(Icons.home, color: Colors.black38,),
 
         Expanded(
           child: Padding(
-            padding: const EdgeInsets.all(4),
+            padding: EdgeInsets.all(4),
             child: Text('76,A eighth evenue, New York, US', style: TextStyle(color: Colors.black38, fontSize: 16), overflow: TextOverflow.ellipsis,),
           ),
         ),
@@ -51,9 +53,9 @@ class _FDHomeState extends State<FDHome> {
         // Icon(Icons.notifications),
       ],),
 
-        actions: [
+        actions: const [
           Padding(
-          padding: const EdgeInsets.only(right: 15),
+          padding: EdgeInsets.only(right: 15),
           child: Icon(Icons.notifications),),
         ],
       ),
@@ -81,7 +83,7 @@ class _FDHomeState extends State<FDHome> {
                           child: TextField(
                             textInputAction: TextInputAction.go,
                             onSubmitted: (value){},
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                               hintText: "Search food or restaurent here.....",
                               hintStyle: TextStyle(color: Colors.black38),
                               border: InputBorder.none,
@@ -90,23 +92,23 @@ class _FDHomeState extends State<FDHome> {
                         ),
                       ),
 
-                      Expanded(flex : 1, child: Icon(Icons.search, color: Colors.black38,)),
+                      const Expanded(flex : 1, child: Icon(Icons.search, color: Colors.black38,)),
                     ],
                   ),
                 ),
               ),
             ),
-            SizedBox(height: 10,),
+            const SizedBox(height: 10,),
 
             //banner
             Banners(),
-            SizedBox(height: 10,),
+            const SizedBox(height: 10,),
 
 
 
             //categories
-            Padding(
-              padding: const EdgeInsets.only(left: 10, right: 10),
+            const Padding(
+              padding: EdgeInsets.only(left: 10, right: 10),
               child: Row(children: [
                 Text('Categories', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
 
@@ -115,7 +117,7 @@ class _FDHomeState extends State<FDHome> {
                 Text('View all', style: TextStyle(fontSize: 16, decoration: TextDecoration.underline, decorationColor: Colors.green, color: Colors.green),),
               ],),
             ),
-            SizedBox(height: 10,),
+            const SizedBox(height: 10,),
 
             Padding(
               padding: const EdgeInsets.only(left: 10),
@@ -124,11 +126,11 @@ class _FDHomeState extends State<FDHome> {
                 child: Categories(),
               ),
             ),
-            SizedBox(height: 10,),
+            const SizedBox(height: 10,),
 
             //Popular Food Nearby
-            Padding(
-              padding: const EdgeInsets.only(left: 10, right: 10),
+            const Padding(
+              padding: EdgeInsets.only(left: 10, right: 10),
               child: Row(children: [
                 Text('Popular Food Nearby', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
 
@@ -137,7 +139,7 @@ class _FDHomeState extends State<FDHome> {
                 Text('View all', style: TextStyle(fontSize: 16, decoration: TextDecoration.underline, decorationColor: Colors.green, color: Colors.green),),
               ],),
             ),
-            SizedBox(height: 10,),
+            const SizedBox(height: 10,),
 
             Padding(
               padding: const EdgeInsets.only(left: 10),
@@ -146,11 +148,11 @@ class _FDHomeState extends State<FDHome> {
                 child: PopularFoodNearby(),
               ),
             ),
-            SizedBox(height: 10,),
+            const SizedBox(height: 10,),
 
             //Food Campaign
-            Padding(
-              padding: const EdgeInsets.only(left: 10, right: 10),
+            const Padding(
+              padding: EdgeInsets.only(left: 10, right: 10),
               child: Row(children: [
                 // Expanded(flex: 7, child: Text('Categories', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),)),
                 // Expanded(flex: 2, child: Text('View all', style: TextStyle(fontSize: 16, decoration: TextDecoration.underline, decorationColor: Colors.green, color: Colors.green),))
@@ -161,7 +163,7 @@ class _FDHomeState extends State<FDHome> {
                 Text('View all', style: TextStyle(fontSize: 16, decoration: TextDecoration.underline, decorationColor: Colors.green, color: Colors.green),),
               ],),
             ),
-            SizedBox(height: 10,),
+            const SizedBox(height: 10,),
 
             Padding(
               padding: const EdgeInsets.only(left: 10),
@@ -170,7 +172,7 @@ class _FDHomeState extends State<FDHome> {
                 child: FoodCampaign(),
               ),
             ),
-            SizedBox(height: 10,),
+            const SizedBox(height: 10,),
 
 
 

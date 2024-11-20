@@ -4,10 +4,10 @@ class BannerModel {
 
   BannerModel({List<dynamic>? campaigns, List<Banners>? banners}) {
     if (campaigns != null) {
-      this._campaigns = campaigns;
+      _campaigns = campaigns;
     }
     if (banners != null) {
-      this._banners = banners;
+      _banners = banners;
     }
   }
 
@@ -26,18 +26,18 @@ class BannerModel {
     if (json['banners'] != null) {
       _banners = <Banners>[];
       json['banners'].forEach((v) {
-        _banners!.add(new Banners.fromJson(v));
+        _banners!.add(Banners.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this._campaigns != null) {
-      data['campaigns'] = this._campaigns!.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    if (_campaigns != null) {
+      data['campaigns'] = _campaigns!.map((v) => v.toJson()).toList();
     }
-    if (this._banners != null) {
-      data['banners'] = this._banners!.map((v) => v.toJson()).toList();
+    if (_banners != null) {
+      data['banners'] = _banners!.map((v) => v.toJson()).toList();
     }
     return data;
   }
@@ -58,25 +58,25 @@ class Banners {
         String? type,
         String? image,
         Restaurant? restaurant,
-        Null? food,
+        Null food,
         String? imageFullUrl}) {
     if (id != null) {
-      this._id = id;
+      _id = id;
     }
     if (title != null) {
-      this._title = title;
+      _title = title;
     }
     if (type != null) {
-      this._type = type;
+      _type = type;
     }
     if (image != null) {
-      this._image = image;
+      _image = image;
     }
     if (restaurant != null) {
-      this._restaurant = restaurant;
+      _restaurant = restaurant;
     }
     if (imageFullUrl != null) {
-      this._imageFullUrl = imageFullUrl;
+      _imageFullUrl = imageFullUrl;
     }
   }
 
@@ -99,21 +99,21 @@ class Banners {
     _type = json['type'];
     _image = json['image'];
     _restaurant = json['restaurant'] != null
-        ? new Restaurant.fromJson(json['restaurant'])
+        ? Restaurant.fromJson(json['restaurant'])
         : null;
     _imageFullUrl = json['image_full_url'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this._id;
-    data['title'] = this._title;
-    data['type'] = this._type;
-    data['image'] = this._image;
-    if (this._restaurant != null) {
-      data['restaurant'] = this._restaurant!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = _id;
+    data['title'] = _title;
+    data['type'] = _type;
+    data['image'] = _image;
+    if (_restaurant != null) {
+      data['restaurant'] = _restaurant!.toJson();
     }
-    data['image_full_url'] = this._imageFullUrl;
+    data['image_full_url'] = _imageFullUrl;
     return data;
   }
 }
@@ -127,12 +127,12 @@ class Restaurant {
   String? _latitude;
   String? _longitude;
   String? _address;
-  Null? _footerText;
+  Null _footerText;
   int? _minimumOrder;
-  Null? _comission;
+  Null _comission;
   bool? _scheduleOrder;
-  Null? _openingTime;
-  Null? _closeingTime;
+  Null _openingTime;
+  Null _closeingTime;
   int? _status;
   int? _vendorId;
   String? _createdAt;
@@ -157,7 +157,7 @@ class Restaurant {
   int? _totalOrder;
   int? _perKmShippingCharge;
   String? _restaurantModel;
-  Null? _maximumShippingCharge;
+  Null _maximumShippingCharge;
   String? _slug;
   bool? _orderSubscriptionActive;
   bool? _cutlery;
@@ -166,8 +166,8 @@ class Restaurant {
   String? _metaImage;
   int? _announcement;
   String? _announcementMessage;
-  Null? _qrCode;
-  Null? _additionalData;
+  Null _qrCode;
+  Null _additionalData;
   String? _additionalDocuments;
   int? _restaurantStatus;
   List<Foods>? _foods;
@@ -207,12 +207,12 @@ class Restaurant {
         String? latitude,
         String? longitude,
         String? address,
-        Null? footerText,
+        Null footerText,
         int? minimumOrder,
-        Null? comission,
+        Null comission,
         bool? scheduleOrder,
-        Null? openingTime,
-        Null? closeingTime,
+        Null openingTime,
+        Null closeingTime,
         int? status,
         int? vendorId,
         String? createdAt,
@@ -237,7 +237,7 @@ class Restaurant {
         int? totalOrder,
         int? perKmShippingCharge,
         String? restaurantModel,
-        Null? maximumShippingCharge,
+        Null maximumShippingCharge,
         String? slug,
         bool? orderSubscriptionActive,
         bool? cutlery,
@@ -246,8 +246,8 @@ class Restaurant {
         String? metaImage,
         int? announcement,
         String? announcementMessage,
-        Null? qrCode,
-        Null? additionalData,
+        Null qrCode,
+        Null additionalData,
         String? additionalDocuments,
         int? restaurantStatus,
         List<Foods>? foods,
@@ -278,238 +278,238 @@ class Restaurant {
         List<Schedules>? schedules,
         List<Null>? storage}) {
     if (id != null) {
-      this._id = id;
+      _id = id;
     }
     if (name != null) {
-      this._name = name;
+      _name = name;
     }
     if (phone != null) {
-      this._phone = phone;
+      _phone = phone;
     }
     if (email != null) {
-      this._email = email;
+      _email = email;
     }
     if (logo != null) {
-      this._logo = logo;
+      _logo = logo;
     }
     if (latitude != null) {
-      this._latitude = latitude;
+      _latitude = latitude;
     }
     if (longitude != null) {
-      this._longitude = longitude;
+      _longitude = longitude;
     }
     if (address != null) {
-      this._address = address;
+      _address = address;
     }
     if (footerText != null) {
-      this._footerText = footerText;
+      _footerText = footerText;
     }
     if (minimumOrder != null) {
-      this._minimumOrder = minimumOrder;
+      _minimumOrder = minimumOrder;
     }
     if (comission != null) {
-      this._comission = comission;
+      _comission = comission;
     }
     if (scheduleOrder != null) {
-      this._scheduleOrder = scheduleOrder;
+      _scheduleOrder = scheduleOrder;
     }
     if (openingTime != null) {
-      this._openingTime = openingTime;
+      _openingTime = openingTime;
     }
     if (closeingTime != null) {
-      this._closeingTime = closeingTime;
+      _closeingTime = closeingTime;
     }
     if (status != null) {
-      this._status = status;
+      _status = status;
     }
     if (vendorId != null) {
-      this._vendorId = vendorId;
+      _vendorId = vendorId;
     }
     if (createdAt != null) {
-      this._createdAt = createdAt;
+      _createdAt = createdAt;
     }
     if (updatedAt != null) {
-      this._updatedAt = updatedAt;
+      _updatedAt = updatedAt;
     }
     if (freeDelivery != null) {
-      this._freeDelivery = freeDelivery;
+      _freeDelivery = freeDelivery;
     }
     if (coverPhoto != null) {
-      this._coverPhoto = coverPhoto;
+      _coverPhoto = coverPhoto;
     }
     if (delivery != null) {
-      this._delivery = delivery;
+      _delivery = delivery;
     }
     if (takeAway != null) {
-      this._takeAway = takeAway;
+      _takeAway = takeAway;
     }
     if (foodSection != null) {
-      this._foodSection = foodSection;
+      _foodSection = foodSection;
     }
     if (tax != null) {
-      this._tax = tax;
+      _tax = tax;
     }
     if (zoneId != null) {
-      this._zoneId = zoneId;
+      _zoneId = zoneId;
     }
     if (reviewsSection != null) {
-      this._reviewsSection = reviewsSection;
+      _reviewsSection = reviewsSection;
     }
     if (active != null) {
-      this._active = active;
+      _active = active;
     }
     if (offDay != null) {
-      this._offDay = offDay;
+      _offDay = offDay;
     }
     if (selfDeliverySystem != null) {
-      this._selfDeliverySystem = selfDeliverySystem;
+      _selfDeliverySystem = selfDeliverySystem;
     }
     if (posSystem != null) {
-      this._posSystem = posSystem;
+      _posSystem = posSystem;
     }
     if (minimumShippingCharge != null) {
-      this._minimumShippingCharge = minimumShippingCharge;
+      _minimumShippingCharge = minimumShippingCharge;
     }
     if (deliveryTime != null) {
-      this._deliveryTime = deliveryTime;
+      _deliveryTime = deliveryTime;
     }
     if (veg != null) {
-      this._veg = veg;
+      _veg = veg;
     }
     if (nonVeg != null) {
-      this._nonVeg = nonVeg;
+      _nonVeg = nonVeg;
     }
     if (orderCount != null) {
-      this._orderCount = orderCount;
+      _orderCount = orderCount;
     }
     if (totalOrder != null) {
-      this._totalOrder = totalOrder;
+      _totalOrder = totalOrder;
     }
     if (perKmShippingCharge != null) {
-      this._perKmShippingCharge = perKmShippingCharge;
+      _perKmShippingCharge = perKmShippingCharge;
     }
     if (restaurantModel != null) {
-      this._restaurantModel = restaurantModel;
+      _restaurantModel = restaurantModel;
     }
     if (maximumShippingCharge != null) {
-      this._maximumShippingCharge = maximumShippingCharge;
+      _maximumShippingCharge = maximumShippingCharge;
     }
     if (slug != null) {
-      this._slug = slug;
+      _slug = slug;
     }
     if (orderSubscriptionActive != null) {
-      this._orderSubscriptionActive = orderSubscriptionActive;
+      _orderSubscriptionActive = orderSubscriptionActive;
     }
     if (cutlery != null) {
-      this._cutlery = cutlery;
+      _cutlery = cutlery;
     }
     if (metaTitle != null) {
-      this._metaTitle = metaTitle;
+      _metaTitle = metaTitle;
     }
     if (metaDescription != null) {
-      this._metaDescription = metaDescription;
+      _metaDescription = metaDescription;
     }
     if (metaImage != null) {
-      this._metaImage = metaImage;
+      _metaImage = metaImage;
     }
     if (announcement != null) {
-      this._announcement = announcement;
+      _announcement = announcement;
     }
     if (announcementMessage != null) {
-      this._announcementMessage = announcementMessage;
+      _announcementMessage = announcementMessage;
     }
     if (qrCode != null) {
-      this._qrCode = qrCode;
+      _qrCode = qrCode;
     }
     if (additionalData != null) {
-      this._additionalData = additionalData;
+      _additionalData = additionalData;
     }
     if (additionalDocuments != null) {
-      this._additionalDocuments = additionalDocuments;
+      _additionalDocuments = additionalDocuments;
     }
     if (restaurantStatus != null) {
-      this._restaurantStatus = restaurantStatus;
+      _restaurantStatus = restaurantStatus;
     }
     if (foods != null) {
-      this._foods = foods;
+      _foods = foods;
     }
     if (coupons != null) {
-      this._coupons = coupons;
+      _coupons = coupons;
     }
     if (cuisine != null) {
-      this._cuisine = cuisine;
+      _cuisine = cuisine;
     }
     if (ratings != null) {
-      this._ratings = ratings;
+      _ratings = ratings;
     }
     if (avgRating != null) {
-      this._avgRating = avgRating;
+      _avgRating = avgRating;
     }
     if (ratingCount != null) {
-      this._ratingCount = ratingCount;
+      _ratingCount = ratingCount;
     }
     if (positiveRating != null) {
-      this._positiveRating = positiveRating;
+      _positiveRating = positiveRating;
     }
     if (customerOrderDate != null) {
-      this._customerOrderDate = customerOrderDate;
+      _customerOrderDate = customerOrderDate;
     }
     if (customerDateOrderSratus != null) {
-      this._customerDateOrderSratus = customerDateOrderSratus;
+      _customerDateOrderSratus = customerDateOrderSratus;
     }
     if (instantOrder != null) {
-      this._instantOrder = instantOrder;
+      _instantOrder = instantOrder;
     }
     if (halalTagStatus != null) {
-      this._halalTagStatus = halalTagStatus;
+      _halalTagStatus = halalTagStatus;
     }
     if (isExtraPackagingActive != null) {
-      this._isExtraPackagingActive = isExtraPackagingActive;
+      _isExtraPackagingActive = isExtraPackagingActive;
     }
     if (extraPackagingStatus != null) {
-      this._extraPackagingStatus = extraPackagingStatus;
+      _extraPackagingStatus = extraPackagingStatus;
     }
     if (extraPackagingAmount != null) {
-      this._extraPackagingAmount = extraPackagingAmount;
+      _extraPackagingAmount = extraPackagingAmount;
     }
     if (deliveryFee != null) {
-      this._deliveryFee = deliveryFee;
+      _deliveryFee = deliveryFee;
     }
     if (currentOpeningTime != null) {
-      this._currentOpeningTime = currentOpeningTime;
+      _currentOpeningTime = currentOpeningTime;
     }
     if (characteristics != null) {
-      this._characteristics = characteristics;
+      _characteristics = characteristics;
     }
     if (gstStatus != null) {
-      this._gstStatus = gstStatus;
+      _gstStatus = gstStatus;
     }
     if (gstCode != null) {
-      this._gstCode = gstCode;
+      _gstCode = gstCode;
     }
     if (freeDeliveryDistanceStatus != null) {
-      this._freeDeliveryDistanceStatus = freeDeliveryDistanceStatus;
+      _freeDeliveryDistanceStatus = freeDeliveryDistanceStatus;
     }
     if (freeDeliveryDistanceValue != null) {
-      this._freeDeliveryDistanceValue = freeDeliveryDistanceValue;
+      _freeDeliveryDistanceValue = freeDeliveryDistanceValue;
     }
     if (logoFullUrl != null) {
-      this._logoFullUrl = logoFullUrl;
+      _logoFullUrl = logoFullUrl;
     }
     if (coverPhotoFullUrl != null) {
-      this._coverPhotoFullUrl = coverPhotoFullUrl;
+      _coverPhotoFullUrl = coverPhotoFullUrl;
     }
     if (metaImageFullUrl != null) {
-      this._metaImageFullUrl = metaImageFullUrl;
+      _metaImageFullUrl = metaImageFullUrl;
     }
     if (translations != null) {
-      this._translations = translations;
+      _translations = translations;
     }
     if (schedules != null) {
-      this._schedules = schedules;
+      _schedules = schedules;
     }
     if (storage != null) {
-      this._storage = storage;
+      _storage = storage;
     }
   }
 
@@ -529,18 +529,18 @@ class Restaurant {
   set longitude(String? longitude) => _longitude = longitude;
   String? get address => _address;
   set address(String? address) => _address = address;
-  Null? get footerText => _footerText;
-  set footerText(Null? footerText) => _footerText = footerText;
+  Null get footerText => _footerText;
+  set footerText(Null footerText) => _footerText = footerText;
   int? get minimumOrder => _minimumOrder;
   set minimumOrder(int? minimumOrder) => _minimumOrder = minimumOrder;
-  Null? get comission => _comission;
-  set comission(Null? comission) => _comission = comission;
+  Null get comission => _comission;
+  set comission(Null comission) => _comission = comission;
   bool? get scheduleOrder => _scheduleOrder;
   set scheduleOrder(bool? scheduleOrder) => _scheduleOrder = scheduleOrder;
-  Null? get openingTime => _openingTime;
-  set openingTime(Null? openingTime) => _openingTime = openingTime;
-  Null? get closeingTime => _closeingTime;
-  set closeingTime(Null? closeingTime) => _closeingTime = closeingTime;
+  Null get openingTime => _openingTime;
+  set openingTime(Null openingTime) => _openingTime = openingTime;
+  Null get closeingTime => _closeingTime;
+  set closeingTime(Null closeingTime) => _closeingTime = closeingTime;
   int? get status => _status;
   set status(int? status) => _status = status;
   int? get vendorId => _vendorId;
@@ -593,8 +593,8 @@ class Restaurant {
   String? get restaurantModel => _restaurantModel;
   set restaurantModel(String? restaurantModel) =>
       _restaurantModel = restaurantModel;
-  Null? get maximumShippingCharge => _maximumShippingCharge;
-  set maximumShippingCharge(Null? maximumShippingCharge) =>
+  Null get maximumShippingCharge => _maximumShippingCharge;
+  set maximumShippingCharge(Null maximumShippingCharge) =>
       _maximumShippingCharge = maximumShippingCharge;
   String? get slug => _slug;
   set slug(String? slug) => _slug = slug;
@@ -615,10 +615,10 @@ class Restaurant {
   String? get announcementMessage => _announcementMessage;
   set announcementMessage(String? announcementMessage) =>
       _announcementMessage = announcementMessage;
-  Null? get qrCode => _qrCode;
-  set qrCode(Null? qrCode) => _qrCode = qrCode;
-  Null? get additionalData => _additionalData;
-  set additionalData(Null? additionalData) => _additionalData = additionalData;
+  Null get qrCode => _qrCode;
+  set qrCode(Null qrCode) => _qrCode = qrCode;
+  Null get additionalData => _additionalData;
+  set additionalData(Null additionalData) => _additionalData = additionalData;
   String? get additionalDocuments => _additionalDocuments;
   set additionalDocuments(String? additionalDocuments) =>
       _additionalDocuments = additionalDocuments;
@@ -747,19 +747,19 @@ class Restaurant {
     if (json['foods'] != null) {
       _foods = <Foods>[];
       json['foods'].forEach((v) {
-        _foods!.add(new Foods.fromJson(v));
+        _foods!.add(Foods.fromJson(v));
       });
     }
     if (json['coupons'] != null) {
       _coupons = <Coupons>[];
       json['coupons'].forEach((v) {
-        _coupons!.add(new Coupons.fromJson(v));
+        _coupons!.add(Coupons.fromJson(v));
       });
     }
     if (json['cuisine'] != null) {
       _cuisine = <Cuisine>[];
       json['cuisine'].forEach((v) {
-        _cuisine!.add(new Cuisine.fromJson(v));
+        _cuisine!.add(Cuisine.fromJson(v));
       });
     }
     _ratings = json['ratings'].cast<int>();
@@ -786,107 +786,107 @@ class Restaurant {
     if (json['translations'] != null) {
       _translations = <Translations>[];
       json['translations'].forEach((v) {
-        _translations!.add(new Translations.fromJson(v));
+        _translations!.add(Translations.fromJson(v));
       });
     }
     if (json['schedules'] != null) {
       _schedules = <Schedules>[];
       json['schedules'].forEach((v) {
-        _schedules!.add(new Schedules.fromJson(v));
+        _schedules!.add(Schedules.fromJson(v));
       });
     }
 
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this._id;
-    data['name'] = this._name;
-    data['phone'] = this._phone;
-    data['email'] = this._email;
-    data['logo'] = this._logo;
-    data['latitude'] = this._latitude;
-    data['longitude'] = this._longitude;
-    data['address'] = this._address;
-    data['footer_text'] = this._footerText;
-    data['minimum_order'] = this._minimumOrder;
-    data['comission'] = this._comission;
-    data['schedule_order'] = this._scheduleOrder;
-    data['opening_time'] = this._openingTime;
-    data['closeing_time'] = this._closeingTime;
-    data['status'] = this._status;
-    data['vendor_id'] = this._vendorId;
-    data['created_at'] = this._createdAt;
-    data['updated_at'] = this._updatedAt;
-    data['free_delivery'] = this._freeDelivery;
-    data['cover_photo'] = this._coverPhoto;
-    data['delivery'] = this._delivery;
-    data['take_away'] = this._takeAway;
-    data['food_section'] = this._foodSection;
-    data['tax'] = this._tax;
-    data['zone_id'] = this._zoneId;
-    data['reviews_section'] = this._reviewsSection;
-    data['active'] = this._active;
-    data['off_day'] = this._offDay;
-    data['self_delivery_system'] = this._selfDeliverySystem;
-    data['pos_system'] = this._posSystem;
-    data['minimum_shipping_charge'] = this._minimumShippingCharge;
-    data['delivery_time'] = this._deliveryTime;
-    data['veg'] = this._veg;
-    data['non_veg'] = this._nonVeg;
-    data['order_count'] = this._orderCount;
-    data['total_order'] = this._totalOrder;
-    data['per_km_shipping_charge'] = this._perKmShippingCharge;
-    data['restaurant_model'] = this._restaurantModel;
-    data['maximum_shipping_charge'] = this._maximumShippingCharge;
-    data['slug'] = this._slug;
-    data['order_subscription_active'] = this._orderSubscriptionActive;
-    data['cutlery'] = this._cutlery;
-    data['meta_title'] = this._metaTitle;
-    data['meta_description'] = this._metaDescription;
-    data['meta_image'] = this._metaImage;
-    data['announcement'] = this._announcement;
-    data['announcement_message'] = this._announcementMessage;
-    data['qr_code'] = this._qrCode;
-    data['additional_data'] = this._additionalData;
-    data['additional_documents'] = this._additionalDocuments;
-    data['restaurant_status'] = this._restaurantStatus;
-    if (this._foods != null) {
-      data['foods'] = this._foods!.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = _id;
+    data['name'] = _name;
+    data['phone'] = _phone;
+    data['email'] = _email;
+    data['logo'] = _logo;
+    data['latitude'] = _latitude;
+    data['longitude'] = _longitude;
+    data['address'] = _address;
+    data['footer_text'] = _footerText;
+    data['minimum_order'] = _minimumOrder;
+    data['comission'] = _comission;
+    data['schedule_order'] = _scheduleOrder;
+    data['opening_time'] = _openingTime;
+    data['closeing_time'] = _closeingTime;
+    data['status'] = _status;
+    data['vendor_id'] = _vendorId;
+    data['created_at'] = _createdAt;
+    data['updated_at'] = _updatedAt;
+    data['free_delivery'] = _freeDelivery;
+    data['cover_photo'] = _coverPhoto;
+    data['delivery'] = _delivery;
+    data['take_away'] = _takeAway;
+    data['food_section'] = _foodSection;
+    data['tax'] = _tax;
+    data['zone_id'] = _zoneId;
+    data['reviews_section'] = _reviewsSection;
+    data['active'] = _active;
+    data['off_day'] = _offDay;
+    data['self_delivery_system'] = _selfDeliverySystem;
+    data['pos_system'] = _posSystem;
+    data['minimum_shipping_charge'] = _minimumShippingCharge;
+    data['delivery_time'] = _deliveryTime;
+    data['veg'] = _veg;
+    data['non_veg'] = _nonVeg;
+    data['order_count'] = _orderCount;
+    data['total_order'] = _totalOrder;
+    data['per_km_shipping_charge'] = _perKmShippingCharge;
+    data['restaurant_model'] = _restaurantModel;
+    data['maximum_shipping_charge'] = _maximumShippingCharge;
+    data['slug'] = _slug;
+    data['order_subscription_active'] = _orderSubscriptionActive;
+    data['cutlery'] = _cutlery;
+    data['meta_title'] = _metaTitle;
+    data['meta_description'] = _metaDescription;
+    data['meta_image'] = _metaImage;
+    data['announcement'] = _announcement;
+    data['announcement_message'] = _announcementMessage;
+    data['qr_code'] = _qrCode;
+    data['additional_data'] = _additionalData;
+    data['additional_documents'] = _additionalDocuments;
+    data['restaurant_status'] = _restaurantStatus;
+    if (_foods != null) {
+      data['foods'] = _foods!.map((v) => v.toJson()).toList();
     }
-    if (this._coupons != null) {
-      data['coupons'] = this._coupons!.map((v) => v.toJson()).toList();
+    if (_coupons != null) {
+      data['coupons'] = _coupons!.map((v) => v.toJson()).toList();
     }
-    if (this._cuisine != null) {
-      data['cuisine'] = this._cuisine!.map((v) => v.toJson()).toList();
+    if (_cuisine != null) {
+      data['cuisine'] = _cuisine!.map((v) => v.toJson()).toList();
     }
-    data['ratings'] = this._ratings;
-    data['avg_rating'] = this._avgRating;
-    data['rating_count'] = this._ratingCount;
-    data['positive_rating'] = this._positiveRating;
-    data['customer_order_date'] = this._customerOrderDate;
-    data['customer_date_order_sratus'] = this._customerDateOrderSratus;
-    data['instant_order'] = this._instantOrder;
-    data['halal_tag_status'] = this._halalTagStatus;
-    data['is_extra_packaging_active'] = this._isExtraPackagingActive;
-    data['extra_packaging_status'] = this._extraPackagingStatus;
-    data['extra_packaging_amount'] = this._extraPackagingAmount;
-    data['delivery_fee'] = this._deliveryFee;
-    data['current_opening_time'] = this._currentOpeningTime;
-    data['characteristics'] = this._characteristics;
-    data['gst_status'] = this._gstStatus;
-    data['gst_code'] = this._gstCode;
-    data['free_delivery_distance_status'] = this._freeDeliveryDistanceStatus;
-    data['free_delivery_distance_value'] = this._freeDeliveryDistanceValue;
-    data['logo_full_url'] = this._logoFullUrl;
-    data['cover_photo_full_url'] = this._coverPhotoFullUrl;
-    data['meta_image_full_url'] = this._metaImageFullUrl;
-    if (this._translations != null) {
+    data['ratings'] = _ratings;
+    data['avg_rating'] = _avgRating;
+    data['rating_count'] = _ratingCount;
+    data['positive_rating'] = _positiveRating;
+    data['customer_order_date'] = _customerOrderDate;
+    data['customer_date_order_sratus'] = _customerDateOrderSratus;
+    data['instant_order'] = _instantOrder;
+    data['halal_tag_status'] = _halalTagStatus;
+    data['is_extra_packaging_active'] = _isExtraPackagingActive;
+    data['extra_packaging_status'] = _extraPackagingStatus;
+    data['extra_packaging_amount'] = _extraPackagingAmount;
+    data['delivery_fee'] = _deliveryFee;
+    data['current_opening_time'] = _currentOpeningTime;
+    data['characteristics'] = _characteristics;
+    data['gst_status'] = _gstStatus;
+    data['gst_code'] = _gstCode;
+    data['free_delivery_distance_status'] = _freeDeliveryDistanceStatus;
+    data['free_delivery_distance_value'] = _freeDeliveryDistanceValue;
+    data['logo_full_url'] = _logoFullUrl;
+    data['cover_photo_full_url'] = _coverPhotoFullUrl;
+    data['meta_image_full_url'] = _metaImageFullUrl;
+    if (_translations != null) {
       data['translations'] =
-          this._translations!.map((v) => v.toJson()).toList();
+          _translations!.map((v) => v.toJson()).toList();
     }
-    if (this._schedules != null) {
-      data['schedules'] = this._schedules!.map((v) => v.toJson()).toList();
+    if (_schedules != null) {
+      data['schedules'] = _schedules!.map((v) => v.toJson()).toList();
     }
 
     return data;
@@ -909,22 +909,22 @@ class Foods {
         List<Translations>? translations,
         List<Null>? storage}) {
     if (id != null) {
-      this._id = id;
+      _id = id;
     }
     if (image != null) {
-      this._image = image;
+      _image = image;
     }
     if (name != null) {
-      this._name = name;
+      _name = name;
     }
     if (imageFullUrl != null) {
-      this._imageFullUrl = imageFullUrl;
+      _imageFullUrl = imageFullUrl;
     }
     if (translations != null) {
-      this._translations = translations;
+      _translations = translations;
     }
     if (storage != null) {
-      this._storage = storage;
+      _storage = storage;
     }
   }
 
@@ -950,21 +950,21 @@ class Foods {
     if (json['translations'] != null) {
       _translations = <Translations>[];
       json['translations'].forEach((v) {
-        _translations!.add(new Translations.fromJson(v));
+        _translations!.add(Translations.fromJson(v));
       });
     }
 
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this._id;
-    data['image'] = this._image;
-    data['name'] = this._name;
-    data['image_full_url'] = this._imageFullUrl;
-    if (this._translations != null) {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = _id;
+    data['image'] = _image;
+    data['name'] = _name;
+    data['image_full_url'] = _imageFullUrl;
+    if (_translations != null) {
       data['translations'] =
-          this._translations!.map((v) => v.toJson()).toList();
+          _translations!.map((v) => v.toJson()).toList();
     }
 
     return data;
@@ -978,8 +978,8 @@ class Translations {
   String? _locale;
   String? _key;
   String? _value;
-  Null? _createdAt;
-  Null? _updatedAt;
+  Null _createdAt;
+  Null _updatedAt;
 
   Translations(
       {int? id,
@@ -988,31 +988,31 @@ class Translations {
         String? locale,
         String? key,
         String? value,
-        Null? createdAt,
-        Null? updatedAt}) {
+        Null createdAt,
+        Null updatedAt}) {
     if (id != null) {
-      this._id = id;
+      _id = id;
     }
     if (translationableType != null) {
-      this._translationableType = translationableType;
+      _translationableType = translationableType;
     }
     if (translationableId != null) {
-      this._translationableId = translationableId;
+      _translationableId = translationableId;
     }
     if (locale != null) {
-      this._locale = locale;
+      _locale = locale;
     }
     if (key != null) {
-      this._key = key;
+      _key = key;
     }
     if (value != null) {
-      this._value = value;
+      _value = value;
     }
     if (createdAt != null) {
-      this._createdAt = createdAt;
+      _createdAt = createdAt;
     }
     if (updatedAt != null) {
-      this._updatedAt = updatedAt;
+      _updatedAt = updatedAt;
     }
   }
 
@@ -1030,10 +1030,10 @@ class Translations {
   set key(String? key) => _key = key;
   String? get value => _value;
   set value(String? value) => _value = value;
-  Null? get createdAt => _createdAt;
-  set createdAt(Null? createdAt) => _createdAt = createdAt;
-  Null? get updatedAt => _updatedAt;
-  set updatedAt(Null? updatedAt) => _updatedAt = updatedAt;
+  Null get createdAt => _createdAt;
+  set createdAt(Null createdAt) => _createdAt = createdAt;
+  Null get updatedAt => _updatedAt;
+  set updatedAt(Null updatedAt) => _updatedAt = updatedAt;
 
   Translations.fromJson(Map<String, dynamic> json) {
     _id = json['id'];
@@ -1047,15 +1047,15 @@ class Translations {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this._id;
-    data['translationable_type'] = this._translationableType;
-    data['translationable_id'] = this._translationableId;
-    data['locale'] = this._locale;
-    data['key'] = this._key;
-    data['value'] = this._value;
-    data['created_at'] = this._createdAt;
-    data['updated_at'] = this._updatedAt;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = _id;
+    data['translationable_type'] = _translationableType;
+    data['translationable_id'] = _translationableId;
+    data['locale'] = _locale;
+    data['key'] = _key;
+    data['value'] = _value;
+    data['created_at'] = _createdAt;
+    data['updated_at'] = _updatedAt;
     return data;
   }
 }
@@ -1079,7 +1079,7 @@ class Coupons {
   int? _totalUses;
   String? _createdBy;
   String? _customerId;
-  Null? _slug;
+  Null _slug;
   int? _restaurantId;
   List<Translations>? _translations;
 
@@ -1102,71 +1102,71 @@ class Coupons {
         int? totalUses,
         String? createdBy,
         String? customerId,
-        Null? slug,
+        Null slug,
         int? restaurantId,
         List<Translations>? translations}) {
     if (id != null) {
-      this._id = id;
+      _id = id;
     }
     if (title != null) {
-      this._title = title;
+      _title = title;
     }
     if (code != null) {
-      this._code = code;
+      _code = code;
     }
     if (startDate != null) {
-      this._startDate = startDate;
+      _startDate = startDate;
     }
     if (expireDate != null) {
-      this._expireDate = expireDate;
+      _expireDate = expireDate;
     }
     if (minPurchase != null) {
-      this._minPurchase = minPurchase;
+      _minPurchase = minPurchase;
     }
     if (maxDiscount != null) {
-      this._maxDiscount = maxDiscount;
+      _maxDiscount = maxDiscount;
     }
     if (discount != null) {
-      this._discount = discount;
+      _discount = discount;
     }
     if (discountType != null) {
-      this._discountType = discountType;
+      _discountType = discountType;
     }
     if (couponType != null) {
-      this._couponType = couponType;
+      _couponType = couponType;
     }
     if (limit != null) {
-      this._limit = limit;
+      _limit = limit;
     }
     if (status != null) {
-      this._status = status;
+      _status = status;
     }
     if (createdAt != null) {
-      this._createdAt = createdAt;
+      _createdAt = createdAt;
     }
     if (updatedAt != null) {
-      this._updatedAt = updatedAt;
+      _updatedAt = updatedAt;
     }
     if (data != null) {
-      this._data = data;
+      _data = data;
     }
     if (totalUses != null) {
-      this._totalUses = totalUses;
+      _totalUses = totalUses;
     }
     if (createdBy != null) {
-      this._createdBy = createdBy;
+      _createdBy = createdBy;
     }
     if (customerId != null) {
-      this._customerId = customerId;
+      _customerId = customerId;
     }
     if (slug != null) {
-      this._slug = slug;
+      _slug = slug;
     }
     if (restaurantId != null) {
-      this._restaurantId = restaurantId;
+      _restaurantId = restaurantId;
     }
     if (translations != null) {
-      this._translations = translations;
+      _translations = translations;
     }
   }
 
@@ -1206,8 +1206,8 @@ class Coupons {
   set createdBy(String? createdBy) => _createdBy = createdBy;
   String? get customerId => _customerId;
   set customerId(String? customerId) => _customerId = customerId;
-  Null? get slug => _slug;
-  set slug(Null? slug) => _slug = slug;
+  Null get slug => _slug;
+  set slug(Null slug) => _slug = slug;
   int? get restaurantId => _restaurantId;
   set restaurantId(int? restaurantId) => _restaurantId = restaurantId;
   List<Translations>? get translations => _translations;
@@ -1238,36 +1238,36 @@ class Coupons {
     if (json['translations'] != null) {
       _translations = <Translations>[];
       json['translations'].forEach((v) {
-        _translations!.add(new Translations.fromJson(v));
+        _translations!.add(Translations.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this._id;
-    data['title'] = this._title;
-    data['code'] = this._code;
-    data['start_date'] = this._startDate;
-    data['expire_date'] = this._expireDate;
-    data['min_purchase'] = this._minPurchase;
-    data['max_discount'] = this._maxDiscount;
-    data['discount'] = this._discount;
-    data['discount_type'] = this._discountType;
-    data['coupon_type'] = this._couponType;
-    data['limit'] = this._limit;
-    data['status'] = this._status;
-    data['created_at'] = this._createdAt;
-    data['updated_at'] = this._updatedAt;
-    data['data'] = this._data;
-    data['total_uses'] = this._totalUses;
-    data['created_by'] = this._createdBy;
-    data['customer_id'] = this._customerId;
-    data['slug'] = this._slug;
-    data['restaurant_id'] = this._restaurantId;
-    if (this._translations != null) {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = _id;
+    data['title'] = _title;
+    data['code'] = _code;
+    data['start_date'] = _startDate;
+    data['expire_date'] = _expireDate;
+    data['min_purchase'] = _minPurchase;
+    data['max_discount'] = _maxDiscount;
+    data['discount'] = _discount;
+    data['discount_type'] = _discountType;
+    data['coupon_type'] = _couponType;
+    data['limit'] = _limit;
+    data['status'] = _status;
+    data['created_at'] = _createdAt;
+    data['updated_at'] = _updatedAt;
+    data['data'] = _data;
+    data['total_uses'] = _totalUses;
+    data['created_by'] = _createdBy;
+    data['customer_id'] = _customerId;
+    data['slug'] = _slug;
+    data['restaurant_id'] = _restaurantId;
+    if (_translations != null) {
       data['translations'] =
-          this._translations!.map((v) => v.toJson()).toList();
+          _translations!.map((v) => v.toJson()).toList();
     }
     return data;
   }
@@ -1299,37 +1299,37 @@ class Cuisine {
         List<Translations>? translations,
         List<Null>? storage}) {
     if (id != null) {
-      this._id = id;
+      _id = id;
     }
     if (name != null) {
-      this._name = name;
+      _name = name;
     }
     if (image != null) {
-      this._image = image;
+      _image = image;
     }
     if (status != null) {
-      this._status = status;
+      _status = status;
     }
     if (slug != null) {
-      this._slug = slug;
+      _slug = slug;
     }
     if (createdAt != null) {
-      this._createdAt = createdAt;
+      _createdAt = createdAt;
     }
     if (updatedAt != null) {
-      this._updatedAt = updatedAt;
+      _updatedAt = updatedAt;
     }
     if (imageFullUrl != null) {
-      this._imageFullUrl = imageFullUrl;
+      _imageFullUrl = imageFullUrl;
     }
     if (pivot != null) {
-      this._pivot = pivot;
+      _pivot = pivot;
     }
     if (translations != null) {
-      this._translations = translations;
+      _translations = translations;
     }
     if (storage != null) {
-      this._storage = storage;
+      _storage = storage;
     }
   }
 
@@ -1366,31 +1366,31 @@ class Cuisine {
     _createdAt = json['created_at'];
     _updatedAt = json['updated_at'];
     _imageFullUrl = json['image_full_url'];
-    _pivot = json['pivot'] != null ? new Pivot.fromJson(json['pivot']) : null;
+    _pivot = json['pivot'] != null ? Pivot.fromJson(json['pivot']) : null;
     if (json['translations'] != null) {
       _translations = <Translations>[];
       json['translations'].forEach((v) {
-        _translations!.add(new Translations.fromJson(v));
+        _translations!.add(Translations.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this._id;
-    data['name'] = this._name;
-    data['image'] = this._image;
-    data['status'] = this._status;
-    data['slug'] = this._slug;
-    data['created_at'] = this._createdAt;
-    data['updated_at'] = this._updatedAt;
-    data['image_full_url'] = this._imageFullUrl;
-    if (this._pivot != null) {
-      data['pivot'] = this._pivot!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = _id;
+    data['name'] = _name;
+    data['image'] = _image;
+    data['status'] = _status;
+    data['slug'] = _slug;
+    data['created_at'] = _createdAt;
+    data['updated_at'] = _updatedAt;
+    data['image_full_url'] = _imageFullUrl;
+    if (_pivot != null) {
+      data['pivot'] = _pivot!.toJson();
     }
-    if (this._translations != null) {
+    if (_translations != null) {
       data['translations'] =
-          this._translations!.map((v) => v.toJson()).toList();
+          _translations!.map((v) => v.toJson()).toList();
     }
     return data;
   }
@@ -1402,10 +1402,10 @@ class Pivot {
 
   Pivot({int? restaurantId, int? cuisineId}) {
     if (restaurantId != null) {
-      this._restaurantId = restaurantId;
+      _restaurantId = restaurantId;
     }
     if (cuisineId != null) {
-      this._cuisineId = cuisineId;
+      _cuisineId = cuisineId;
     }
   }
 
@@ -1420,9 +1420,9 @@ class Pivot {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['restaurant_id'] = this._restaurantId;
-    data['cuisine_id'] = this._cuisineId;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['restaurant_id'] = _restaurantId;
+    data['cuisine_id'] = _cuisineId;
     return data;
   }
 }
@@ -1433,8 +1433,8 @@ class Schedules {
   int? _day;
   String? _openingTime;
   String? _closingTime;
-  Null? _createdAt;
-  Null? _updatedAt;
+  Null _createdAt;
+  Null _updatedAt;
 
   Schedules(
       {int? id,
@@ -1442,28 +1442,28 @@ class Schedules {
         int? day,
         String? openingTime,
         String? closingTime,
-        Null? createdAt,
-        Null? updatedAt}) {
+        Null createdAt,
+        Null updatedAt}) {
     if (id != null) {
-      this._id = id;
+      _id = id;
     }
     if (restaurantId != null) {
-      this._restaurantId = restaurantId;
+      _restaurantId = restaurantId;
     }
     if (day != null) {
-      this._day = day;
+      _day = day;
     }
     if (openingTime != null) {
-      this._openingTime = openingTime;
+      _openingTime = openingTime;
     }
     if (closingTime != null) {
-      this._closingTime = closingTime;
+      _closingTime = closingTime;
     }
     if (createdAt != null) {
-      this._createdAt = createdAt;
+      _createdAt = createdAt;
     }
     if (updatedAt != null) {
-      this._updatedAt = updatedAt;
+      _updatedAt = updatedAt;
     }
   }
 
@@ -1477,10 +1477,10 @@ class Schedules {
   set openingTime(String? openingTime) => _openingTime = openingTime;
   String? get closingTime => _closingTime;
   set closingTime(String? closingTime) => _closingTime = closingTime;
-  Null? get createdAt => _createdAt;
-  set createdAt(Null? createdAt) => _createdAt = createdAt;
-  Null? get updatedAt => _updatedAt;
-  set updatedAt(Null? updatedAt) => _updatedAt = updatedAt;
+  Null get createdAt => _createdAt;
+  set createdAt(Null createdAt) => _createdAt = createdAt;
+  Null get updatedAt => _updatedAt;
+  set updatedAt(Null updatedAt) => _updatedAt = updatedAt;
 
   Schedules.fromJson(Map<String, dynamic> json) {
     _id = json['id'];
@@ -1493,14 +1493,14 @@ class Schedules {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this._id;
-    data['restaurant_id'] = this._restaurantId;
-    data['day'] = this._day;
-    data['opening_time'] = this._openingTime;
-    data['closing_time'] = this._closingTime;
-    data['created_at'] = this._createdAt;
-    data['updated_at'] = this._updatedAt;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = _id;
+    data['restaurant_id'] = _restaurantId;
+    data['day'] = _day;
+    data['opening_time'] = _openingTime;
+    data['closing_time'] = _closingTime;
+    data['created_at'] = _createdAt;
+    data['updated_at'] = _updatedAt;
     return data;
   }
 }

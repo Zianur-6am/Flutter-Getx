@@ -1,4 +1,4 @@
 class AppString {
-  static final fetchApiDate = "Fetch API Data";
-  static final productList = "Product List";
+  static const fetchApiDate = "Fetch API Data";
+  static const productList = "Product List";
 }

@@ -7,6 +7,8 @@ import 'package:get/get.dart';
 class Banners extends StatelessWidget {
   BannerController bannerController = Get.find();
 
+  Banners({super.key});
+
   @override
   Widget build(BuildContext context) {
     // print('====================================>>>>>>>${bannerController.bannerList.length}');
@@ -17,16 +19,16 @@ class Banners extends StatelessWidget {
             //items to be shown are mapped one by one into ui and it takes list***
             items: bannerController.bannerList
                 .map((banner) => Container(
-              margin: EdgeInsets.symmetric(horizontal: 10),
+              margin: const EdgeInsets.symmetric(horizontal: 10),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(10),
                 child: CachedNetworkImage(
                   fit: BoxFit.cover,
                   imageUrl: banner.imageFullUrl.toString(),
                   placeholder: (context, url) =>
-                  new CircularProgressIndicator(),
+                  const CircularProgressIndicator(),
                   errorWidget: (context, url, error) =>
-                  new Icon(Icons.error),
+                  const Icon(Icons.error),
                 ),
               ),
             ))
@@ -36,7 +38,7 @@ class Banners extends StatelessWidget {
                viewportFraction: 0.8,
                 initialPage: 0,
                 autoPlay: true,
-                autoPlayInterval: Duration(seconds: 2),
+                autoPlayInterval: const Duration(seconds: 2),
                 onPageChanged: (value, _) {
                   bannerController.updatePageNumber(value);
                 }),
@@ -56,7 +58,7 @@ class Banners extends StatelessWidget {
             Container(
               height: bannerController.currentPage == i ? 7 : 5,
               width: bannerController.currentPage == i ? 7 : 5,
-              margin: EdgeInsets.all(5),
+              margin: const EdgeInsets.all(5),
               decoration: BoxDecoration(
                   color: bannerController.currentPage == i
                       ? Colors.black

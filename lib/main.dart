@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_getx/Internationalization/ihome.dart';
 import 'package:flutter_getx/Internationalization/messages.dart';
+import 'package:flutter_getx/explore_screen.dart';
 import 'package:flutter_getx/fetchapidata/productmodule/views/product_list_view.dart';
 import 'package:flutter_getx/route_navigation/named_navigation/route_home.dart';
 import 'package:flutter_getx/route_navigation/named_navigation/screen1.dart';
@@ -14,7 +15,6 @@ import 'package:flutter_getx/widgets/expantion_tile.dart';
 import 'package:flutter_getx/widgets/show_dialog.dart';
 import 'package:flutter_getx/widgets/snackbar.dart';
 import 'package:get/get.dart';
-import 'package:get/get_navigation/src/root/get_material_app.dart';
 
 import 'Food_Delivery_App_Design/features/home/screens/bottom_nav_bar.dart';
 import 'home.dart';
@@ -46,36 +46,37 @@ class MyApp extends StatelessWidget {
       defaultTransition: Transition.fadeIn,
       //defining the routes of the pages
       getPages: [
-        GetPage(name: '/home', page: () => Home()),
+        GetPage(name: '/home', page: () => const Home()),
         GetPage(
             name: '/named_route_home',
-            page: () => RouteHomeClass(),
+            page: () => const RouteHomeClass(),
             //overrides the default transition for this particular route
             transition: Transition.leftToRight,
         ),
-        GetPage(name: '/snackbar', page: () => SnackbarClass()),
-        GetPage(name: '/dialog', page: () => ShowDialogClass()),
-        GetPage(name: '/bottomsheet', page: () => BottomSheetClass()),
-        GetPage(name: '/unnamed_route', page: () => Page1Class()),
-        GetPage(name: '/screen1', page: () => Screen1Class()),
-        GetPage(name: '/screen2', page: () => Screen2Class()),
+        GetPage(name: '/snackbar', page: () => const SnackbarClass()),
+        GetPage(name: '/dialog', page: () => const ShowDialogClass()),
+        GetPage(name: '/bottomsheet', page: () => const BottomSheetClass()),
+        GetPage(name: '/unnamed_route', page: () => const Page1Class()),
+        GetPage(name: '/screen1', page: () => const Screen1Class()),
+        GetPage(name: '/screen2', page: () => const Screen2Class()),
         GetPage(name: '/rsm', page: () => ReactiveSMClass()),
-        GetPage(name: '/ssm', page: () => SimpleSMClass()),
+        GetPage(name: '/ssm', page: () => const SimpleSMClass()),
         GetPage(name: '/ihome', page: () => Ihome()),
         GetPage(name: '/plv', page: () => ProductListView()),
         GetPage(name: '/fdhome', page: () => BottomNavBar()),
-        GetPage(name: '/exptl', page: () => ExpantionTileExample()),
+        GetPage(name: '/exptl', page: () => const ExpantionTileExample()),
+        GetPage(name: '/explore', page: () => ItemExtentExample()),
       ],
       //to use unknownroute initialRoute cannot be /
-      unknownRoute: GetPage(name: '/notfound', page: () => UnknownRoute()),
+      unknownRoute: GetPage(name: '/notfound', page: () => const UnknownRoute()),
 
 
 
       ///Internationalization
       translations: Messages(), //your translation class
-      locale: Locale('en', 'US'),//default locale //to get device locale Get.deviceLocale()
-      fallbackLocale: Locale('en', 'US'),
-      home: Home(),
+      locale: const Locale('en', 'US'),//default locale //to get device locale Get.deviceLocale()
+      fallbackLocale: const Locale('en', 'US'),
+      home: const Home(),
     );
   }
 }

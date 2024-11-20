@@ -65,12 +65,12 @@ class BottomSheetClass extends StatelessWidget {
             ElevatedButton(
                 onPressed: (){
                   Get.to(
-                    Page1Class(),
+                    const Page1Class(),
                     transition: Transition.leftToRight,
 
                   );
                 },
-                child: Text("Go to Page-1"),
+                child: const Text("Go to Page-1"),
             ),
           
         ],),

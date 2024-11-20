@@ -15,6 +15,7 @@ class ApiService{
       var jsonString = response.body;
       return productFromJson(jsonString);
     }
+    return null;
 
   }
 
@@ -33,6 +34,7 @@ class ApiService{
       var jsonString = response.body;
       return productFromJson(jsonString);
     }
+    return null;
 
   }
 }

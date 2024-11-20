@@ -7,6 +7,8 @@ class PopularFoodNearby extends StatelessWidget {
 
   PopularFoodController popularFoodController = Get.find();
 
+  PopularFoodNearby({super.key});
+
   @override
   Widget build(BuildContext context) {
     // print('==================================+>>>>>>>${popularFoodController.productList.length}');
@@ -29,8 +31,8 @@ class PopularFoodNearby extends StatelessWidget {
                           width: 200,
                           fit: BoxFit.fill,
                           imageUrl: popularFoodController.productList[index].imageFullUrl.toString(),
-                          placeholder: (context, url) => new CircularProgressIndicator(),
-                          errorWidget: (context, url, error) => new Icon(Icons.error),
+                          placeholder: (context, url) => const CircularProgressIndicator(),
+                          errorWidget: (context, url, error) => const Icon(Icons.error),
                         ),
                       ),
                   ),
@@ -44,13 +46,13 @@ class PopularFoodNearby extends StatelessWidget {
                           Expanded(
                             child: Text(
                               '${popularFoodController.productList[index].name}',
-                              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16,), overflow: TextOverflow.ellipsis,),
+                              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16,), overflow: TextOverflow.ellipsis,),
                           ),
 
                           Expanded(
                             child: Text(
                               '${popularFoodController.productList[index].restaurantName}',
-                              style: TextStyle(fontSize: 12, color: Colors.black38,), overflow: TextOverflow.ellipsis,),
+                              style: const TextStyle(fontSize: 12, color: Colors.black38,), overflow: TextOverflow.ellipsis,),
                           ),
 
                           Row(
@@ -62,7 +64,7 @@ class PopularFoodNearby extends StatelessWidget {
                                     Expanded(
                                     child: Text(
                                       '\$${popularFoodController.productList[index].price}',
-                                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold,),
+                                      style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold,),
                                       overflow: TextOverflow.ellipsis,),
                                   ),
                                 ],),
@@ -77,7 +79,7 @@ class PopularFoodNearby extends StatelessWidget {
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.end,
                                   children: [
-                                  Icon(
+                                  const Icon(
                                     Icons.star,
                                     color: Colors.green,
                                   ),
@@ -85,7 +87,7 @@ class PopularFoodNearby extends StatelessWidget {
                                   Expanded(
                                     child: Text(
                                       '${popularFoodController.productList[index].avgRating?.toStringAsFixed(1)}',
-                                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold,), overflow: TextOverflow.ellipsis,),
+                                      style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold,), overflow: TextOverflow.ellipsis,),
                                   ),
                                 ],),
                               ),

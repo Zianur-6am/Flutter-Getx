@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_getx/route_navigation/un_named_navigation/page2.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 class Page1Class extends StatelessWidget {
   const Page1Class({super.key});
@@ -9,9 +8,9 @@ class Page1Class extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Route navigation Page-1"),),
+      appBar: AppBar(title: const Text("Route navigation Page-1"),),
       //could have used center widget
-      body: Container(
+      body: SizedBox(
         width: MediaQuery.sizeOf(context).width,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -54,7 +53,7 @@ class Page1Class extends StatelessWidget {
 
               //Come back from the next screen with some data
               var data = await Get.to(
-                Page2Class(),
+                const Page2Class(),
                 arguments: "Passing some data",
                 transition: Transition.leftToRight,
               );
@@ -63,7 +62,7 @@ class Page1Class extends StatelessWidget {
 
 
             },
-            child: Text("Go to Page-2"),
+            child: const Text("Go to Page-2"),
           ),
 
         ],),

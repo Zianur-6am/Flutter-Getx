@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_getx/state_management/simple_state_manager/simple_controller.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
 
 class SimpleSMClass extends StatelessWidget {
+  const SimpleSMClass({super.key});
+
   // const SimpleSMClass({super.key});
 
 
@@ -14,7 +15,7 @@ class SimpleSMClass extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Simple State Manager"),),
+      appBar: AppBar(title: const Text("Simple State Manager"),),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -25,7 +26,7 @@ class SimpleSMClass extends StatelessWidget {
               init: SimpleController(),
               builder: (SimpleController controller) {
                 return Text("Button pressed = ${controller.pCount}",
-                style: TextStyle(fontSize: 25),);
+                style: const TextStyle(fontSize: 25),);
               },
             ),
 
@@ -33,10 +34,10 @@ class SimpleSMClass extends StatelessWidget {
               init: SimpleController(),
               builder: (SimpleController controller) {
                 return Text("Value is = ${controller.vCount}",
-                  style: TextStyle(fontSize: 25),);
+                  style: const TextStyle(fontSize: 25),);
               },
             ),
-            SizedBox(height: 10,),
+            const SizedBox(height: 10,),
 
             ElevatedButton(
                 onPressed: (){
@@ -53,7 +54,7 @@ class SimpleSMClass extends StatelessWidget {
                   Get.find<SimpleController>().incrementValueCount();
 
             },
-                child: Text("Add")),
+                child: const Text("Add")),
 
           ],
         ),

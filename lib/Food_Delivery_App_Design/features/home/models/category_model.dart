@@ -34,46 +34,46 @@ class CategoriesModel {
         List<Translations>? translations,
         List<Null>? storage}) {
     if (id != null) {
-      this._id = id;
+      _id = id;
     }
     if (name != null) {
-      this._name = name;
+      _name = name;
     }
     if (image != null) {
-      this._image = image;
+      _image = image;
     }
     if (parentId != null) {
-      this._parentId = parentId;
+      _parentId = parentId;
     }
     if (position != null) {
-      this._position = position;
+      _position = position;
     }
     if (status != null) {
-      this._status = status;
+      _status = status;
     }
     if (createdAt != null) {
-      this._createdAt = createdAt;
+      _createdAt = createdAt;
     }
     if (updatedAt != null) {
-      this._updatedAt = updatedAt;
+      _updatedAt = updatedAt;
     }
     if (priority != null) {
-      this._priority = priority;
+      _priority = priority;
     }
     if (slug != null) {
-      this._slug = slug;
+      _slug = slug;
     }
     if (productsCount != null) {
-      this._productsCount = productsCount;
+      _productsCount = productsCount;
     }
     if (childesCount != null) {
-      this._childesCount = childesCount;
+      _childesCount = childesCount;
     }
     if (imageFullUrl != null) {
-      this._imageFullUrl = imageFullUrl;
+      _imageFullUrl = imageFullUrl;
     }
     if (translations != null) {
-      this._translations = translations;
+      _translations = translations;
     }
 
   }
@@ -127,29 +127,29 @@ class CategoriesModel {
     if (json['translations'] != null) {
       _translations = <Translations>[];
       json['translations'].forEach((v) {
-        _translations!.add(new Translations.fromJson(v));
+        _translations!.add(Translations.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this._id;
-    data['name'] = this._name;
-    data['image'] = this._image;
-    data['parent_id'] = this._parentId;
-    data['position'] = this._position;
-    data['status'] = this._status;
-    data['created_at'] = this._createdAt;
-    data['updated_at'] = this._updatedAt;
-    data['priority'] = this._priority;
-    data['slug'] = this._slug;
-    data['products_count'] = this._productsCount;
-    data['childes_count'] = this._childesCount;
-    data['image_full_url'] = this._imageFullUrl;
-    if (this._translations != null) {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = _id;
+    data['name'] = _name;
+    data['image'] = _image;
+    data['parent_id'] = _parentId;
+    data['position'] = _position;
+    data['status'] = _status;
+    data['created_at'] = _createdAt;
+    data['updated_at'] = _updatedAt;
+    data['priority'] = _priority;
+    data['slug'] = _slug;
+    data['products_count'] = _productsCount;
+    data['childes_count'] = _childesCount;
+    data['image_full_url'] = _imageFullUrl;
+    if (_translations != null) {
       data['translations'] =
-          this._translations!.map((v) => v.toJson()).toList();
+          _translations!.map((v) => v.toJson()).toList();
     }
     return data;
   }
@@ -162,8 +162,8 @@ class Translations {
   String? _locale;
   String? _key;
   String? _value;
-  Null? _createdAt;
-  Null? _updatedAt;
+  Null _createdAt;
+  Null _updatedAt;
 
   Translations(
       {int? id,
@@ -172,31 +172,31 @@ class Translations {
         String? locale,
         String? key,
         String? value,
-        Null? createdAt,
-        Null? updatedAt}) {
+        Null createdAt,
+        Null updatedAt}) {
     if (id != null) {
-      this._id = id;
+      _id = id;
     }
     if (translationableType != null) {
-      this._translationableType = translationableType;
+      _translationableType = translationableType;
     }
     if (translationableId != null) {
-      this._translationableId = translationableId;
+      _translationableId = translationableId;
     }
     if (locale != null) {
-      this._locale = locale;
+      _locale = locale;
     }
     if (key != null) {
-      this._key = key;
+      _key = key;
     }
     if (value != null) {
-      this._value = value;
+      _value = value;
     }
     if (createdAt != null) {
-      this._createdAt = createdAt;
+      _createdAt = createdAt;
     }
     if (updatedAt != null) {
-      this._updatedAt = updatedAt;
+      _updatedAt = updatedAt;
     }
   }
 
@@ -214,10 +214,10 @@ class Translations {
   set key(String? key) => _key = key;
   String? get value => _value;
   set value(String? value) => _value = value;
-  Null? get createdAt => _createdAt;
-  set createdAt(Null? createdAt) => _createdAt = createdAt;
-  Null? get updatedAt => _updatedAt;
-  set updatedAt(Null? updatedAt) => _updatedAt = updatedAt;
+  Null get createdAt => _createdAt;
+  set createdAt(Null createdAt) => _createdAt = createdAt;
+  Null get updatedAt => _updatedAt;
+  set updatedAt(Null updatedAt) => _updatedAt = updatedAt;
 
   Translations.fromJson(Map<String, dynamic> json) {
     _id = json['id'];
@@ -231,15 +231,15 @@ class Translations {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this._id;
-    data['translationable_type'] = this._translationableType;
-    data['translationable_id'] = this._translationableId;
-    data['locale'] = this._locale;
-    data['key'] = this._key;
-    data['value'] = this._value;
-    data['created_at'] = this._createdAt;
-    data['updated_at'] = this._updatedAt;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = _id;
+    data['translationable_type'] = _translationableType;
+    data['translationable_id'] = _translationableId;
+    data['locale'] = _locale;
+    data['key'] = _key;
+    data['value'] = _value;
+    data['created_at'] = _createdAt;
+    data['updated_at'] = _updatedAt;
     return data;
   }
 }

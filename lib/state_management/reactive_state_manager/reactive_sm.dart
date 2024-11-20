@@ -24,7 +24,7 @@ class ReactiveSMClass extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Page not found"),),
+      appBar: AppBar(title: const Text("Page not found"),),
 
       body: Center(
         child: Column(
@@ -32,7 +32,7 @@ class ReactiveSMClass extends StatelessWidget {
           children: [
             Obx(() => Text(
               "Name is ${student.value.name}",
-              style: TextStyle(fontSize: 25),
+              style: const TextStyle(fontSize: 25),
             )),
             
             ElevatedButton(
@@ -46,7 +46,7 @@ class ReactiveSMClass extends StatelessWidget {
                     student?.name = student.name.toString().toUpperCase();
                   });
                 },
-                child: Text("Upper Case Name"),
+                child: const Text("Upper Case Name"),
             ),
 
             ElevatedButton(
@@ -60,7 +60,7 @@ class ReactiveSMClass extends StatelessWidget {
                   student?.name = student.name.toString().toLowerCase();
                 });
               },
-              child: Text("Lower Case Name"),
+              child: const Text("Lower Case Name"),
             ),
 
           ],

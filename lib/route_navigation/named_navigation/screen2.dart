@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 class Screen2Class extends StatelessWidget {
   const Screen2Class({super.key});
@@ -8,7 +7,7 @@ class Screen2Class extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Screen2"),),
+      appBar: AppBar(title: const Text("Screen2"),),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -20,7 +19,7 @@ class Screen2Class extends StatelessWidget {
 
                   Get.offNamed("/home");
                 },
-                child: Text("Go back"),
+                child: const Text("Go back"),
             ),
 
             //getting the value from the dynamic url

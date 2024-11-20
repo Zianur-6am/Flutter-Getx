@@ -2,7 +2,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_getx/Food_Delivery_App_Design/features/home/controllers/category_controller.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 class Categories extends StatelessWidget {
   Categories({super.key});
@@ -20,7 +19,7 @@ class Categories extends StatelessWidget {
             itemCount: categoryController.categoryList.length,
 
             itemBuilder: (context, index){
-             return Container(
+             return SizedBox(
                width: 80,
                child: Column(
                  children: [
@@ -33,16 +32,16 @@ class Categories extends StatelessWidget {
                      width: 60,
                      fit: BoxFit.contain,
                      imageUrl: categoryController.categoryList[index].imageFullUrl.toString(),
-                     placeholder: (context, url) => new CircularProgressIndicator(),
-                     errorWidget: (context, url, error) => new Icon(Icons.error),
+                     placeholder: (context, url) => const CircularProgressIndicator(),
+                     errorWidget: (context, url, error) => const Icon(Icons.error),
                    ),
                  ),
 
                  Padding(
                    padding: const EdgeInsets.only(top: 5),
                    child: Text(
-                     '${categoryController.categoryList[index]!.name.toString()}',
-                     style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                     categoryController.categoryList[index].name.toString(),
+                     style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
                      overflow: TextOverflow.ellipsis,),
                  ),
                ],),

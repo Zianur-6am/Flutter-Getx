@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 class Screen1Class extends StatefulWidget {
   const Screen1Class({super.key});
@@ -13,7 +12,7 @@ class _Screen1ClassState extends State<Screen1Class> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Screen1"),),
+      appBar: AppBar(title: const Text("Screen1"),),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -39,7 +38,7 @@ class _Screen1ClassState extends State<Screen1Class> {
                       "/screen2?dev=Zianur Rahman&stack=flutter"
                   );
                 },
-                child: Text("Go to screen2")
+                child: const Text("Go to screen2")
             ),
           ],
         ),

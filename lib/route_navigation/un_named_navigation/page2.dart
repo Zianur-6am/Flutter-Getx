@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 class Page2Class extends StatelessWidget {
   const Page2Class({super.key});
@@ -13,7 +12,7 @@ class Page2Class extends StatelessWidget {
     String data = Get.arguments;
 
     return Scaffold(
-      appBar: AppBar(title: Text("Route navigation Page-2"),),
+      appBar: AppBar(title: const Text("Route navigation Page-2"),),
       //could have used center widget
       body: Center(
         child: Column(
@@ -28,11 +27,11 @@ class Page2Class extends StatelessWidget {
                 //Returning some data to the previous screen
                 Get.back(result: '=============================>>>>>>>>>>>passing data to previous page');
               },
-              child: Text("Go back to Page-1"),
+              child: const Text("Go back to Page-1"),
           ),
 
             
-            Text("$data", style: TextStyle(color: Colors.redAccent),)
+            Text(data, style: const TextStyle(color: Colors.redAccent),)
         ],),
       ),
     );
