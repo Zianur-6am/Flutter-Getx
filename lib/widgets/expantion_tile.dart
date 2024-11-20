@@ -39,7 +39,7 @@ class _ExpantionTileExampleState extends State<ExpantionTileExample> {
                   : Icons.arrow_drop_down,
             ),
             children: const <Widget>[
-              ListTile(title: Text('This is tile number 2 /n jdsfkjsdf /n jlskdfjsdlkfjsd /n dsflskfjs')),
+              ListTile(title: Text('This is tile number 2 with some extra text to check')),
             ],
             onExpansionChanged: (bool expanded) {
               setState(() {
