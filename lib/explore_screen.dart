@@ -20,8 +20,8 @@ class _BlogScreenState extends State<BlogScreen> with SingleTickerProviderStateM
     TabItem(title: 'Informative', content: const HomeTab()),
     TabItem(title: 'Comparison', content: const HomeTab()),
     TabItem(title: 'Best', content: const HomeTab()),
-    TabItem(title: 'Favorites', content: FavoritesTab()),
-    TabItem(title: 'Settings', content: SettingsTab()),
+    TabItem(title: 'Favorites', content: const FavoritesTab()),
+    TabItem(title: 'Settings', content: const SettingsTab()),
   ];
 
   @override
@@ -184,9 +184,13 @@ class BlogCardWidget extends StatelessWidget {
             const Text('eCommerce Ecosystem: The Complete Guide', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
             const SizedBox(height: 20),
 
-            ReadMoreText(
-              text: 'A Lorem Ipsum is simply dummy text  the printing and typesetting industry Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque porta pulvinar leo in sagittis. Nam vestibulum',
-              maxLines: 3,
+            // ReadMoreText(
+            //   text: 'A Lorem Ipsum is simply dummy text  the printing and typesetting industry Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque porta pulvinar leo in sagittis. Nam vestibulum',
+            //   maxLines: 3,
+            // ),
+            const ReadMoreText(
+              maxLines: 2,
+              text: 'Your very long text sdgf dsg fds sdf gdfg dfd  dfgdfg df sg gd dfg fd gdfs gsd dfg fdgs gdfdg dfg fd df dsf ds ',
             ),
             const SizedBox(height: 30),
             
@@ -199,7 +203,6 @@ class BlogCardWidget extends StatelessWidget {
               Text('Today'),
             ]),
             const SizedBox(height: 10),
-            
           ]),
         )
       ]),
@@ -234,7 +237,7 @@ class RecentPostCardWidget extends StatelessWidget {
           child: Image.asset('assets/images/laptop_image.png', width: 80, height: 80, fit: BoxFit.cover,),
         ),
 
-        const Expanded(
+        const Flexible(
           child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
@@ -245,7 +248,7 @@ class RecentPostCardWidget extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                 ),
                 SizedBox(height: 20),
-
+          
                 Text('23 Oct, 2024'),
               ],
           ),

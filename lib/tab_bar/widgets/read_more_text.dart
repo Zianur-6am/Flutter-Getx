@@ -4,12 +4,11 @@ class ReadMoreText extends StatelessWidget {
   final String text;
   final int maxLines;
 
-  ReadMoreText({required this.text, this.maxLines = 2});
+  const ReadMoreText({super.key, required this.text, this.maxLines = 2});
 
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
         // Displaying the text with ellipsis
@@ -30,7 +29,7 @@ class ReadMoreText extends StatelessWidget {
             },
             child: const Text(
               'Read more',
-              style: TextStyle(fontSize: 16, color: Colors.blue, decoration: TextDecoration.underline, decorationColor: Colors.blue),
+              style: TextStyle(fontSize: 14, color: Colors.blue, decoration: TextDecoration.underline, decorationColor: Colors.blue),
             ),
           ),
       ],
