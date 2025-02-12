@@ -10,6 +10,7 @@ import 'package:flutter_getx/route_navigation/named_navigation/unknown_route.dar
 import 'package:flutter_getx/route_navigation/un_named_navigation/page1.dart';
 import 'package:flutter_getx/state_management/reactive_state_manager/reactive_sm.dart';
 import 'package:flutter_getx/state_management/simple_state_manager/simple_sm.dart';
+import 'package:flutter_getx/tab_bar/screens/blog_screen.dart';
 import 'package:flutter_getx/widgets/bottom_sheet.dart';
 import 'package:flutter_getx/widgets/expantion_tile.dart';
 import 'package:flutter_getx/widgets/show_dialog.dart';
@@ -65,7 +66,8 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/plv', page: () => ProductListView()),
         GetPage(name: '/fdhome', page: () => BottomNavBar()),
         GetPage(name: '/exptl', page: () => const ExpantionTileExample()),
-        GetPage(name: '/explore', page: () => const BlogScreen()),
+        GetPage(name: '/blog_screen', page: () => const BlogScreen()),
+        GetPage(name: '/explore', page: () => const MyCustomTab()),
       ],
       //to use unknownroute initialRoute cannot be /
       unknownRoute: GetPage(name: '/notfound', page: () => const UnknownRoute()),

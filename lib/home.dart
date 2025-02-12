@@ -37,6 +37,15 @@ class _HomeState extends State<Home> {
             ),
 
             ElevatedButton(
+              onPressed: (){
+                Get.toNamed(
+                    "/blog_screen"
+                );
+              },
+              child: const Text("Tab Bar"),
+            ),
+
+            ElevatedButton(
                 onPressed: (){
                   Get.toNamed(
                     "/named_route_home"
