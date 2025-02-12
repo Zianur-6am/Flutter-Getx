@@ -65,7 +65,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/plv', page: () => ProductListView()),
         GetPage(name: '/fdhome', page: () => BottomNavBar()),
         GetPage(name: '/exptl', page: () => const ExpantionTileExample()),
-        GetPage(name: '/explore', page: () => ItemExtentExample()),
+        GetPage(name: '/explore', page: () => const BlogScreen()),
       ],
       //to use unknownroute initialRoute cannot be /
       unknownRoute: GetPage(name: '/notfound', page: () => const UnknownRoute()),
