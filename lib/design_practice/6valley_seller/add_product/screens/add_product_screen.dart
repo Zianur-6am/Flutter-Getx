@@ -545,7 +545,7 @@ class _AddProductScreenState extends State<AddProductScreen> with TickerProvider
                 BoxShadow(
                   color: Theme.of(context).primaryColor.withValues(alpha: .10),
                   blurRadius: 30,
-                  offset: Offset(0, -7)
+                  offset: const Offset(0, -7)
                 )
               ]
             ),
