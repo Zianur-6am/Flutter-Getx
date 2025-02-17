@@ -3,14 +3,14 @@ import 'package:flutter_getx/state_management/simple_state_manager/simple_contro
 import 'package:get/get.dart';
 
 class SimpleSMClass extends StatelessWidget {
-  const SimpleSMClass({super.key});
+  SimpleSMClass({super.key});
 
   // const SimpleSMClass({super.key});
 
 
-  // //Dipendency injection
-  // //declaring the controller instance globally
-  // SimpleController simpleController = Get.put(SimpleController());
+  ///Dipendency injection
+  //declaring the controller instance globally
+  final SimpleController simpleController = Get.put(SimpleController());
 
   @override
   Widget build(BuildContext context) {
@@ -42,19 +42,19 @@ class SimpleSMClass extends StatelessWidget {
             ElevatedButton(
                 onPressed: (){
 
-                  // //for global instance
-                  // simpleController.incrementValueCount();
-                  // simpleController.incrementPressCount();
+                  //for global instance
+                  simpleController.incrementValueCount();
+                  simpleController.incrementPressCount();
 
 
 
-
-                  //when controller instance is not global
-                  Get.find<SimpleController>().incrementPressCount();
-                  Get.find<SimpleController>().incrementValueCount();
-
-            },
-                child: const Text("Add")),
+                  ///when controller instance is not global
+                  ///need to change initialize or register using Get.put the controller first
+                  // Get.find<SimpleController>().incrementPressCount();
+                  // Get.find<SimpleController>().incrementValueCount();
+                },
+                child: const Text("Add"),
+            ),
 
           ],
         ),

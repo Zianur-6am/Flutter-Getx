@@ -44,10 +44,7 @@ class BlogCardWidget extends StatelessWidget {
             const Text('eCommerce Ecosystem: The Complete Guide', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
             const SizedBox(height: 20),
 
-            // ReadMoreText(
-            //   text: 'A Lorem Ipsum is simply dummy text  the printing and typesetting industry Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque porta pulvinar leo in sagittis. Nam vestibulum',
-            //   maxLines: 3,
-            // ),
+
             const ReadMoreText(
               maxLines: 2,
               text: 'Your very long text sdgf dsg fds sdf gdfg dfd  dfgdfg df sg gd dfg fd gdfs gsd dfg fdgs gdfdg dfg fd df dsf ds ',

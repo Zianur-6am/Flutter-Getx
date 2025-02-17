@@ -12,7 +12,7 @@ class RecentPostCardWidget extends StatelessWidget {
       margin: const EdgeInsets.only(right: 20),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        color: Colors.red,
+        color: Colors.white,
         boxShadow: [
           BoxShadow(
             blurRadius: 6,
@@ -27,8 +27,8 @@ class RecentPostCardWidget extends StatelessWidget {
           child: Image.asset('assets/images/laptop_image.png', fit: BoxFit.cover),
         ),
 
-        Expanded(
-          child: const Column(
+        const Expanded(
+          child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -39,8 +39,8 @@ class RecentPostCardWidget extends StatelessWidget {
                 overflow: TextOverflow.ellipsis,
               ),
               SizedBox(height: 20),
-          
-              Text('23 Oct, 2024'),
+
+              Text('23 Oct, 2024', maxLines: 1, overflow: TextOverflow.ellipsis),
             ],
           ),
         ),

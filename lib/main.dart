@@ -61,7 +61,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/screen1', page: () => const Screen1Class()),
         GetPage(name: '/screen2', page: () => const Screen2Class()),
         GetPage(name: '/rsm', page: () => ReactiveSMClass()),
-        GetPage(name: '/ssm', page: () => const SimpleSMClass()),
+        GetPage(name: '/ssm', page: () => SimpleSMClass()),
         GetPage(name: '/ihome', page: () => Ihome()),
         GetPage(name: '/plv', page: () => ProductListView()),
         GetPage(name: '/fdhome', page: () => BottomNavBar()),
