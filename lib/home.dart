@@ -36,6 +36,16 @@ class _HomeState extends State<Home> {
               child: const Text("Explore Screen"),
             ),
 
+
+            ElevatedButton(
+              onPressed: (){
+                Get.toNamed(
+                    "/add_product"
+                );
+              },
+              child: const Text("Add Product"),
+            ),
+
             ElevatedButton(
               onPressed: (){
                 Get.toNamed(
