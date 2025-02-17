@@ -107,7 +107,6 @@ class SelectCategoryWidgetState extends State<SelectCategoryWidget> {
           ],
         );
       },
-
     );
   }
 }
