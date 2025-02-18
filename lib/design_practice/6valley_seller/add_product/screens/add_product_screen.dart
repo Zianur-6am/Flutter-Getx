@@ -160,39 +160,6 @@ class _AddProductScreenState extends State<AddProductScreen> with TickerProvider
                           ),
                         ),
 
-
-                        // addProductController.productTypeIndex == 0 ?
-                        // Padding(
-                        //   padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeMedium),
-                        //   child: Column(
-                        //     children: [
-                        //       DropdownDecoratorWidget(
-                        //         child: DropdownButton<String>(
-                        //           icon: const Icon(Icons.keyboard_arrow_down_outlined),
-                        //           borderRadius: const BorderRadius.all(Radius.circular(Dimensions.paddingEye)),
-                        //           hint: (addProductController.unitValue == null || addProductController.unitValue == 'select_unit' || addProductController.unitValue == 'null')
-                        //               ? Text(getTranslated('select_unit', context)!, style: robotoMedium.copyWith(color: Theme.of(context).hintColor))
-                        //               : Text(addProductController.unitValue!, style: robotoMedium.copyWith(
-                        //             color: Theme.of(context).textTheme.bodyLarge?.color,
-                        //             fontSize: Dimensions.fontSizeExtraLarge,
-                        //           )),
-                        //           items: Provider.of<SplashController>(context,listen: false).configModel!.unit!.map((String value) {
-                        //             return DropdownMenuItem<String>(
-                        //               value: value,
-                        //               child: Text(value, style: robotoMedium),
-                        //             );}).toList(),
-                        //           onChanged: (val) {
-                        //             unitValue = val;
-                        //             setState(() {addProductController.setValueForUnit(val);},);},
-                        //           isExpanded: true,
-                        //           underline: const SizedBox(),
-                        //         ),
-                        //       ),
-                        //     ],
-                        //   ),
-                        // ) : const SizedBox(),
-
-
                         Container(padding: const EdgeInsets.fromLTRB(Dimensions.paddingSizeMedium, 0, Dimensions.paddingSizeMedium, 0),
                           child: Column(children: [
                             Row(
