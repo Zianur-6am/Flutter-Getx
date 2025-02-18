@@ -76,7 +76,6 @@ class _HomeTabState extends State<HomeTab> {
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
                       itemCount: 50,
-                      shrinkWrap: true,
                       itemBuilder: (context, index) {
                         return const RecentPostCardWidget();
                       },

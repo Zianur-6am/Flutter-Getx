@@ -61,7 +61,6 @@ class _AddProductScreenState extends State<AddProductScreen> with TickerProvider
     final double keyboardHeight = MediaQuery.of(context).viewInsets.bottom;
     final double longestSide = MediaQuery.sizeOf(context).longestSide;
     final double widthSize = MediaQuery.sizeOf(context).width;
-    final double heightSize = MediaQuery.sizeOf(context).height;
 
     return Scaffold(
       appBar: CustomAppBarWidget(title: 'add_product'.tr),
