@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_getx/tab_bar/widgets/home_widget.dart';
+import 'package:flutter_getx/utils/dimensions.dart';
 import 'package:get/get.dart';
 
 class BlogScreen extends StatefulWidget {
@@ -106,7 +107,8 @@ class _SliverSearchTabBarDelegate extends SliverPersistentHeaderDelegate {
               tabAlignment: TabAlignment.start,
               physics: const BouncingScrollPhysics(),
               isScrollable: true,
-              padding: EdgeInsets.zero,
+              padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeMedium),
+              labelPadding: const EdgeInsets.only(right: Dimensions.paddingSizeMedium),
               controller: tabController,
               labelColor: Colors.white,
               unselectedLabelColor: Colors.grey,
