@@ -104,6 +104,7 @@ class _SliverSearchTabBarDelegate extends SliverPersistentHeaderDelegate {
           // TabBar
           TabBar(
               tabAlignment: TabAlignment.start,
+              physics: const BouncingScrollPhysics(),
               isScrollable: true,
               padding: EdgeInsets.zero,
               controller: tabController,
@@ -163,7 +164,7 @@ class CustomSearchWidget extends StatelessWidget {
             borderSide: BorderSide.none,
           ),
           filled: true,
-          fillColor: Colors.white,
+          fillColor: Theme.of(context).primaryColor.withValues(alpha: .04)
         ),
       ),
     );
