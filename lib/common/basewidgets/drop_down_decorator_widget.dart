@@ -11,7 +11,7 @@ class DropdownDecoratorWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(children: [
       Padding(
-        padding: const EdgeInsets.symmetric(vertical: Dimensions.paddingSizeSmall),
+        padding: const EdgeInsets.only(top: Dimensions.paddingSizeSmall),
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeSmall),
           decoration: BoxDecoration(color: Theme.of(context).cardColor,

@@ -27,7 +27,7 @@ class SelectCategoryWidgetState extends State<SelectCategoryWidget> {
 
             const SizedBox(height: Dimensions.paddingSizeSmall),
 
-            addProductController.categoryList != null ? addProductController.categoryList!.isNotEmpty ?
+            addProductController.categoryList.isNotEmpty ?
             Column(
               children: [
                 DropdownDecoratorWidget(
@@ -49,11 +49,14 @@ class SelectCategoryWidgetState extends State<SelectCategoryWidget> {
                         },
                         isExpanded: true, underline: const SizedBox())
                 ),
+
+                const SizedBox(height: Dimensions.paddingSizeDefault),
+
               ],
-            ) : const Center(child: Text('No Category found')) : const SizedBox.shrink(),
+            ) : const SizedBox.shrink(),
 
 
-            addProductController.subCategoryList != null ? addProductController.subCategoryList!.isNotEmpty ?
+            addProductController.subCategoryList.isNotEmpty ?
             Column(children: [
               DropdownDecoratorWidget(
                 child: DropdownButton<String>(
@@ -76,11 +79,14 @@ class SelectCategoryWidgetState extends State<SelectCategoryWidget> {
                   underline: const SizedBox(),
                 ),
               ),
+
+              const SizedBox(height: Dimensions.paddingSizeDefault),
+
             ],
-            ) : const SizedBox.shrink() : const SizedBox.shrink(),
+            ) : const SizedBox.shrink(),
 
 
-            addProductController.subCategoryList != null ? addProductController.subCategoryList!.isNotEmpty ?
+            addProductController.subCategoryList.isNotEmpty ?
             Column(children: [
               DropdownDecoratorWidget(
                 child: DropdownButton<String>(
@@ -103,7 +109,10 @@ class SelectCategoryWidgetState extends State<SelectCategoryWidget> {
                   underline: const SizedBox(),
                 ),
               ),
-            ]) : const SizedBox.shrink() : const SizedBox.shrink(),
+
+              const SizedBox(height: Dimensions.paddingSizeDefault),
+
+            ]) : const SizedBox.shrink(),
           ],
         );
       },

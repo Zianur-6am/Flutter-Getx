@@ -29,8 +29,8 @@ class _AddProductScreenState extends State<AddProductScreen> with TickerProvider
   final AddProductController addProductController = Get.put(AddProductController());
   
   TabController? _tabController;
-  List<String> authors = ["Auth 1", "Auth 2", "Auth 3", "Auth 3", "Auth 4", "Auth 5", "Auth 6"];
-  List<String> publishingHouses = ["Pub 1", "Pub 2", "Pub 3", "Pub 3", "Pub 4", "Pub 5", "Pub 6"];
+  static const List<String> authors = ["Auth 1", "Auth 2", "Auth 3", "Auth 3", "Auth 4", "Auth 5", "Auth 6"];
+  final List<String> publishingHouses = ["Pub 1", "Pub 2", "Pub 3", "Pub 3", "Pub 4", "Pub 5", "Pub 6"];
 
   final List<String> deliveryTypeList =['Ready after sell', 'Ready Product'];
   FocusNode _publishingFocus = FocusNode();
@@ -58,7 +58,10 @@ class _AddProductScreenState extends State<AddProductScreen> with TickerProvider
   @override
   Widget build(BuildContext context) {
 
-    double keyboardHeight = MediaQuery.of(context).viewInsets.bottom;
+    final double keyboardHeight = MediaQuery.of(context).viewInsets.bottom;
+    final double longestSide = MediaQuery.sizeOf(context).longestSide;
+    final double widthSize = MediaQuery.sizeOf(context).width;
+    final double heightSize = MediaQuery.sizeOf(context).height;
 
     return Scaffold(
       appBar: CustomAppBarWidget(title: 'add_product'.tr),
@@ -79,7 +82,7 @@ class _AddProductScreenState extends State<AddProductScreen> with TickerProvider
                   childrens: [
                     Padding(
                       padding: const EdgeInsets.only(top: Dimensions.paddingSizeExtraSmall, left: Dimensions.paddingEye, bottom: Dimensions.paddingEye),
-                      child: SizedBox(width: MediaQuery.of(context).size.width,
+                      child: SizedBox(width: widthSize,
                         child: TabBar(
                           tabAlignment: TabAlignment.start,
                           isScrollable: true,
@@ -101,8 +104,8 @@ class _AddProductScreenState extends State<AddProductScreen> with TickerProvider
                       ),
                     ),
 
-                    Container(
-                      constraints: const BoxConstraints(minHeight: 140, maxHeight: 240),
+                    SizedBox(
+                      height: longestSide / 4,
                       child: TabBarView(
                           controller: _tabController,
                           children: addProductController.tabBarNames.map((name) => TitleAndDescriptionWidget(addProductController: addProductController, index: addProductController.tabBarNames.indexOf(name))).toList(),
@@ -110,7 +113,7 @@ class _AddProductScreenState extends State<AddProductScreen> with TickerProvider
                     ),
                   ],
                 ),
-                const SizedBox(height: Dimensions.paddingSizeSmall),
+                const SizedBox(height: Dimensions.paddingSizeDefault),
 
                 GetBuilder<AddProductController>(
                   builder: (addProductController) {
@@ -151,7 +154,8 @@ class _AddProductScreenState extends State<AddProductScreen> with TickerProvider
                                 ),
                               ),
 
-                              const SizedBox(height: Dimensions.paddingSizeMedium),
+                              const SizedBox(height: Dimensions.paddingSizeSmall),
+
                             ],
                           ),
                         ),
@@ -226,7 +230,7 @@ class _AddProductScreenState extends State<AddProductScreen> with TickerProvider
 
 
                         DigitalProductWidget(addProductController: addProductController, product: widget.product),
-                        const SizedBox(height: Dimensions.paddingSizeExtraSmall),
+                        const SizedBox(height: Dimensions.paddingSizeSmall),
 
                         //Author
                         addProductController.productTypeIndex == 1 ?
@@ -252,14 +256,6 @@ class _AddProductScreenState extends State<AddProductScreen> with TickerProvider
                                 controller: controller,
                                 focusNode: node,
                                 onEditingComplete: onComplete,
-                                onSubmitted: (value) {
-                                  // if(addProductController.selectedAuthors!.isEmpty){
-                                  //   _scrollController.jumpTo(_scrollController.offset + 20);
-                                  // }
-                                  // addProductController.addAuthor(value);
-                                  // controller.text = '';
-                                },
-                                // onChanged: (value)=> _onChangeOptionHeight(value, authors),
                                 decoration: InputDecoration(
                                   contentPadding: const EdgeInsets.symmetric(vertical: Dimensions.paddingSize, horizontal: Dimensions.paddingSizeMedium),
                                   hintText: 'Author Creator Artist',
@@ -274,9 +270,6 @@ class _AddProductScreenState extends State<AddProductScreen> with TickerProvider
                               );
                             },
                             displayStringForOption: (value) =>  value,
-                            onSelected: (String value) {
-                              // addProductController.addAuthor(value);
-                            },
                             optionsViewBuilder: (BuildContext context, AutocompleteOnSelected<String> onSelected, Iterable<String> options) {
                               return Align(
                                 alignment: Alignment.topLeft,
@@ -323,44 +316,7 @@ class _AddProductScreenState extends State<AddProductScreen> with TickerProvider
                           ),
                         ) : const SizedBox(),
 
-                        // Padding(
-                        //   padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeMedium),
-                        //   child: SizedBox(height: (addProductController.productTypeIndex == 1 && addProductController.selectedAuthors!.isNotEmpty) ? 40 : 0,
-                        //     child: (addProductController.selectedAuthors!.isNotEmpty) ?
-                        //
-                        //     ListView.builder(
-                        //       itemCount: addProductController.selectedAuthors!.length,
-                        //       scrollDirection: Axis.horizontal,
-                        //       itemBuilder: (context, index) {
-                        //         return Padding(
-                        //           padding: const EdgeInsets.all(Dimensions.paddingSizeVeryTiny),
-                        //           child: Container(
-                        //             padding: const EdgeInsets.symmetric(horizontal : Dimensions.paddingSizeMedium),
-                        //             margin: const EdgeInsets.only(right: Dimensions.paddingSizeSmall),
-                        //             decoration: BoxDecoration(color: Theme.of(context).primaryColor.withValues(alpha:.20),
-                        //               borderRadius: BorderRadius.circular(Dimensions.paddingSizeDefault),
-                        //             ),
-                        //             child: Row(children: [
-                        //               Consumer<SplashController>(builder: (ctx, colorP,child){
-                        //                 return Text(addProductController.selectedAuthors![index],
-                        //                   style: robotoRegular.copyWith(color: ColorResources.titleColor(context)),);
-                        //               }),
-                        //               const SizedBox(width: Dimensions.paddingSizeSmall),
-                        //               InkWell(
-                        //                 splashColor: Colors.transparent,
-                        //                 onTap: (){addProductController.removeAuthor(index);},
-                        //                 child: Icon(Icons.close, size: 15, color: ColorResources.titleColor(context)),
-                        //               ),
-                        //             ]),
-                        //           ),
-                        //         );
-                        //       },
-                        //     ) : const SizedBox(),
-                        //   ),
-                        // ),
-
                         const SizedBox(height: Dimensions.paddingSizeSmall),
-
 
                         ///Publishing
                         addProductController.productTypeIndex == 1  ?
@@ -386,13 +342,6 @@ class _AddProductScreenState extends State<AddProductScreen> with TickerProvider
                                 controller: controller,
                                 focusNode: node,
                                 onEditingComplete: onComplete,
-                                onSubmitted: (value) {
-                                  // if(addProductController.selectedPublishingHouse!.isEmpty){
-                                  //   _scrollController.jumpTo(_scrollController.offset + 20);
-                                  // }
-                                  // addProductController.addPublishingHouse(value);
-                                },
-                                // onChanged: (value)=> _onChangeOptionHeight(value, publishingHouses),
                                 decoration: InputDecoration(
                                   hintText: 'Publishing House',
                                   contentPadding: const EdgeInsets.symmetric(vertical: Dimensions.paddingSize, horizontal: Dimensions.paddingSizeMedium),
@@ -408,10 +357,6 @@ class _AddProductScreenState extends State<AddProductScreen> with TickerProvider
                               );
                             },
                             displayStringForOption: (value) =>  value,
-                            onSelected: (String value) {
-                              // addProductController.addAuthor(value);
-                            },
-
                             optionsViewBuilder: (BuildContext context, AutocompleteOnSelected<String> onSelected, Iterable<String> options) {
                               return Align(
                                 alignment: Alignment.topLeft,
@@ -459,44 +404,6 @@ class _AddProductScreenState extends State<AddProductScreen> with TickerProvider
                           ),
                         ) : const SizedBox(),
 
-
-                        // Padding(
-                        //   padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeMedium),
-                        //   child: SizedBox(height: (addProductController.productTypeIndex == 1 && addProductController.selectedPublishingHouse!.isNotEmpty) ? 40 : 0,
-                        //     child: (addProductController.selectedPublishingHouse!.isNotEmpty) ?
-                        //
-                        //     ListView.builder(
-                        //       itemCount: addProductController.selectedPublishingHouse!.length,
-                        //       scrollDirection: Axis.horizontal,
-                        //       itemBuilder: (context, index) {
-                        //         return Padding(
-                        //           padding: const EdgeInsets.all(Dimensions.paddingSizeVeryTiny),
-                        //           child: Container(
-                        //             padding: const EdgeInsets.symmetric(horizontal : Dimensions.paddingSizeMedium),
-                        //             margin: const EdgeInsets.only(right: Dimensions.paddingSizeSmall),
-                        //             decoration: BoxDecoration(color: Theme.of(context).primaryColor.withValues(alpha:.20),
-                        //               borderRadius: BorderRadius.circular(Dimensions.paddingSizeDefault),
-                        //             ),
-                        //             child: Row(children: [
-                        //               Consumer<SplashController>(builder: (ctx, colorP,child){
-                        //                 return Text(addProductController.selectedPublishingHouse![index],
-                        //                   style: robotoRegular.copyWith(color: ColorResources.titleColor(context)),);
-                        //               }),
-                        //               const SizedBox(width: Dimensions.paddingSizeSmall),
-                        //               InkWell(
-                        //                 splashColor: Colors.transparent,
-                        //                 onTap: (){addProductController.removePublishingHouse(index);},
-                        //                 child: Icon(Icons.close, size: 15, color: ColorResources.titleColor(context)),
-                        //               ),
-                        //             ]),
-                        //           ),
-                        //         );
-                        //       },
-                        //     ):const SizedBox(),
-                        //   ),
-                        // ),
-                        //End Author Publishing
-
                         const SizedBox(height: Dimensions.paddingSizeSmall),
 
                         addProductController.productTypeIndex == 1 ?
@@ -527,7 +434,6 @@ class _AddProductScreenState extends State<AddProductScreen> with TickerProvider
 
                         const SizedBox(height: 15),
 
-
                       ],
                     );
                   }
@@ -552,7 +458,7 @@ class _AddProductScreenState extends State<AddProductScreen> with TickerProvider
             child: Container(height: 45,
               margin: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault, vertical: Dimensions.paddingSizeSmall),
               decoration: BoxDecoration(
-                color: addProductController.categoryList == null ? Theme.of(context).hintColor : Theme.of(context).primaryColor,
+                color: Theme.of(context).primaryColor,
                 borderRadius: BorderRadius.circular(Dimensions.paddingSizeExtraSmall),
               ),
               child: const Center(child: Text('Next', style: TextStyle(
