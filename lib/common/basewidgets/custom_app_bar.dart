@@ -117,7 +117,7 @@ class CustomAppBarWidget extends StatelessWidget implements PreferredSizeWidget 
           //   ) : isTooltip?
           //   Padding(
           //     padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault),
-          //     child: widget,
+          //     child: widgets,
           //   ):
           //   const SizedBox()
           // ] : [],

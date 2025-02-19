@@ -96,7 +96,7 @@ class _CustomTextFieldWidgetState extends State<CustomTextFieldWidget> {
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
-        //border : !widget.formProduct ? widget.border? Border.all(width: 1, color: Theme.of(context).hintColor.withValues(alpha:.35)):null : null,
+        //border : !widgets.formProduct ? widgets.border? Border.all(width: 1, color: Theme.of(context).hintColor.withValues(alpha:.35)):null : null,
         color: Theme.of(context).highlightColor,
         borderRadius: BorderRadius.circular(8),
       ),
@@ -149,8 +149,8 @@ class _CustomTextFieldWidgetState extends State<CustomTextFieldWidget> {
 
 
           // OutlineInputBorder(borderRadius: BorderRadius.circular(8),
-          //   borderSide: BorderSide(color: Theme.of(context).primaryColor,//widget.borderColor,
-          //   width: widget.showBorder ? 0 : .75,)),
+          //   borderSide: BorderSide(color: Theme.of(context).primaryColor,//widgets.borderColor,
+          //   width: widgets.showBorder ? 0 : .75,)),
 
 
           filled: widget.fillColor != null,

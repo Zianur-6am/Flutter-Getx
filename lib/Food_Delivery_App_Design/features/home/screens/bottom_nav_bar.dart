@@ -131,8 +131,8 @@ class BottomNavBar extends StatelessWidget {
     ///implementing with reactive state management
     //   body: Obx(() {
     //     // This will reactively update the screen based on the selected index
-    //     //this is used to show selected widget
-    //     //index refers to position of the widget defined in it
+    //     //this is used to show selected widgets
+    //     //index refers to position of the widgets defined in it
     //     return IndexedStack(
     //       index: bottomNavController.selectedIndex.value,
     //       children: const [

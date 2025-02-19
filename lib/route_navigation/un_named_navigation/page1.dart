@@ -9,7 +9,7 @@ class Page1Class extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text("Route navigation Page-1"),),
-      //could have used center widget
+      //could have used center widgets
       body: SizedBox(
         width: MediaQuery.sizeOf(context).width,
         child: Column(

@@ -1,93 +1,179 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(MyApp());
-}
 
-class MyApp extends StatelessWidget {
+class MainScreen extends StatefulWidget {
+  const MainScreen({super.key});
+
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: NestedScrollViewExample(),
-    );
-  }
+  _MainScreenState createState() => _MainScreenState();
 }
 
-class NestedScrollViewExample extends StatefulWidget {
-  @override
-  _NestedScrollViewExampleState createState() =>
-      _NestedScrollViewExampleState();
-}
-
-class _NestedScrollViewExampleState extends State<NestedScrollViewExample>
-    with SingleTickerProviderStateMixin {
-  late TabController _tabController;
+class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
+  late TabController _primaryTabController;
+  late TabController _secondaryTabController;
 
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 2, vsync: this);
-  }
-
-  @override
-  void dispose() {
-    _tabController.dispose();
-    super.dispose();
+    _primaryTabController = TabController(length: 3, vsync: this);
+    _secondaryTabController = TabController(length: 2, vsync: this);
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('NestedScrollView with Tabs'),
-        bottom: TabBar(
-          controller: _tabController,
-          tabs: const [
-            Tab(text: 'Scrollable Tab'),
-            Tab(text: 'Non-scrollable Tab'),
-          ],
-        ),
-      ),
-      body: NestedScrollView(
-        headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
-          return [
-            const SliverToBoxAdapter(
-              child: Padding(
-                padding: EdgeInsets.all(16.0),
-                child: Text(
-                  'Scroll Header Content Here',
-                  style: TextStyle(fontSize: 20),
+    return DefaultTabController(
+      length: 3,
+      child: Scaffold(
+        body: NestedScrollView(
+          headerSliverBuilder: (context, innerBoxIsScrolled) {
+            return [
+              SliverPersistentHeader(
+                floating: true,
+                pinned: true,
+                delegate: _SliverSearchBarDelegate(),
+              ),
+              SliverPersistentHeader(
+                // floating: true,
+                pinned: true,
+                delegate: _SliverTabBarDelegate(
+                  TabBar(
+                    controller: _primaryTabController,
+                    tabs: [
+                      Tab(text: "Home"),
+                      Tab(text: "Trending"),
+                      Tab(text: "Profile"),
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ];
-        },
-        body: TabBarView(
-
-          controller: _tabController,
-          children: [
-            // Scrollable tab content
-            SingleChildScrollView(
-              child: Column(
-                children: List.generate(100, (index) {
-                  return ListTile(
-                    title: Text('Item $index'),
-                  );
-                }),
-              ),
-            ),
-            
-            // Non-scrollable tab content
-            Column(mainAxisSize: MainAxisSize.min,
-              children: List.generate(10, (index) {
-                return ListTile(
-                  title: Text('Static Item $index'),
-                );
-              }),
-            ),
-          ],
+            ];
+          },
+          body: TabBarView(
+            controller: _primaryTabController,
+            children: [
+              _buildScrollableContent(),
+              Center(child: Text("Trending Content")),
+              Center(child: Text("Profile Content")),
+            ],
+          ),
         ),
       ),
     );
   }
+
+  Widget _buildScrollableContent() {
+    return CustomScrollView(
+      slivers: [
+        _buildHorizontalSection("Section 1"),
+        _buildHorizontalSection("Section 2"),
+        _buildHorizontalSection("Section 3"),
+        SliverPersistentHeader(
+          pinned: true,
+          delegate: _SliverTabBarDelegate(
+            TabBar(
+              controller: _secondaryTabController,
+              tabs: [
+                Tab(text: "Tab A"),
+                Tab(text: "Tab B"),
+              ],
+            ),
+          ),
+        ),
+        SliverFillRemaining(
+          child: TabBarView(
+            controller: _secondaryTabController,
+            children: [
+              Center(child: Text("Tab A Content")),
+              Center(child: Text("Tab B Content")),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildHorizontalSection(String title) {
+    return SliverToBoxAdapter(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(title, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+          ),
+          SizedBox(
+            height: 150,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: 10,
+              itemBuilder: (context, index) {
+                return Container(
+                  width: 120,
+                  margin: EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    color: Colors.blueAccent,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                );
+              },
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  @override
+  void dispose() {
+    _primaryTabController.dispose();
+    _secondaryTabController.dispose();
+    super.dispose();
+  }
+}
+
+class _SliverSearchBarDelegate extends SliverPersistentHeaderDelegate {
+  @override
+  Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
+    return Container(
+      padding: EdgeInsets.all(8),
+      color: Colors.white,
+      child: TextField(
+        decoration: InputDecoration(
+          hintText: "Search...",
+          prefixIcon: Icon(Icons.search),
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+          filled: true,
+          fillColor: Colors.grey[200],
+        ),
+      ),
+    );
+  }
+
+  @override
+  double get maxExtent => 100;
+  @override
+  double get minExtent => 60;
+  @override
+  bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) => false;
+}
+
+class _SliverTabBarDelegate extends SliverPersistentHeaderDelegate {
+  final TabBar tabBar;
+
+  _SliverTabBarDelegate(this.tabBar);
+
+  @override
+  Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
+    return Container(
+      color: Colors.white,
+      child: tabBar,
+    );
+  }
+
+  @override
+  double get maxExtent => tabBar.preferredSize.height;
+  @override
+  double get minExtent => tabBar.preferredSize.height;
+  @override
+  bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) => false;
 }

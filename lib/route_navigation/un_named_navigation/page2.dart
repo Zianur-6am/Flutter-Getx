@@ -13,7 +13,7 @@ class Page2Class extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(title: const Text("Route navigation Page-2"),),
-      //could have used center widget
+      //could have used center widgets
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

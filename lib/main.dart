@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_getx/Internationalization/ihome.dart';
 import 'package:flutter_getx/Internationalization/messages.dart';
 import 'package:flutter_getx/design_practice/6valley_seller/add_product/screens/add_product_screen.dart';
+import 'package:flutter_getx/design_practice/6valley_user/home_screen/screens/valley_home_screen.dart';
 import 'package:flutter_getx/explore_screen.dart';
 import 'package:flutter_getx/fetchapidata/productmodule/views/product_list_view.dart';
 import 'package:flutter_getx/route_navigation/named_navigation/route_home.dart';
@@ -31,7 +32,7 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
+  // This widgets is the root of your application.
   @override
   Widget build(BuildContext context) {
     return GetBuilder<ThemeController>(
@@ -72,7 +73,8 @@ class MyApp extends StatelessWidget {
             GetPage(name: '/exptl', page: () => const ExpantionTileExample()),
             GetPage(name: '/blog_screen', page: () => const BlogScreen()),
             GetPage(name: '/add_product', page: () => const AddProductScreen()),
-            GetPage(name: '/explore', page: () => NestedScrollViewExample()),
+            GetPage(name: '/valley_home', page: () => const ValleyHomeScreen()),
+            GetPage(name: '/explore', page: () => const MainScreen()),
           ],
           //to use unknownroute initialRoute cannot be /
           unknownRoute: GetPage(name: '/notfound', page: () => const UnknownRoute()),

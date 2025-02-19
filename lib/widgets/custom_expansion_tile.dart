@@ -15,7 +15,7 @@ const Duration _kExpand = Duration(milliseconds: 200);
 /// It can be useful to expand or collapse an [CustomExpansionTile]
 /// programmatically, for example to reconfigure an existing expansion
 /// tile based on a system event. To do so, create an [CustomExpansionTile]
-/// with an [CustomExpansionTileController] that's owned by a stateful widget
+/// with an [CustomExpansionTileController] that's owned by a stateful widgets
 /// or look up the tile's automatically created [CustomExpansionTileController]
 /// with [CustomExpansionTileController.of]
 ///
@@ -111,9 +111,9 @@ class CustomExpansionTileController {
   /// When the [CustomExpansionTile] is actually created in the same `build`
   /// function as the callback that refers to the controller, then the
   /// `context` argument to the `build` function can't be used to find
-  /// the [CustomExpansionTileController] (since it's "above" the widget
-  /// being returned in the widget tree). In cases like that you can
-  /// add a [Builder] widget, which provides a new scope with a
+  /// the [CustomExpansionTileController] (since it's "above" the widgets
+  /// being returned in the widgets tree). In cases like that you can
+  /// add a [Builder] widgets, which provides a new scope with a
   /// [BuildContext] that is "under" the [CustomExpansionTile]:
   ///
   /// ** See code in examples/api/lib/material/expansion_tile/expansion_tile.1.dart **
@@ -122,7 +122,7 @@ class CustomExpansionTileController {
   /// A more efficient solution is to split your build function into
   /// several widgets. This introduces a new context from which you
   /// can obtain the [CustomExpansionTileController]. With this approach you
-  /// would have an outer widget that creates the [CustomExpansionTile]
+  /// would have an outer widgets that creates the [CustomExpansionTile]
   /// populated by instances of your new inner widgets, and then in
   /// these inner widgets you would use [CustomExpansionTileController.of].
   static CustomExpansionTileController of(BuildContext context) {
@@ -137,7 +137,7 @@ class CustomExpansionTileController {
       ErrorDescription(
         'No CustomExpansionTile ancestor could be found starting from the context that was passed to CustomExpansionTileController.of(). '
             'This usually happens when the context provided is from the same StatefulWidget as that '
-            'whose build function actually creates the CustomExpansionTile widget being sought.',
+            'whose build function actually creates the CustomExpansionTile widgets being sought.',
       ),
       ErrorHint(
         'There are several ways to avoid this problem. The simplest is to use a Builder to get a '
@@ -148,7 +148,7 @@ class CustomExpansionTileController {
       ErrorHint(
         'A more efficient solution is to split your build function into several widgets. This '
             'introduces a new context from which you can obtain the CustomExpansionTile. In this solution, '
-            'you would have an outer widget that creates the CustomExpansionTile populated by instances of '
+            'you would have an outer widgets that creates the CustomExpansionTile populated by instances of '
             'your new inner widgets, and then in these inner widgets you would use CustomExpansionTileController.of().\n'
             'An other solution is assign a GlobalKey to the CustomExpansionTile, '
             'then use the key.currentState property to obtain the CustomExpansionTile rather than '
@@ -177,7 +177,7 @@ class CustomExpansionTileController {
 /// A single-line [ListTile] with an expansion arrow icon that expands or collapses
 /// the tile to reveal or hide the [children].
 ///
-/// This widget is typically used with [ListView] to create an "expand /
+/// This widgets is typically used with [ListView] to create an "expand /
 /// collapse" list entry. When used with scrolling widgets like [ListView], a
 /// unique [PageStorageKey] must be specified as the [key], to enable the
 /// [CustomExpansionTile] to save and restore its expanded state when it is scrolled
@@ -254,22 +254,22 @@ class CustomExpansionTile extends StatefulWidget {
       'are aligned in a column, not a row. Try to use another constant.',
   );
 
-  /// A widget to display before the title.
+  /// A widgets to display before the title.
   ///
-  /// Typically a [CircleAvatar] widget.
+  /// Typically a [CircleAvatar] widgets.
   ///
-  /// Depending on the value of [controlAffinity], the [leading] widget
+  /// Depending on the value of [controlAffinity], the [leading] widgets
   /// may replace the rotating expansion arrow icon.
   final Widget? leading;
 
   /// The primary content of the list item.
   ///
-  /// Typically a [Text] widget.
+  /// Typically a [Text] widgets.
   final Widget title;
 
   /// Additional content displayed below the title.
   ///
-  /// Typically a [Text] widget.
+  /// Typically a [Text] widgets.
   final Widget? subtitle;
 
   /// Called when the tile expands or collapses.
@@ -306,9 +306,9 @@ class CustomExpansionTile extends StatefulWidget {
   ///   [CustomExpansionTileThemeData].
   final Color? collapsedBackgroundColor;
 
-  /// A widget to display after the title.
+  /// A widgets to display after the title.
   ///
-  /// Depending on the value of [controlAffinity], the [trailing] widget
+  /// Depending on the value of [controlAffinity], the [trailing] widgets
   /// may replace the rotating expansion arrow icon.
   final Widget? trailing;
 
@@ -343,15 +343,15 @@ class CustomExpansionTile extends StatefulWidget {
   /// Specifies the alignment of [children], which are arranged in a column when
   /// the tile is expanded.
   ///
-  /// The internals of the expanded tile make use of a [Column] widget for
-  /// [children], and [Align] widget to align the column. The [expandedAlignment]
+  /// The internals of the expanded tile make use of a [Column] widgets for
+  /// [children], and [Align] widgets to align the column. The [expandedAlignment]
   /// parameter is passed directly into the [Align].
   ///
   /// Modifying this property controls the alignment of the column within the
   /// expanded tile, not the alignment of [children] widgets within the column.
   /// To align each child within [children], see [expandedCrossAxisAlignment].
   ///
-  /// The width of the column is the width of the widest child widget in [children].
+  /// The width of the column is the width of the widest child widgets in [children].
   ///
   /// If this property is null then [CustomExpansionTileThemeData.expandedAlignment]is used. If that
   /// is also null then the value of [expandedAlignment] is [Alignment.center].
@@ -364,13 +364,13 @@ class CustomExpansionTile extends StatefulWidget {
 
   /// Specifies the alignment of each child within [children] when the tile is expanded.
   ///
-  /// The internals of the expanded tile make use of a [Column] widget for
+  /// The internals of the expanded tile make use of a [Column] widgets for
   /// [children], and the `crossAxisAlignment` parameter is passed directly into
   /// the [Column].
   ///
   /// Modifying this property controls the cross axis alignment of each child
   /// within its [Column]. The width of the [Column] that houses [children] will
-  /// be the same as the widest child widget in [children]. The width of the
+  /// be the same as the widest child widgets in [children]. The width of the
   /// [Column] might not be equal to the width of the expanded tile.
   ///
   /// To align the [Column] along the expanded tile, use the [expandedAlignment]
@@ -493,7 +493,7 @@ class CustomExpansionTile extends StatefulWidget {
   /// If provided, the controller can be used to expand and collapse tiles.
   ///
   /// In cases were control over the tile's state is needed from a callback triggered
-  /// by a widget within the tile, [CustomExpansionTileController.of] may be more convenient
+  /// by a widgets within the tile, [CustomExpansionTileController.of] may be more convenient
   /// than supplying a controller.
   final CustomExpansionTileController? controller;
 
@@ -622,7 +622,7 @@ class _CustomExpansionTileState extends State<CustomExpansionTile> with SingleTi
             return;
           }
           setState(() {
-            // Rebuild without widget.children.
+            // Rebuild without widgets.children.
           });
         });
       }
@@ -667,14 +667,14 @@ class _CustomExpansionTileState extends State<CustomExpansionTile> with SingleTi
   // }
   //
   // Widget? _buildLeadingIcon(BuildContext context) {
-  //   if (_effectiveAffinity(widget.controlAffinity) != ListTileControlAffinity.leading) {
+  //   if (_effectiveAffinity(widgets.controlAffinity) != ListTileControlAffinity.leading) {
   //     return null;
   //   }
   //   return _buildIcon(context);
   // }
   //
   // Widget? _buildTrailingIcon(BuildContext context) {
-  //   if (_effectiveAffinity(widget.controlAffinity) != ListTileControlAffinity.trailing) {
+  //   if (_effectiveAffinity(widgets.controlAffinity) != ListTileControlAffinity.trailing) {
   //     return null;
   //   }
   //   return _buildIcon(context);

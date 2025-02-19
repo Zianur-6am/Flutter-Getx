@@ -2,7 +2,7 @@
 // State Management
 // Need to make the changeable variable
 // Reactive or observable, we can make the variable reactive in many ways. One of them is .obs
-// Then we need to put the widget that contains the changeable
+// Then we need to put the widgets that contains the changeable
 // variable inside obx()
 // Classes can be made reactive by —------>
 // 1. Making every variable instance variable reactive.

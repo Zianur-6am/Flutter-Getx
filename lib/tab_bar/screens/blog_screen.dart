@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_getx/helper/tab_class.dart';
 import 'package:flutter_getx/tab_bar/widgets/home_widget.dart';
 import 'package:flutter_getx/utils/dimensions.dart';
 import 'package:get/get.dart';
@@ -71,12 +72,6 @@ class _BlogScreenState extends State<BlogScreen> with SingleTickerProviderStateM
 
 
 
-class TabItem {
-  final String title;
-  final Widget content;
-
-  TabItem({required this.title, required this.content});
-}
 
 
 
