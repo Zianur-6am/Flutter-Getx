@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_getx/common/basewidgets/custom_asset_image_widget.dart';
+import 'package:flutter_getx/utils/images.dart';
 
 class RecentPostCardWidget extends StatelessWidget {
   const RecentPostCardWidget({
@@ -20,15 +22,14 @@ class RecentPostCardWidget extends StatelessWidget {
           )
         ],
       ),
-      child: Row(mainAxisSize: MainAxisSize.min,children: [
+      child: const Row(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.center, children: [
 
-        Container(
-          height: 100,
-          padding: const EdgeInsets.all(10),
-          child: Image.asset('assets/images/laptop_image.png', fit: BoxFit.cover),
+        Padding(
+          padding: EdgeInsets.all(10),
+          child: CustomAssetImageWidget(Images.laptop, fit: BoxFit.cover, height: 100, width: 100),
         ),
 
-        const Expanded(
+        Flexible(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
