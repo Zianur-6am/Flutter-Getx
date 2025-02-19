@@ -3,6 +3,7 @@ import 'package:flutter_getx/tab_bar/controllers/tab_controller.dart';
 import 'package:flutter_getx/tab_bar/widgets/blog_card_widget.dart';
 import 'package:flutter_getx/tab_bar/widgets/blog_custom_title_widget.dart';
 import 'package:flutter_getx/tab_bar/widgets/recent_post_card_widget.dart';
+import 'package:flutter_getx/utils/dimensions.dart';
 import 'package:get/get.dart';
 
 class HomeTab extends StatefulWidget {
@@ -28,23 +29,22 @@ class _HomeTabState extends State<HomeTab> {
   Widget build(BuildContext context) {
     return CustomScrollView(
         slivers: [
-          SliverToBoxAdapter(
-            child: GetBuilder<TabControllerX>(
-              builder: (tabControllerX) {
-                return Padding(
-                  padding: const EdgeInsets.all(15),
-                  child: ListView.builder(
-                    itemCount: tabControllerX.blogCount,
-                    physics: const NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    itemBuilder: (context, index) {
-                      return const BlogCardWidget();
-                    },
-                  ),
-                );
-              }
-            ),
-          ),
+
+          GetBuilder<TabControllerX>(builder: (tabControllerX){
+            return tabControllerX.blogCount != 0 ?
+            SliverPadding(
+              padding: const EdgeInsets.all(Dimensions.paddingSizeMedium),
+              sliver: SliverList(
+                delegate: SliverChildBuilderDelegate(
+                      (context, index){
+                    return const BlogCardWidget();
+                  },
+                  childCount: tabControllerX.blogCount,
+                ),
+              ),
+            ) : const SizedBox.shrink();
+          }),
+
 
           SliverToBoxAdapter(child: Padding(
             padding: const EdgeInsets.only(bottom: 20),
@@ -63,28 +63,29 @@ class _HomeTabState extends State<HomeTab> {
 
           SliverToBoxAdapter(
             child: Container(
-              height: 180,
               padding: const EdgeInsets.all(15),
-              color: Colors.blue.withValues(alpha: .1),
+              color: Colors.blue.withValues(alpha: 0.1),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
 
                   const CustomTitleWidget(),
 
-                  Expanded(
-                    child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: 50,
-                      itemBuilder: (context, index) {
-                        return const RecentPostCardWidget();
-                      },
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: List.generate(5, (index) {
+                        return const Padding(
+                          padding: EdgeInsets.only(right: 10),
+                          child: RecentPostCardWidget(),
+                        );
+                      }),
                     ),
                   ),
                 ],
               ),
             ),
-          ),
+          )
         ]
     );
   }

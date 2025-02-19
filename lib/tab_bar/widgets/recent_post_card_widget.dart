@@ -22,7 +22,8 @@ class RecentPostCardWidget extends StatelessWidget {
       ),
       child: Row(mainAxisSize: MainAxisSize.min,children: [
 
-        Padding(
+        Container(
+          height: 100,
           padding: const EdgeInsets.all(10),
           child: Image.asset('assets/images/laptop_image.png', fit: BoxFit.cover),
         ),
