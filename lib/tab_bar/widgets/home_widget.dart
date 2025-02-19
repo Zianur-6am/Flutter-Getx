@@ -80,18 +80,6 @@ class _HomeTabState extends State<HomeTab> {
                         return const RecentPostCardWidget();
                       },
                   ),
-
-                  // SingleChildScrollView(
-                  //   scrollDirection: Axis.horizontal,
-                  //   child: Row(
-                  //     children: List.generate(5, (index) {
-                  //       return const Padding(
-                  //         padding: EdgeInsets.only(right: 10),
-                  //         child: RecentPostCardWidget(),
-                  //       );
-                  //     }),
-                  //   ),
-                  // ),
                 ],
               ),
             ),
