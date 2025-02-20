@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class CustomListViewWidget extends StatelessWidget {
+class CustomSingleChildListViewWidget extends StatelessWidget {
   final int itemCount;
   final IndexedWidgetBuilder itemBuilder;
   final double itemSpacing;
   final bool directionVertical;
 
 
-  const CustomListViewWidget({
+  const CustomSingleChildListViewWidget({
     super.key,  // Optional Key parameter
     required this.itemCount,
     required this.itemBuilder,

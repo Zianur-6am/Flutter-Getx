@@ -39,8 +39,6 @@ class _ValleyHomeScreenState extends State<ValleyHomeScreen> with SingleTickerPr
     return Scaffold(
       body: SafeArea(
         child: NestedScrollView(
-          floatHeaderSlivers: false, // Ensures headers work correctly
-          physics: const ClampingScrollPhysics(),
           headerSliverBuilder: (context, _){
             return [
 

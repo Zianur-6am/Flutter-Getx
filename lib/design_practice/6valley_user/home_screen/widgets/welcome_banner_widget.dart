@@ -8,7 +8,7 @@ class WelcomeBannerWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
       child: Container(
-        color: Colors.blue,
+        color: Theme.of(context).primaryColor,
         padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeSmall, vertical: Dimensions.paddingSizeSmall),
         child: const Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

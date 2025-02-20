@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_getx/design_practice/6valley_user/home_screen/widgets/product_card_widget.dart';
 import 'package:flutter_getx/utils/dimensions.dart';
 
-class CustomHeaderListWidget extends StatelessWidget {
+class CustomHeaderSliverListWidget extends StatelessWidget {
   final String headerText;
-  final Color backgroundColor;
+  final Color? backgroundColor;
   final List<String> items;
   final bool isHorizontal;
   final double itemHeight;
@@ -12,10 +13,9 @@ class CustomHeaderListWidget extends StatelessWidget {
   final double horizontalPadding;
   final TextStyle? headerTextStyle;
 
-  const CustomHeaderListWidget({
+  const CustomHeaderSliverListWidget({
     super.key,
     required this.headerText,
-    required this.backgroundColor,
     required this.items,
     this.isHorizontal = false,
     this.itemHeight = 60,
@@ -23,13 +23,14 @@ class CustomHeaderListWidget extends StatelessWidget {
     this.verticalPadding = 10,
     this.horizontalPadding = 15,
     this.headerTextStyle,
+    this.backgroundColor,
   });
 
   @override
   Widget build(BuildContext context) {
     return DecoratedSliver(
       decoration: BoxDecoration(
-        color: backgroundColor
+        color: backgroundColor ?? Theme.of(context).cardColor
       ),
       sliver: SliverMainAxisGroup( slivers: [
 
@@ -51,18 +52,7 @@ class CustomHeaderListWidget extends StatelessWidget {
         SliverList(
           delegate: SliverChildBuilderDelegate(
                 (context, index) {
-              return Container(
-                // margin: EdgeInsets.symmetric(vertical: verticalPadding, horizontal: horizontalPadding),
-                padding: EdgeInsets.symmetric(horizontal: horizontalPadding, vertical: verticalPadding),
-                decoration: BoxDecoration(
-                  color: backgroundColor,
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Text(
-                  items[index],
-                  style: TextStyle(color: Colors.black, fontSize: 16),
-                ),
-              );
+              return const ProductCardWidget();
             },
             childCount: items.length,
           ),
