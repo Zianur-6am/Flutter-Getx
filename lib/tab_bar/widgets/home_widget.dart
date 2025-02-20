@@ -29,8 +29,8 @@ class _HomeTabState extends State<HomeTab> {
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
+        // physics: const NeverScrollableScrollPhysics(),
         slivers: [
-
           GetBuilder<HomeController>(builder: (homeController){
             return homeController.blogCount != 0 ?
             SliverPadding(
@@ -71,11 +71,11 @@ class _HomeTabState extends State<HomeTab> {
 
 
                   CustomSingleChildListViewWidget(
-                      itemCount: 5,
-                      directionVertical: false,
-                      itemBuilder: (context, index){
-                        return const RecentPostCardWidget();
-                      },
+                    itemCount: 5,
+                    directionVertical: false,
+                    itemBuilder: (context, index){
+                      return const RecentPostCardWidget();
+                    },
                   ),
                 ],
               ),

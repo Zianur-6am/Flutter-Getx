@@ -28,8 +28,8 @@ class ProductCardWidget extends StatelessWidget {
           )
         ],
       ),
-      child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
-        const Stack(children: [
+      child: const Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
+        Stack(children: [
           
           ClipRRect(
             borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -42,29 +42,30 @@ class ProductCardWidget extends StatelessWidget {
           ),
         ]),
 
-        LayoutBuilder(builder: (context, boxConstraint){
-        return const Column(children: [
-            Text('Top Benefits of Using a POS System sdfds sdf sd fd sd s s dds fsda  sf',
-              style: TextStyle(fontSize: 12, fontWeight: FontWeight.w400),
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-            ),
-            SizedBox(height: Dimensions.paddingSizeSmall),
-
-            Text('TK 3237.87', maxLines: 1, overflow: TextOverflow.ellipsis),
-
-            Row(children: [
-              Text('1100',
-                style: TextStyle(fontSize: 12, fontWeight: FontWeight.w400, decoration: TextDecoration.lineThrough),
+        Padding(
+          padding: EdgeInsets.all(8.0),
+          child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Text('Top Benefits of Using a POS System sdfds sdf sd fd sd s s dds fsda  sf',
+                style: TextStyle(fontSize: 12, fontWeight: FontWeight.w400),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
               ),
               SizedBox(height: Dimensions.paddingSizeSmall),
 
-              Text('-10%',
-                style: TextStyle(fontSize: 12, fontWeight: FontWeight.w400, color: Colors.red),
-              ),
+              Text('TK 3237.87', maxLines: 1, overflow: TextOverflow.ellipsis),
+
+              Row(children: [
+                Text('1100',
+                  style: TextStyle(fontSize: 12, fontWeight: FontWeight.w400, decoration: TextDecoration.lineThrough),
+                ),
+                SizedBox(height: Dimensions.paddingSizeSmall),
+
+                Text('-10%',
+                  style: TextStyle(fontSize: 12, fontWeight: FontWeight.w400, color: Colors.red),
+                ),
+              ]),
             ]),
-          ]);
-        }),
+        ),
       ]),
     );
   }

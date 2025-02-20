@@ -8,6 +8,7 @@ import 'package:flutter_getx/design_practice/6valley_user/home_screen/widgets/ta
 import 'package:flutter_getx/helper/tab_class.dart';
 import 'package:flutter_getx/tab_bar/controllers/tab_controller.dart';
 import 'package:flutter_getx/tab_bar/widgets/blog_card_widget.dart';
+import 'package:flutter_getx/tab_bar/widgets/home_widget.dart';
 import 'package:flutter_getx/utils/dimensions.dart';
 import 'package:get/get.dart';
 
@@ -27,7 +28,7 @@ class _ValleyHomeTabState extends State<ValleyHomeTab> with SingleTickerProvider
   final HomeController homeController = Get.put(HomeController());
 
   final List<TabItem> tabs = [
-    TabItem(title: 'All', content: const DummyWidget(text: "All Tab")),
+    TabItem(title: 'All', content: const HomeTab()),
     TabItem(title: 'Home', content: const DummyWidget(text: "All Tab")),
     TabItem(title: 'Extra', content: const DummyWidget(text: "All Tab")),
     TabItem(title: 'Selection', content: const DummyWidget(text: "All Tab")),

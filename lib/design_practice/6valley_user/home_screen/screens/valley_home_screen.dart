@@ -19,7 +19,7 @@ class _ValleyHomeScreenState extends State<ValleyHomeScreen> with SingleTickerPr
   late TabController _tabController;
 
   final List<TabItem> tabs = [
-    TabItem(title: 'Explore', content: const DummyWidget(text: "All Tab")),
+    TabItem(title: 'Explore', content: const ValleyHomeTab()),
     TabItem(title: 'Sports', content: const ValleyHomeTab()),
     TabItem(title: 'Womens', content: const HomeTab()),
     TabItem(title: 'Kids', content: const HomeTab()),
