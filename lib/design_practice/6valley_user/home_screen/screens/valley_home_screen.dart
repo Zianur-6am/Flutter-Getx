@@ -19,11 +19,12 @@ class _ValleyHomeScreenState extends State<ValleyHomeScreen> with SingleTickerPr
   late TabController _tabController;
 
   final List<TabItem> tabs = [
-    TabItem(title: 'All', content: const DummyWidget(text: "All Tab")),
-    TabItem(title: 'Home', content: const ValleyHomeTab()),
-    TabItem(title: 'Informative', content: const HomeTab()),
-    TabItem(title: 'Comparison', content: const HomeTab()),
-    TabItem(title: 'Best', content: const HomeTab()),
+    TabItem(title: 'Explore', content: const DummyWidget(text: "All Tab")),
+    TabItem(title: 'Sports', content: const ValleyHomeTab()),
+    TabItem(title: 'Womens', content: const HomeTab()),
+    TabItem(title: 'Kids', content: const HomeTab()),
+    TabItem(title: 'Wigs', content: const HomeTab()),
+    TabItem(title: 'Electronics', content: const HomeTab()),
   ];
 
   @override
@@ -45,13 +46,12 @@ class _ValleyHomeScreenState extends State<ValleyHomeScreen> with SingleTickerPr
 
               const WelcomeBannerWidget(),
 
-              TabBarValleyHomeWidget(tabController: _tabController, tabs: tabs),
-
               SliverOverlapAbsorber(
-                handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context),
-                sliver: const CustomSearchWidget(horizontalPadding: Dimensions.paddingSizeSmall, verticalPadding: Dimensions.paddingSizeSmall,
-                ),
+                  handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context),
+                  sliver: TabBarValleyHomeWidget(tabController: _tabController, tabs: tabs),
               ),
+
+              const CustomSearchWidget(horizontalPadding: Dimensions.paddingSizeSmall, verticalPadding: Dimensions.paddingSizeSmall),
 
             ];
           },
@@ -70,40 +70,44 @@ class CustomSearchWidget extends StatelessWidget {
   final double verticalPadding;
 
   const CustomSearchWidget({
-    super.key, this.horizontalPadding = 10, this.verticalPadding = 0,
+    super.key, this.horizontalPadding = 10, this.verticalPadding = 10,
   });
 
   @override
   Widget build(BuildContext context) {
-    return SliverPadding(
-      padding: EdgeInsets.symmetric(horizontal: horizontalPadding, vertical: verticalPadding),
-      sliver: SliverPersistentHeader(
-        pinned: true,
-        delegate: SliverHeaderDelegate(
-          height: 50,
-          child: Container(
-            color: Colors.white,
-            child: TextField(
-              decoration: InputDecoration(
-                hintText: "What are you looking for?",
-                hintStyle: const TextStyle(color: Colors.grey),
-                suffixIcon: Container(
-                  margin: const EdgeInsets.only(top: 5, right: 5, bottom: 5),
-                  decoration: BoxDecoration(
-                    color: Colors.blue,
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: const Icon(Icons.search, color: Colors.white,),
+    return SliverPersistentHeader(
+      pinned: true,
+      delegate: SliverHeaderDelegate(
+        height: 70,
+        child: Container(
+          padding: EdgeInsets.symmetric(horizontal: horizontalPadding, vertical: verticalPadding),
+          color: Theme.of(context).cardColor,
+          child: TextField(
+            decoration: InputDecoration(
+              hintText: "What are you looking for?",
+              hintStyle: const TextStyle(color: Colors.grey),
+              suffixIcon: Container(
+                margin: const EdgeInsets.only(top: 5, right: 5, bottom: 5),
+                decoration: BoxDecoration(
+                  color: Colors.blue,
+                  borderRadius: BorderRadius.circular(8),
                 ),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(5),
-                  borderSide: BorderSide(color: Colors.grey.withValues(alpha: 0.1), width: 1),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(5),
-                  borderSide: BorderSide(color: Colors.grey.withValues(alpha: 0.5), width: 1),
-                ),
+                child: const Icon(Icons.search, color: Colors.white,),
               ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(5),
+                borderSide: BorderSide(color: Theme.of(context).hintColor.withValues(alpha: 0.5), width: 1),
+              ),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(5),
+                borderSide: BorderSide(color: Colors.grey.withValues(alpha: 0.5), width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(5),
+                borderSide: BorderSide(color: Colors.grey.withValues(alpha: 0.5), width: 1),
+              ),
+              fillColor: Theme.of(context).cardColor,
+              filled: true,
             ),
           ),
         ),

@@ -89,10 +89,9 @@ class _ValleyHomeTabState extends State<ValleyHomeTab> with SingleTickerProvider
             )),
       
             SliverPersistentHeader(
-              floating: true,
               pinned: true,
               delegate: SliverHeaderDelegate(
-                height: 50,
+                height: 120,
                 child: const SizedBox(),
               ),
             ),

@@ -17,17 +17,16 @@ class TabBarValleyHomeWidget extends StatelessWidget {
       delegate: SliverHeaderDelegate(
         height: 50,
         child: Container(
-          color: Colors.blue,
+          color: Theme.of(context).primaryColor,
           child: TabBar(
               tabAlignment: TabAlignment.start,
               physics: const BouncingScrollPhysics(),
               isScrollable: true,
-
               padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeMedium, vertical: 0),
               labelPadding: const EdgeInsets.only(right: Dimensions.paddingSizeExtraLarge, bottom: 0),
               controller: tabController,
-              labelColor: Colors.white,
-              unselectedLabelColor: Colors.grey,
+              labelColor: Theme.of(context).cardColor,
+              unselectedLabelColor: Theme.of(context).hintColor,
               indicatorColor: Colors.orange,
               indicatorWeight: 5,
               indicatorPadding: const EdgeInsets.only(bottom: 0),
