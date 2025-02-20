@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_getx/common/basewidgets/custom_header_list_widget.dart';
 import 'package:flutter_getx/common/basewidgets/dummy_widget.dart';
 import 'package:flutter_getx/common/basewidgets/sliver_header_delegate.dart';
 import 'package:flutter_getx/design_practice/6valley_user/home_screen/widgets/tab_bar_valley_home_widget.dart';
@@ -46,6 +47,14 @@ class _ValleyHomeTabState extends State<ValleyHomeTab> with SingleTickerProvider
 
             SliverOverlapInjector(
               handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context),
+            ),
+
+            // ✅ Add the custom widget
+            CustomHeaderListWidget(
+              headerText: "Popular Items",
+              backgroundColor: Colors.blue,
+              items: List.generate(10, (index) => "Item $index"), // Large dataset
+              isHorizontal: true, // Change to false for vertical scrolling
             ),
 
             GetBuilder<HomeController>(builder: (homeController){
