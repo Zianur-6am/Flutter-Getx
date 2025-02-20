@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
 
-class TabControllerX extends GetxController implements GetxService{
+class HomeController extends GetxController implements GetxService{
 
-  TabControllerX();
+  HomeController();
 
   int _blogCount = 5;
   int get blogCount => _blogCount;

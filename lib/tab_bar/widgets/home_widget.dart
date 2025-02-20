@@ -18,12 +18,12 @@ class HomeTab extends StatefulWidget {
 
 class _HomeTabState extends State<HomeTab> {
 
-  final TabControllerX tabControllerX = Get.put(TabControllerX());
+  final HomeController homeController = Get.put(HomeController());
 
 
   @override
   void initState() {
-    Get.find<TabControllerX>().initialBlogCount();
+    Get.find<HomeController>().initialBlogCount();
     super.initState();
   }
   @override
@@ -31,8 +31,8 @@ class _HomeTabState extends State<HomeTab> {
     return CustomScrollView(
         slivers: [
 
-          GetBuilder<TabControllerX>(builder: (tabControllerX){
-            return tabControllerX.blogCount != 0 ?
+          GetBuilder<HomeController>(builder: (homeController){
+            return homeController.blogCount != 0 ?
             SliverPadding(
               padding: const EdgeInsets.all(Dimensions.paddingSizeMedium),
               sliver: SliverList(
@@ -40,26 +40,23 @@ class _HomeTabState extends State<HomeTab> {
                       (context, index){
                     return const BlogCardWidget();
                   },
-                  childCount: tabControllerX.blogCount,
+                  childCount: homeController.blogCount,
                 ),
               ),
             ) : const SizedBox.shrink();
           }),
 
 
-          SliverToBoxAdapter(child: Padding(
-            padding: const EdgeInsets.only(bottom: 20),
-            child: InkWell(
-              onTap: (){
-                tabControllerX.increaseBlogCount();
-              },
-              child: const Row(mainAxisAlignment: MainAxisAlignment.center,children: [
-                Text('See More', style: TextStyle(color: Colors.blue, fontSize: 16)),
-                SizedBox(width: 5),
+          SliverToBoxAdapter(child: InkWell(
+            onTap: (){
+              homeController.increaseBlogCount();
+            },
+            child: const Row(mainAxisAlignment: MainAxisAlignment.center,children: [
+              Text('See More', style: TextStyle(color: Colors.blue, fontSize: 16)),
+              SizedBox(width: 5),
 
-                Icon(Icons.keyboard_arrow_down, color: Colors.blue),
-              ]),
-            ),
+              Icon(Icons.keyboard_arrow_down, color: Colors.blue),
+            ]),
           )),
 
           SliverToBoxAdapter(

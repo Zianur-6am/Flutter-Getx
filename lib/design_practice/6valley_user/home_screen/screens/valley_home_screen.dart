@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_getx/common/basewidgets/dummy_widget.dart';
+import 'package:flutter_getx/common/basewidgets/sliver_header_delegate.dart';
+import 'package:flutter_getx/design_practice/6valley_user/home_screen/widgets/tab_bar_valley_home_widget.dart';
+import 'package:flutter_getx/design_practice/6valley_user/home_screen/widgets/valley_home_tab_widget.dart';
 import 'package:flutter_getx/design_practice/6valley_user/home_screen/widgets/welcome_banner_widget.dart';
 import 'package:flutter_getx/helper/tab_class.dart';
 import 'package:flutter_getx/tab_bar/widgets/home_widget.dart';
 import 'package:flutter_getx/utils/dimensions.dart';
-import 'package:get/get.dart';
 
 class ValleyHomeScreen extends StatefulWidget {
   const ValleyHomeScreen({super.key});
@@ -16,8 +19,8 @@ class _ValleyHomeScreenState extends State<ValleyHomeScreen> with SingleTickerPr
   late TabController _tabController;
 
   final List<TabItem> tabs = [
-    TabItem(title: 'All', content: const SizedBox()),
-    TabItem(title: 'Home', content: const HomeTab()),
+    TabItem(title: 'All', content: const DummyWidget(text: "All Tab")),
+    TabItem(title: 'Home', content: const ValleyHomeTab()),
     TabItem(title: 'Informative', content: const HomeTab()),
     TabItem(title: 'Comparison', content: const HomeTab()),
     TabItem(title: 'Best', content: const HomeTab()),
@@ -35,13 +38,21 @@ class _ValleyHomeScreenState extends State<ValleyHomeScreen> with SingleTickerPr
     return Scaffold(
       body: SafeArea(
         child: NestedScrollView(
+          floatHeaderSlivers: false, // Ensures headers work correctly
+          physics: const ClampingScrollPhysics(),
           headerSliverBuilder: (context, _){
             return [
-              SliverPersistentHeader(
-                delegate: _SliverSearchTabBarDelegate(_tabController, tabs, minHeight: 202, maxHeight: 250),
-                floating: true,
-                pinned: true,
+
+              const WelcomeBannerWidget(),
+
+              TabBarValleyHomeWidget(tabController: _tabController, tabs: tabs),
+
+              SliverOverlapAbsorber(
+                handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context),
+                sliver: const CustomSearchWidget(horizontalPadding: Dimensions.paddingSizeSmall, verticalPadding: Dimensions.paddingSizeSmall,
+                ),
               ),
+
             ];
           },
           body: TabBarView(
@@ -54,95 +65,47 @@ class _ValleyHomeScreenState extends State<ValleyHomeScreen> with SingleTickerPr
   }
 }
 
-
-class _SliverSearchTabBarDelegate extends SliverPersistentHeaderDelegate {
-  final TabController tabController;
-  final double minHeight;
-  final double maxHeight;
-  final List<TabItem> tabs;
-
-  _SliverSearchTabBarDelegate(this.tabController, this.tabs, {this.minHeight = 100, this.maxHeight = 200});
-
-  @override
-  double get minExtent => minHeight;
-  @override
-  double get maxExtent => maxHeight;
-
-  @override
-  Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
-    return Container(
-      color: Theme.of(context).primaryColor,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-
-          const WelcomeBannerWidget(),
-
-          TabBar(
-              tabAlignment: TabAlignment.start,
-              physics: const BouncingScrollPhysics(),
-              isScrollable: true,
-
-              padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeMedium, vertical: 0),
-              labelPadding: const EdgeInsets.only(right: Dimensions.paddingSizeExtraLarge, bottom: 0),
-              controller: tabController,
-              labelColor: Colors.white,
-              unselectedLabelColor: Colors.grey,
-              indicatorColor: Colors.orange,
-              indicatorWeight: 5,
-              indicatorPadding: const EdgeInsets.only(bottom: 0),
-              dividerColor: Colors.transparent,
-              tabs: tabs.map((tab) => Tab(
-                child: Text(tab.title, style: TextStyle(color: tabController.index == tabs.indexOf(tab) ? Colors.white : Colors.grey)),
-              )).toList()
-          ),
-
-          Container(
-            padding: const EdgeInsets.symmetric(vertical: 10),
-            color: Colors.white,
-              child: const CustomSearchWidget(),
-          ),
-        ],
-      ),
-    );
-  }
-
-  @override
-  bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) =>
-      false;
-}
-
 class CustomSearchWidget extends StatelessWidget {
+  final double horizontalPadding;
+  final double verticalPadding;
+
   const CustomSearchWidget({
-    super.key,
+    super.key, this.horizontalPadding = 10, this.verticalPadding = 0,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
-      child: TextField(
-        decoration: InputDecoration(
-            hintText: "What are you looking for?",
-            hintStyle: const TextStyle(color: Colors.grey),
-            suffixIcon: Container(
-              margin: const EdgeInsets.only(top: 2, right: 5, bottom: 2),
-              decoration: BoxDecoration(
-                color: Colors.blue,
-                borderRadius: BorderRadius.circular(8),
+    return SliverPadding(
+      padding: EdgeInsets.symmetric(horizontal: horizontalPadding, vertical: verticalPadding),
+      sliver: SliverPersistentHeader(
+        pinned: true,
+        delegate: SliverHeaderDelegate(
+          height: 50,
+          child: Container(
+            color: Colors.white,
+            child: TextField(
+              decoration: InputDecoration(
+                hintText: "What are you looking for?",
+                hintStyle: const TextStyle(color: Colors.grey),
+                suffixIcon: Container(
+                  margin: const EdgeInsets.only(top: 5, right: 5, bottom: 5),
+                  decoration: BoxDecoration(
+                    color: Colors.blue,
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: const Icon(Icons.search, color: Colors.white,),
+                ),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(5),
+                  borderSide: BorderSide(color: Colors.grey.withValues(alpha: 0.1), width: 1),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(5),
+                  borderSide: BorderSide(color: Colors.grey.withValues(alpha: 0.5), width: 1),
+                ),
               ),
-              child: const Icon(Icons.search, color: Colors.white,),
             ),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(5),
-              borderSide: BorderSide(color: Colors.grey.withValues(alpha: 0.1), width: 1),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(5),
-              borderSide: BorderSide(color: Colors.grey.withValues(alpha: 0.5), width: 1),
-            ),
-            filled: true,
-            fillColor: Colors.white
+          ),
         ),
       ),
     );
