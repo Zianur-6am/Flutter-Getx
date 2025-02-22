@@ -276,10 +276,10 @@ class _ValleyHomeScreenState extends State<ValleyHomeScreen> with TickerProvider
 
             ];
           },
-          body: _tabController.index != 0 ? TabBarView(
-            controller: _tabController,
-            children: tabs.map((tab) => tab.content).toList(),
-          ) : const SizedBox(height: 0),
+          body: TabBarView(
+            controller: _tabController2,
+            children: innerTabs.map((tab) => tab.content).toList(),
+          ),
         ),
       ),
     );
