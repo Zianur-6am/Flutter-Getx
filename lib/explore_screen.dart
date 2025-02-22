@@ -50,6 +50,7 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Scaffold(
       body: NestedScrollView(
+        controller: _scrollController,
         headerSliverBuilder: (context, innerBoxIsScrolled) {
           return [
             SliverAppBar(
@@ -97,17 +98,31 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
 
   Widget _buildTabContent(String title, Color color) {
     return CustomScrollView(
-      controller: _scrollController,
+      // controller: _scrollController,
+      physics: NeverScrollableScrollPhysics(),
       slivers: [
-        SliverToBoxAdapter(
-          child: Container(
-            padding: EdgeInsets.all(16),
-            child: Text(
-              title,
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+
+        SliverPersistentHeader(
+          pinned: true, // Header stays visible at top when scrolling
+          floating: false, // Set to true for quick header reappearance
+          delegate: _CustomSliverDelegate(
+            child: Container(
+              color: Colors.white, // Header background
+              padding: const EdgeInsets.all(16),
+              alignment: Alignment.centerLeft,
+              child: Text(
+                title,
+                style: const TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
+            minHeight: 60, // Collapsed height
+            maxHeight: 80, // Expanded height
           ),
         ),
+
         SliverList(
           delegate: SliverChildBuilderDelegate(
                 (context, index) {
@@ -148,4 +163,39 @@ class _SliverTabBarDelegate extends SliverPersistentHeaderDelegate {
   double get minExtent => tabBar.preferredSize.height;
   @override
   bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) => false;
+}
+
+// Custom Delegate Class
+class _CustomSliverDelegate extends SliverPersistentHeaderDelegate {
+  final Widget child;
+  final double minHeight;
+  final double maxHeight;
+
+  _CustomSliverDelegate({
+    required this.child,
+    required this.minHeight,
+    required this.maxHeight,
+  });
+
+  @override
+  Widget build(
+      BuildContext context,
+      double shrinkOffset,
+      bool overlapsContent
+      ) {
+    return SizedBox.expand(child: child);
+  }
+
+  @override
+  double get minExtent => minHeight;
+
+  @override
+  double get maxExtent => maxHeight;
+
+  @override
+  bool shouldRebuild(_CustomSliverDelegate oldDelegate) {
+    return oldDelegate.minHeight != minHeight ||
+        oldDelegate.maxHeight != maxHeight ||
+        oldDelegate.child != child;
+  }
 }
