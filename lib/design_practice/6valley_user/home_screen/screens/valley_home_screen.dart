@@ -17,7 +17,6 @@ import 'package:flutter_getx/tab_bar/widgets/home_widget.dart';
 import 'package:flutter_getx/utils/dimensions.dart';
 import 'package:flutter_getx/utils/images.dart';
 import 'package:flutter_getx/utils/styles.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
 
@@ -30,15 +29,10 @@ class ValleyHomeScreen extends StatefulWidget {
 
 class _ValleyHomeScreenState extends State<ValleyHomeScreen> with TickerProviderStateMixin {
 
-  bool _isLoading = false;
-  List<String> _items = List.generate(20, (index) => "Item ${index + 1}");
-
   ValleyHomeController valleyHomeController = Get.put(ValleyHomeController());
 
   late TabController _tabController;
   late TabController _tabController2;
-
-  late ScrollController _scrollController;
 
   final List<TabItem> tabs = [
     TabItem(title: 'Explore', content: const OuterExploreTabViewWidget()),
@@ -63,8 +57,6 @@ class _ValleyHomeScreenState extends State<ValleyHomeScreen> with TickerProvider
     _tabController = TabController(length: tabs.length, vsync: this);
     _tabController2 = TabController(length: innerTabs.length, vsync: this);
 
-    _scrollController = ScrollController()..addListener(_scrollListener);
-
     _tabController.addListener(() {
       if (mounted) {
         setState(() {}); // Rebuild UI when tab index changes
@@ -74,7 +66,6 @@ class _ValleyHomeScreenState extends State<ValleyHomeScreen> with TickerProvider
 
     _tabController2.addListener(() {
       print('-----------changed------------');
-      setState(() {});
 
       if (mounted) {
         print('-----------changed------------');
@@ -89,33 +80,15 @@ class _ValleyHomeScreenState extends State<ValleyHomeScreen> with TickerProvider
   }
 
 
-  void _scrollListener() {
-    if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent && !_isLoading) {
-      _loadMoreItems();
-    }
-  }
-
-  Future<void> _loadMoreItems() async {
-    setState(() {
-      _isLoading = true;
-    });
-    // Simulate a delay (like making an API call)
-    await Future.delayed(Duration(seconds: 2));
-    List<String> newItems = List.generate(10, (index) => "Item ${_items.length + index + 1}");
-    setState(() {
-      _isLoading = false;
-      _items.addAll(newItems);
-    });
-  }
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-          child: CustomScrollView(
-            controller: _scrollController,
-            slivers: [
+        child: NestedScrollView(
+          floatHeaderSlivers: false,
+          physics: const ClampingScrollPhysics(),
+          headerSliverBuilder: (context, _){
+            return [
 
               const WelcomeBannerWidget(),
 
@@ -156,7 +129,14 @@ class _ValleyHomeScreenState extends State<ValleyHomeScreen> with TickerProvider
                 ),
               ),
 
-              if(_tabController.index == 0) ... [
+
+              /// todo - need to change padding passing way
+              // const CustomSearchWidget(
+              //     horizontalPadding: Dimensions.paddingSizeSmall,
+              //     verticalPadding: Dimensions.paddingSizeSmall,
+              // ),
+
+              if(_tabController.index == 0) ...[
 
                 SliverToBoxAdapter(
                   child: CustomHeaderSingleChildListViewWidget(
@@ -252,79 +232,55 @@ class _ValleyHomeScreenState extends State<ValleyHomeScreen> with TickerProvider
                 ),
 
 
-                // SliverGrid(
-                //   gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                //     maxCrossAxisExtent: MediaQuery.sizeOf(context).width * 0.41,
-                //     mainAxisSpacing: 10.0,
-                //     crossAxisSpacing: 10.0,
-                //     childAspectRatio: 4.0,
-                //   ),
-                //   delegate: SliverChildBuilderDelegate(
-                //         (BuildContext context, int index) {
-                //       return ProductCardWidget();
-                //     },
-                //     childCount: 100,
-                //   ),
-                // ),
-
-
-                SliverPadding(
-                  padding: const EdgeInsets.all(8.0),
-                  sliver: SliverGrid(
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      mainAxisSpacing: 12,
-                      crossAxisSpacing: 12,
-                      mainAxisExtent: 250, // Set this to your card's expected height
-                    ),
-                    delegate: SliverChildBuilderDelegate(
-                          (context, index) {
-                        return const ProductCardWidget(margin: EdgeInsets.zero);
-                      },
-                      childCount: _items.length,
-                    ),
+                SliverFillRemaining(
+                  child: TabBarView(
+                    controller: _tabController2,
+                    children: innerTabs.map((tab) => tab.content).toList(),
                   ),
                 ),
 
-                if (_isLoading)
-                  SliverToBoxAdapter(
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 16),
-                      child: Center(child: CircularProgressIndicator()),
-                    ),
-                  ),
 
 
-                // SliverFillRemaining(
-                //   child: Padding(
-                //     padding: const EdgeInsets.all(8),
-                //     child: ColoredBox(color: Colors.red,
-                //       child: MasonryGridView.builder(
-                //         // physics: const NeverScrollableScrollPhysics(),
-                //         gridDelegate: const SliverSimpleGridDelegateWithFixedCrossAxisCount(
-                //           crossAxisCount: 2,
-                //         ),
-                //         mainAxisSpacing: 12, // Space between rows
-                //         crossAxisSpacing: 12,
-                //         itemCount: 10,
-                //         itemBuilder: (context, index) {
-                //           return const ProductCardWidget(margin: EdgeInsets.zero,);
+
+
+                // GetBuilder<HomeController>(builder: (homeController){
+                //   return homeController.blogCount != 0 ?
+                //   SliverPadding(
+                //     padding: const EdgeInsets.all(Dimensions.paddingSizeMedium),
+                //     sliver: SliverList(
+                //       delegate: SliverChildBuilderDelegate(
+                //             (context, index){
+                //           return const BlogCardWidget();
                 //         },
+                //         childCount: homeController.blogCount,
                 //       ),
                 //     ),
+                //   ) : const SizedBox.shrink();
+                // }),
+                //
+                // SliverToBoxAdapter(child: Padding(
+                //   padding: const EdgeInsets.only(bottom: 20),
+                //   child: InkWell(
+                //     onTap: (){
+                //       homeController.increaseBlogCount();
+                //     },
+                //     child: const Row(mainAxisAlignment: MainAxisAlignment.center,children: [
+                //       Text('See More', style: TextStyle(color: Colors.blue, fontSize: 16)),
+                //       SizedBox(width: 5),
+                //
+                //       Icon(Icons.keyboard_arrow_down, color: Colors.blue),
+                //     ]),
                 //   ),
-                // ),
-
+                // )),
               ]
-              else
-                SliverToBoxAdapter(
-                  child: TabBarView(
-                    controller: _tabController,
-                    children: tabs.map((tab) => tab.content).toList(),
-                  ),
-                )
-            ],
-          )
+
+            ];
+          },
+          body: _tabController.index != 0 ? TabBarView(
+            controller: _tabController,
+            children: tabs.map((tab) => tab.content).toList(),
+          ) : const SizedBox(height: 0),
+        ),
       ),
     );
   }
