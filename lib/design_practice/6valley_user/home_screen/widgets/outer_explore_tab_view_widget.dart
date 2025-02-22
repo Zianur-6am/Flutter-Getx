@@ -4,7 +4,7 @@ import 'package:flutter_getx/common/basewidgets/custom_header_sliver_list_widget
 import 'package:flutter_getx/common/basewidgets/dummy_widget.dart';
 import 'package:flutter_getx/common/basewidgets/sliver_header_delegate.dart';
 import 'package:flutter_getx/design_practice/6valley_user/home_screen/widgets/product_card_widget.dart';
-import 'package:flutter_getx/design_practice/6valley_user/home_screen/widgets/tab_bar_valley_home_widget.dart';
+import 'package:flutter_getx/design_practice/6valley_user/home_screen/widgets/inner_tab_bar_valley_home_widget.dart';
 import 'package:flutter_getx/helper/tab_class.dart';
 import 'package:flutter_getx/tab_bar/controllers/tab_controller.dart';
 import 'package:flutter_getx/tab_bar/widgets/blog_card_widget.dart';
@@ -12,16 +12,16 @@ import 'package:flutter_getx/tab_bar/widgets/home_widget.dart';
 import 'package:flutter_getx/utils/dimensions.dart';
 import 'package:get/get.dart';
 
-class ValleyHomeTab extends StatefulWidget {
-  const ValleyHomeTab({super.key});
+class OuterExploreTabViewWidget extends StatefulWidget {
+  const OuterExploreTabViewWidget({super.key});
 
   @override
-  State<ValleyHomeTab> createState() => _ValleyHomeTabState();
+  State<OuterExploreTabViewWidget> createState() => _OuterExploreTabViewWidgetState();
 }
 
 
 
-class _ValleyHomeTabState extends State<ValleyHomeTab> with SingleTickerProviderStateMixin {
+class _OuterExploreTabViewWidgetState extends State<OuterExploreTabViewWidget> with SingleTickerProviderStateMixin {
 
   late TabController _tabController;
 
@@ -46,6 +46,7 @@ class _ValleyHomeTabState extends State<ValleyHomeTab> with SingleTickerProvider
   Widget build(BuildContext context) {
     return SafeArea(
       child: CustomScrollView(
+        physics: const NeverScrollableScrollPhysics(),
           slivers: [
 
             SliverOverlapInjector(
@@ -56,7 +57,7 @@ class _ValleyHomeTabState extends State<ValleyHomeTab> with SingleTickerProvider
             SliverToBoxAdapter(
               child: CustomHeaderSingleChildListViewWidget(
                 backgroundColor: Theme.of(context).primaryColor.withValues(alpha: 0.1),
-                headerWidget: Row(
+                headerWidget: const Row(
                   children: [
                     Text("One Time Deal"),
                   ],
@@ -102,15 +103,13 @@ class _ValleyHomeTabState extends State<ValleyHomeTab> with SingleTickerProvider
               ),
             )),
       
-            SliverPersistentHeader(
-              pinned: true,
-              delegate: SliverHeaderDelegate(
-                height: 120,
-                child: const SizedBox(),
-              ),
-            ),
-      
-            TabBarValleyHomeWidget(tabController: _tabController, tabs: tabs),
+            // SliverPersistentHeader(
+            //   pinned: true,
+            //   delegate: SliverHeaderDelegate(
+            //     height: 120,
+            //     child: const SizedBox(),
+            //   ),
+            // ),
       
             SliverFillRemaining(
               child: TabBarView(

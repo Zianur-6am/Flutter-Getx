@@ -1,145 +1,151 @@
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+
+class MainScreen extends StatefulWidget {
+  @override
+  _MainScreenState createState() => _MainScreenState();
+}
+
+class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
+  late TabController _tabController;
+  late ScrollController _scrollController;
+  bool _isLoading = false;
+  List<String> _items = List.generate(20, (index) => "Item ${index + 1}");
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: 3, vsync: this);  // 3 tabs
+    _scrollController = ScrollController()..addListener(_scrollListener);
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+  // This function will trigger the loading of new items when the user scrolls to the bottom.
+  void _scrollListener() {
+    if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent && !_isLoading) {
+      _loadMoreItems();
+    }
+  }
+
+  // Simulate loading more data with a time delay and show a loading indicator.
+  Future<void> _loadMoreItems() async {
+    setState(() {
+      _isLoading = true;
+    });
+    // Simulate a delay (like making an API call)
+    await Future.delayed(Duration(seconds: 2));
+    List<String> newItems = List.generate(10, (index) => "Item ${_items.length + index + 1}");
+    setState(() {
+      _isLoading = false;
+      _items.addAll(newItems);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 2,
-      child: Scaffold(
-        body: NestedScrollView(
-          floatHeaderSlivers: false, // Ensures headers work correctly
-          physics: const ClampingScrollPhysics(),
-          headerSliverBuilder: (context, innerBoxIsScrolled) => [
-            _buildWelcomeBanner(), // Scrolls away
-            _buildSearchBox(), // Pinned
-            _buildTabBar(), // Pinned
-          ],
-          body: TabBarView(
-            children: [
-              _buildTabContent(), // Each tab has a pinned inner header
-              _buildTabContent(),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  /// **Welcome Banner (Scrolls away)**
-  Widget _buildWelcomeBanner() {
-    return SliverToBoxAdapter(
-      child: Container(
-        color: Colors.blue,
-        height: 150,
-        alignment: Alignment.center,
-        child: const Text(
-          'Welcome Banner',
-          style: TextStyle(color: Colors.white, fontSize: 24),
-        ),
-      ),
-    );
-  }
-
-  /// **Search Box (Pinned)**
-  Widget _buildSearchBox() {
-    return SliverPersistentHeader(
-      pinned: true,
-      delegate: _SliverHeaderDelegate(
-        height: 60,
-        child: Container(
-          color: Colors.white,
-          padding: const EdgeInsets.all(10),
-          child: TextField(
-            decoration: InputDecoration(
-              hintText: 'Search...',
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
+    return Scaffold(
+      body: NestedScrollView(
+        headerSliverBuilder: (context, innerBoxIsScrolled) {
+          return [
+            SliverAppBar(
+              pinned: true,
+              floating: false,
+              expandedHeight: 150.0,
+              flexibleSpace: FlexibleSpaceBar(
+                background: Container(
+                  color: Colors.blue,
+                  child: Center(
+                    child: Text(
+                      'Header Content',
+                      style: TextStyle(color: Colors.white, fontSize: 24),
+                    ),
+                  ),
+                ),
               ),
-              prefixIcon: const Icon(Icons.search),
+            ),
+            SliverPersistentHeader(
+              pinned: true,
+              delegate: _SliverTabBarDelegate(
+                TabBar(
+                  controller: _tabController,
+                  tabs: [
+                    Tab(text: "Home"),
+                    Tab(text: "Trending"),
+                    Tab(text: "Profile"),
+                  ],
+                ),
+              ),
+            ),
+          ];
+        },
+        body: TabBarView(
+          controller: _tabController,
+          children: [
+            _buildTabContent("Home Screen", Colors.red),
+            _buildTabContent("Trending Screen", Colors.green),
+            _buildTabContent("Profile Screen", Colors.orange),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildTabContent(String title, Color color) {
+    return CustomScrollView(
+      controller: _scrollController,
+      slivers: [
+        SliverToBoxAdapter(
+          child: Container(
+            padding: EdgeInsets.all(16),
+            child: Text(
+              title,
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
           ),
         ),
-      ),
-    );
-  }
-
-  /// **TabBar (Pinned)**
-  Widget _buildTabBar() {
-    return SliverPersistentHeader(
-      pinned: true,
-      delegate: _SliverHeaderDelegate(
-        height: 50,
-        child: Container(
-          color: Colors.white,
-          child: const TabBar(
-            tabs: [
-              Tab(text: 'Tab 1'),
-              Tab(text: 'Tab 2'),
-            ],
+        SliverList(
+          delegate: SliverChildBuilderDelegate(
+                (context, index) {
+              return ListTile(title: Text(_items[index]));
+            },
+            childCount: _items.length,
           ),
         ),
-      ),
-    );
-  }
-
-  /// **Tab Content with Pinned Middle Header**
-  Widget _buildTabContent() {
-    return NestedScrollView(
-      floatHeaderSlivers: false,
-      physics: const ClampingScrollPhysics(),
-      headerSliverBuilder: (context, innerBoxIsScrolled) => [
-        _buildMiddlePersistentHeader(), // Middle pinned header
+        if (_isLoading)
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 16),
+              child: Center(child: CircularProgressIndicator()),
+            ),
+          ),
       ],
-      body: ListView.builder(
-        itemCount: 50, // Ensure enough content for scrolling
-        itemBuilder: (context, index) => ListTile(
-          title: Text('Item $index'),
-        ),
-      ),
-    );
-  }
-
-  /// **Pinned Middle Header (Inside Each Tab)**
-  Widget _buildMiddlePersistentHeader() {
-    return SliverPersistentHeader(
-      pinned: true,
-      delegate: _SliverHeaderDelegate(
-        height: 60,
-        child: Container(
-          color: Colors.green,
-          alignment: Alignment.center,
-          child: const Text(
-            'Middle Header',
-            style: TextStyle(color: Colors.white, fontSize: 20),
-          ),
-        ),
-      ),
     );
   }
 }
 
-/// **Sliver Header Delegate**
-class _SliverHeaderDelegate extends SliverPersistentHeaderDelegate {
-  final Widget child;
-  final double height;
+/// SliverPersistentHeader Delegate for TabBar
+class _SliverTabBarDelegate extends SliverPersistentHeaderDelegate {
+  final TabBar tabBar;
 
-  _SliverHeaderDelegate({required this.child, this.height = 60});
-
-  @override
-  double get minExtent => height;
-
-  @override
-  double get maxExtent => height;
+  _SliverTabBarDelegate(this.tabBar);
 
   @override
   Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
-    return SizedBox(height: height, child: child);
+    return Container(
+      color: Colors.white,
+      child: tabBar,
+    );
   }
 
   @override
-  bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) {
-    return false;
-  }
+  double get maxExtent => tabBar.preferredSize.height;
+  @override
+  double get minExtent => tabBar.preferredSize.height;
+  @override
+  bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) => false;
 }

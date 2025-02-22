@@ -5,6 +5,7 @@ class CustomSingleChildListViewWidget extends StatelessWidget {
   final IndexedWidgetBuilder itemBuilder;
   final double itemSpacing;
   final bool directionVertical;
+  final EdgeInsetsGeometry? padding;
 
 
   const CustomSingleChildListViewWidget({
@@ -12,7 +13,8 @@ class CustomSingleChildListViewWidget extends StatelessWidget {
     required this.itemCount,
     required this.itemBuilder,
     this.itemSpacing = 8.0,
-    this.directionVertical = true, // Default spacing between items
+    this.directionVertical = true,
+    this.padding, // Default spacing between items
   });  // Passing the key to the parent constructor
 
   @override
@@ -25,18 +27,24 @@ class CustomSingleChildListViewWidget extends StatelessWidget {
     return SingleChildScrollView(
       scrollDirection: directionVertical ? Axis.vertical : Axis.horizontal,
       child: directionVertical
-          ? Column(children: List.generate(itemCount, (index) {
-        return Padding(
-          padding: EdgeInsets.only(bottom: itemSpacing),
-          child: itemBuilder(context, index),
-        );
-      }))
-          : Row(children: List.generate(itemCount, (index) {
-        return Padding(
-          padding: EdgeInsets.only(right: itemSpacing),
-          child: itemBuilder(context, index),
-        );
-      })),
+          ? Padding(
+            padding: padding ?? EdgeInsets.zero,
+            child: Column(children: List.generate(itemCount, (index) {
+                    return Padding(
+            padding: EdgeInsets.only(bottom: itemSpacing),
+            child: itemBuilder(context, index),
+                    );
+                  })),
+          )
+          : Padding(
+            padding: padding ?? EdgeInsets.zero,
+            child: Row(children: List.generate(itemCount, (index) {
+                    return Padding(
+            padding: EdgeInsets.only(right: itemSpacing),
+            child: itemBuilder(context, index),
+                    );
+                  })),
+          ),
     );
   }
 }

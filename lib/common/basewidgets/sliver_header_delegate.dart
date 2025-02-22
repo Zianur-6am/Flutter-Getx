@@ -15,10 +15,7 @@ class SliverHeaderDelegate extends SliverPersistentHeaderDelegate {
   @override
   Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
 
-    return Align(
-      alignment: Alignment.center,
-        child: SizedBox(height: height, child: child),
-    );
+    return SizedBox(height: height, child: child);
   }
 
   @override

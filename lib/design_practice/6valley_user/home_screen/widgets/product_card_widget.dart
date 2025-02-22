@@ -5,67 +5,102 @@ import 'package:flutter_getx/utils/images.dart';
 
 class ProductCardWidget extends StatelessWidget {
   final double imageHeight;
-  final double imageWeight;
+  final double imageWidth;
+  final EdgeInsetsGeometry? margin;
+  final String? productImage;
 
   const ProductCardWidget({
     super.key,
-    this.imageHeight = 120,
-    this.imageWeight = 120,
+    this.imageHeight = 150,
+    this.imageWidth = 150,
+    this.margin,
+    this.productImage,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      constraints: BoxConstraints(maxWidth: MediaQuery.sizeOf(context).width * 0.35),
-      margin: const EdgeInsets.only(right: 20),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-            blurRadius: 6,
-            color: Colors.black.withValues(alpha: .07),
-          )
-        ],
-      ),
-      child: const Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Stack(children: [
-          
-          ClipRRect(
-            borderRadius: BorderRadius.all(Radius.circular(10)),
-              child: CustomAssetImageWidget(Images.laptop, fit: BoxFit.cover, height: 120, width: double.infinity)),
-
-          Positioned(
-            bottom: 5,
-            right: 5,
-            child: CustomAssetImageWidget(Images.favoriteIcon),
-          ),
-        ]),
-
-        Padding(
-          padding: EdgeInsets.all(8.0),
-          child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Text('Top Benefits of Using a POS System sdfds sdf sd fd sd s s dds fsda  sf',
-                style: TextStyle(fontSize: 12, fontWeight: FontWeight.w400),
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
+      constraints: BoxConstraints(maxWidth: MediaQuery.sizeOf(context).width * 0.41),
+      // padding: margin ?? const EdgeInsets.only(right: 10),
+      // decoration: BoxDecoration(
+      //   borderRadius: BorderRadius.circular(10),
+      //   color: Colors.white,
+      //   boxShadow: [
+      //     BoxShadow(
+      //       blurRadius: 6,
+      //       color: Colors.black.withValues(alpha: .07),
+      //     )
+      //   ],
+      // ),
+      child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
+        Stack(
+          children: [
+            ClipRRect(
+              borderRadius: const BorderRadius.all(Radius.circular(10)),
+              child: CustomAssetImageWidget(
+                productImage ??
+                Images.girlImage,
+                fit: BoxFit.cover,
+                height: imageHeight,
+                width: double.infinity,
               ),
-              SizedBox(height: Dimensions.paddingSizeSmall),
+            ),
 
-              Text('TK 3237.87', maxLines: 1, overflow: TextOverflow.ellipsis),
-
-              Row(children: [
-                Text('1100',
-                  style: TextStyle(fontSize: 12, fontWeight: FontWeight.w400, decoration: TextDecoration.lineThrough),
-                ),
-                SizedBox(height: Dimensions.paddingSizeSmall),
-
-                Text('-10%',
-                  style: TextStyle(fontSize: 12, fontWeight: FontWeight.w400, color: Colors.red),
-                ),
-              ]),
-            ]),
+            // Position the favorite icon directly
+            const Positioned(
+              right: -8,    // Adjust padding from right
+              bottom: -8,    // Adjust padding from bottom
+              child: CustomAssetImageWidget(
+                Images.favoriteIcon,
+                height: 50,
+                width: 50,
+              ),
+            ),
+          ],
         ),
+        const SizedBox(height: Dimensions.paddingSizeSmall),
+
+        Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          const Text('Top Benefits of Using a POS System sdfds sdf sd fd sd s s dds fsda  sf',
+            style: TextStyle(fontSize: 12, fontWeight: FontWeight.w400),
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+          ),
+          SizedBox(height: Dimensions.paddingSizeSmall),
+
+          const Text('TK 3237.87',
+            style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700),
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+          ),
+          SizedBox(height: Dimensions.paddingSizeSmall),
+
+          Row(children: [
+            const Text('1100',
+              style: TextStyle(fontSize: 12, fontWeight: FontWeight.w400, decoration: TextDecoration.lineThrough),
+            ),
+            SizedBox(width: Dimensions.paddingSizeSmall),
+
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 2),
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.red.withValues(alpha: 0.20), width: 1),
+                borderRadius: BorderRadius.circular(5),
+                color: Colors.red.withValues(alpha: 0.05),
+                // boxShadow: [
+                //   BoxShadow(
+                //     blurRadius: 6,
+                //     color: Colors.black.withValues(alpha: .07),
+                //   )
+                // ],
+              ),
+              child: const Text('-10%',
+                style: TextStyle(fontSize: 12, fontWeight: FontWeight.w400, color: Colors.red),
+              ),
+            ),
+
+          ]),
+        ]),
       ]),
     );
   }

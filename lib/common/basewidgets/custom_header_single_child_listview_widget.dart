@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_getx/utils/dimensions.dart';
 
 class CustomHeaderSingleChildListViewWidget extends StatelessWidget {
   final int itemCount;
@@ -37,6 +38,7 @@ class CustomHeaderSingleChildListViewWidget extends StatelessWidget {
         children: [
 
           headerWidget,
+          const SizedBox(height: Dimensions.paddingSizeSmall),
 
           Flexible(
             child: SingleChildScrollView(

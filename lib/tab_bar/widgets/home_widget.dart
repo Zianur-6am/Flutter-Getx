@@ -29,7 +29,7 @@ class _HomeTabState extends State<HomeTab> {
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
-        // physics: const NeverScrollableScrollPhysics(),
+        physics: const NeverScrollableScrollPhysics(),
         slivers: [
           GetBuilder<HomeController>(builder: (homeController){
             return homeController.blogCount != 0 ?
