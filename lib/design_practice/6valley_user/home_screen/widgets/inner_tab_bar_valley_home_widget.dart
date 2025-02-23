@@ -19,12 +19,14 @@ class InnerTabBarValleyHomeWidget extends StatelessWidget {
         ),
         borderRadius: BorderRadius.circular(5),
         color: selectedTab ? Theme.of(context).primaryColor : Theme.of(context).hintColor.withValues(alpha: 0.5),
+
         // boxShadow: [
         //   BoxShadow(
         //     blurRadius: 6,
         //     color: Colors.black.withValues(alpha: .07),
         //   )
         // ],
+
       ),
       child: Center(child: Text(title, style: TextStyle(color: selectedTab ? Theme.of(context).cardColor : Theme.of(context).hintColor.withValues(alpha: .5)),)),
     );

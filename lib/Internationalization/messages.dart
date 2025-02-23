@@ -11,7 +11,22 @@ class Messages extends Translations{
       'general_info' : 'General Info',
       'variation_setup' : 'Variation Setup',
       'product_seo' : 'Product Seo',
-      'add_product' : 'Add Product'
+      'add_product' : 'Add Product',
+      'new_user_exclusive' : 'New User Exclusive',
+      'view_all' : 'View All',
+      'top_stores' : 'Top Stores',
+      'what_are_you_looking_for' : 'What are you looking for?',
+      'one_time_deal' : 'One Time Deal',
+      'product_name' : 'Top Benefits of Using a POS System',
+      'new_user_exclusive' : 'New User Exclusive',
+      'new_user_exclusive' : 'New User Exclusive',
+      'new_user_exclusive' : 'New User Exclusive',
+      'new_user_exclusive' : 'New User Exclusive',
+      'new_user_exclusive' : 'New User Exclusive',
+      'new_user_exclusive' : 'New User Exclusive',
+      'new_user_exclusive' : 'New User Exclusive',
+      'new_user_exclusive' : 'New User Exclusive',
+
     },
     'hi_IN' : {
       'hello' : 'आप कैसे हैं?',

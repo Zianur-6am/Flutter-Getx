@@ -13,8 +13,9 @@ class ValleyHomeCarouselSliderWidget extends StatefulWidget {
 class _ValleyHomeCarouselSliderWidgetState extends State<ValleyHomeCarouselSliderWidget> {
   final List<String> imgList = [
     Images.girlImage,
-    Images.laptop,
     Images.blogImage,
+    Images.bagIcon,
+    Images.laptop,
   ];
 
   int _current = 0;
@@ -24,13 +25,13 @@ class _ValleyHomeCarouselSliderWidgetState extends State<ValleyHomeCarouselSlide
     return Column(
       children: [
         Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.symmetric(horizontal: 8),
           child: CarouselSlider(
             items: imgList.map((img) {
               return Container(
                 margin: const EdgeInsets.all(5.0),
                 child: ClipRRect(
-                  borderRadius: BorderRadius.circular(8.0),
+                  borderRadius: BorderRadius.circular(5),
                   child: CustomAssetImageWidget(img, fit: BoxFit.cover, width: double.infinity),
                 ),
               );
@@ -46,6 +47,7 @@ class _ValleyHomeCarouselSliderWidgetState extends State<ValleyHomeCarouselSlide
           ),
         ),
         Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
           children: imgList.asMap().entries.map((entry) {
             return Container(

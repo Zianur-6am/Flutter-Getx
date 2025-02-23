@@ -78,7 +78,7 @@ class TopStoresCardWidget extends StatelessWidget {
 
                   Expanded(child: SizedBox()),
 
-                  Text('12, reviews')
+                  Text('12 reviews')
                 ]),
                 const SizedBox(height: 5)
               ]),

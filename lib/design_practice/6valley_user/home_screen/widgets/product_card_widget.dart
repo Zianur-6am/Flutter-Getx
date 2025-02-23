@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_getx/common/basewidgets/custom_asset_image_widget.dart';
 import 'package:flutter_getx/utils/dimensions.dart';
 import 'package:flutter_getx/utils/images.dart';
+import 'package:get/get_utils/src/extensions/internacionalization.dart';
 
 class ProductCardWidget extends StatelessWidget {
   final int? index;
@@ -28,7 +29,12 @@ class ProductCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      constraints: BoxConstraints(maxWidth: MediaQuery.sizeOf(context).width * 0.41, minHeight: isHorizontalList ? 250 : 0),
+      constraints: BoxConstraints(
+          maxWidth: MediaQuery.sizeOf(context).width * 0.41,
+          minHeight: isHorizontalList ? 250 : 0,
+      ),
+
+
       // padding: margin ?? const EdgeInsets.only(right: 10),
       // decoration: BoxDecoration(
       //   borderRadius: BorderRadius.circular(10),
@@ -40,7 +46,12 @@ class ProductCardWidget extends StatelessWidget {
       //     )
       //   ],
       // ),
-      child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
+
+
+      child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
         Stack(
           children: [
             ClipRRect(
@@ -77,25 +88,28 @@ class ProductCardWidget extends StatelessWidget {
         const SizedBox(height: Dimensions.paddingSizeSmall),
 
         Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          const Text('Top Benefits of Using a POS System sdfds sdf sd fd sd s s dds fsda  sf',
-            style: TextStyle(fontSize: 12, fontWeight: FontWeight.w400),
+
+          Text('product_name'.tr,
+            style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w400),
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
           ),
           const SizedBox(height: 5),
 
           if((index ?? 3) % 3 == 0)
-            const Column(mainAxisSize: MainAxisSize.min, children: [
+            Column(mainAxisSize: MainAxisSize.min, children: [
               Row(children: [
-                Icon(Icons.star, color: Colors.orange, size: 16),
-                SizedBox(width: 5),
+                const Icon(Icons.star, color: Colors.orange, size: 16),
+                const SizedBox(width: 5),
 
-                Text('4.5', style: TextStyle(fontSize: 12))
+                const Text('4.5', style: TextStyle(fontSize: 12)),
+                const SizedBox(width: 5,),
+
+                Text('(12 reviews)', style: TextStyle(fontSize: 12, color: Theme.of(context).hintColor))
               ]),
 
               SizedBox(height: 5),
             ]),
-
 
           const Text('TK 3237.87',
             style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700),

@@ -8,7 +8,6 @@ import 'package:flutter_getx/design_practice/6valley_user/home_screen/controller
 import 'package:flutter_getx/common/enum/valley_home_enum.dart';
 import 'package:flutter_getx/design_practice/6valley_user/home_screen/widgets/inner_new_arrivals_tab_view_widget.dart';
 import 'package:flutter_getx/design_practice/6valley_user/home_screen/widgets/product_card_widget.dart';
-import 'package:flutter_getx/design_practice/6valley_user/home_screen/widgets/outer_explore_tab_view_widget.dart';
 import 'package:flutter_getx/design_practice/6valley_user/home_screen/widgets/top_stores_card_widget.dart';
 import 'package:flutter_getx/design_practice/6valley_user/home_screen/widgets/valley_home_carousel_slider_widget.dart';
 import 'package:flutter_getx/design_practice/6valley_user/home_screen/widgets/welcome_banner_widget.dart';
@@ -96,7 +95,7 @@ class _ValleyHomeScreenState extends State<ValleyHomeScreen>
               SliverPersistentHeader(
                 pinned: true,
                 delegate: SliverHeaderDelegate(
-                  // height: 50,
+                  height: 51,
                   child: Container(
                     color: Theme.of(context).primaryColor,
                     child: Column(
@@ -183,16 +182,16 @@ class _ValleyHomeScreenState extends State<ValleyHomeScreen>
                 /// New User Exclusive
                 SliverToBoxAdapter(
                   child: CustomHeaderSingleChildListViewWidget(
-                    headerWidget: const Row(
+                    headerWidget: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'New User Exclusive',
-                          style: TextStyle(
+                          'new_user_exclusive'.tr,
+                          style: const TextStyle(
                               fontWeight: FontWeight.w700, fontSize: 14),
                         ),
                         Text(
-                          'View All',
+                          'view_all'.tr,
                           style: TextStyle(fontSize: 12),
                         )
                       ],
@@ -208,16 +207,16 @@ class _ValleyHomeScreenState extends State<ValleyHomeScreen>
                 /// Top Stores
                 SliverToBoxAdapter(
                   child: CustomHeaderSingleChildListViewWidget(
-                    headerWidget: const Row(
+                    headerWidget: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'Top Stores',
-                          style: TextStyle(
+                          'Top Stores'.tr,
+                          style: const TextStyle(
                               fontWeight: FontWeight.w700, fontSize: 14),
                         ),
                         Text(
-                          'View All',
+                          'view_all'.tr,
                           style: TextStyle(fontSize: 12),
                         )
                       ],
@@ -342,7 +341,7 @@ class CustomSearchWidget extends StatelessWidget {
       color: Theme.of(context).cardColor,
       child: TextField(
         decoration: InputDecoration(
-          hintText: "What are you looking for?",
+          hintText: "what_are_you_looking_for".tr,
           hintStyle: const TextStyle(color: Colors.grey),
           suffixIcon: Container(
             margin: const EdgeInsets.only(top: 5, right: 5, bottom: 5),
