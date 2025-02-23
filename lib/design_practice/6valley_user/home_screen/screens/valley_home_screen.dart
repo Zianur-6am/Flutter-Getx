@@ -168,6 +168,7 @@ class _ValleyHomeScreenState extends State<ValleyHomeScreen>
                       },
                     ),
                   ),
+                  const SliverToBoxAdapter(child: SizedBox(height: 20)),
       
                   /// carousel slider
                   const SliverToBoxAdapter(

@@ -51,8 +51,8 @@ class _ValleyHomeCarouselSliderWidgetState extends State<ValleyHomeCarouselSlide
           mainAxisAlignment: MainAxisAlignment.center,
           children: imgList.asMap().entries.map((entry) {
             return Container(
-              width: 8.0,
-              height: 8.0,
+              width: 5,
+              height: 5,
               margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
