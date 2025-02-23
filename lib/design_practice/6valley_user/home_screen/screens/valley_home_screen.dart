@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_getx/common/basewidgets/custom_asset_image_widget.dart';
 import 'package:flutter_getx/common/basewidgets/custom_header_single_child_listview_widget.dart';
+import 'package:flutter_getx/common/basewidgets/custom_paginated_list_widget.dart';
 import 'package:flutter_getx/common/basewidgets/dummy_widget.dart';
 import 'package:flutter_getx/common/basewidgets/sliver_header_delegate.dart';
 import 'package:flutter_getx/design_practice/6valley_user/home_screen/controllers/valley_home_controller.dart';
-import 'package:flutter_getx/common/valley_home_enum.dart';
+import 'package:flutter_getx/common/enum/valley_home_enum.dart';
 import 'package:flutter_getx/design_practice/6valley_user/home_screen/widgets/inner_new_arrivals_tab_view_widget.dart';
 import 'package:flutter_getx/design_practice/6valley_user/home_screen/widgets/product_card_widget.dart';
 import 'package:flutter_getx/design_practice/6valley_user/home_screen/widgets/outer_explore_tab_view_widget.dart';
@@ -15,6 +16,7 @@ import 'package:flutter_getx/helper/tab_class.dart';
 import 'package:flutter_getx/tab_bar/widgets/home_widget.dart';
 import 'package:flutter_getx/utils/dimensions.dart';
 import 'package:flutter_getx/utils/images.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
 
 class ValleyHomeScreen extends StatefulWidget {
@@ -49,8 +51,6 @@ class _ValleyHomeScreenState extends State<ValleyHomeScreen>
     _tabController = TabController(length: tabs.length, vsync: this);
     _tabController2 = TabController(length: innerTabs.length, vsync: this);
 
-    _scrollController.addListener(_scrollListener);
-
     // Add listener to update UI when tab index changes
     _tabController.addListener(() {
       setState(() {});
@@ -60,29 +60,6 @@ class _ValleyHomeScreenState extends State<ValleyHomeScreen>
       if (!_tabController2.indexIsChanging) {
         _tabIndexNotifier.value = _tabController2.index;
       }
-    });
-  }
-
-  void _scrollListener() {
-    print('-------inside scroll controller------------');
-    if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent && !_isLoading) {
-      _loadMoreItems();
-    }
-  }
-
-  Future<void> _loadMoreItems() async {
-    print('-------inside load------------');
-    setState(() {
-      _isLoading = true;
-    });
-    // Simulate a delay (like making an API call)
-    await Future.delayed(Duration(seconds: 2));
-    List<String> newItems = List.generate(10, (index) => "Item ${_items.length + index + 1}");
-    setState(() {
-      _isLoading = false;
-      _items.addAll(newItems);
-
-      valleyHomeController.updateItemCount(count: _items.length);
     });
   }
 
@@ -295,7 +272,43 @@ class _ValleyHomeScreenState extends State<ValleyHomeScreen>
             controller: _tabController2,
             children: [
 
-              const InnerNewArrivalsTabViewWidget(),
+              GetBuilder<ValleyHomeController>(
+                  builder: (valleyHomeController) {
+                    return PaginatedListWidget(
+                      onPaginate: (int? offset) async {
+                        await valleyHomeController.getItem();
+                      },
+                      scrollController: _scrollController,
+                      offset: 1,
+                      totalSize: valleyHomeController.totalSize,
+                      builder: (loaderWidget){
+                        return Expanded(
+                          child: Column(mainAxisSize: MainAxisSize.min,children: [
+                            Expanded(
+                              child: Padding(
+                                padding: const EdgeInsets.all(10),
+                                child: MasonryGridView.builder(
+                                  gridDelegate: const SliverSimpleGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 2,
+                                  ),
+                                  mainAxisSpacing: 12, // Space between rows
+                                  crossAxisSpacing: 12,
+                                  // shrinkWrap: true,
+                                  itemCount: valleyHomeController.items.length,
+                                  itemBuilder: (context, index) {
+                                    return const ProductCardWidget(margin: EdgeInsets.zero,);
+                                  },
+                                ),
+                              ),
+                            ),
+
+                            loaderWidget,
+                          ]),
+                        );
+                      },
+                    );
+                  }
+              ),
 
               DummyWidget(text: 'Tab ${_tabController.index}'),
 
