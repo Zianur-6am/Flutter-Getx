@@ -78,7 +78,7 @@ class MyApp extends StatelessWidget {
             GetPage(name: '/scroll_1', page: () => const ValleyHomeScreen()),
             GetPage(name: '/scroll_2', page: () => const ValleyHomeScreen()),
             GetPage(name: '/scroll_3', page: () => const ValleyHomeScreen()),
-            // GetPage(name: '/explore', page: () => PaginationWithTabs()),
+            GetPage(name: '/explore', page: () => const ListPage()),
           ],
           //to use unknownroute initialRoute cannot be /
           unknownRoute: GetPage(name: '/notfound', page: () => const UnknownRoute()),
