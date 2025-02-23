@@ -11,22 +11,41 @@ class InnerNewArrivalsTabViewWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<ValleyHomeController>(
-      builder: (valleyHomeController) {
-        return Padding(
-          padding: const EdgeInsets.all(10),
-          child: MasonryGridView.builder(
-            gridDelegate: const SliverSimpleGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-            ),
-            mainAxisSpacing: 12, // Space between rows
-            crossAxisSpacing: 12,
-            itemCount: valleyHomeController.items.length,
-            itemBuilder: (context, index) {
-              return const ProductCardWidget(margin: EdgeInsets.zero,);
+        builder: (valleyHomeController) {
+          return PaginatedListWidget(
+            onPaginate: (int? offset) async {
+              await valleyHomeController.getItem();
             },
-          ),
-        );
-      }
+            // scrollController: _scrollController,
+            offset: 1,
+            totalSize: valleyHomeController.totalSize,
+            builder: (loaderWidget){
+              return Flexible(
+                child: Column(mainAxisSize: MainAxisSize.min,children: [
+                  Flexible(
+                    child: Padding(
+                      padding: const EdgeInsets.all(10),
+                      child: MasonryGridView.builder(
+                        gridDelegate: const SliverSimpleGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                        ),
+                        mainAxisSpacing: 12, // Space between rows
+                        crossAxisSpacing: 12,
+                        // shrinkWrap: true,
+                        itemCount: valleyHomeController.items.length,
+                        itemBuilder: (context, index) {
+                          return const ProductCardWidget(margin: EdgeInsets.zero,);
+                        },
+                      ),
+                    ),
+                  ),
+
+                  loaderWidget,
+                ]),
+              );
+            },
+          );
+        }
     );
   }
 }

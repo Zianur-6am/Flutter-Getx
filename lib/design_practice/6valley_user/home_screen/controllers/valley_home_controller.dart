@@ -19,7 +19,7 @@ class ValleyHomeController extends GetxController implements GetxService{
   Future<void> getItem() async {
 
     /// if all item has been fetched
-    if(offset > (totalSize / limit)) return;
+    if(offset >= (totalSize / limit)) return;
 
     _isLoading = true;
 
