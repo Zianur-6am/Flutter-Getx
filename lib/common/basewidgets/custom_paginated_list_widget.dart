@@ -3,7 +3,7 @@ import 'package:flutter_getx/helper/responsive_helper.dart';
 import 'package:flutter_getx/utils/dimensions.dart';
 
 class PaginatedListWidget extends StatefulWidget {
-  final ScrollController scrollController;
+  final ScrollController? scrollController;
   final Function(int? offset) onPaginate;
   final int? totalSize;
   final int? offset;
@@ -14,7 +14,7 @@ class PaginatedListWidget extends StatefulWidget {
   final bool enabledPagination;
   final bool reverse;
   const PaginatedListWidget({
-    super.key, required this.scrollController, required this.onPaginate, required this.totalSize,
+    super.key, this.scrollController, required this.onPaginate, required this.totalSize,
     required this.offset, required this.builder, this.enabledPagination = true, this.reverse = false, this.limit = 10,
     this.isDisableWebLoader = false,
   });
@@ -36,14 +36,19 @@ class _PaginatedListWidgetState extends State<PaginatedListWidget> {
     _offset = 1;
     _offsetList = [1];
 
-    widget.scrollController.addListener(() {
-      if (widget.scrollController.position.pixels == widget.scrollController.position.maxScrollExtent
-          && widget.totalSize != null && !_isLoading && widget.enabledPagination) {
-        if(mounted && !ResponsiveHelper.isDesktop(context)) {
-          _paginate();
+    if(widget.scrollController != null) {
+      widget.scrollController?.addListener(() {
+
+        if (widget.scrollController?.position.pixels == widget.scrollController?.position.maxScrollExtent
+            && widget.totalSize != null && !_isLoading && widget.enabledPagination) {
+
+          if(mounted) {
+
+            _paginate();
+          }
         }
-      }
-    });
+      });
+    }
   }
 
   void _paginate() async {
@@ -87,30 +92,45 @@ class _PaginatedListWidgetState extends State<PaginatedListWidget> {
             || _offsetList.contains(_offset!+1)));
 
 
-    return Column(children: [
+    return _OnNotificationListenerWidget(
+      isEnabled: widget.scrollController == null,
+      onNotification: (scrollNotification){
+        if (scrollNotification!.metrics.pixels >= scrollNotification.metrics.maxScrollExtent
+            && widget.totalSize != null && !_isLoading && widget.enabledPagination) {
+          if(mounted) {
+            _paginate();
+          }
+        }
+      },
+      child: Column(children: [
 
-      widget.reverse ? const SizedBox() : widget.builder(_LoadingWidget(
-        onTap: _paginate,
-        isLoading: _isLoading,
-        totalSize: widget.totalSize,
-        isDisabledLoader: _isDisableLoader,
-      )),
+        widget.reverse ? const SizedBox() : widget.builder(_LoadingWidget(
+          onTap: _paginate,
+          isLoading: _isLoading,
+          totalSize: widget.totalSize,
+          isDisabledLoader: _isDisableLoader,
+        )),
 
-      if(widget.isDisableWebLoader) _LoadingWidget(
-        onTap: _paginate,
-        isLoading: _isLoading,
-        totalSize: widget.totalSize,
-        isDisabledLoader: _isDisableLoader,
-      ),
+        if(widget.isDisableWebLoader) _LoadingWidget(
+          onTap: _paginate,
+          isLoading: _isLoading,
+          totalSize: widget.totalSize,
+          isDisabledLoader: _isDisableLoader,
+        ),
 
-      widget.reverse ? widget.builder(_LoadingWidget(
-        onTap: _paginate,
-        isLoading: _isLoading,
-        totalSize: widget.totalSize,
-        isDisabledLoader: _isDisableLoader,
-      )) : const SizedBox(),
+        widget.reverse ? widget.builder(_LoadingWidget(
+          onTap: _paginate,
+          isLoading: _isLoading,
+          totalSize: widget.totalSize,
+          isDisabledLoader: _isDisableLoader,
+        )) : const SizedBox(),
 
-    ]);
+      ]),
+    );
+
+
+
+
   }
 
 }

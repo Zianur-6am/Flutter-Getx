@@ -278,7 +278,7 @@ class _ValleyHomeScreenState extends State<ValleyHomeScreen>
                       onPaginate: (int? offset) async {
                         await valleyHomeController.getItem();
                       },
-                      scrollController: _scrollController,
+                      // scrollController: _scrollController,
                       offset: 1,
                       totalSize: valleyHomeController.totalSize,
                       builder: (loaderWidget){
