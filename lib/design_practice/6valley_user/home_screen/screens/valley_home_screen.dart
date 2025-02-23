@@ -92,10 +92,11 @@ class _ValleyHomeScreenState extends State<ValleyHomeScreen>
                 leadingWidth: 0,
               ),
 
+              /// Outer tabbar
               SliverPersistentHeader(
                 pinned: true,
                 delegate: SliverHeaderDelegate(
-                  height: 127,
+                  // height: 50,
                   child: Container(
                     color: Theme.of(context).primaryColor,
                     child: Column(
@@ -119,17 +120,26 @@ class _ValleyHomeScreenState extends State<ValleyHomeScreen>
                             child: Text(tab.title),
                           )).toList(),
                         ),
-
-                        const CustomSearchWidget(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: Dimensions.paddingSizeSmall,
-                              vertical: Dimensions.paddingSizeSmall),
-                        ),
                       ],
                     ),
                   ),
                 ),
               ),
+
+              /// Searchbar
+              SliverPersistentHeader(
+                pinned: true,
+                delegate: SliverHeaderDelegate(
+                  height: 70,
+                  child: const CustomSearchWidget(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: Dimensions.paddingSizeSmall,
+                      vertical: Dimensions.paddingSizeSmall,
+                    ),
+                  ),
+                ),
+              ),
+
               if (_tabController.index == 0) ...[
                 SliverToBoxAdapter(
                   child: CustomHeaderSingleChildListViewWidget(
