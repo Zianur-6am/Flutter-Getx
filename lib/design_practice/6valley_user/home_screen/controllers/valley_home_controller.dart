@@ -1,11 +1,11 @@
 import 'package:get/get.dart';
 
 class ValleyHomeController extends GetxController implements GetxService{
-  int _selectedTabIndex = 0;
-  int get selectedTabIndex => _selectedTabIndex;
+  int _itemCount = 10;
+  int get itemCount => _itemCount;
 
-  void updateTabIndex({required int index, bool isUpdate = true}){
-    _selectedTabIndex = index;
+  void updateItemCount({required int count, bool isUpdate = true}){
+    _itemCount = count;
 
     if(isUpdate){
       update();
