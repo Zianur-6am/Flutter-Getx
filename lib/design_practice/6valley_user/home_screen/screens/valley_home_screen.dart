@@ -158,7 +158,7 @@ class _ValleyHomeScreenState extends State<ValleyHomeScreen>
                     directionVertical: false,
                     itemCount: 10,
                     itemBuilder: (context, index) {
-                      return const ProductCardWidget();
+                      return ProductCardWidget(index: index);
                     },
                   ),
                 ),
@@ -167,31 +167,18 @@ class _ValleyHomeScreenState extends State<ValleyHomeScreen>
                 const SliverToBoxAdapter(
                   child: ValleyHomeCarouselSliderWidget(),
                 ),
+                const SliverToBoxAdapter(child: SizedBox(height: 10)),
 
-                /// Top Products
-                SliverToBoxAdapter(
-                  child: CustomHeaderSingleChildListViewWidget(
-                    headerWidget: const Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          'Top Products',
-                          style: TextStyle(
-                              fontWeight: FontWeight.w700, fontSize: 14),
-                        ),
-                        Text(
-                          'View All',
-                          style: TextStyle(fontSize: 12),
-                        )
-                      ],
-                    ),
-                    directionVertical: false,
-                    itemCount: 10,
-                    itemBuilder: (context, index) {
-                      return const TopStoresCardWidget();
-                    },
+
+                /// poster - perfect wash
+                const SliverToBoxAdapter(child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeSmall, vertical: Dimensions.paddingSizeSmall),
+                  child: ClipRRect(
+                      borderRadius: BorderRadius.all(Radius.circular(5)),
+                      child: CustomAssetImageWidget(Images.bestWash, height: 120, fit: BoxFit.cover),
                   ),
-                ),
+                )),
+
 
                 /// New User Exclusive
                 SliverToBoxAdapter(
@@ -213,14 +200,48 @@ class _ValleyHomeScreenState extends State<ValleyHomeScreen>
                     directionVertical: false,
                     itemCount: 10,
                     itemBuilder: (context, index) {
-                      return const ProductCardWidget(productImage: Images.bagIcon);
+                      return ProductCardWidget(index: index, isNewProduct: true);
                     },
                   ),
                 ),
 
-                const SliverToBoxAdapter(child: SizedBox(height: 20)),
+                /// Top Stores
+                SliverToBoxAdapter(
+                  child: CustomHeaderSingleChildListViewWidget(
+                    headerWidget: const Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Top Stores',
+                          style: TextStyle(
+                              fontWeight: FontWeight.w700, fontSize: 14),
+                        ),
+                        Text(
+                          'View All',
+                          style: TextStyle(fontSize: 12),
+                        )
+                      ],
+                    ),
+                    directionVertical: false,
+                    itemCount: 10,
+                    itemBuilder: (context, index) {
+                      return const TopStoresCardWidget();
+                    },
+                  ),
+                ),
+                const SliverToBoxAdapter(child: SizedBox(height: 10)),
 
-                /// Inner persistent header
+                /// poster
+                const SliverToBoxAdapter(child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeSmall),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.all(Radius.circular(5)),
+                    child: CustomAssetImageWidget(Images.posterImage, height: 120, fit: BoxFit.cover),
+                  ),
+                )),
+                const SliverToBoxAdapter(child: SizedBox(height: 30)),
+
+                /// Inner persistent Tabbar
                 SliverPersistentHeader(
                   pinned: true,
                   delegate: SliverHeaderDelegate(
@@ -237,7 +258,7 @@ class _ValleyHomeScreenState extends State<ValleyHomeScreen>
                             padding: const EdgeInsets.symmetric(
                                 horizontal: Dimensions.paddingSizeMedium, vertical: 0),
                             labelPadding: const EdgeInsets.only(
-                                right: Dimensions.paddingSizeExtraLarge, bottom: 0),
+                                right: Dimensions.paddingSizeMedium, bottom: 0),
                             controller: _tabController2,
                             labelColor: Theme.of(context).cardColor,
                             unselectedLabelColor: Theme.of(context).hintColor,
@@ -257,16 +278,18 @@ class _ValleyHomeScreenState extends State<ValleyHomeScreen>
                                     borderRadius: BorderRadius.circular(8),
                                     color: selectedIndex == index
                                         ? Theme.of(context).primaryColor
-                                        : null,
+                                        : Theme.of(context).hintColor.withValues(alpha: 0.1),
                                     border: Border.all(
-                                      color: selectedIndex == index ? Theme.of(context).primaryColor : Theme.of(context).hintColor,
+                                      color: selectedIndex == index
+                                          ? Theme.of(context).primaryColor
+                                          : Theme.of(context).hintColor.withValues(alpha: 0.2),
                                       width: 1,
                                     ),
                                   ),
                                   child: Text(
                                     tab.title,
                                     style: TextStyle(
-                                      color: selectedIndex == index ? Theme.of(context).cardColor : Theme.of(context).hintColor,
+                                      color: selectedIndex == index ? Theme.of(context).cardColor : Colors.black.withValues(alpha: 0.5),
                                     ),
                                   ),
                                 ),
@@ -286,7 +309,7 @@ class _ValleyHomeScreenState extends State<ValleyHomeScreen>
             controller: _tabController2,
             children: [
 
-              InnerNewArrivalsTabViewWidget(),
+              const InnerNewArrivalsTabViewWidget(),
 
               DummyWidget(text: 'Tab ${_tabController.index}'),
 

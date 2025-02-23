@@ -17,24 +17,28 @@ extension TabItemExtension on OuterTabItem {
         return 'Electronics';
     }
   }
+
+  String get name {
+    return OuterTabItem.Explore.toString();
+  }
 }
 
 
-enum InnerTabItem {All, Home, Extra, Selection, Done}
+enum InnerTabItem {New, Discount, Top, Popular, Deals}
 
 extension InnerTabItemExtension on InnerTabItem {
   String get title {
     switch (this) {
-      case InnerTabItem.All:
-        return 'All';
-      case InnerTabItem.Home:
-        return 'Home';
-      case InnerTabItem.Extra:
-        return 'Extra';
-      case InnerTabItem.Selection:
-        return 'Selection';
-      case InnerTabItem.Done:
-        return 'Done';
+      case InnerTabItem.New:
+        return 'New Arrivals';
+      case InnerTabItem.Discount:
+        return 'Discounted Products';
+      case InnerTabItem.Top:
+        return 'Top Products';
+      case InnerTabItem.Popular:
+        return 'Popular Products';
+      case InnerTabItem.Deals:
+        return 'Best Deals';
     }
   }
 }

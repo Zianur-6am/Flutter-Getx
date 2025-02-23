@@ -34,7 +34,7 @@ class InnerNewArrivalsTabViewWidget extends StatelessWidget {
                         // shrinkWrap: true,
                         itemCount: valleyHomeController.items.length,
                         itemBuilder: (context, index) {
-                          return const ProductCardWidget(margin: EdgeInsets.zero,);
+                          return ProductCardWidget(margin: EdgeInsets.zero, index: index, isBestSeller: true, isHorizontalList: false);
                         },
                       ),
                     ),

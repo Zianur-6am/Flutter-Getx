@@ -74,6 +74,10 @@ class MyApp extends StatelessWidget {
             GetPage(name: '/blog_screen', page: () => const BlogScreen()),
             GetPage(name: '/add_product', page: () => const AddProductScreen()),
             GetPage(name: '/valley_home', page: () => const ValleyHomeScreen()),
+            GetPage(name: '/scroll_main', page: () => const ValleyHomeScreen()),
+            GetPage(name: '/scroll_1', page: () => const ValleyHomeScreen()),
+            GetPage(name: '/scroll_2', page: () => const ValleyHomeScreen()),
+            GetPage(name: '/scroll_3', page: () => const ValleyHomeScreen()),
             // GetPage(name: '/explore', page: () => PaginationWithTabs()),
           ],
           //to use unknownroute initialRoute cannot be /

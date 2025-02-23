@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_getx/common/basewidgets/custom_asset_image_widget.dart';
-import 'package:flutter_getx/utils/dimensions.dart';
 import 'package:flutter_getx/utils/images.dart';
 
 class TopStoresCardWidget extends StatelessWidget {
   final double imageHeight;
   final double imageWidth;
   final EdgeInsetsGeometry? margin;
+  final int? index;
 
   const TopStoresCardWidget({
     super.key,
     this.imageHeight = 120,
     this.imageWidth = 120,
     this.margin,
+    this.index
   });
 
   @override
@@ -56,20 +57,23 @@ class TopStoresCardWidget extends StatelessWidget {
 
                   Column(crossAxisAlignment: CrossAxisAlignment.start,children: [
                     Text('Morning Mart'),
+
                     Row(children: [
-                      Icon(Icons.star, color: Colors.yellow),
+                      Icon(Icons.star, color: Colors.orange),
                       SizedBox(width: 5),
 
                       Text('4.5')
-                    ])
-                  ])
+                    ]),
+                  ]),
                 ]),
 
-                Divider(color: Theme.of(context).hintColor),
+                Divider(color: Theme.of(context).hintColor.withValues(alpha: 0.5)),
 
                 const Row(children: [
 
-                  CustomAssetImageWidget(Images.girlImage),
+                  CustomAssetImageWidget(Images.boxIcon),
+                  SizedBox(width: 5),
+
                   Text('100 Products'),
 
                   Expanded(child: SizedBox()),

@@ -127,10 +127,6 @@ class _PaginatedListWidgetState extends State<PaginatedListWidget> {
 
       ]),
     );
-
-
-
-
   }
 
 }

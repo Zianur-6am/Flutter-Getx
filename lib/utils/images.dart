@@ -9,6 +9,9 @@ class Images {
   static const String bagIcon = 'assets/images/bag_icon.png';
   static const String topStoryImage = 'assets/images/top_story_image.png';
   static const String posterImage = 'assets/images/poster_image.png';
+  static const String bestWash = 'assets/images/best_wash.png';
+  static const String bestSeller = 'assets/images/best_selling.png';
+  static const String newProduct = 'assets/images/new_image.png';
 
   //svg
   static const String favoriteIcon = 'assets/images/svg/favorite_icon.svg';
