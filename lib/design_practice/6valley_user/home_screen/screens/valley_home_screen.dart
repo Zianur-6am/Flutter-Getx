@@ -9,6 +9,7 @@ import 'package:flutter_getx/design_practice/6valley_user/home_screen/controller
 import 'package:flutter_getx/common/enum/valley_home_enum.dart';
 import 'package:flutter_getx/design_practice/6valley_user/home_screen/widgets/inner_new_arrivals_tab_view_widget.dart';
 import 'package:flutter_getx/design_practice/6valley_user/home_screen/widgets/product_card_widget.dart';
+import 'package:flutter_getx/design_practice/6valley_user/home_screen/widgets/todays_deal_widget.dart';
 import 'package:flutter_getx/design_practice/6valley_user/home_screen/widgets/top_stores_card_widget.dart';
 import 'package:flutter_getx/design_practice/6valley_user/home_screen/widgets/valley_home_carousel_slider_widget.dart';
 import 'package:flutter_getx/design_practice/6valley_user/home_screen/widgets/welcome_banner_widget.dart';
@@ -210,6 +211,11 @@ class _ValleyHomeScreenState extends State<ValleyHomeScreen>
                         return ProductCardWidget(index: index, isNewProduct: true);
                       },
                     ),
+                  ),
+
+
+                  SliverToBoxAdapter(
+                    child: TodayDealWidget(),
                   ),
       
                   /// Top Stores
