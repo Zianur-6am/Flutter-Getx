@@ -359,12 +359,13 @@ class CustomSearchWidget extends StatelessWidget {
           hintText: "what_are_you_looking_for".tr,
           hintStyle: const TextStyle(color: Colors.grey),
           suffixIcon: Container(
-            margin: const EdgeInsets.only(top: 5, right: 5, bottom: 5),
+            width: 50,
+            margin: const EdgeInsets.all(5),
             decoration: BoxDecoration(
               color: Theme.of(context).primaryColor,
-              borderRadius: BorderRadius.circular(8),
+              borderRadius: BorderRadius.circular(5),
             ),
-            child: const Icon(Icons.search, color: Colors.white),
+            child: Center(child: Icon(Icons.search, color: Theme.of(context).cardColor)),
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(5),
