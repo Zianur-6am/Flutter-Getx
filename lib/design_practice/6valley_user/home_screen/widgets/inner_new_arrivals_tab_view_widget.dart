@@ -27,14 +27,19 @@ class InnerNewArrivalsTabViewWidget extends StatelessWidget {
                       padding: const EdgeInsets.all(10),
                       child: MasonryGridView.builder(
                         gridDelegate: const SliverSimpleGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
+                          crossAxisCount: 3,
                         ),
                         mainAxisSpacing: 12, // Space between rows
                         crossAxisSpacing: 12,
                         // shrinkWrap: true,
                         itemCount: valleyHomeController.items.length,
                         itemBuilder: (context, index) {
-                          return ProductCardWidget(margin: EdgeInsets.zero, index: index, isBestSeller: true, isHorizontalList: false);
+                          return ProductCardWidget(
+                            margin: EdgeInsets.zero,
+                            index: index,
+                            isBestSeller: true,
+                            isHorizontalList: false,
+                          );
                         },
                       ),
                     ),

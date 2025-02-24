@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_getx/common/basewidgets/custom_asset_image_widget.dart';
-import 'package:flutter_getx/helper/extension_helper.dart';
 import 'package:flutter_getx/utils/dimensions.dart';
 import 'package:flutter_getx/utils/images.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
@@ -15,11 +14,11 @@ class TodayDealWidget extends StatelessWidget {
       margin: const EdgeInsets.all(Dimensions.paddingSizeSmall),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        color: context.customThemeColors.backgroundShadowColor,
+        color: Theme.of(context).primaryColor.withValues(alpha: 0.02),
         boxShadow: [
           BoxShadow(
             blurRadius: 6,
-            color: Colors.black.withValues(alpha: .07),
+            color: Theme.of(context).primaryColor.withValues(alpha: .07),
           )
         ],
       ),
@@ -32,7 +31,7 @@ class TodayDealWidget extends StatelessWidget {
               borderRadius: BorderRadius.circular(5),
               child: CustomAssetImageWidget(
                 Images.todayDealImage,
-                height: 250,
+                height: 300,
                 width: MediaQuery.sizeOf(context).width * 0.30,
                 fit: BoxFit.cover,
               ),
@@ -52,18 +51,18 @@ class TodayDealWidget extends StatelessWidget {
                         child: CustomAssetImageWidget(
                           Images.bagIcon,
                           fit: BoxFit.cover,
-                          height: 200,
+                          height: 250,
                           width: double.infinity,
                         ),
                       ),
 
                       Positioned(
-                        right: -8,
-                        bottom: -8,
+                        right: 5,
+                        bottom: 5,
                         child: CustomAssetImageWidget(
                           Images.favoriteIcon,
-                          height: 50,
-                          width: 50,
+                          height: 25,
+                          width: 25,
                         ),
                       ),
                     ]),

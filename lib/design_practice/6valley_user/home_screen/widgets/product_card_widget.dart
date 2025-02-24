@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_getx/common/basewidgets/custom_asset_image_widget.dart';
-import 'package:flutter_getx/helper/extension_helper.dart';
 import 'package:flutter_getx/utils/dimensions.dart';
 import 'package:flutter_getx/utils/images.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 
 class ProductCardWidget extends StatelessWidget {
   final int? index;
-  final double imageHeight;
-  final double imageWidth;
   final EdgeInsetsGeometry? margin;
   final String? productImage;
   final bool isBestSeller;
@@ -17,8 +14,6 @@ class ProductCardWidget extends StatelessWidget {
 
   const ProductCardWidget({
     super.key,
-    this.imageHeight = 150,
-    this.imageWidth = 150,
     this.margin,
     this.productImage,
     this.index,
@@ -29,10 +24,15 @@ class ProductCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double maxHeight;
+    final double maxWidth = MediaQuery.sizeOf(context).width * 0.41;
+    maxHeight = maxWidth;
+
+
     return Container(
       constraints: BoxConstraints(
-          maxWidth: MediaQuery.sizeOf(context).width * 0.41,
-          minHeight: isHorizontalList ? 250 : 0,
+          maxWidth: maxWidth,
+          minHeight: isHorizontalList ? (maxHeight + 100) : 0,
       ),
 
 
@@ -62,7 +62,7 @@ class ProductCardWidget extends StatelessWidget {
                 productImage ??
                 Images.girlImage : Images.bagIcon,
                 fit: BoxFit.cover,
-                height: imageHeight,
+                height: maxHeight,
                 width: double.infinity,
               ),
             ),
@@ -77,12 +77,12 @@ class ProductCardWidget extends StatelessWidget {
 
 
             const Positioned(
-              right: -8,
-              bottom: -8,
+              right: 5,
+              bottom: 5,
               child: CustomAssetImageWidget(
                 Images.favoriteIcon,
-                height: 50,
-                width: 50,
+                height: 25,
+                width: 25,
               ),
             ),
           ],

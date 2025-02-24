@@ -183,7 +183,7 @@ class _ValleyHomeScreenState extends State<ValleyHomeScreen>
                     padding: EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeSmall, vertical: Dimensions.paddingSizeSmall),
                     child: ClipRRect(
                         borderRadius: BorderRadius.all(Radius.circular(5)),
-                        child: CustomAssetImageWidget(Images.bestWash, height: 120, fit: BoxFit.cover),
+                        child: CustomAssetImageWidget(Images.bestWash, height: 150, fit: BoxFit.fill),
                     ),
                   )),
       
@@ -214,7 +214,7 @@ class _ValleyHomeScreenState extends State<ValleyHomeScreen>
                   ),
 
 
-                  SliverToBoxAdapter(
+                  const SliverToBoxAdapter(
                     child: TodayDealWidget(),
                   ),
       
@@ -249,7 +249,7 @@ class _ValleyHomeScreenState extends State<ValleyHomeScreen>
                     padding: EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeSmall),
                     child: ClipRRect(
                       borderRadius: BorderRadius.all(Radius.circular(5)),
-                      child: CustomAssetImageWidget(Images.posterImage, height: 120, fit: BoxFit.cover),
+                      child: CustomAssetImageWidget(Images.posterImage, height: 150, fit: BoxFit.fill),
                     ),
                   )),
                   const SliverToBoxAdapter(child: SizedBox(height: 30)),

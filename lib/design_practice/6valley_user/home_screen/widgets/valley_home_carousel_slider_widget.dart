@@ -40,7 +40,7 @@ class _ValleyHomeCarouselSliderWidgetState extends State<ValleyHomeCarouselSlide
             options: CarouselOptions(
                 viewportFraction: 1.0,
                 autoPlay: true,
-                aspectRatio: 2,
+                aspectRatio: 2.5,
                 onPageChanged: (index, reason) {
                   setState(() => _current = index);
                 }

@@ -15,9 +15,9 @@ class Images {
   static const String todayDealImage = 'assets/images/today_deal_image.png';
   static const String plusIcon = 'assets/images/plus_icon.png';
   static const String starIcon = 'assets/images/star_icon.png';
+  static const String favoriteIcon = 'assets/images/favourite_icon.png';
 
   //svg
-  static const String favoriteIcon = 'assets/images/svg/favorite_icon.svg';
   static const String oneTimeDealImage = 'assets/images/svg/one_time_deal.svg';
   static const String discountIcon = 'assets/images/svg/discount_icon.svg';
   static const String timerIcon = 'assets/images/svg/timerIcon.svg';
