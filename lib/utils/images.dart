@@ -14,6 +14,7 @@ class Images {
   static const String newProduct = 'assets/images/new_image.png';
   static const String todayDealImage = 'assets/images/today_deal_image.png';
   static const String plusIcon = 'assets/images/plus_icon.png';
+  static const String starIcon = 'assets/images/star_icon.png';
 
   //svg
   static const String favoriteIcon = 'assets/images/svg/favorite_icon.svg';

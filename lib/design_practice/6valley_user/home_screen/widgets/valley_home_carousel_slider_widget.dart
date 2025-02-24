@@ -24,6 +24,7 @@ class _ValleyHomeCarouselSliderWidgetState extends State<ValleyHomeCarouselSlide
   Widget build(BuildContext context) {
     return Column(
       children: [
+
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8),
           child: CarouselSlider(
@@ -46,6 +47,7 @@ class _ValleyHomeCarouselSliderWidgetState extends State<ValleyHomeCarouselSlide
             ),
           ),
         ),
+
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,

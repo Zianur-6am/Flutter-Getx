@@ -104,15 +104,19 @@ class RatingSectionWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: [
-      Row(children: [
-        const Icon(Icons.star, color: Colors.orange, size: 16),
-        const SizedBox(width: Dimensions.paddingSizeExtraSmall),
-                  
-        Text('rating'.tr, style: const TextStyle(fontSize: Dimensions.fontSizeSmall)),
-        const SizedBox(width: Dimensions.paddingSizeExtraSmall),
-                  
-        Text('(${'reviews'.tr})', style: TextStyle(fontSize: Dimensions.fontSizeSmall, color: Theme.of(context).hintColor))
-      ]),
+      Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const CustomAssetImageWidget(Images.starIcon, height: 16, width: 16),
+          const SizedBox(width: Dimensions.paddingSizeExtraSmall),
+
+          Text('rating'.tr, style: const TextStyle(fontSize: Dimensions.fontSizeDefault)),
+          const SizedBox(width: Dimensions.paddingSizeExtraSmall),
+
+          Text('(${'reviews'.tr})', style: TextStyle(fontSize: Dimensions.fontSizeSmall, color: Theme.of(context).hintColor))
+        ],
+      ),
                   
       Row(children: [
                   
@@ -137,37 +141,41 @@ class DiscountSectionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: [
-      
-      Row(children: [
-        Text('discount'.tr,
-          style: TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.w400,
-              decoration: TextDecoration.lineThrough,
-              decorationColor: Theme.of(context).hintColor,
-              color: Theme.of(context).hintColor
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+
+        Row(children: [
+          Text('discount'.tr,
+            style: TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.w400,
+                decoration: TextDecoration.lineThrough,
+                decorationColor: Theme.of(context).hintColor,
+                color: Theme.of(context).hintColor
+            ),
           ),
-        ),
-        const SizedBox(width: Dimensions.paddingSizeExtraSmall),
-                  
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: 3),
-          decoration: BoxDecoration(
-            border: Border.all(color: Colors.red.withValues(alpha: 0.20), width: 1),
-            borderRadius: BorderRadius.circular(5),
-            color: Colors.red.withValues(alpha: 0.05),
+          const SizedBox(width: Dimensions.paddingSizeExtraSmall),
+
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 3),
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.red.withValues(alpha: 0.20), width: 1),
+              borderRadius: BorderRadius.circular(5),
+              color: Colors.red.withValues(alpha: 0.05),
+            ),
+            child: Text('discount_percentage'.tr,
+              style: TextStyle(fontSize: Dimensions.fontSizeSmall, fontWeight: FontWeight.w700, color: Theme.of(context).colorScheme.error),
+            ),
           ),
-          child: Text('discount_percentage'.tr,
-            style: TextStyle(fontSize: Dimensions.fontSizeSmall, fontWeight: FontWeight.w700, color: Theme.of(context).colorScheme.error),
-          ),
-        ),
-        const SizedBox(width: Dimensions.paddingSizeExtraSmall),
-                  
-      ]),
-      
-      const CustomAssetImageWidget(Images.plusIcon, height: 30, width: 30, fit: BoxFit.cover),
-      
-    ]);
+          const SizedBox(width: Dimensions.paddingSizeExtraSmall),
+
+        ]),
+
+        const CustomAssetImageWidget(Images.plusIcon, height: 30, width: 30, fit: BoxFit.cover),
+
+      ],
+    );
   }
 }

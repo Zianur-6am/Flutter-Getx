@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_getx/common/basewidgets/custom_asset_image_widget.dart';
+import 'package:flutter_getx/helper/extension_helper.dart';
 import 'package:flutter_getx/utils/dimensions.dart';
 import 'package:flutter_getx/utils/images.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
@@ -52,6 +53,7 @@ class ProductCardWidget extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+
         Stack(
           children: [
             ClipRRect(
@@ -88,7 +90,6 @@ class ProductCardWidget extends StatelessWidget {
         const SizedBox(height: Dimensions.paddingSizeSmall),
 
         Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-
           Text('product_name'.tr,
             style: const TextStyle(fontSize: Dimensions.fontSizeSmall, fontWeight: FontWeight.w400),
             maxLines: 1,
@@ -97,19 +98,7 @@ class ProductCardWidget extends StatelessWidget {
           const SizedBox(height: 5),
 
           if((index ?? 3) % 3 == 0)
-            Column(mainAxisSize: MainAxisSize.min, children: [
-              Row(children: [
-                const Icon(Icons.star, color: Colors.orange, size: 16),
-                const SizedBox(height: Dimensions.paddingSizeExtraSmall),
-
-                Text('rating'.tr, style: const TextStyle(fontSize: Dimensions.fontSizeSmall)),
-                const SizedBox(height: Dimensions.paddingSizeExtraSmall),
-
-                Text('reviews'.tr, style: TextStyle(fontSize: Dimensions.fontSizeSmall, color: Theme.of(context).hintColor))
-              ]),
-
-              const SizedBox(height: Dimensions.paddingSizeExtraSmall),
-            ]),
+            const RatingSectionWidget(),
 
           Text('product_price'.tr,
             style: const TextStyle(fontSize: Dimensions.fontSizeDefault, fontWeight: FontWeight.w700),
@@ -118,39 +107,77 @@ class ProductCardWidget extends StatelessWidget {
           ),
           const SizedBox(height: 5),
 
-          Row(children: [
-            Text('discount'.tr,
-              style: TextStyle(
-                  fontSize: 12,
-                  fontWeight: FontWeight.w400,
-                  decoration: TextDecoration.lineThrough,
-                  decorationColor: Theme.of(context).hintColor,
-                  color: Theme.of(context).hintColor
-              ),
-            ),
-            const SizedBox(width: Dimensions.paddingSizeSmall),
-
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 3),
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.red.withValues(alpha: 0.20), width: 1),
-                borderRadius: BorderRadius.circular(5),
-                color: Colors.red.withValues(alpha: 0.05),
-                // boxShadow: [
-                //   BoxShadow(
-                //     blurRadius: 6,
-                //     color: Colors.black.withValues(alpha: .07),
-                //   )
-                // ],
-              ),
-              child: Text('discount_percentage'.tr,
-                style: TextStyle(fontSize: Dimensions.fontSizeSmall, fontWeight: FontWeight.w700, color: Theme.of(context).colorScheme.error),
-              ),
-            ),
-
-          ]),
+          const DiscountSectionWidget(),
         ]),
       ]),
     );
+  }
+}
+
+class DiscountSectionWidget extends StatelessWidget {
+  const DiscountSectionWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(children: [
+      Text('discount'.tr,
+        style: TextStyle(
+            fontSize: 12,
+            fontWeight: FontWeight.w400,
+            decoration: TextDecoration.lineThrough,
+            decorationColor: Theme.of(context).hintColor,
+            color: Theme.of(context).hintColor
+        ),
+      ),
+      const SizedBox(width: Dimensions.paddingSizeSmall),
+    
+      Container(
+        padding: const EdgeInsets.symmetric(horizontal: 3),
+        decoration: BoxDecoration(
+          border: Border.all(color: Theme.of(context).colorScheme.error.withValues(alpha: 0.30), width: 1),
+          borderRadius: BorderRadius.circular(5),
+          color: Theme.of(context).colorScheme.error.withValues(alpha: 0.05),
+          // boxShadow: [
+          //   BoxShadow(
+          //     blurRadius: 6,
+          //     color: Colors.black.withValues(alpha: .07),
+          //   )
+          // ],
+        ),
+        child: Text('discount_percentage'.tr,
+          style: TextStyle(fontSize: Dimensions.fontSizeSmall, fontWeight: FontWeight.w700, color: Theme.of(context).colorScheme.error),
+        ),
+      ),
+    
+    ]);
+  }
+}
+
+class RatingSectionWidget extends StatelessWidget {
+  const RatingSectionWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(mainAxisSize: MainAxisSize.min, children: [
+
+      Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const CustomAssetImageWidget(Images.starIcon, height: 16, width: 16),
+            const SizedBox(width: Dimensions.paddingSizeExtraSmall),
+
+            Text('rating'.tr, style: const TextStyle(fontSize: Dimensions.fontSizeDefault)),
+
+          ],
+      ),
+    
+      const SizedBox(height: Dimensions.paddingSizeExtraSmall),
+
+    ]);
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_getx/common/basewidgets/custom_asset_image_widget.dart';
+import 'package:flutter_getx/helper/extension_helper.dart';
 import 'package:flutter_getx/utils/dimensions.dart';
 import 'package:flutter_getx/utils/images.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
@@ -30,11 +31,11 @@ class TopStoresCardWidget extends StatelessWidget {
           bottom: borderSide,
         ),
         borderRadius: BorderRadius.circular(10),
-        color: Colors.white,
+        color: Theme.of(context).cardColor,
         boxShadow: [
           BoxShadow(
             blurRadius: 6,
-            color: Colors.black.withValues(alpha: .07),
+            color: context.customThemeColors.textColor.withValues(alpha: .07),
           )
         ],
       ),
@@ -60,12 +61,16 @@ class TopStoresCardWidget extends StatelessWidget {
                   Column(crossAxisAlignment: CrossAxisAlignment.start,children: [
                     Text('shop_name'.tr),
 
-                    Row(children: [
-                      const Icon(Icons.star, color: Colors.orange),
-                      const SizedBox(width: Dimensions.paddingSizeExtraSmall),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const CustomAssetImageWidget(Images.starIcon, height: 16, width: 16),
+                        const SizedBox(width: Dimensions.paddingSizeExtraSmall),
 
-                      Text('rating'.tr)
-                    ]),
+                        Text('rating'.tr, style: const TextStyle(fontSize: Dimensions.fontSizeDefault))
+                      ],
+                    ),
                   ]),
                 ]),
 

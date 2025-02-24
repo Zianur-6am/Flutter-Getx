@@ -41,6 +41,7 @@ class InnerNewArrivalsTabViewWidget extends StatelessWidget {
                   ),
 
                   loaderWidget,
+
                 ]),
               );
             },
