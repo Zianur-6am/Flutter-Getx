@@ -33,7 +33,7 @@ class TodayDealWidget extends StatelessWidget {
               child: CustomAssetImageWidget(
                 Images.todayDealImage,
                 height: 250,
-                width: MediaQuery.sizeOf(context).width * 0.3,
+                width: MediaQuery.sizeOf(context).width * 0.30,
                 fit: BoxFit.cover,
               ),
             ),
@@ -73,7 +73,7 @@ class TodayDealWidget extends StatelessWidget {
                     const SizedBox(height: Dimensions.paddingSizeExtraSmall),
               
                     Text('product_name'.tr,
-                      style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+                      style: const TextStyle(fontSize: Dimensions.fontSizeDefault, fontWeight: FontWeight.w500),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     ),
@@ -111,15 +111,19 @@ class RatingSectionWidget extends StatelessWidget {
         Text('rating'.tr, style: const TextStyle(fontSize: Dimensions.fontSizeSmall)),
         const SizedBox(width: Dimensions.paddingSizeExtraSmall),
                   
-        Text('reviews'.tr, style: TextStyle(fontSize: Dimensions.fontSizeSmall, color: Theme.of(context).hintColor))
+        Text('(${'reviews'.tr})', style: TextStyle(fontSize: Dimensions.fontSizeSmall, color: Theme.of(context).hintColor))
       ]),
                   
       Row(children: [
                   
         const CustomAssetImageWidget(Images.boxIcon, height: 16, width: 16,),
         const SizedBox(width: Dimensions.paddingSizeExtraSmall),
-                  
-        Text('items_left'.tr, style: TextStyle(color: Theme.of(context).colorScheme.onTertiaryContainer, fontSize: Dimensions.fontSizeSmall)),
+
+        Text('items_left'.tr, style: TextStyle(
+            color: Theme.of(context).colorScheme.onTertiaryContainer,
+            fontSize: Dimensions.fontSizeSmall,
+            fontWeight: FontWeight.w500
+        )),
       ]),
                   
     ]);
@@ -148,7 +152,7 @@ class DiscountSectionWidget extends StatelessWidget {
         const SizedBox(width: Dimensions.paddingSizeExtraSmall),
                   
         Container(
-          padding: const EdgeInsets.symmetric(horizontal: 2),
+          padding: const EdgeInsets.symmetric(horizontal: 3),
           decoration: BoxDecoration(
             border: Border.all(color: Colors.red.withValues(alpha: 0.20), width: 1),
             borderRadius: BorderRadius.circular(5),

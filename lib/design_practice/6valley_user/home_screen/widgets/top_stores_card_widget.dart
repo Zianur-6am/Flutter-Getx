@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_getx/common/basewidgets/custom_asset_image_widget.dart';
+import 'package:flutter_getx/utils/dimensions.dart';
 import 'package:flutter_getx/utils/images.dart';
+import 'package:get/get_utils/src/extensions/internacionalization.dart';
 
 class TopStoresCardWidget extends StatelessWidget {
   final double imageHeight;
@@ -51,34 +53,34 @@ class TopStoresCardWidget extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 5),
               child: Column(children: [
-                const Row(children: [
-                  CustomAssetImageWidget(Images.shopIcon, height: 40, width: 40),
-                  SizedBox(width: 5),
+                Row(children: [
+                  const CustomAssetImageWidget(Images.shopIcon, height: 40, width: 40),
+                  const SizedBox(width: Dimensions.paddingEye),
 
                   Column(crossAxisAlignment: CrossAxisAlignment.start,children: [
-                    Text('Morning Mart'),
+                    Text('shop_name'.tr),
 
                     Row(children: [
-                      Icon(Icons.star, color: Colors.orange),
-                      SizedBox(width: 5),
+                      const Icon(Icons.star, color: Colors.orange),
+                      const SizedBox(width: Dimensions.paddingSizeExtraSmall),
 
-                      Text('4.5')
+                      Text('rating'.tr)
                     ]),
                   ]),
                 ]),
 
-                Divider(color: Theme.of(context).hintColor.withValues(alpha: 0.5)),
+                Divider(color: Theme.of(context).primaryColor.withValues(alpha: 0.2)),
 
-                const Row(children: [
+                Row(children: [
 
-                  CustomAssetImageWidget(Images.boxIcon),
-                  SizedBox(width: 5),
+                  const CustomAssetImageWidget(Images.boxIcon),
+                  const SizedBox(width: Dimensions.paddingSizeExtraSmall),
 
-                  Text('100 Products'),
+                  Text('100_products'.tr, style: TextStyle(color: Theme.of(context).colorScheme.onTertiaryContainer, fontWeight: FontWeight.w500)),
 
-                  Expanded(child: SizedBox()),
+                  const Expanded(child: SizedBox()),
 
-                  Text('12 reviews')
+                  Text('reviews'.tr, style: TextStyle(color: Theme.of(context).hintColor),)
                 ]),
                 const SizedBox(height: 5)
               ]),

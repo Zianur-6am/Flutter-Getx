@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_getx/common/basewidgets/custom_asset_image_widget.dart';
 import 'package:flutter_getx/utils/dimensions.dart';
 import 'package:flutter_getx/utils/images.dart';
+import 'package:get/get_utils/src/extensions/internacionalization.dart';
 
 class WelcomeBannerWidget extends StatelessWidget {
   const WelcomeBannerWidget({super.key});
@@ -11,36 +12,37 @@ class WelcomeBannerWidget extends StatelessWidget {
     return Container(
       color: Theme.of(context).primaryColor,
       padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeSmall, vertical: Dimensions.paddingSizeSmall),
-      child: const Row(
+      child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: Dimensions.paddingSizeMedium),
+              const SizedBox(height: Dimensions.paddingSizeMedium),
 
               Text(
-                "Hello, Welcome 👋",
+                "hello_welcome".tr,
                 style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 16,
+                  color: Theme.of(context).cardColor,
+                  fontSize: Dimensions.fontSizeDefault,
                 ),
               ),
-              SizedBox(height: 5),
+              const SizedBox(height: Dimensions.paddingSizeExtraSmall),
+
               Text(
-                "Albert Stevano",
+                "customer_name".tr,
                 style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 22,
+                  color: Theme.of(context).cardColor,
+                  fontSize: Dimensions.fontSizeLarge,
                   fontWeight: FontWeight.bold,
                 ),
               ),
             ],
           ),
 
-          ClipRRect(
+          const ClipRRect(
             borderRadius: BorderRadius.all(Radius.circular(100)),
-            child: CustomAssetImageWidget(Images.girlImage, height: 50, width: 50),
+            child: CustomAssetImageWidget(Images.girlImage, height: 40, width: 40),
           )
         ],
       ),

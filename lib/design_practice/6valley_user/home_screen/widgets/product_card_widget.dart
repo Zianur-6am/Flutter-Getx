@@ -90,7 +90,7 @@ class ProductCardWidget extends StatelessWidget {
         Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
 
           Text('product_name'.tr,
-            style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w400),
+            style: const TextStyle(fontSize: Dimensions.fontSizeSmall, fontWeight: FontWeight.w400),
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
           ),
@@ -100,38 +100,38 @@ class ProductCardWidget extends StatelessWidget {
             Column(mainAxisSize: MainAxisSize.min, children: [
               Row(children: [
                 const Icon(Icons.star, color: Colors.orange, size: 16),
-                const SizedBox(width: 5),
+                const SizedBox(height: Dimensions.paddingSizeExtraSmall),
 
-                const Text('4.5', style: TextStyle(fontSize: 12)),
-                const SizedBox(width: 5,),
+                Text('rating'.tr, style: const TextStyle(fontSize: Dimensions.fontSizeSmall)),
+                const SizedBox(height: Dimensions.paddingSizeExtraSmall),
 
-                Text('(12 reviews)', style: TextStyle(fontSize: 12, color: Theme.of(context).hintColor))
+                Text('reviews'.tr, style: TextStyle(fontSize: Dimensions.fontSizeSmall, color: Theme.of(context).hintColor))
               ]),
 
-              SizedBox(height: 5),
+              const SizedBox(height: Dimensions.paddingSizeExtraSmall),
             ]),
 
-          const Text('TK 3237.87',
-            style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700),
+          Text('product_price'.tr,
+            style: const TextStyle(fontSize: Dimensions.fontSizeDefault, fontWeight: FontWeight.w700),
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
           ),
           const SizedBox(height: 5),
 
           Row(children: [
-            Text('Tk 1,100',
+            Text('discount'.tr,
               style: TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.w400,
                   decoration: TextDecoration.lineThrough,
-                decorationColor: Theme.of(context).hintColor,
-                color: Theme.of(context).hintColor
+                  decorationColor: Theme.of(context).hintColor,
+                  color: Theme.of(context).hintColor
               ),
             ),
             const SizedBox(width: Dimensions.paddingSizeSmall),
 
             Container(
-              padding: const EdgeInsets.symmetric(horizontal: 2),
+              padding: const EdgeInsets.symmetric(horizontal: 3),
               decoration: BoxDecoration(
                 border: Border.all(color: Colors.red.withValues(alpha: 0.20), width: 1),
                 borderRadius: BorderRadius.circular(5),
@@ -143,8 +143,8 @@ class ProductCardWidget extends StatelessWidget {
                 //   )
                 // ],
               ),
-              child: const Text('-10%',
-                style: TextStyle(fontSize: 12, fontWeight: FontWeight.w400, color: Colors.red),
+              child: Text('discount_percentage'.tr,
+                style: TextStyle(fontSize: Dimensions.fontSizeSmall, fontWeight: FontWeight.w700, color: Theme.of(context).colorScheme.error),
               ),
             ),
 
