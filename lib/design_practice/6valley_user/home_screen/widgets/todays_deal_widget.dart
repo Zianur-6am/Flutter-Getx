@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_getx/common/basewidgets/custom_asset_image_widget.dart';
-import 'package:flutter_getx/design_practice/6valley_user/home_screen/widgets/product_card_widget.dart';
+import 'package:flutter_getx/helper/extension_helper.dart';
 import 'package:flutter_getx/utils/dimensions.dart';
 import 'package:flutter_getx/utils/images.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
@@ -15,7 +15,7 @@ class TodayDealWidget extends StatelessWidget {
       margin: const EdgeInsets.all(Dimensions.paddingSizeSmall),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        color: Theme.of(context).hintColor.withValues(alpha: 0.01),
+        color: context.customThemeColors.backgroundShadowColor,
         boxShadow: [
           BoxShadow(
             blurRadius: 6,
@@ -69,26 +69,7 @@ class TodayDealWidget extends StatelessWidget {
                     ]),
                     const SizedBox(height: Dimensions.paddingSizeExtraSmall),
               
-                    Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: [
-                      Row(children: [
-                        const Icon(Icons.star, color: Colors.orange, size: 16),
-                        const SizedBox(width: 5),
-              
-                        const Text('4.5', style: TextStyle(fontSize: 12)),
-                        const SizedBox(width: 5,),
-              
-                        Text('(12 reviews)', style: TextStyle(fontSize: 12, color: Theme.of(context).hintColor))
-                      ]),
-              
-                      const Row(children: [
-              
-                        CustomAssetImageWidget(Images.boxIcon, height: 16, width: 16,),
-                        SizedBox(width: 5),
-              
-                        Text('22 Items left', style: TextStyle(color: Colors.green, fontSize: 12)),
-                      ]),
-              
-                    ]),
+                    const RatingSectionWidget(),
                     const SizedBox(height: Dimensions.paddingSizeExtraSmall),
               
                     Text('product_name'.tr,
@@ -99,47 +80,90 @@ class TodayDealWidget extends StatelessWidget {
                     const SizedBox(height: Dimensions.paddingSizeExtraSmall),
               
                     Text('product_price'.tr,
-                      style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700),
+                      style: const TextStyle(fontSize: Dimensions.fontSizeDefault, fontWeight: FontWeight.w700),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     ),
                     const SizedBox(width: Dimensions.paddingSizeExtraSmall),
                     
-                    Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: [
-                      Row(children: [
-                        Text('discount'.tr,
-                          style: TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w400,
-                              decoration: TextDecoration.lineThrough,
-                              decorationColor: Theme.of(context).hintColor,
-                              color: Theme.of(context).hintColor
-                          ),
-                        ),
-                        const SizedBox(width: Dimensions.paddingSizeExtraSmall),
-              
-                        Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 2),
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Colors.red.withValues(alpha: 0.20), width: 1),
-                            borderRadius: BorderRadius.circular(5),
-                            color: Colors.red.withValues(alpha: 0.05),
-                          ),
-                          child: Text('discount_percentage'.tr,
-                            style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700, color: Colors.red),
-                          ),
-                        ),
-                        const SizedBox(width: Dimensions.paddingSizeExtraSmall),
-              
-                      ]),
-                      
-                      const CustomAssetImageWidget(Images.plusIcon, height: 30, width: 30, fit: BoxFit.cover)
-                    ])
-              
+                    const DiscountSectionWidget(),
+                    
                   ]),
             ),
             
           ]),
     );
+  }
+}
+
+class RatingSectionWidget extends StatelessWidget {
+  const RatingSectionWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: [
+      Row(children: [
+        const Icon(Icons.star, color: Colors.orange, size: 16),
+        const SizedBox(width: Dimensions.paddingSizeExtraSmall),
+                  
+        Text('rating'.tr, style: const TextStyle(fontSize: Dimensions.fontSizeSmall)),
+        const SizedBox(width: Dimensions.paddingSizeExtraSmall),
+                  
+        Text('reviews'.tr, style: TextStyle(fontSize: Dimensions.fontSizeSmall, color: Theme.of(context).hintColor))
+      ]),
+                  
+      Row(children: [
+                  
+        const CustomAssetImageWidget(Images.boxIcon, height: 16, width: 16,),
+        const SizedBox(width: Dimensions.paddingSizeExtraSmall),
+                  
+        Text('items_left'.tr, style: TextStyle(color: Theme.of(context).colorScheme.onTertiaryContainer, fontSize: Dimensions.fontSizeSmall)),
+      ]),
+                  
+    ]);
+  }
+}
+
+class DiscountSectionWidget extends StatelessWidget {
+  const DiscountSectionWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: [
+      
+      Row(children: [
+        Text('discount'.tr,
+          style: TextStyle(
+              fontSize: 12,
+              fontWeight: FontWeight.w400,
+              decoration: TextDecoration.lineThrough,
+              decorationColor: Theme.of(context).hintColor,
+              color: Theme.of(context).hintColor
+          ),
+        ),
+        const SizedBox(width: Dimensions.paddingSizeExtraSmall),
+                  
+        Container(
+          padding: const EdgeInsets.symmetric(horizontal: 2),
+          decoration: BoxDecoration(
+            border: Border.all(color: Colors.red.withValues(alpha: 0.20), width: 1),
+            borderRadius: BorderRadius.circular(5),
+            color: Colors.red.withValues(alpha: 0.05),
+          ),
+          child: Text('discount_percentage'.tr,
+            style: TextStyle(fontSize: Dimensions.fontSizeSmall, fontWeight: FontWeight.w700, color: Theme.of(context).colorScheme.error),
+          ),
+        ),
+        const SizedBox(width: Dimensions.paddingSizeExtraSmall),
+                  
+      ]),
+      
+      const CustomAssetImageWidget(Images.plusIcon, height: 30, width: 30, fit: BoxFit.cover),
+      
+    ]);
   }
 }

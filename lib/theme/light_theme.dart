@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_getx/theme/custom_theme_colors.dart';
 
 ThemeData light = ThemeData(
   fontFamily: 'TitilliumWeb',
@@ -11,6 +12,12 @@ ThemeData light = ThemeData(
   canvasColor: const Color(0xFFFCFCFC),
   cardColor: const Color(0xFFFFFFFF),
   splashColor: Colors.transparent,
+
+  extensions: <ThemeExtension<CustomThemeColors>>[
+    CustomThemeColors.light(),
+  ],
+
+
   colorScheme: const ColorScheme.light(
 
     error: Color(0xFFFF5A5A),

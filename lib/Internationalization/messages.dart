@@ -21,9 +21,9 @@ class Messages extends Translations{
       'product_price' : 'TK 3237.87',
       'discount' : 'Tk 1,100',
       'discount_percentage' : '-10%',
-      'new_user_exclusive' : 'New User Exclusive',
-      'new_user_exclusive' : 'New User Exclusive',
-      'new_user_exclusive' : 'New User Exclusive',
+      'items_left' : '22 Items left',
+      'reviews' : '(12 reviews)',
+      'rating' : '4.5',
       'new_user_exclusive' : 'New User Exclusive',
       'new_user_exclusive' : 'New User Exclusive',
 

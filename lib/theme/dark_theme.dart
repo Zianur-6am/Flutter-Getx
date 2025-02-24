@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_getx/theme/custom_theme_colors.dart';
 
 ThemeData dark = ThemeData(
   fontFamily: 'TitilliumWeb',
@@ -7,6 +8,12 @@ ThemeData dark = ThemeData(
   bottomSheetTheme: const BottomSheetThemeData(backgroundColor: Colors.transparent),
   highlightColor: const Color(0xFF252525),
   hintColor: const Color(0xFFc7c7c7),
+
+  extensions: <ThemeExtension<CustomThemeColors>>[
+    CustomThemeColors.dark(),
+  ],
+
+
   colorScheme : const ColorScheme.dark(primary: Color(0xFF1455AC),
       secondary: Color(0xFF78BDFC),
       tertiary: Color(0xFF865C0A),

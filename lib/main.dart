@@ -20,12 +20,21 @@ import 'package:flutter_getx/widgets/expantion_tile.dart';
 import 'package:flutter_getx/widgets/show_dialog.dart';
 import 'package:flutter_getx/widgets/snackbar.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'Food_Delivery_App_Design/features/home/screens/bottom_nav_bar.dart';
 import 'home.dart';
 import 'theme/dark_theme.dart';
 
-void main() {
+Future<void> main() async {
+
+  WidgetsFlutterBinding.ensureInitialized();
+
+  final sharedPreferences = await SharedPreferences.getInstance();
+  Get.lazyPut(() => sharedPreferences);
+
+  Get.lazyPut(()=> ThemeController(sharedPreferences));
+
   runApp(const MyApp());
 }
 
@@ -36,7 +45,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<ThemeController>(
-      init: ThemeController(),
       builder: (themeController) {
         return GetMaterialApp(
           debugShowCheckedModeBanner: false,
