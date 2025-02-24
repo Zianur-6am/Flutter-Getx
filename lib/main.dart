@@ -10,6 +10,7 @@ import 'package:flutter_getx/route_navigation/named_navigation/screen1.dart';
 import 'package:flutter_getx/route_navigation/named_navigation/screen2.dart';
 import 'package:flutter_getx/route_navigation/named_navigation/unknown_route.dart';
 import 'package:flutter_getx/route_navigation/un_named_navigation/page1.dart';
+import 'package:flutter_getx/scroll_flutter/screens/main_scroll_screen.dart';
 import 'package:flutter_getx/state_management/reactive_state_manager/reactive_sm.dart';
 import 'package:flutter_getx/state_management/simple_state_manager/simple_sm.dart';
 import 'package:flutter_getx/tab_bar/screens/blog_screen.dart';
@@ -82,11 +83,11 @@ class MyApp extends StatelessWidget {
             GetPage(name: '/blog_screen', page: () => const BlogScreen()),
             GetPage(name: '/add_product', page: () => const AddProductScreen()),
             GetPage(name: '/valley_home', page: () => const ValleyHomeScreen()),
-            GetPage(name: '/scroll_main', page: () => const ValleyHomeScreen()),
+            GetPage(name: '/scroll_main', page: () => const MainScrollScreen()),
             GetPage(name: '/scroll_1', page: () => const ValleyHomeScreen()),
             GetPage(name: '/scroll_2', page: () => const ValleyHomeScreen()),
             GetPage(name: '/scroll_3', page: () => const ValleyHomeScreen()),
-            GetPage(name: '/explore', page: () => const ListPage()),
+            GetPage(name: '/explore', page: () => HomeScreen()),
           ],
           //to use unknownroute initialRoute cannot be /
           unknownRoute: GetPage(name: '/notfound', page: () => const UnknownRoute()),

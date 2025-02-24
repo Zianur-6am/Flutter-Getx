@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_getx/common/basewidgets/custom_app_bar.dart';
-import 'package:get/get.dart';
+import 'package:flutter_getx/scroll_flutter/screens/scroll_screen_1_widget.dart';
+import 'package:flutter_getx/scroll_flutter/screens/scroll_screen_2_widget.dart';
+import 'package:flutter_getx/scroll_flutter/screens/scroll_screen_3_widget.dart';
 
 class MainScrollScreen extends StatefulWidget {
   const MainScrollScreen({super.key});
@@ -10,43 +11,33 @@ class MainScrollScreen extends StatefulWidget {
 }
 
 class _MainScrollScreenState extends State<MainScrollScreen> {
+  int _selectedIndex = 0;
+
+  static final List<Widget> _pages = [
+    const ScrollScreen1Widget(),
+    const ScrollScreen2Widget(),
+    const ScrollScreen3Widget(),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBarWidget(title: 'ScrollController and ScrollNotification'),
-      body: Center(
-        child: Column(
-          // mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-
-              ElevatedButton(
-                onPressed: (){
-                  Get.toNamed(
-                      "/scroll_1"
-                  );
-                },
-                child: const Text("Explore Screen"),
-              ),
-
-              ElevatedButton(
-                onPressed: (){
-                  Get.toNamed(
-                      "/scroll_2"
-                  );
-                },
-                child: const Text("Explore Screen"),
-              ),
-
-              ElevatedButton(
-                onPressed: (){
-                  Get.toNamed(
-                      "/scroll_3"
-                  );
-                },
-                child: const Text("Explore Screen"),
-              ),
-
-            ]),
+      // appBar: const CustomAppBarWidget(title: 'ScrollController and ScrollNotification'),
+      body: _pages[_selectedIndex],
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
+        items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.screenshot_outlined), label: 'Scroll Limit Reached'),
+          BottomNavigationBarItem(icon: Icon(Icons.screenshot_outlined), label: 'Scroll Movement', ),
+          BottomNavigationBarItem(icon: Icon(Icons.screenshot_outlined), label: 'Scroll Status'),
+        ],
       ),
     );
   }

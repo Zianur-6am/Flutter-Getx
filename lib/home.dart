@@ -43,9 +43,18 @@ class _HomeState extends State<Home> {
                       "/valley_home"
                   );
                 },
-                child: const Text("6Valley home"),
+                child: const Text("Mart CMH Home Screen"),
               ),
 
+
+              ElevatedButton(
+                onPressed: (){
+                  Get.toNamed(
+                      "/scroll_main"
+                  );
+                },
+                child: const Text("ScrollController and ScrollNotification"),
+              ),
 
               ElevatedButton(
                 onPressed: (){
@@ -53,7 +62,7 @@ class _HomeState extends State<Home> {
                       "/add_product"
                   );
                 },
-                child: const Text("Add Product"),
+                child: const Text("6Valley Delivery Add Product Screen"),
               ),
 
               ElevatedButton(
@@ -62,7 +71,7 @@ class _HomeState extends State<Home> {
                       "/blog_screen"
                   );
                 },
-                child: const Text("Tab Bar"),
+                child: const Text("Tab Bar (Blog Screen)"),
               ),
 
               ElevatedButton(
