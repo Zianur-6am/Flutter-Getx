@@ -25,26 +25,23 @@ class _ValleyHomeCarouselSliderWidgetState extends State<ValleyHomeCarouselSlide
     return Column(
       children: [
 
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8),
-          child: CarouselSlider(
-            items: imgList.map((img) {
-              return Container(
-                margin: const EdgeInsets.all(5.0),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(5),
-                  child: CustomAssetImageWidget(img, fit: BoxFit.cover, width: double.infinity),
-                ),
-              );
-            }).toList(),
-            options: CarouselOptions(
-                viewportFraction: 1.0,
-                autoPlay: true,
-                aspectRatio: 2.5,
-                onPageChanged: (index, reason) {
-                  setState(() => _current = index);
-                }
-            ),
+        CarouselSlider(
+          items: imgList.map((img) {
+            return Container(
+              margin: const EdgeInsets.all(5.0),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(5),
+                child: CustomAssetImageWidget(img, fit: BoxFit.cover, width: double.infinity),
+              ),
+            );
+          }).toList(),
+          options: CarouselOptions(
+              viewportFraction: .97,
+              autoPlay: true,
+              aspectRatio: 2.5,
+              onPageChanged: (index, reason) {
+                setState(() => _current = index);
+              }
           ),
         ),
 
