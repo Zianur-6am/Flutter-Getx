@@ -3,6 +3,7 @@ import 'package:flutter_getx/common/basewidgets/custom_asset_image_widget.dart';
 import 'package:flutter_getx/design_practice/6valley_user/home_screen/widgets/product_card_widget.dart';
 import 'package:flutter_getx/utils/dimensions.dart';
 import 'package:flutter_getx/utils/images.dart';
+import 'package:get/get_utils/src/extensions/internacionalization.dart';
 
 class TodayDealWidget extends StatelessWidget {
   const TodayDealWidget({super.key});
@@ -14,7 +15,7 @@ class TodayDealWidget extends StatelessWidget {
       margin: const EdgeInsets.all(Dimensions.paddingSizeSmall),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        color: Theme.of(context).hintColor.withValues(alpha: 0.05),
+        color: Theme.of(context).hintColor.withValues(alpha: 0.01),
         boxShadow: [
           BoxShadow(
             blurRadius: 6,
@@ -39,68 +40,105 @@ class TodayDealWidget extends StatelessWidget {
             const SizedBox(width: 10),
 
 
-            Expanded(
+            Flexible(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Stack(
-                      children: [
-
-                        ClipRRect(
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                          child: CustomAssetImageWidget(
-                            Images.bagIcon,
-                            fit: BoxFit.cover,
-                            height: 200,
-                            width: double.infinity,
-                          ),
+                    const Stack(children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                        child: CustomAssetImageWidget(
+                          Images.bagIcon,
+                          fit: BoxFit.cover,
+                          height: 200,
+                          width: double.infinity,
                         ),
+                      ),
 
-                        Positioned(
-                          right: -8,
-                          bottom: -8,
-                          child: CustomAssetImageWidget(
-                            Images.favoriteIcon,
-                            height: 50,
-                            width: 50,
-                          ),
+                      Positioned(
+                        right: -8,
+                        bottom: -8,
+                        child: CustomAssetImageWidget(
+                          Images.favoriteIcon,
+                          height: 50,
+                          width: 50,
                         ),
-                      ],
-                    ),
-                    const SizedBox(height: 5),
-
+                      ),
+                    ]),
+                    const SizedBox(height: Dimensions.paddingSizeExtraSmall),
+              
                     Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: [
                       Row(children: [
                         const Icon(Icons.star, color: Colors.orange, size: 16),
                         const SizedBox(width: 5),
-
+              
                         const Text('4.5', style: TextStyle(fontSize: 12)),
                         const SizedBox(width: 5,),
-
+              
                         Text('(12 reviews)', style: TextStyle(fontSize: 12, color: Theme.of(context).hintColor))
                       ]),
-
+              
                       const Row(children: [
-
-                        CustomAssetImageWidget(Images.boxIcon),
+              
+                        CustomAssetImageWidget(Images.boxIcon, height: 16, width: 16,),
                         SizedBox(width: 5),
-
-                        Text('Item left'),
+              
+                        Text('22 Items left', style: TextStyle(color: Colors.green, fontSize: 12)),
                       ]),
-
+              
                     ]),
-
-                    const Text('TK 3237.87',
-                      style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700),
+                    const SizedBox(height: Dimensions.paddingSizeExtraSmall),
+              
+                    Text('product_name'.tr,
+                      style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     ),
-
+                    const SizedBox(height: Dimensions.paddingSizeExtraSmall),
+              
+                    Text('product_price'.tr,
+                      style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    const SizedBox(width: Dimensions.paddingSizeExtraSmall),
+                    
+                    Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: [
+                      Row(children: [
+                        Text('discount'.tr,
+                          style: TextStyle(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w400,
+                              decoration: TextDecoration.lineThrough,
+                              decorationColor: Theme.of(context).hintColor,
+                              color: Theme.of(context).hintColor
+                          ),
+                        ),
+                        const SizedBox(width: Dimensions.paddingSizeExtraSmall),
+              
+                        Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 2),
+                          decoration: BoxDecoration(
+                            border: Border.all(color: Colors.red.withValues(alpha: 0.20), width: 1),
+                            borderRadius: BorderRadius.circular(5),
+                            color: Colors.red.withValues(alpha: 0.05),
+                          ),
+                          child: Text('discount_percentage'.tr,
+                            style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700, color: Colors.red),
+                          ),
+                        ),
+                        const SizedBox(width: Dimensions.paddingSizeExtraSmall),
+              
+                      ]),
+                      
+                      const CustomAssetImageWidget(Images.plusIcon, height: 30, width: 30, fit: BoxFit.cover)
+                    ])
+              
                   ]),
             ),
-
+            
           ]),
     );
   }
