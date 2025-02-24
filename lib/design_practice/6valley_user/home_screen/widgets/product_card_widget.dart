@@ -78,11 +78,11 @@ class ProductCardWidget extends StatelessWidget {
 
             const Positioned(
               right: 5,
-              bottom: 5,
+              bottom: 8,
               child: CustomAssetImageWidget(
                 Images.favoriteIcon,
-                height: 25,
-                width: 25,
+                height: 30,
+                width: 30,
               ),
             ),
           ],

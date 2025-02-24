@@ -27,7 +27,7 @@ class InnerNewArrivalsTabViewWidget extends StatelessWidget {
                       padding: const EdgeInsets.all(10),
                       child: MasonryGridView.builder(
                         gridDelegate: const SliverSimpleGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 3,
+                          crossAxisCount: 2,
                         ),
                         mainAxisSpacing: 12, // Space between rows
                         crossAxisSpacing: 12,
