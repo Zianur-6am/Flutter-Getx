@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_getx/Internationalization/ihome.dart';
 import 'package:flutter_getx/Internationalization/messages.dart';
+import 'package:flutter_getx/data/api/api_client.dart';
 import 'package:flutter_getx/design_practice/6valley_seller/add_product/screens/add_product_screen.dart';
 import 'package:flutter_getx/design_practice/6valley_user/home_screen/screens/valley_home_screen.dart';
 import 'package:flutter_getx/explore_screen.dart';
@@ -16,6 +17,7 @@ import 'package:flutter_getx/state_management/simple_state_manager/simple_sm.dar
 import 'package:flutter_getx/tab_bar/screens/blog_screen.dart';
 import 'package:flutter_getx/theme/controllers/theme_controller.dart';
 import 'package:flutter_getx/theme/light_theme.dart';
+import 'package:flutter_getx/utils/app_constant.dart';
 import 'package:flutter_getx/widgets/bottom_sheet.dart';
 import 'package:flutter_getx/widgets/expantion_tile.dart';
 import 'package:flutter_getx/widgets/show_dialog.dart';
@@ -27,14 +29,14 @@ import 'Food_Delivery_App_Design/features/home/screens/bottom_nav_bar.dart';
 import 'home.dart';
 import 'theme/dark_theme.dart';
 
+import 'helper/get_di.dart' as di;
+
 Future<void> main() async {
 
   WidgetsFlutterBinding.ensureInitialized();
 
-  final sharedPreferences = await SharedPreferences.getInstance();
-  Get.lazyPut(() => sharedPreferences);
+  await di.init();
 
-  Get.lazyPut(()=> ThemeController(sharedPreferences));
 
   runApp(const MyApp());
 }
@@ -49,7 +51,6 @@ class MyApp extends StatelessWidget {
       builder: (themeController) {
         return GetMaterialApp(
           debugShowCheckedModeBanner: false,
-          // title: 'Snackbar',
           theme: themeController.darkTheme ? dark : light,
 
 

@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_getx/common/basewidgets/custom_asset_image_widget.dart';
+import 'package:flutter_getx/common/basewidgets/custom_image_widget.dart';
+import 'package:flutter_getx/design_practice/6valley_seller/add_product/domain/models/product_model.dart';
 import 'package:flutter_getx/utils/dimensions.dart';
 import 'package:flutter_getx/utils/images.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 
 class ProductCardGridWidget extends StatelessWidget {
-  final int? index;
-  final EdgeInsetsGeometry? margin;
-  final String? productImage;
+  final Product product;
+
 
   const ProductCardGridWidget({
     super.key,
-    this.margin,
-    this.productImage,
-    this.index,
+    required this.product,
 
   });
 
@@ -31,16 +30,13 @@ class ProductCardGridWidget extends StatelessWidget {
                 children: [
                   ClipRRect(
                     borderRadius: const BorderRadius.all(Radius.circular(5)),
-                    child: CustomAssetImageWidget( ((index ?? 3) % 3 == 0) ?
-                    productImage ??
-                        Images.girlImage : Images.bagIcon,
-                      fit: BoxFit.cover,
+                    child: CustomImageWidget(
                       height: boxConstraints.maxWidth,
-                      width: boxConstraints.maxWidth,
+                      image: '${product.thumbnailFullUrl?.path}',
+                      fit: BoxFit.fitHeight,
                     ),
                   ),
 
-                  if(((index ?? 3) % 3 == 0))
                   Positioned(
                     bottom: 0,
                     left: 1,
@@ -98,15 +94,46 @@ class ProductCardGridWidget extends StatelessWidget {
               ),
               const SizedBox(height: Dimensions.paddingSizeSmall),
 
-              Text('product_name'.tr,
+              Text(product.name ?? 'product_name'.tr,
                 style: const TextStyle(fontSize: Dimensions.fontSizeSmall, fontWeight: FontWeight.w400),
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
               ),
               const SizedBox(height: 5),
 
-              if((index ?? 3) % 3 == 0)
-                const RatingSectionWidget(),
+
+                // const RatingSectionWidget(),
+
+
+              Column(mainAxisSize: MainAxisSize.min, children: [
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    const CustomAssetImageWidget(Images.starIcon, height: 14, width: 14),
+                    const SizedBox(width: Dimensions.paddingSizeExtraSmall),
+
+                    Text('rating'.tr, style: const TextStyle(fontSize: Dimensions.fontSizeDefault)),
+
+                    if(product.reviewsCount != null) ...[
+                      const SizedBox(width: Dimensions.paddingSizeExtraSmall),
+                      Expanded(
+                        child: Text("(${product.reviewsCount} review",
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            color: Theme.of(context).hintColor,
+                            fontSize: Dimensions.fontSizeSmall,
+                          )),
+                      ),
+                    ]
+
+                  ],
+                ),
+
+                const SizedBox(height: Dimensions.paddingSizeExtraSmall),
+
+              ]),
 
               Text('product_price'.tr,
                 style: const TextStyle(fontSize: Dimensions.fontSizeDefault, fontWeight: FontWeight.w700),
@@ -147,12 +174,6 @@ class DiscountSectionWidget extends StatelessWidget {
           border: Border.all(color: Theme.of(context).colorScheme.error.withValues(alpha: 0.30), width: 1),
           borderRadius: BorderRadius.circular(5),
           color: Theme.of(context).colorScheme.error.withValues(alpha: 0.05),
-          // boxShadow: [
-          //   BoxShadow(
-          //     blurRadius: 6,
-          //     color: Colors.black.withValues(alpha: .07),
-          //   )
-          // ],
         ),
         child: Text('discount_percentage'.tr,
           style: TextStyle(fontSize: Dimensions.fontSizeSmall, fontWeight: FontWeight.w700, color: Theme.of(context).colorScheme.error),

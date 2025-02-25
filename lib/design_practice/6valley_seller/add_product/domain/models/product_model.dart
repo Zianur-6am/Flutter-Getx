@@ -100,7 +100,7 @@ class Product {
   List<String?>? images;
   // List<ImageFullUrl>? imagesFullUrl;
   String? thumbnail;
-  // ImageFullUrl? thumbnailFullUrl;
+  ThumbnailFullUrl? thumbnailFullUrl;
   List<ProductColors>? colors;
   List<int?>? attributes;
   List<ChoiceOptions>? choiceOptions;
@@ -160,7 +160,7 @@ class Product {
         this.images,
         // this.imagesFullUrl,
         this.thumbnail,
-        // this.thumbnailFullUrl,
+        this.thumbnailFullUrl,
         // this.metaImageFullUrl,
         this.colors,
         String? variantProduct,
@@ -259,6 +259,11 @@ class Product {
         colors!.add(ProductColors.fromJson(v));
       });
     }
+
+    thumbnailFullUrl = json['thumbnail_full_url'] != null
+        ? ThumbnailFullUrl.fromJson(json['thumbnail_full_url'])
+        : null;
+
     if(json['attributes'] != null && json['category_ids'] is !String) {
       attributes = [];
       for(int index=0; index<json['attributes'].length; index++) {
@@ -1113,6 +1118,29 @@ class ClearanceSale {
     data['discount_amount'] = discountAmount;
     data['created_at'] = createdAt;
     data['updated_at'] = updatedAt;
+    return data;
+  }
+}
+
+
+class ThumbnailFullUrl {
+  String? key;
+  String? path;
+  int? status;
+
+  ThumbnailFullUrl({this.key, this.path, this.status});
+
+  ThumbnailFullUrl.fromJson(Map<String, dynamic> json) {
+    key = json['key'];
+    path = json['path'];
+    status = json['status'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['key'] = key;
+    data['path'] = path;
+    data['status'] = status;
     return data;
   }
 }

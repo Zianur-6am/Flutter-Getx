@@ -17,6 +17,7 @@ class Images {
   static const String starIcon = 'assets/images/star_icon.png';
   static const String favoriteIcon = 'assets/images/favourite_icon.png';
   static const String flashIcon = 'assets/images/flash_icon.png';
+  static const String placeholder = 'assets/images/placeholder_1x1.png';
 
   //svg
   static const String oneTimeDealImage = 'assets/images/svg/one_time_deal.svg';

@@ -15,12 +15,6 @@ class TodayDealWidget extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         color: Theme.of(context).primaryColor.withValues(alpha: 0.05),
-        // boxShadow: [
-        //   BoxShadow(
-        //     blurRadius: 6,
-        //     color: Theme.of(context).primaryColor.withValues(alpha: .07),
-        //   )
-        // ],
       ),
       child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,

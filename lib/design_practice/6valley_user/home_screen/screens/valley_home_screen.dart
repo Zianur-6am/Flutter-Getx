@@ -34,15 +34,13 @@ class _ValleyHomeScreenState extends State<ValleyHomeScreen>
 
   final ValueNotifier<int> _tabIndexNotifier = ValueNotifier<int>(0);
 
-  ValleyHomeController valleyHomeController = Get.put(ValleyHomeController());
+  ValleyHomeController valleyHomeController = Get.find<ValleyHomeController>();
 
   late TabController _tabController;
   late TabController _tabController2;
 
-  List<String> _items = List.generate(10, (index) => 'Item ${index + 1}');
 
   final ScrollController _scrollController = ScrollController();
-  bool _isLoading = false;
 
   final List<OuterTabItem> tabs = OuterTabItem.values;
   final List<InnerTabItem> innerTabs = InnerTabItem.values;
@@ -50,6 +48,8 @@ class _ValleyHomeScreenState extends State<ValleyHomeScreen>
   @override
   void initState() {
     super.initState();
+
+    Get.find<ValleyHomeController>().getLatestProductList(1, isUpdate: false);
 
     _tabController = TabController(length: tabs.length, vsync: this);
     _tabController2 = TabController(length: innerTabs.length, vsync: this);

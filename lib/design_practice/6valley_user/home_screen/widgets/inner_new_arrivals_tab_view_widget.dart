@@ -10,15 +10,16 @@ class InnerNewArrivalsTabViewWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isLandScapeMode = MediaQuery.of(context).orientation == Orientation.landscape;
+    final bool isLandScapeMode = MediaQuery.of(context).orientation == Orientation.landscape;
     return GetBuilder<ValleyHomeController>(
         builder: (valleyHomeController) {
-          return PaginatedListWidget(
+          return valleyHomeController.productModel?.products?.isNotEmpty ?? false ?  PaginatedListWidget(
             onPaginate: (int? offset) async {
-              await valleyHomeController.getItem();
+              print('-----------xxxxofset-----------$offset');
+              await valleyHomeController.getLatestProductList(offset ?? 1);
             },
             offset: 1,
-            totalSize: valleyHomeController.totalSize,
+            totalSize: valleyHomeController.productModel?.totalSize,
             builder: (loaderWidget){
               return Expanded(
                 child: Column(mainAxisSize: MainAxisSize.min,children: [
@@ -27,16 +28,15 @@ class InnerNewArrivalsTabViewWidget extends StatelessWidget {
                       padding: const EdgeInsets.all(10),
                       child: MasonryGridView.builder(
                         gridDelegate: SliverSimpleGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: isLandScapeMode ? 3 : 2 ,
+                          crossAxisCount: isLandScapeMode ? 3 : 2,
                         ),
                         mainAxisSpacing: 15, // Space between rows
                         crossAxisSpacing: 10,
                         // shrinkWrap: true,
-                        itemCount: valleyHomeController.items.length,
+                        itemCount: valleyHomeController.productModel?.products?.length,
                         itemBuilder: (context, index) {
                           return ProductCardGridWidget(
-                            margin: EdgeInsets.zero,
-                            index: index,
+                            product: valleyHomeController.productModel!.products![index],
                           );
                         },
                       ),
@@ -48,7 +48,7 @@ class InnerNewArrivalsTabViewWidget extends StatelessWidget {
                 ]),
               );
             },
-          );
+          ) : const Center(child: CircularProgressIndicator());
         }
     );
   }
