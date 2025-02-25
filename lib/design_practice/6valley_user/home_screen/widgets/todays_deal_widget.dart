@@ -14,34 +14,18 @@ class TodayDealWidget extends StatelessWidget {
       margin: const EdgeInsets.all(Dimensions.paddingSizeSmall),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        color: Theme.of(context).primaryColor.withValues(alpha: 0.02),
-        boxShadow: [
-          BoxShadow(
-            blurRadius: 6,
-            color: Theme.of(context).primaryColor.withValues(alpha: .07),
-          )
-        ],
+        color: Theme.of(context).primaryColor.withValues(alpha: 0.05),
+        // boxShadow: [
+        //   BoxShadow(
+        //     blurRadius: 6,
+        //     color: Theme.of(context).primaryColor.withValues(alpha: .07),
+        //   )
+        // ],
       ),
       child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-
-            // Column(children: [
-            //   Stack(children: [
-            //     ClipRRect(
-            //       borderRadius: BorderRadius.circular(5),
-            //       child: CustomAssetImageWidget(
-            //         Images.todayDealImage,
-            //         height: 300,
-            //         width: MediaQuery.sizeOf(context).width * 0.30,
-            //         fit: BoxFit.cover,
-            //       ),
-            //     ),
-            //   ]),
-            //
-            //   Positioned(child: Text.rich(TextSpan))
-            // ]),
 
 
             ClipRRect(
@@ -62,8 +46,8 @@ class TodayDealWidget extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const Stack(children: [
-                      ClipRRect(
+                    Stack(children: [
+                      const ClipRRect(
                         borderRadius: BorderRadius.all(Radius.circular(10)),
                         child: CustomAssetImageWidget(
                           Images.bagIcon,
@@ -76,10 +60,26 @@ class TodayDealWidget extends StatelessWidget {
                       Positioned(
                         right: 5,
                         bottom: 5,
-                        child: CustomAssetImageWidget(
-                          Images.favoriteIcon,
-                          height: 25,
-                          width: 25,
+                        child: DecoratedBox(
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Theme.of(context).cardColor,
+                            boxShadow: [
+                              BoxShadow(
+                                offset: const Offset(0,0),
+                                blurRadius: 17.39,
+                                spreadRadius: 0,
+                                color: Theme.of(context).textTheme.bodyMedium!.color!.withValues(alpha: 0.06),
+                              ),
+                            ],
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(Dimensions.paddingSizeSmall),
+                            child: Icon(
+                              Icons.favorite_outlined, color: Theme.of(context).colorScheme.error,
+                              size: Dimensions.iconSizeSmall,
+                            ),
+                          ),
                         ),
                       ),
                     ]),
