@@ -27,6 +27,23 @@ class TodayDealWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
 
+            // Column(children: [
+            //   Stack(children: [
+            //     ClipRRect(
+            //       borderRadius: BorderRadius.circular(5),
+            //       child: CustomAssetImageWidget(
+            //         Images.todayDealImage,
+            //         height: 300,
+            //         width: MediaQuery.sizeOf(context).width * 0.30,
+            //         fit: BoxFit.cover,
+            //       ),
+            //     ),
+            //   ]),
+            //
+            //   Positioned(child: Text.rich(TextSpan))
+            // ]),
+
+
             ClipRRect(
               borderRadius: BorderRadius.circular(5),
               child: CustomAssetImageWidget(

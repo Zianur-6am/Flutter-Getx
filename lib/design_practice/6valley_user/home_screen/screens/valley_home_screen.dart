@@ -179,6 +179,7 @@ class _ValleyHomeScreenState extends State<ValleyHomeScreen>
                   ),
 
 
+                  /// today deal
                   const SliverToBoxAdapter(
                     child: TodayDealWidget(),
                   ),

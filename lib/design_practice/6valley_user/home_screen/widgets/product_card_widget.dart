@@ -28,7 +28,7 @@ class ProductCardWidget extends StatelessWidget {
           Stack(
             children: [
               ClipRRect(
-                borderRadius: const BorderRadius.all(Radius.circular(10)),
+                borderRadius: const BorderRadius.all(Radius.circular(5)),
                 child: CustomAssetImageWidget( ((index ?? 3) % 3 == 0) ?
                   productImage ??
                   Images.girlImage : Images.bagIcon,
@@ -39,30 +39,29 @@ class ProductCardWidget extends StatelessWidget {
               ),
 
               if(((index ?? 3) % 3 == 0))
-                Positioned.fill(
-                  child: Align(
-                    alignment: Alignment.bottomLeft,
-                    child: DecoratedBox(
-                      decoration: BoxDecoration(
-                        borderRadius: const BorderRadius.only(
-                            topRight: Radius.circular(Dimensions.radiusDefault)
-                        ),
-                        gradient: LinearGradient(colors: [
-                          Theme.of(context).colorScheme.error,
-                          Theme.of(context).colorScheme.error,
-                          Theme.of(context).colorScheme.secondary,
-                        ]),
+                Positioned(
+                  bottom: 0,
+                  left: 1,
+                  child: DecoratedBox(
+                    decoration: BoxDecoration(
+                      borderRadius: const BorderRadius.only(
+                          topRight: Radius.circular(Dimensions.radiusDefault)
                       ),
-                      child: const Padding(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: Dimensions.paddingSizeSmall,
-                          vertical: 2,
-                        ),
-                        child: Text('new', style: TextStyle(
-                          color: Colors.white,
-                          fontSize: Dimensions.paddingSizeSmall,
-                        )),
+                      gradient: LinearGradient(colors: [
+                        Theme.of(context).colorScheme.error,
+                        Theme.of(context).colorScheme.error,
+                        Theme.of(context).colorScheme.secondary,
+                      ]),
+                    ),
+                    child: const Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: Dimensions.paddingSizeSmall,
+                        vertical: 2,
                       ),
+                      child: Text('new', style: TextStyle(
+                        color: Colors.white,
+                        fontSize: Dimensions.paddingSizeSmall,
+                      )),
                     ),
                   ),
                 ),
@@ -73,16 +72,12 @@ class ProductCardWidget extends StatelessWidget {
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     color: Theme.of(context).cardColor,
-                    border: Border.all(
-                      color: Theme.of(context).primaryColorLight.withOpacity(0.5),
-                      width: 2,
-                    ),
                     boxShadow: [
                       BoxShadow(
                         offset: const Offset(0,0),
                         blurRadius: 17.39,
                         spreadRadius: 0,
-                        color: Theme.of(context).textTheme.bodyMedium!.color!.withOpacity(0.06),
+                        color: Theme.of(context).textTheme.bodyMedium!.color!.withValues(alpha: 0.06),
                       ),
                     ],
                   ),
@@ -179,7 +174,7 @@ class RatingSectionWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const CustomAssetImageWidget(Images.starIcon, height: 16, width: 16),
+            const CustomAssetImageWidget(Images.starIcon, height: 14, width: 14),
             const SizedBox(width: Dimensions.paddingSizeExtraSmall),
 
             Text('rating'.tr, style: const TextStyle(fontSize: Dimensions.fontSizeDefault)),
