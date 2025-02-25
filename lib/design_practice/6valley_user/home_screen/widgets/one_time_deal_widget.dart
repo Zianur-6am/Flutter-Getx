@@ -23,7 +23,7 @@ class OneTimeDealWidget extends StatelessWidget {
           child: ListView.separated(
             scrollDirection: Axis.horizontal,
             separatorBuilder: (context, index) {
-              return const SizedBox(width: Dimensions.paddingSizeDefault);
+              return const SizedBox(width: Dimensions.paddingSizeSmall);
             },
             itemCount: 10,
             itemBuilder: (context, index){
@@ -53,7 +53,8 @@ class HeaderSectionWidget extends StatelessWidget {
 
         Text('one_time_deal'.tr, style: TextStyle(
             fontSize: Dimensions.fontSizeDefault,
-            color: Theme.of(context).primaryColor
+            color: Theme.of(context).primaryColor,
+            fontWeight: FontWeight.w700
         )),
         const SizedBox(width: Dimensions.paddingSizeSmall),
 

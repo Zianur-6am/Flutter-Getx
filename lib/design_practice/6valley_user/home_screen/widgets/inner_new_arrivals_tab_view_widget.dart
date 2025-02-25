@@ -17,21 +17,20 @@ class InnerNewArrivalsTabViewWidget extends StatelessWidget {
             onPaginate: (int? offset) async {
               await valleyHomeController.getItem();
             },
-            // scrollController: _scrollController,
             offset: 1,
             totalSize: valleyHomeController.totalSize,
             builder: (loaderWidget){
-              return Flexible(
+              return Expanded(
                 child: Column(mainAxisSize: MainAxisSize.min,children: [
-                  Flexible(
+                  Expanded(
                     child: Padding(
                       padding: const EdgeInsets.all(10),
                       child: MasonryGridView.builder(
                         gridDelegate: SliverSimpleGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: isLandScapeMode ? 3 : 2 ,
                         ),
-                        mainAxisSpacing: 12, // Space between rows
-                        crossAxisSpacing: 12,
+                        mainAxisSpacing: 15, // Space between rows
+                        crossAxisSpacing: 10,
                         // shrinkWrap: true,
                         itemCount: valleyHomeController.items.length,
                         itemBuilder: (context, index) {

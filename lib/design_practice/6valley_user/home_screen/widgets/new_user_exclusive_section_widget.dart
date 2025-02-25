@@ -35,7 +35,7 @@ class NewUserExclusiveSectionWidget extends StatelessWidget {
           child: ListView.separated(
             scrollDirection: Axis.horizontal,
             separatorBuilder: (context, index) {
-              return const SizedBox(width: Dimensions.paddingSizeDefault);
+              return const SizedBox(width: Dimensions.paddingSizeSmall);
             },
             itemCount: 10,
             itemBuilder: (context, index){

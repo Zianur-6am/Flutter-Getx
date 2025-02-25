@@ -197,14 +197,17 @@ class _ValleyHomeScreenState extends State<ValleyHomeScreen>
                           ),
                           Text(
                             'view_all'.tr,
-                            style: TextStyle(fontSize: 12),
+                            style: const TextStyle(fontSize: Dimensions.fontSizeSmall),
                           )
                         ],
                       ),
                       directionVertical: false,
                       itemCount: 10,
                       itemBuilder: (context, index) {
-                        return const TopStoresCardWidget();
+                        return SizedBox(
+                          width: MediaQuery.sizeOf(context).width / 1.8,
+                          child: const TopStoresCardWidget(),
+                        );
                       },
                     ),
                   ),
