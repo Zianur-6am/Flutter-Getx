@@ -8,18 +8,13 @@ class ProductCardGridWidget extends StatelessWidget {
   final int? index;
   final EdgeInsetsGeometry? margin;
   final String? productImage;
-  final bool isBestSeller;
-  final bool isNewProduct;
-  final bool isHorizontalList;
 
   const ProductCardGridWidget({
     super.key,
     this.margin,
     this.productImage,
     this.index,
-    this.isBestSeller = false,
-    this.isNewProduct = false,
-    this.isHorizontalList = true,
+
   });
 
   @override
@@ -27,68 +22,110 @@ class ProductCardGridWidget extends StatelessWidget {
 
     return LayoutBuilder(
       builder: (context, boxConstraints) {
-        return Padding(
-          padding: EdgeInsets.all(isHorizontalList ? 8.0 : 0),
-          child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+        return Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
 
-                Stack(
-                  children: [
-                    ClipRRect(
-                      borderRadius: const BorderRadius.all(Radius.circular(10)),
-                      child: CustomAssetImageWidget( ((index ?? 3) % 3 == 0) ?
-                      productImage ??
-                          Images.girlImage : Images.bagIcon,
-                        fit: BoxFit.cover,
-                        height: boxConstraints.maxWidth,
-                        width: boxConstraints.maxWidth,
+              Stack(
+                children: [
+                  ClipRRect(
+                    borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(Dimensions.radiusSmall),
+                        topRight: Radius.circular(Dimensions.radiusSmall),
+                        bottomLeft: Radius.zero,
+                        bottomRight: Radius.circular(Dimensions.radiusSmall)),
+                    child: CustomAssetImageWidget( ((index ?? 3) % 3 == 0) ?
+                    productImage ??
+                        Images.girlImage : Images.bagIcon,
+                      fit: BoxFit.cover,
+                      height: boxConstraints.maxWidth,
+                      width: boxConstraints.maxWidth,
+                    ),
+                  ),
+
+                  if(((index ?? 3) % 3 == 0))
+                  Positioned.fill(
+                    child: Align(
+                      alignment: Alignment.bottomLeft,
+                      child: DecoratedBox(
+                        decoration: BoxDecoration(
+                          borderRadius: const BorderRadius.only(
+                              topRight: Radius.circular(Dimensions.radiusDefault)
+                          ),
+                          gradient: LinearGradient(colors: [
+                            Theme.of(context).primaryColor,
+                            Theme.of(context).primaryColor,
+                            Colors.deepPurple
+                          ]),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: Dimensions.paddingSizeSmall,
+                            vertical: 2,
+                          ),
+                          child: Text('best_selling'.tr, style: TextStyle(
+                            color: Theme.of(context).cardColor,
+                            fontSize: Dimensions.paddingSizeSmall,
+                          )),
+                        ),
                       ),
                     ),
+                  ),
 
-                    if(((index ?? 3) % 3 == 0) && (isNewProduct || isBestSeller))
-                      Positioned(
-                        bottom: isNewProduct ? -15 : -40,
-                        child: isNewProduct
-                            ? const CustomAssetImageWidget(Images.newProduct, height: 50, width: 50)
-                            : const CustomAssetImageWidget(Images.bestSeller, height: 100, width: 100),
+
+                  Positioned(
+                    right: 5,
+                    bottom: 8,
+                    child: DecoratedBox(
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Theme.of(context).cardColor,
+                        border: Border.all(
+                          color: Theme.of(context).primaryColorLight.withOpacity(0.5),
+                          width: 2,
+                        ),
+                        boxShadow: [
+                          BoxShadow(
+                            offset: const Offset(0,0),
+                            blurRadius: 17.39,
+                            spreadRadius: 0,
+                            color: Theme.of(context).textTheme.bodyMedium!.color!.withOpacity(0.06),
+                          ),
+                        ],
                       ),
-
-
-                    const Positioned(
-                      right: 5,
-                      bottom: 8,
-                      child: CustomAssetImageWidget(
-                        Images.favoriteIcon,
-                        height: 30,
-                        width: 30,
+                      child: Padding(
+                        padding: const EdgeInsets.all(Dimensions.paddingSizeSmall),
+                        child: Icon(
+                          Icons.favorite_outlined, color: Theme.of(context).colorScheme.error,
+                          size: Dimensions.iconSizeSmall,
+                        ),
                       ),
                     ),
-                  ],
-                ),
-                const SizedBox(height: Dimensions.paddingSizeSmall),
+                  ),
+                ],
+              ),
+              const SizedBox(height: Dimensions.paddingSizeSmall),
 
-                Text('product_name'.tr,
-                  style: const TextStyle(fontSize: Dimensions.fontSizeSmall, fontWeight: FontWeight.w400),
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                ),
-                const SizedBox(height: 5),
+              Text('product_name'.tr,
+                style: const TextStyle(fontSize: Dimensions.fontSizeSmall, fontWeight: FontWeight.w400),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
+              const SizedBox(height: 5),
 
-                if((index ?? 3) % 3 == 0)
-                  const RatingSectionWidget(),
+              if((index ?? 3) % 3 == 0)
+                const RatingSectionWidget(),
 
-                Text('product_price'.tr,
-                  style: const TextStyle(fontSize: Dimensions.fontSizeDefault, fontWeight: FontWeight.w700),
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                ),
-                const SizedBox(height: 5),
+              Text('product_price'.tr,
+                style: const TextStyle(fontSize: Dimensions.fontSizeDefault, fontWeight: FontWeight.w700),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
+              const SizedBox(height: 5),
 
-                const DiscountSectionWidget(),
-              ]),
-        );
+              const DiscountSectionWidget(),
+            ]);
       }
     );
   }

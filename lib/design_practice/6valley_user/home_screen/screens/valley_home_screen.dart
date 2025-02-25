@@ -8,6 +8,8 @@ import 'package:flutter_getx/common/basewidgets/sliver_header_delegate.dart';
 import 'package:flutter_getx/design_practice/6valley_user/home_screen/controllers/valley_home_controller.dart';
 import 'package:flutter_getx/common/enum/valley_home_enum.dart';
 import 'package:flutter_getx/design_practice/6valley_user/home_screen/widgets/inner_new_arrivals_tab_view_widget.dart';
+import 'package:flutter_getx/design_practice/6valley_user/home_screen/widgets/new_user_exclusive_section_widget.dart';
+import 'package:flutter_getx/design_practice/6valley_user/home_screen/widgets/one_time_deal_widget.dart';
 import 'package:flutter_getx/design_practice/6valley_user/home_screen/widgets/product_card_widget.dart';
 import 'package:flutter_getx/design_practice/6valley_user/home_screen/widgets/todays_deal_widget.dart';
 import 'package:flutter_getx/design_practice/6valley_user/home_screen/widgets/top_stores_card_widget.dart';
@@ -148,26 +150,9 @@ class _ValleyHomeScreenState extends State<ValleyHomeScreen>
                 ),
       
                 if (_tabController.index == 0) ...[
-                  SliverToBoxAdapter(
-                    child: CustomHeaderSingleChildListViewWidget(
-                      backgroundColor: Theme.of(context)
-                          .primaryColor
-                          .withValues(alpha: 0.1),
-                      headerWidget: const Row(
-                        children: [
-                          CustomAssetImageWidget(
-                            Images.oneTimeDealImage,
-                            height: 50,
-                            width: 33,
-                          )
-                        ],
-                      ),
-                      directionVertical: false,
-                      itemCount: 10,
-                      itemBuilder: (context, index) {
-                        return ProductCardWidget(index: index);
-                      },
-                    ),
+                  /// One time deal
+                  const SliverToBoxAdapter(
+                    child: OneTimeDealWidget(),
                   ),
                   const SliverToBoxAdapter(child: SizedBox(height: 20)),
       
@@ -189,28 +174,8 @@ class _ValleyHomeScreenState extends State<ValleyHomeScreen>
       
       
                   /// New User Exclusive
-                  SliverToBoxAdapter(
-                    child: CustomHeaderSingleChildListViewWidget(
-                      headerWidget: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            'new_user_exclusive'.tr,
-                            style: const TextStyle(
-                                fontWeight: FontWeight.w700, fontSize: 14),
-                          ),
-                          Text(
-                            'view_all'.tr,
-                            style: TextStyle(fontSize: 12),
-                          )
-                        ],
-                      ),
-                      directionVertical: false,
-                      itemCount: 10,
-                      itemBuilder: (context, index) {
-                        return ProductCardWidget(index: index, isNewProduct: true);
-                      },
-                    ),
+                  const SliverToBoxAdapter(
+                    child: NewUserExclusiveSectionWidget(),
                   ),
 
 

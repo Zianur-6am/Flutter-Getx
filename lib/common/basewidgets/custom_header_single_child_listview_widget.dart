@@ -33,8 +33,7 @@ class CustomHeaderSingleChildListViewWidget extends StatelessWidget {
     return Container(
       color: backgroundColor ?? Theme.of(context).cardColor,
       padding: EdgeInsets.symmetric(horizontal: horizontalPadding, vertical: verticalPadding),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
+      child: Column(mainAxisSize: MainAxisSize.min,
         children: [
 
           headerWidget,

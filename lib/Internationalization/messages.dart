@@ -32,6 +32,11 @@ class Messages extends Translations{
       '100_products' : '100 Products',
       'hello_welcome' : 'Hello, Welcome 👋',
       'customer_name' : 'Albert Stevano',
+      'new' : 'New',
+      'best_selling' : 'Best Selling',
+      'up_to_20' : 'Up to 20%',
+      'ends_in' : 'Ends in',
+      'up_to_20' : 'Up to 20%'
 
     },
     'hi_IN' : {
