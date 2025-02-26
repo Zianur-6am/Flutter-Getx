@@ -9,6 +9,7 @@ class TodayDealWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double widthSize = MediaQuery.sizeOf(context).width;
     return Container(
       padding: const EdgeInsets.all(Dimensions.paddingSizeSmall),
       margin: const EdgeInsets.all(Dimensions.paddingSizeSmall),
@@ -22,85 +23,90 @@ class TodayDealWidget extends StatelessWidget {
           children: [
 
 
-            ClipRRect(
-              borderRadius: BorderRadius.circular(5),
-              child: CustomAssetImageWidget(
-                Images.todayDealImage,
-                height: 300,
-                width: MediaQuery.sizeOf(context).width * 0.30,
-                fit: BoxFit.cover,
+            Padding(
+              padding: const EdgeInsets.only(right: Dimensions.paddingSizeExtraSmall),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(5),
+                child: CustomAssetImageWidget(
+                  Images.todayDealImage,
+                  height: widthSize * 0.70,
+                  width: widthSize * 0.35,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
-            const SizedBox(width: 10),
 
 
             Flexible(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Stack(children: [
-                      const ClipRRect(
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
-                        child: CustomAssetImageWidget(
-                          Images.bagIcon,
-                          fit: BoxFit.cover,
-                          height: 250,
-                          width: double.infinity,
-                        ),
-                      ),
-
-                      Positioned(
-                        right: 5,
-                        bottom: 5,
-                        child: DecoratedBox(
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Theme.of(context).cardColor,
-                            boxShadow: [
-                              BoxShadow(
-                                offset: const Offset(0,0),
-                                blurRadius: 17.39,
-                                spreadRadius: 0,
-                                color: Theme.of(context).textTheme.bodyMedium!.color!.withValues(alpha: 0.06),
-                              ),
-                            ],
+              child: Padding(
+                padding: const EdgeInsets.only(left: Dimensions.paddingSizeExtraSmall),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Stack(children: [
+                        ClipRRect(
+                          borderRadius: const BorderRadius.all(Radius.circular(10)),
+                          child: CustomAssetImageWidget(
+                            Images.bagIcon,
+                            fit: BoxFit.cover,
+                            height: widthSize * 0.55,
+                            width: double.infinity,
                           ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(Dimensions.paddingSizeSmall),
-                            child: Icon(
-                              Icons.favorite_outlined, color: Theme.of(context).colorScheme.error,
-                              size: Dimensions.iconSizeSmall,
+                        ),
+
+                        Positioned(
+                          right: 5,
+                          bottom: 5,
+                          child: DecoratedBox(
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Theme.of(context).cardColor,
+                              boxShadow: [
+                                BoxShadow(
+                                  offset: const Offset(0,0),
+                                  blurRadius: 17.39,
+                                  spreadRadius: 0,
+                                  color: Theme.of(context).textTheme.bodyMedium!.color!.withValues(alpha: 0.06),
+                                ),
+                              ],
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(Dimensions.paddingSizeSmall),
+                              child: Icon(
+                                Icons.favorite_outlined, color: Theme.of(context).colorScheme.error,
+                                size: Dimensions.iconSizeSmall,
+                              ),
                             ),
                           ),
                         ),
+                      ]),
+                      const SizedBox(height: Dimensions.paddingSizeExtraSmall),
+
+                      const RatingSectionWidget(),
+                      const SizedBox(height: Dimensions.paddingSizeExtraSmall),
+
+                      Text('product_name'.tr,
+                        style: const TextStyle(fontSize: Dimensions.fontSizeDefault, fontWeight: FontWeight.w500),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
                       ),
+                      const SizedBox(height: Dimensions.paddingSizeExtraSmall),
+
+                      Text('product_price'.tr,
+                        style: const TextStyle(fontSize: Dimensions.fontSizeDefault, fontWeight: FontWeight.w700),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      const SizedBox(width: Dimensions.paddingSizeExtraSmall),
+
+                      const DiscountSectionWidget(),
+
                     ]),
-                    const SizedBox(height: Dimensions.paddingSizeExtraSmall),
-              
-                    const RatingSectionWidget(),
-                    const SizedBox(height: Dimensions.paddingSizeExtraSmall),
-              
-                    Text('product_name'.tr,
-                      style: const TextStyle(fontSize: Dimensions.fontSizeDefault, fontWeight: FontWeight.w500),
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    const SizedBox(height: Dimensions.paddingSizeExtraSmall),
-              
-                    Text('product_price'.tr,
-                      style: const TextStyle(fontSize: Dimensions.fontSizeDefault, fontWeight: FontWeight.w700),
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    const SizedBox(width: Dimensions.paddingSizeExtraSmall),
-                    
-                    const DiscountSectionWidget(),
-                    
-                  ]),
+              ),
             ),
-            
+
           ]),
     );
   }
