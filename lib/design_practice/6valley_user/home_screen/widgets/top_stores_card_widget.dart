@@ -45,7 +45,7 @@ class TopStoresCardWidget extends StatelessWidget {
                   const SizedBox(height: 5),
 
                   Row(children: [
-                    const CustomAssetImageWidget(Images.shopIcon, height: 40, width: 40),
+                    const CustomAssetImageWidget(Images.shopIcon, height: Dimensions.logoHeight, width: Dimensions.logoHeight),
                     const SizedBox(width: Dimensions.paddingEye),
 
                     Column(crossAxisAlignment: CrossAxisAlignment.start,children: [

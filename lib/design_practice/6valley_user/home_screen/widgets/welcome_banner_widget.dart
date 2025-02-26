@@ -18,6 +18,7 @@ class WelcomeBannerWidget extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+
               const SizedBox(height: Dimensions.paddingSizeMedium),
 
               Text(

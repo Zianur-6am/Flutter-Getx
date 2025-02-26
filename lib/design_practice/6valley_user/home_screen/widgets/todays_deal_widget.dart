@@ -118,7 +118,7 @@ class RatingSectionWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const CustomAssetImageWidget(Images.starIcon, height: 16, width: 16),
+          const CustomAssetImageWidget(Images.starIcon, height: Dimensions.fontSizeExtraLarge, width: Dimensions.fontSizeExtraLarge),
           const SizedBox(width: Dimensions.paddingSizeExtraSmall),
 
           Text('rating'.tr, style: const TextStyle(fontSize: Dimensions.fontSizeDefault)),
@@ -130,7 +130,7 @@ class RatingSectionWidget extends StatelessWidget {
                   
       Row(children: [
                   
-        const CustomAssetImageWidget(Images.boxIcon, height: 16, width: 16,),
+        const CustomAssetImageWidget(Images.boxIcon, height: Dimensions.fontSizeExtraLarge, width: Dimensions.fontSizeExtraLarge),
         const SizedBox(width: Dimensions.paddingSizeExtraSmall),
 
         Text('items_left'.tr, style: TextStyle(
@@ -159,7 +159,7 @@ class DiscountSectionWidget extends StatelessWidget {
         Row(children: [
           Text('discount'.tr,
             style: TextStyle(
-                fontSize: 12,
+                fontSize: Dimensions.fontSizeExtraSmall,
                 fontWeight: FontWeight.w400,
                 decoration: TextDecoration.lineThrough,
                 decorationColor: Theme.of(context).hintColor,
@@ -180,10 +180,9 @@ class DiscountSectionWidget extends StatelessWidget {
             ),
           ),
           const SizedBox(width: Dimensions.paddingSizeExtraSmall),
-
         ]),
 
-        const CustomAssetImageWidget(Images.plusIcon, height: 30, width: 30, fit: BoxFit.cover),
+        const CustomAssetImageWidget(Images.plusIcon, height: Dimensions.iconSizeExtraLarge, width: Dimensions.iconSizeExtraLarge, fit: BoxFit.cover),
 
       ],
     );

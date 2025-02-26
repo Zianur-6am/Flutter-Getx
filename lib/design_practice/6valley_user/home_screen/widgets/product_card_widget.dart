@@ -53,13 +53,13 @@ class ProductCardWidget extends StatelessWidget {
                         Theme.of(context).colorScheme.secondary,
                       ]),
                     ),
-                    child: const Padding(
-                      padding: EdgeInsets.symmetric(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
                         horizontal: Dimensions.paddingSizeSmall,
                         vertical: 2,
                       ),
-                      child: Text('new', style: TextStyle(
-                        color: Colors.white,
+                      child: Text('new'.tr, style: TextStyle(
+                        color: Theme.of(context).cardColor,
                         fontSize: Dimensions.paddingSizeSmall,
                       )),
                     ),
@@ -130,7 +130,7 @@ class DiscountSectionWidget extends StatelessWidget {
     return Row(children: [
       Text('discount'.tr,
         style: TextStyle(
-            fontSize: 12,
+            fontSize: Dimensions.fontSizeExtraSmall,
             fontWeight: FontWeight.w400,
             decoration: TextDecoration.lineThrough,
             decorationColor: Theme.of(context).hintColor,
@@ -174,7 +174,7 @@ class RatingSectionWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const CustomAssetImageWidget(Images.starIcon, height: 14, width: 14),
+            const CustomAssetImageWidget(Images.starIcon, height: Dimensions.iconSizeSmall, width: Dimensions.iconSizeSmall),
             const SizedBox(width: Dimensions.paddingSizeExtraSmall),
 
             Text('rating'.tr, style: const TextStyle(fontSize: Dimensions.fontSizeDefault)),

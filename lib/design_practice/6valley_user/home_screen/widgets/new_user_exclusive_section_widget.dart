@@ -20,7 +20,7 @@ class NewUserExclusiveSectionWidget extends StatelessWidget {
             Text(
               'new_user_exclusive'.tr,
               style: const TextStyle(
-                  fontWeight: FontWeight.w700, fontSize: 14),
+                  fontWeight: FontWeight.w700, fontSize: Dimensions.fontSizeDefault),
             ),
             Text(
               'view_all'.tr,

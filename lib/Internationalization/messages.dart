@@ -36,7 +36,6 @@ class Messages extends Translations{
       'best_selling' : 'Best Selling',
       'up_to_20' : 'Up to 20%',
       'ends_in' : 'Ends in',
-      'up_to_20' : 'Up to 20%'
 
     },
     'hi_IN' : {

@@ -7,7 +7,7 @@ import 'package:flutter_getx/utils/images.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 
 class ProductCardGridWidget extends StatelessWidget {
-  final Product product;
+  final Product? product;
 
 
   const ProductCardGridWidget({
@@ -32,7 +32,7 @@ class ProductCardGridWidget extends StatelessWidget {
                     borderRadius: const BorderRadius.all(Radius.circular(5)),
                     child: CustomImageWidget(
                       height: boxConstraints.maxWidth,
-                      image: '${product.thumbnailFullUrl?.path}',
+                      image: '${product?.thumbnailFullUrl?.path}',
                       fit: BoxFit.fitHeight,
                     ),
                   ),
@@ -58,7 +58,7 @@ class ProductCardGridWidget extends StatelessWidget {
                         ),
                         child: Text('best_selling'.tr, style: TextStyle(
                           color: Theme.of(context).cardColor,
-                          fontSize: Dimensions.paddingSizeSmall,
+                          fontSize: Dimensions.fontSizeExtraSmall,
                         )),
                       ),
                     ),
@@ -94,7 +94,7 @@ class ProductCardGridWidget extends StatelessWidget {
               ),
               const SizedBox(height: Dimensions.paddingSizeSmall),
 
-              Text(product.name ?? 'product_name'.tr,
+              Text(product?.name ?? 'product_name'.tr,
                 style: const TextStyle(fontSize: Dimensions.fontSizeSmall, fontWeight: FontWeight.w400),
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
@@ -110,15 +110,15 @@ class ProductCardGridWidget extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    const CustomAssetImageWidget(Images.starIcon, height: 14, width: 14),
+                    const CustomAssetImageWidget(Images.starIcon, height: Dimensions.iconSizeSmall, width: Dimensions.iconSizeSmall),
                     const SizedBox(width: Dimensions.paddingSizeExtraSmall),
 
                     Text('rating'.tr, style: const TextStyle(fontSize: Dimensions.fontSizeDefault)),
 
-                    if(product.reviewsCount != null) ...[
+                    if(product?.reviewsCount != null) ...[
                       const SizedBox(width: Dimensions.paddingSizeExtraSmall),
                       Expanded(
-                        child: Text("(${product.reviewsCount} review",
+                        child: Text("(${product?.reviewsCount} review",
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
@@ -159,7 +159,7 @@ class DiscountSectionWidget extends StatelessWidget {
     return Row(children: [
       Text('discount'.tr,
         style: TextStyle(
-            fontSize: 12,
+            fontSize: Dimensions.fontSizeSmall,
             fontWeight: FontWeight.w400,
             decoration: TextDecoration.lineThrough,
             decorationColor: Theme.of(context).hintColor,
@@ -196,7 +196,7 @@ class RatingSectionWidget extends StatelessWidget {
       Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          const CustomAssetImageWidget(Images.starIcon, height: 14, width: 14),
+          const CustomAssetImageWidget(Images.starIcon, height: Dimensions.iconSizeSmall, width: Dimensions.iconSizeSmall),
           const SizedBox(width: Dimensions.paddingSizeExtraSmall),
 
           Text('rating'.tr, style: const TextStyle(fontSize: Dimensions.fontSizeDefault)),
