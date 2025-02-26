@@ -76,6 +76,8 @@ class _ValleyHomeScreenState extends State<ValleyHomeScreen>
 
   @override
   Widget build(BuildContext context) {
+    final double widthSize = MediaQuery.sizeOf(context).width;
+
     return AnnotatedRegion(
       value: SystemUiOverlayStyle(
         statusBarColor: Theme.of(context).primaryColor, // Set your desired color
@@ -164,11 +166,11 @@ class _ValleyHomeScreenState extends State<ValleyHomeScreen>
       
       
                   /// poster - perfect wash
-                  const SliverToBoxAdapter(child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeSmall, vertical: Dimensions.paddingSizeSmall),
+                  SliverToBoxAdapter(child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeSmall, vertical: Dimensions.paddingSizeSmall),
                     child: ClipRRect(
                         borderRadius: BorderRadius.all(Radius.circular(5)),
-                        child: CustomAssetImageWidget(Images.bestWash, height: 150, fit: BoxFit.fill),
+                        child: CustomAssetImageWidget(Images.bestWash, height: widthSize * 0.4, fit: BoxFit.fill),
                     ),
                   )),
       
@@ -214,11 +216,11 @@ class _ValleyHomeScreenState extends State<ValleyHomeScreen>
                   const SliverToBoxAdapter(child: SizedBox(height: 10)),
       
                   /// poster
-                  const SliverToBoxAdapter(child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeSmall),
+                  SliverToBoxAdapter(child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeSmall),
                     child: ClipRRect(
                       borderRadius: BorderRadius.all(Radius.circular(5)),
-                      child: CustomAssetImageWidget(Images.posterImage, height: 150, fit: BoxFit.fill),
+                      child: CustomAssetImageWidget(Images.posterImage, height: widthSize * 0.4, fit: BoxFit.fill),
                     ),
                   )),
                   const SliverToBoxAdapter(child: SizedBox(height: 30)),

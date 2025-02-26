@@ -1,7 +1,9 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_getx/common/basewidgets/custom_asset_image_widget.dart';
+import 'package:flutter_getx/utils/dimensions.dart';
 import 'package:flutter_getx/utils/images.dart';
+import 'package:get/get_utils/src/extensions/internacionalization.dart';
 
 class ValleyHomeCarouselSliderWidget extends StatefulWidget {
   const ValleyHomeCarouselSliderWidget({super.key});
@@ -25,23 +27,63 @@ class _ValleyHomeCarouselSliderWidgetState extends State<ValleyHomeCarouselSlide
     return Column(
       children: [
 
-        CarouselSlider(
-          items: imgList.map((img) {
-            return Container(
-              margin: const EdgeInsets.all(5.0),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(5),
-                child: CustomAssetImageWidget(img, fit: BoxFit.cover, width: double.infinity),
-              ),
-            );
-          }).toList(),
-          options: CarouselOptions(
-              viewportFraction: .97,
-              autoPlay: true,
-              aspectRatio: 2.5,
-              onPageChanged: (index, reason) {
-                setState(() => _current = index);
-              }
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeSmall),
+          child: CarouselSlider(
+            items: imgList.map((img) {
+              return Stack(
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(5),
+                    child: CustomAssetImageWidget(img, fit: BoxFit.cover, height: double.infinity, width: double.infinity),
+                  ),
+
+                  Positioned(
+                    bottom: 0,
+                    right: 0,
+                    child: DecoratedBox(
+                      decoration: BoxDecoration(
+                        borderRadius: const BorderRadius.only(topLeft: Radius.circular(5), bottomRight: Radius.circular(5)),
+                        gradient: LinearGradient(colors: [
+                          Theme.of(context).primaryColor,
+                          Theme.of(context).primaryColor,
+                          const Color(0xFF4E0FD3)
+                        ])
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: Dimensions.paddingSizeSmall,
+                          vertical: 2,
+                        ),
+                        child: Row(
+                          children: [
+                            Text('shop_now'.tr, style: TextStyle(
+                              color: Theme.of(context).cardColor,
+                              fontSize: Dimensions.fontSizeExtraSmall,
+                            )),
+                            const SizedBox(width: Dimensions.paddingSizeExtraSmall),
+                            
+                            Icon(
+                              Icons.arrow_forward_ios_outlined,
+                              size: Dimensions.iconSizeExtraSmall,
+                              color: Theme.of(context).cardColor,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              );
+            }).toList(),
+            options: CarouselOptions(
+                viewportFraction: 1,
+                autoPlay: true,
+                aspectRatio: 2.5,
+                onPageChanged: (index, reason) {
+                  setState(() => _current = index);
+                }
+            ),
           ),
         ),
 

@@ -15,6 +15,7 @@ class TopStoresCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double widthSize = MediaQuery.sizeOf(context).width;
     return LayoutBuilder(
       builder: (context, boxConstraints) {
         return Column(
@@ -23,9 +24,9 @@ class TopStoresCardWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
 
-              const ClipRRect(
-                borderRadius: BorderRadius.only(topLeft: Radius.circular(5), topRight: Radius.circular(5)),
-                child: CustomAssetImageWidget(Images.topStoryImage, fit: BoxFit.cover, height: 80, width: double.infinity),
+              ClipRRect(
+                borderRadius: const BorderRadius.only(topLeft: Radius.circular(5), topRight: Radius.circular(5)),
+                child: CustomAssetImageWidget(Images.topStoryImage, fit: BoxFit.cover, height: widthSize * 0.2, width: double.infinity),
               ),
 
               Container(

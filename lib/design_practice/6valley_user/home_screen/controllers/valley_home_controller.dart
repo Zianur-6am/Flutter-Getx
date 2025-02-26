@@ -51,31 +51,24 @@ class ValleyHomeController extends GetxController implements GetxService{
   }
 
 
+
+
   /// with api calling
 
   ProductModel? _productModel;
   ProductModel? get productModel => _productModel;
 
-  final String? _title = 'best_selling'.tr;
+  final String _title = 'best_selling'.tr;
   String? get title => _title;
 
-  ProductType _productType = ProductType.newArrival;
+  final ProductType _productType = ProductType.newArrival;
   ProductType get productType => _productType;
 
-  List<Product>? _latestProductList = [];
-  List<Product>? get latestProductList => _latestProductList;
-  List<int> _offsetList = [];
-  int _lOffset = 1;
-  int get lOffset => _lOffset;
-
-  int? _latestPageSize = 1;
-  int? get latestPageSize => _latestPageSize;
 
 
 
 
   Future<void> getLatestProductList(int offset, {bool reload = false, bool isUpdate = true}) async {
-    print('----------printingoffset-----------$offset');
     if(reload || offset == 1) {
       _productModel = null;
     }
@@ -83,20 +76,16 @@ class ValleyHomeController extends GetxController implements GetxService{
     if(isUpdate){
       update();
     }
-    print('------------before length-----------${_productModel?.products?.length}');
 
     ApiResponse apiResponse = await productServiceInterface!.getFilteredProductList(Get.context!, offset.toString(), _productType, title);
 
     if (apiResponse.response != null && apiResponse.response!.statusCode == 200) {
-      if(offset==1){
+      if(offset == 1){
         _productModel = ProductModel.fromJson(apiResponse.response?.body);
       }else{
         _productModel?.offset = ProductModel.fromJson(apiResponse.response?.body).offset;
         _productModel?.totalSize = ProductModel.fromJson(apiResponse.response?.body).totalSize;
         _productModel?.products?.addAll(ProductModel.fromJson(apiResponse.response?.body).products ?? []);
-
-        print('------------after length-----------${_productModel?.products?.length}');
-
       }
 
     } else {
