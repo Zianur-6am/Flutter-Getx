@@ -5,6 +5,7 @@ import 'package:flutter_getx/common/basewidgets/custom_snackbar_widget.dart';
 import 'package:flutter_getx/design_practice/6valley_seller/add_product/domain/models/product_model.dart';
 import 'package:flutter_getx/utils/dimensions.dart';
 import 'package:flutter_getx/utils/images.dart';
+import 'package:get/get.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 
 class ProductCardGridWidget extends StatelessWidget {
@@ -20,117 +21,120 @@ class ProductCardGridWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    return Container(
-      decoration: const BoxDecoration(
-        boxShadow: [
-          // BoxShadow(
-          //   color: context.customThemeColors.textColor.withValues(alpha: 0.06),
-          //   blurRadius: 8
-          // ),
-        ]
-      ),
-      child: LayoutBuilder(
-        builder: (context, boxConstraints) {
-          return Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+    return InkWell(
+      onTap: () => Get.toNamed("/product_details"),
+      child: Container(
+        decoration: const BoxDecoration(
+          boxShadow: [
+            // BoxShadow(
+            //   color: context.customThemeColors.textColor.withValues(alpha: 0.06),
+            //   blurRadius: 8
+            // ),
+          ]
+        ),
+        child: LayoutBuilder(
+          builder: (context, boxConstraints) {
+            return Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
 
-                Stack(
-                  children: [
-                    ClipRRect(
-                      borderRadius: const BorderRadius.all(Radius.circular(5)),
-                      child: CustomImageWidget(
-                        height: boxConstraints.maxWidth,
-                        image: '${product?.thumbnailFullUrl?.path}',
-                        fit: BoxFit.fitHeight,
-                      ),
-                    ),
-
-                    if(((product?.id ?? 3) % 3 == 0))
-                    Positioned(
-                      bottom: 0,
-                      left: 1,
-                      child: DecoratedBox(
-                        decoration: BoxDecoration(
-                          borderRadius: const BorderRadius.only(
-                              topRight: Radius.circular(Dimensions.radiusDefault)
-                          ),
-                          gradient: LinearGradient(colors: [
-                            Theme.of(context).primaryColor,
-                            Theme.of(context).primaryColor,
-                            Colors.deepPurple
-                          ]),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: Dimensions.paddingSizeSmall,
-                            vertical: 2,
-                          ),
-                          child: Text('best_selling'.tr, style: TextStyle(
-                            color: Theme.of(context).cardColor,
-                            fontSize: Dimensions.fontSizeExtraSmall,
-                          )),
+                  Stack(
+                    children: [
+                      ClipRRect(
+                        borderRadius: const BorderRadius.all(Radius.circular(5)),
+                        child: CustomImageWidget(
+                          height: boxConstraints.maxWidth,
+                          image: '${product?.thumbnailFullUrl?.path}',
+                          fit: BoxFit.fitHeight,
                         ),
                       ),
-                    ),
 
-
-                    Positioned(
-                      right: 5,
-                      bottom: 5,
-                      child: InkWell(
-                        splashColor: Colors.transparent,
-                        highlightColor: Colors.transparent,
-                        onTap: () => showCustomSnackBarWidget('message'),
+                      if(((product?.id ?? 3) % 3 == 0))
+                      Positioned(
+                        bottom: 0,
+                        left: 1,
                         child: DecoratedBox(
                           decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Theme.of(context).cardColor,
-                            boxShadow: [
-                              BoxShadow(
-                                offset: const Offset(0,0),
-                                blurRadius: 17.39,
-                                spreadRadius: 0,
-                                color: Theme.of(context).textTheme.bodyMedium!.color!.withValues(alpha: 0.06),
-                              ),
-                            ],
+                            borderRadius: const BorderRadius.only(
+                                topRight: Radius.circular(Dimensions.radiusDefault)
+                            ),
+                            gradient: LinearGradient(colors: [
+                              Theme.of(context).primaryColor,
+                              Theme.of(context).primaryColor,
+                              Colors.deepPurple
+                            ]),
                           ),
                           child: Padding(
-                            padding: const EdgeInsets.all(Dimensions.paddingSizeSmall),
-                            child: Icon(
-                              Icons.favorite_outlined, color: Theme.of(context).colorScheme.error,
-                              size: Dimensions.iconSizeSmall,
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: Dimensions.paddingSizeSmall,
+                              vertical: 2,
+                            ),
+                            child: Text('best_selling'.tr, style: TextStyle(
+                              color: Theme.of(context).cardColor,
+                              fontSize: Dimensions.fontSizeExtraSmall,
+                            )),
+                          ),
+                        ),
+                      ),
+
+
+                      Positioned(
+                        right: 5,
+                        bottom: 5,
+                        child: InkWell(
+                          splashColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () => showCustomSnackBarWidget('message'),
+                          child: DecoratedBox(
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Theme.of(context).cardColor,
+                              boxShadow: [
+                                BoxShadow(
+                                  offset: const Offset(0,0),
+                                  blurRadius: 17.39,
+                                  spreadRadius: 0,
+                                  color: Theme.of(context).textTheme.bodyMedium!.color!.withValues(alpha: 0.06),
+                                ),
+                              ],
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(Dimensions.paddingSizeSmall),
+                              child: Icon(
+                                Icons.favorite_outlined, color: Theme.of(context).colorScheme.error,
+                                size: Dimensions.iconSizeSmall,
+                              ),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: Dimensions.paddingSizeSmall),
+                    ],
+                  ),
+                  const SizedBox(height: Dimensions.paddingSizeSmall),
 
-                Text(product?.name ?? 'product_name'.tr,
-                  style: const TextStyle(fontSize: Dimensions.fontSizeSmall, fontWeight: FontWeight.w400),
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                ),
-                const SizedBox(height: 5),
+                  Text(product?.name ?? 'product_name'.tr,
+                    style: const TextStyle(fontSize: Dimensions.fontSizeSmall, fontWeight: FontWeight.w400),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  const SizedBox(height: 5),
 
-                if(((product?.id ?? 3) % 3 == 0))
-                const RatingSectionWidget(),
+                  if(((product?.id ?? 3) % 3 == 0))
+                  const RatingSectionWidget(),
 
 
-                Text('product_price'.tr,
-                  style: const TextStyle(fontSize: Dimensions.fontSizeDefault, fontWeight: FontWeight.w700),
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                ),
-                const SizedBox(height: 5),
+                  Text('product_price'.tr,
+                    style: const TextStyle(fontSize: Dimensions.fontSizeDefault, fontWeight: FontWeight.w700),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  const SizedBox(height: 5),
 
-                const DiscountSectionWidget(),
-              ]);
-        }
+                  const DiscountSectionWidget(),
+                ]);
+          }
+        ),
       ),
     );
   }

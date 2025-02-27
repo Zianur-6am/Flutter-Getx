@@ -4,6 +4,7 @@ import 'package:flutter_getx/Internationalization/messages.dart';
 import 'package:flutter_getx/data/api/api_client.dart';
 import 'package:flutter_getx/design_practice/6valley_seller/add_product/screens/add_product_screen.dart';
 import 'package:flutter_getx/design_practice/6valley_user/home_screen/screens/valley_home_screen.dart';
+import 'package:flutter_getx/design_practice/6valley_user/product_details/screens/product_details_screen.dart';
 import 'package:flutter_getx/explore_screen.dart';
 import 'package:flutter_getx/fetchapidata/productmodule/views/product_list_view.dart';
 import 'package:flutter_getx/route_navigation/named_navigation/route_home.dart';
@@ -85,10 +86,8 @@ class MyApp extends StatelessWidget {
             GetPage(name: '/add_product', page: () => const AddProductScreen()),
             GetPage(name: '/valley_home', page: () => const ValleyHomeScreen()),
             GetPage(name: '/scroll_main', page: () => const MainScrollScreen()),
-            GetPage(name: '/scroll_1', page: () => const ValleyHomeScreen()),
-            GetPage(name: '/scroll_2', page: () => const ValleyHomeScreen()),
-            GetPage(name: '/scroll_3', page: () => const ValleyHomeScreen()),
-            GetPage(name: '/explore', page: () => HomeScreen()),
+            GetPage(name: '/product_details', page: () => const ProductDetailScreen()),
+            GetPage(name: '/explore', page: () => ProductDetailsPage()),
           ],
           //to use unknownroute initialRoute cannot be /
           unknownRoute: GetPage(name: '/notfound', page: () => const UnknownRoute()),

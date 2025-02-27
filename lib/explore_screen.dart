@@ -1,39 +1,99 @@
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatefulWidget {
+class ProductDetailsPage extends StatefulWidget {
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  State<ProductDetailsPage> createState() => _ProductDetailsPageState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
-  int _selectedIndex = 0;
-
-  static final List<Widget> _pages = [
-    Center(child: Text('Home Page', style: TextStyle(fontSize: 24))),
-    Center(child: Text('Search Page', style: TextStyle(fontSize: 24))),
-    Center(child: Text('Profile Page', style: TextStyle(fontSize: 24))),
+class _ProductDetailsPageState extends State<ProductDetailsPage> {
+  final List<String> images = [
+    'assets/shoe_1.png',
+    'assets/shoe_2.png',
+    'assets/shoe_3.png',
+    'assets/shoe_4.png',
+    'assets/shoe_5.png',
   ];
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
+    PageController pageController = PageController();
     return Scaffold(
-      appBar: AppBar(title: Text('Bottom Navigation Example')),
-      body: _pages[_selectedIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _selectedIndex,
-        onTap: _onItemTapped,
-        items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back_ios, color: Colors.black),
+          onPressed: () {},
+        ),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.favorite_border, color: Colors.red),
+            onPressed: () {},
+          ),
+          IconButton(
+            icon: Icon(Icons.share, color: Colors.black),
+            onPressed: () {},
+          ),
+          SizedBox(width: 10),
+        ],
+      ),
+      body: Column(
+        children: [
+          Expanded(
+            child: PageView.builder(
+              controller: pageController,
+              itemCount: images.length,
+              itemBuilder: (context, index) {
+                return Center(
+                  child: Image.asset(
+                    images[index],
+                    width: MediaQuery.of(context).size.width * 0.8,
+                    fit: BoxFit.contain,
+                  ),
+                );
+              },
+            ),
+          ),
+          SizedBox(height: 10),
+          SizedBox(
+            height: 80,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: images.length,
+              itemBuilder: (context, index) {
+                return GestureDetector(
+                  onTap: () {
+                    pageController.jumpToPage(index);
+                  },
+                  child: Container(
+                    margin: EdgeInsets.symmetric(horizontal: 5),
+                    padding: EdgeInsets.all(5),
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Colors.blue,
+                        width: index == 1 ? 2 : 0, // Highlight selected
+                      ),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Image.asset(
+                      images[index],
+                      width: 60,
+                      height: 60,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                );
+              },
+            ),
+          ),
+          SizedBox(height: 20),
         ],
       ),
     );
   }
+}
+
+void main() {
+  runApp(MaterialApp(home: ProductDetailsPage()));
 }
