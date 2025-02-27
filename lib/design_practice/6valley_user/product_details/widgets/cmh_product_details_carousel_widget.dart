@@ -1,9 +1,11 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_getx/common/basewidgets/custom_asset_image_widget.dart';
+import 'package:flutter_getx/design_practice/6valley_user/home_screen/widgets/product_card_grid_widget.dart';
 import 'package:flutter_getx/helper/extension_helper.dart';
 import 'package:flutter_getx/utils/dimensions.dart';
 import 'package:flutter_getx/utils/images.dart';
+import 'package:get/get_utils/get_utils.dart';
 
 class CmhProductDetailsCarouselSliderWidget extends StatefulWidget {
   const CmhProductDetailsCarouselSliderWidget({super.key});
@@ -91,7 +93,64 @@ class _CmhProductDetailsCarouselSliderWidgetState extends State<CmhProductDetail
             },
           ),
         ),
+        
+        const _PriceSection()
       ],
+    );
+  }
+}
+
+class _PriceSection extends StatelessWidget {
+  const _PriceSection({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      transform: Matrix4.translationValues(0, -10, 0),
+      padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeSmall, vertical: Dimensions.paddingSizeMedium),
+      color: Theme.of(context).primaryColor.withValues(alpha: 0.125),
+      child: Row(children: [
+    
+        Flexible(
+          flex: 4,
+          child: Text('product_price'.tr,
+            style: const TextStyle(fontSize: Dimensions.fontSizeExtraLarge, fontWeight: FontWeight.w700),
+          ),
+        ),
+        const SizedBox(width: Dimensions.paddingSizeSmall),
+    
+        Flexible(
+          flex: 4,
+          child: Text('discount'.tr,
+            style: TextStyle(
+                fontSize: Dimensions.fontSizeSmall,
+                fontWeight: FontWeight.w400,
+                decoration: TextDecoration.lineThrough,
+                decorationColor: Theme.of(context).hintColor,
+                color: Theme.of(context).hintColor
+            ),
+          ),
+        ),
+        const SizedBox(width: Dimensions.paddingSizeSmall),
+    
+        Flexible(
+          flex: 1,
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 3),
+            decoration: BoxDecoration(
+              border: Border.all(color: Theme.of(context).colorScheme.error.withValues(alpha: 0.30), width: 1),
+              borderRadius: BorderRadius.circular(5),
+              color: Theme.of(context).colorScheme.error.withValues(alpha: 0.05),
+            ),
+            child: Text('discount_percentage'.tr,
+              style: TextStyle(fontSize: Dimensions.fontSizeSmall, fontWeight: FontWeight.w700, color: Theme.of(context).colorScheme.error),
+            ),
+          ),
+        ),
+    
+      ]),
     );
   }
 }
