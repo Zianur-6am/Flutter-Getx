@@ -10,16 +10,12 @@ import 'package:flutter_getx/common/enum/valley_home_enum.dart';
 import 'package:flutter_getx/design_practice/6valley_user/home_screen/widgets/inner_new_arrivals_tab_view_widget.dart';
 import 'package:flutter_getx/design_practice/6valley_user/home_screen/widgets/new_user_exclusive_section_widget.dart';
 import 'package:flutter_getx/design_practice/6valley_user/home_screen/widgets/one_time_deal_widget.dart';
-import 'package:flutter_getx/design_practice/6valley_user/home_screen/widgets/product_card_widget.dart';
 import 'package:flutter_getx/design_practice/6valley_user/home_screen/widgets/todays_deal_widget.dart';
 import 'package:flutter_getx/design_practice/6valley_user/home_screen/widgets/top_stores_card_widget.dart';
 import 'package:flutter_getx/design_practice/6valley_user/home_screen/widgets/valley_home_carousel_slider_widget.dart';
 import 'package:flutter_getx/design_practice/6valley_user/home_screen/widgets/welcome_banner_widget.dart';
-import 'package:flutter_getx/helper/tab_class.dart';
-import 'package:flutter_getx/tab_bar/widgets/home_widget.dart';
 import 'package:flutter_getx/utils/dimensions.dart';
 import 'package:flutter_getx/utils/images.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
 
 class ValleyHomeScreen extends StatefulWidget {

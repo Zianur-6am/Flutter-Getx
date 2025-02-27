@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_getx/common/basewidgets/custom_asset_image_widget.dart';
+import 'package:flutter_getx/common/basewidgets/sliver_header_delegate.dart';
+import 'package:flutter_getx/common/enum/cmh_product_description_tabbar_enum.dart';
 import 'package:flutter_getx/design_practice/6valley_user/product_details/widgets/cmh_product_details_carousel_widget.dart';
 import 'package:flutter_getx/helper/extension_helper.dart';
 import 'package:flutter_getx/utils/dimensions.dart';
@@ -13,8 +15,11 @@ class ProductDetailScreen extends StatefulWidget {
   State<ProductDetailScreen> createState() => _ProductDetailScreenState();
 }
 
-class _ProductDetailScreenState extends State<ProductDetailScreen> {
+class _ProductDetailScreenState extends State<ProductDetailScreen> with TickerProviderStateMixin {
   ScrollController _scrollController = ScrollController();
+  late TabController _tabController;
+  final List<ProductDescriptionTab> tabs = ProductDescriptionTab.values;
+
   final double _flexibleSpaceHeight = 375; // Height of the flexibleSpace
   bool _isFlexibleSpaceVisible = true;
 
@@ -24,6 +29,12 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
     super.initState();
 
     _scrollController.addListener(_onScroll);
+
+    _tabController = TabController(
+      length: tabs.length,
+      vsync: this,
+    );
+    // _tabController.addListener(_handleTabChange);
   }
 
   void _onScroll() {
@@ -81,7 +92,40 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                 backgroundColor: Colors.transparent,
               ),
 
-              const SliverToBoxAdapter(child: _PriceSection())
+              const SliverToBoxAdapter(child: _PriceSection()),
+
+              /// tab bar section
+              SliverPersistentHeader(
+                pinned: true,
+                delegate: SliverHeaderDelegate(
+                  height: 51,
+                  child: Container(
+                    color: Theme.of(context).cardColor,
+                    child: Column(
+                      children: [
+                        TabBar(
+                          tabAlignment: TabAlignment.start,
+                          physics: const ClampingScrollPhysics(),
+                          isScrollable: true,
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: Dimensions.paddingSizeMedium, vertical: 0),
+                          labelPadding: const EdgeInsets.only(
+                              right: Dimensions.paddingSizeExtraLarge, bottom: 0),
+                          controller: _tabController,
+                          labelColor: Theme.of(context).primaryColor,
+                          unselectedLabelColor: context.customThemeColors.textColor,
+                          indicatorColor: Theme.of(context).primaryColor,
+                          indicatorPadding: const EdgeInsets.only(bottom: 0),
+                          dividerColor: Colors.transparent,
+                          tabs: tabs.map((tab) => Tab(
+                            child: Text(tab.label),
+                          )).toList(),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
 
 
 

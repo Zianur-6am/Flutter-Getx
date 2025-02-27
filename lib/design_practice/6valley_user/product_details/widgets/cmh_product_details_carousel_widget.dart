@@ -49,7 +49,7 @@ class _CmhProductDetailsCarouselSliderWidgetState extends State<CmhProductDetail
             height: 300,
               enlargeCenterPage: true,
               viewportFraction: 0.8,
-              autoPlay: true,
+              autoPlay: false,
               aspectRatio: 1,
               onPageChanged: (index, reason) {
                 setState(() => _current = index);

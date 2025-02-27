@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
 class TabScrollExample extends StatefulWidget {
+  const TabScrollExample({super.key});
+
   @override
-  _TabScrollExampleState createState() => _TabScrollExampleState();
+  TabScrollExampleState createState() => TabScrollExampleState();
 }
 
-class _TabScrollExampleState extends State<TabScrollExample> with SingleTickerProviderStateMixin {
+class TabScrollExampleState extends State<TabScrollExample> with SingleTickerProviderStateMixin {
   late TabController _tabController;
   final ScrollController _scrollController = ScrollController();
 
@@ -44,7 +46,9 @@ class _TabScrollExampleState extends State<TabScrollExample> with SingleTickerPr
                   Tab(text: "Section 2"),
                   Tab(text: "Section 3"),
                 ],
-                onTap: _scrollToSection,
+                onTap:(int index){
+                  _scrollToSection(index);
+                },
               ),
             ),
           ),
