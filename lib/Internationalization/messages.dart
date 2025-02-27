@@ -37,6 +37,8 @@ class Messages extends Translations{
       'up_to_20' : 'Up to 20%',
       'ends_in' : 'Ends in',
       'shop_now' : 'Shop Now >',
+      'available_in' : 'Available In',
+      'color' : 'Color'
 
     },
     'hi_IN' : {

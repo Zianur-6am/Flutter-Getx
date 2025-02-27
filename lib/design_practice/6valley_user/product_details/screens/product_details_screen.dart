@@ -17,8 +17,6 @@ class ProductDetailScreen extends StatefulWidget {
 
 class _ProductDetailScreenState extends State<ProductDetailScreen> with TickerProviderStateMixin {
   ScrollController _scrollController = ScrollController();
-  late TabController _tabController;
-  final List<ProductDescriptionTab> tabs = ProductDescriptionTab.values;
 
   final double _flexibleSpaceHeight = 375; // Height of the flexibleSpace
   bool _isFlexibleSpaceVisible = true;
@@ -30,16 +28,11 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> with TickerPr
 
     _scrollController.addListener(_onScroll);
 
-    _tabController = TabController(
-      length: tabs.length,
-      vsync: this,
-    );
-    // _tabController.addListener(_handleTabChange);
   }
 
   void _onScroll() {
     final double scrollOffset = _scrollController.offset;
-    final bool isVisible = scrollOffset < (_flexibleSpaceHeight - 50);
+    final bool isVisible = scrollOffset < (_flexibleSpaceHeight - 55);
 
     // Update the state if the visibility changes
     if (isVisible != _isFlexibleSpaceVisible) {
@@ -80,7 +73,6 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> with TickerPr
                 ),
                 expandedHeight: _flexibleSpaceHeight,
                 leading: const _LeadingIcon(),
-
                 actions: const [
                   _FavoriteIcon(),
                   SizedBox(width: Dimensions.paddingSizeExtraSmall),
@@ -89,49 +81,112 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> with TickerPr
                   SizedBox(width: 10),
                 ],
 
-                backgroundColor: Colors.transparent,
-              ),
-
-              const SliverToBoxAdapter(child: _PriceSection()),
-
-              /// tab bar section
-              SliverPersistentHeader(
-                pinned: true,
-                delegate: SliverHeaderDelegate(
-                  height: 51,
-                  child: Container(
-                    color: Theme.of(context).cardColor,
-                    child: Column(
-                      children: [
-                        TabBar(
-                          tabAlignment: TabAlignment.start,
-                          physics: const ClampingScrollPhysics(),
-                          isScrollable: true,
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: Dimensions.paddingSizeMedium, vertical: 0),
-                          labelPadding: const EdgeInsets.only(
-                              right: Dimensions.paddingSizeExtraLarge, bottom: 0),
-                          controller: _tabController,
-                          labelColor: Theme.of(context).primaryColor,
-                          unselectedLabelColor: context.customThemeColors.textColor,
-                          indicatorColor: Theme.of(context).primaryColor,
-                          indicatorPadding: const EdgeInsets.only(bottom: 0),
-                          dividerColor: Colors.transparent,
-                          tabs: tabs.map((tab) => Tab(
-                            child: Text(tab.label),
-                          )).toList(),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
+                backgroundColor: _isFlexibleSpaceVisible ? Colors.transparent : Theme.of(context).colorScheme.onPrimary,
               ),
 
 
 
             ];
           },
-          body: const SizedBox(),
+          body: Column(children: [
+            
+            const _PriceSection(),
+            
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeSmall),
+              child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+
+                const SizedBox(height: Dimensions.paddingSizeSmall),
+
+                Text(
+                  'product_name'.tr,
+                  style: const TextStyle(
+                    fontSize: Dimensions.fontSizeDefault,
+                    fontWeight: FontWeight.w600,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  maxLines: 2,
+                ),
+                const SizedBox(height: Dimensions.paddingSizeSmall),
+
+                Divider(color: Theme.of(context).primaryColor.withValues(alpha: 0.1)),
+                const SizedBox(height: Dimensions.paddingSizeSmall),
+
+                Row(children: [
+
+                  Expanded(
+                    flex: 1,
+                    child: Row(children: [
+                      const Icon(Icons.star, size: Dimensions.iconSizeSmall, color: Colors.orange),
+                      const SizedBox(width: Dimensions.paddingSizeExtraSmall),
+
+                      Text('rating'.tr, style: const TextStyle(fontWeight: FontWeight.w500, fontSize: Dimensions.fontSizeSmall)),
+                      const SizedBox(width: Dimensions.paddingSizeExtraSmall),
+
+                      Text('(9.2k+ Rev)', style: TextStyle(
+                          fontWeight: FontWeight.w400,
+                          fontSize: Dimensions.fontSizeSmall,
+                          color: Theme.of(context).hintColor
+                      )),
+                    ]),
+                  ),
+
+
+                  Container(height: 15, width: 1, color: Theme.of(context).hintColor),
+
+                  Expanded(
+                    flex: 1,
+                    child: Row(mainAxisAlignment: MainAxisAlignment.center,children: [
+                      const Text('22.5k+', style: TextStyle(fontWeight: FontWeight.w500, fontSize: Dimensions.fontSizeSmall)),
+                      const SizedBox(width: Dimensions.paddingSizeExtraSmall),
+
+                      Text('Orders', style: TextStyle(
+                          fontWeight: FontWeight.w400,
+                          fontSize: Dimensions.fontSizeSmall,
+                          color: Theme.of(context).hintColor
+                      )),
+                      const SizedBox(width: Dimensions.paddingSizeExtraSmall),
+                    ]),
+                  ),
+
+                  Container(height: 15, width: 1, color: Theme.of(context).hintColor),
+
+                  Expanded(
+                    flex: 1,
+                    child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                      const Text('120', style: TextStyle(fontWeight: FontWeight.w500, fontSize: Dimensions.fontSizeSmall)),
+                      const SizedBox(width: Dimensions.paddingSizeExtraSmall),
+
+                      Text('Wish Listed', style: TextStyle(
+                          fontWeight: FontWeight.w400,
+                          fontSize: Dimensions.fontSizeSmall,
+                          color: Theme.of(context).hintColor
+                      )),
+                      const SizedBox(width: Dimensions.paddingSizeExtraSmall),
+                    ]),
+                  ),
+
+                ]),
+                const SizedBox(height: Dimensions.paddingSizeSmall),
+
+                Divider(color: Theme.of(context).primaryColor.withValues(alpha: 0.1)),
+                const SizedBox(height: Dimensions.paddingSizeSmall),
+
+                Text('available_in'.tr, style: TextStyle(
+                    color: Theme.of(context).hintColor,
+                    fontSize: Dimensions.fontSizeSmall,
+                  fontWeight: FontWeight.w600
+                )),
+
+                Row(children: [
+                  Text('color'.tr, style: const TextStyle(fontSize: Dimensions.fontSizeSmall, fontWeight: FontWeight.w500),)
+                ]),
+
+
+              ]),
+            )
+
+          ]),
     ));
   }
 }
@@ -152,7 +207,7 @@ class _LeadingIcon extends StatelessWidget {
           boxShadow: [
             BoxShadow(
               blurRadius: 15,
-              spreadRadius: 5,
+              spreadRadius: 2,
               offset: const Offset(0, 10),
               color: context.customThemeColors.textColor.withValues(alpha: 0.1),
             )
@@ -182,7 +237,7 @@ class _FavoriteIcon extends StatelessWidget {
         boxShadow: [
           BoxShadow(
             blurRadius: 15,
-            spreadRadius: 5,
+            spreadRadius: 2,
             offset: const Offset(0, 10),
             color: context.customThemeColors.textColor.withValues(alpha: 0.1),
           )
@@ -211,7 +266,7 @@ class _ShareIcon extends StatelessWidget {
         boxShadow: [
           BoxShadow(
             blurRadius: 15,
-            spreadRadius: 5,
+            spreadRadius: 2,
             offset: const Offset(0, 10),
             color: context.customThemeColors.textColor.withValues(alpha: 0.1),
           )

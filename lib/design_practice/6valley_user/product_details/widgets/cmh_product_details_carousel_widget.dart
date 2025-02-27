@@ -46,7 +46,7 @@ class _CmhProductDetailsCarouselSliderWidgetState extends State<CmhProductDetail
             );
           }).toList(),
           options: CarouselOptions(
-            height: 300,
+              height: 300,
               enlargeCenterPage: true,
               viewportFraction: 0.8,
               autoPlay: false,
