@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_getx/common/basewidgets/custom_asset_image_widget.dart';
 import 'package:flutter_getx/design_practice/6valley_user/product_details/widgets/cmh_product_details_carousel_widget.dart';
 import 'package:flutter_getx/helper/extension_helper.dart';
-import 'package:flutter_getx/helper/responsive_helper.dart';
 import 'package:flutter_getx/utils/dimensions.dart';
 import 'package:flutter_getx/utils/images.dart';
 import 'package:get/get_utils/get_utils.dart';
@@ -15,26 +14,63 @@ class ProductDetailScreen extends StatefulWidget {
 }
 
 class _ProductDetailScreenState extends State<ProductDetailScreen> {
+  ScrollController _scrollController = ScrollController();
+  final double _flexibleSpaceHeight = 375; // Height of the flexibleSpace
+  bool _isFlexibleSpaceVisible = true;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    _scrollController.addListener(_onScroll);
+  }
+
+  void _onScroll() {
+    final double scrollOffset = _scrollController.offset;
+    final bool isVisible = scrollOffset < (_flexibleSpaceHeight - 50);
+
+    // Update the state if the visibility changes
+    if (isVisible != _isFlexibleSpaceVisible) {
+      setState(() {
+        _isFlexibleSpaceVisible = isVisible;
+      });
+    }
+  }
+
+  @override
+  void dispose() {
+    _scrollController.removeListener(_onScroll);
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: NestedScrollView(
+        controller: _scrollController,
           headerSliverBuilder: (context, _) {
             return [
-              const SliverAppBar(
+              SliverAppBar(
                 floating: true,
                 pinned: true,
                 automaticallyImplyLeading: false,
-                title: Text('Product name', style: TextStyle(fontSize: Dimensions.fontSizeSmall, fontWeight: FontWeight.w500)),
-                flexibleSpace: FlexibleSpaceBar(
+                title: Text(_isFlexibleSpaceVisible ? '' : 'product_name'.tr, style: const TextStyle(
+                    fontSize: Dimensions.fontSizeSmall,
+                    fontWeight: FontWeight.w500,
+                    overflow: TextOverflow.ellipsis
+                )),
+                flexibleSpace: const FlexibleSpaceBar(
                   background: CmhProductDetailsCarouselSliderWidget(),
                   collapseMode: CollapseMode.pin,
                   expandedTitleScale: 1,
                 ),
-                expandedHeight: 375,
-                leading: _LeadingIcon(),
+                expandedHeight: _flexibleSpaceHeight,
+                leading: const _LeadingIcon(),
 
-                actions: [
+                actions: const [
                   _FavoriteIcon(),
                   SizedBox(width: Dimensions.paddingSizeExtraSmall),
 
@@ -45,7 +81,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                 backgroundColor: Colors.transparent,
               ),
 
-              const SliverToBoxAdapter(child: _PriceSection(),)
+              const SliverToBoxAdapter(child: _PriceSection())
 
 
 
