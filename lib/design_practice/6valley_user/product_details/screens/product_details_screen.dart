@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_getx/common/basewidgets/custom_asset_image_widget.dart';
-import 'package:flutter_getx/common/basewidgets/custom_image_widget.dart';
-import 'package:flutter_getx/design_practice/6valley_user/home_screen/widgets/valley_home_carousel_slider_widget.dart';
 import 'package:flutter_getx/design_practice/6valley_user/product_details/widgets/cmh_product_details_carousel_widget.dart';
 import 'package:flutter_getx/helper/extension_helper.dart';
 import 'package:flutter_getx/utils/dimensions.dart';
@@ -25,15 +23,15 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                 floating: true,
                 pinned: true,
                 automaticallyImplyLeading: false,
-                leadingWidth: 0,
-                title: Row(
-                  children: [
-                    _LeadingIcon(),
-                    SizedBox(width: Dimensions.paddingSizeMedium),
-
-                    Text('Product name', style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500)),
-                  ],
+                flexibleSpace: FlexibleSpaceBar(
+                  title: Text('Product name', style: TextStyle(fontSize: Dimensions.fontSizeSmall, fontWeight: FontWeight.w500)),
+                  background: CmhProductDetailsCarouselSliderWidget(),
+                  collapseMode: CollapseMode.pin,
+                  expandedTitleScale: 1,
                 ),
+                expandedHeight: 450,
+                leading: _LeadingIcon(),
+
                 actions: [
                   _FavoriteIcon(),
                   SizedBox(width: Dimensions.paddingSizeExtraSmall),
@@ -41,12 +39,10 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                   _ShareIcon(),
                   SizedBox(width: 10),
                 ],
+
                 backgroundColor: Colors.transparent,
               ),
 
-              const SliverToBoxAdapter(
-                child: CmhProductDetailsCarouselSliderWidget(),
-              ),
 
 
             ];
@@ -63,21 +59,24 @@ class _LeadingIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DecoratedBox(
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        color: Theme.of(context).cardColor,
-        boxShadow: [
-          BoxShadow(
-            blurRadius: 15,
-            offset: const Offset(0, 10),
-            color: context.customThemeColors.textColor.withValues(alpha: 0.1),
-          )
-        ],
-      ),
-      child: const Padding(
-        padding: EdgeInsets.all(Dimensions.paddingSizeSmall),
-        child: Icon(Icons.arrow_back_ios, size: Dimensions.iconSizeMedium),
+    return Padding(
+      padding: const EdgeInsets.all(Dimensions.paddingEye),
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: Theme.of(context).cardColor,
+          boxShadow: [
+            BoxShadow(
+              blurRadius: 15,
+              offset: const Offset(0, 10),
+              color: context.customThemeColors.textColor.withValues(alpha: 0.1),
+            )
+          ],
+        ),
+        child: const Padding(
+          padding: EdgeInsets.all(Dimensions.paddingSizeSmall),
+          child: Icon(Icons.arrow_back_ios, size: Dimensions.iconSizeMedium),
+        ),
       ),
     );
   }

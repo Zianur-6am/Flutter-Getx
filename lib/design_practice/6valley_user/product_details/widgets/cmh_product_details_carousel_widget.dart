@@ -32,8 +32,12 @@ class _CmhProductDetailsCarouselSliderWidgetState extends State<CmhProductDetail
 
   @override
   Widget build(BuildContext context) {
+    final double topSpace = MediaQuery.of(context).padding.top + 12;
     return Column(
       children: [
+
+        SizedBox(height: topSpace),
+
         CarouselSlider(
           carouselController: carouselController,
           items: imgList.map((img) {
