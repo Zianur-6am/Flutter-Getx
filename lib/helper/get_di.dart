@@ -5,6 +5,7 @@ import 'package:flutter_getx/design_practice/6valley_user/home_screen/domain/rep
 import 'package:flutter_getx/design_practice/6valley_user/home_screen/domain/repositories/product_repository_interface.dart';
 import 'package:flutter_getx/design_practice/6valley_user/home_screen/domain/services/product_service.dart';
 import 'package:flutter_getx/design_practice/6valley_user/home_screen/domain/services/product_service_interface.dart';
+import 'package:flutter_getx/design_practice/6valley_user/product_details/controllers/cmh_product_controller.dart';
 import 'package:flutter_getx/theme/controllers/theme_controller.dart';
 import 'package:flutter_getx/utils/app_constant.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -52,6 +53,7 @@ Future<void> init() async {
   // Register Controllers
   Get.lazyPut(() => ThemeController(sharedPreferences));
   Get.lazyPut(() => ValleyHomeController(productServiceInterface: Get.find<ProductServiceInterface>()));
+  Get.lazyPut(() => CmhProductController());
   print('✅ Controllers registered');
 }
 

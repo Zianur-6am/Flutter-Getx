@@ -2,10 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_getx/common/basewidgets/custom_asset_image_widget.dart';
 import 'package:flutter_getx/common/basewidgets/sliver_header_delegate.dart';
 import 'package:flutter_getx/common/enum/cmh_product_description_tabbar_enum.dart';
+import 'package:flutter_getx/design_practice/6valley_user/product_details/controllers/cmh_product_controller.dart';
 import 'package:flutter_getx/design_practice/6valley_user/product_details/widgets/cmh_product_details_carousel_widget.dart';
+import 'package:flutter_getx/design_practice/6valley_user/product_details/widgets/product_title_section_widget.dart';
+import 'package:flutter_getx/helper/color_helper.dart';
 import 'package:flutter_getx/helper/extension_helper.dart';
 import 'package:flutter_getx/utils/dimensions.dart';
 import 'package:flutter_getx/utils/images.dart';
+import 'package:get/get.dart';
 import 'package:get/get_utils/get_utils.dart';
 
 class ProductDetailScreen extends StatefulWidget {
@@ -88,105 +92,11 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> with TickerPr
 
             ];
           },
-          body: Column(children: [
-            
-            const _PriceSection(),
-            
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeSmall),
-              child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-
-                const SizedBox(height: Dimensions.paddingSizeSmall),
-
-                Text(
-                  'product_name'.tr,
-                  style: const TextStyle(
-                    fontSize: Dimensions.fontSizeDefault,
-                    fontWeight: FontWeight.w600,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  maxLines: 2,
-                ),
-                const SizedBox(height: Dimensions.paddingSizeSmall),
-
-                Divider(color: Theme.of(context).primaryColor.withValues(alpha: 0.1)),
-                const SizedBox(height: Dimensions.paddingSizeSmall),
-
-                Row(children: [
-
-                  Expanded(
-                    flex: 1,
-                    child: Row(children: [
-                      const Icon(Icons.star, size: Dimensions.iconSizeSmall, color: Colors.orange),
-                      const SizedBox(width: Dimensions.paddingSizeExtraSmall),
-
-                      Text('rating'.tr, style: const TextStyle(fontWeight: FontWeight.w500, fontSize: Dimensions.fontSizeSmall)),
-                      const SizedBox(width: Dimensions.paddingSizeExtraSmall),
-
-                      Text('(9.2k+ Rev)', style: TextStyle(
-                          fontWeight: FontWeight.w400,
-                          fontSize: Dimensions.fontSizeSmall,
-                          color: Theme.of(context).hintColor
-                      )),
-                    ]),
-                  ),
-
-
-                  Container(height: 15, width: 1, color: Theme.of(context).hintColor),
-
-                  Expanded(
-                    flex: 1,
-                    child: Row(mainAxisAlignment: MainAxisAlignment.center,children: [
-                      const Text('22.5k+', style: TextStyle(fontWeight: FontWeight.w500, fontSize: Dimensions.fontSizeSmall)),
-                      const SizedBox(width: Dimensions.paddingSizeExtraSmall),
-
-                      Text('Orders', style: TextStyle(
-                          fontWeight: FontWeight.w400,
-                          fontSize: Dimensions.fontSizeSmall,
-                          color: Theme.of(context).hintColor
-                      )),
-                      const SizedBox(width: Dimensions.paddingSizeExtraSmall),
-                    ]),
-                  ),
-
-                  Container(height: 15, width: 1, color: Theme.of(context).hintColor),
-
-                  Expanded(
-                    flex: 1,
-                    child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                      const Text('120', style: TextStyle(fontWeight: FontWeight.w500, fontSize: Dimensions.fontSizeSmall)),
-                      const SizedBox(width: Dimensions.paddingSizeExtraSmall),
-
-                      Text('Wish Listed', style: TextStyle(
-                          fontWeight: FontWeight.w400,
-                          fontSize: Dimensions.fontSizeSmall,
-                          color: Theme.of(context).hintColor
-                      )),
-                      const SizedBox(width: Dimensions.paddingSizeExtraSmall),
-                    ]),
-                  ),
-
-                ]),
-                const SizedBox(height: Dimensions.paddingSizeSmall),
-
-                Divider(color: Theme.of(context).primaryColor.withValues(alpha: 0.1)),
-                const SizedBox(height: Dimensions.paddingSizeSmall),
-
-                Text('available_in'.tr, style: TextStyle(
-                    color: Theme.of(context).hintColor,
-                    fontSize: Dimensions.fontSizeSmall,
-                  fontWeight: FontWeight.w600
-                )),
-
-                Row(children: [
-                  Text('color'.tr, style: const TextStyle(fontSize: Dimensions.fontSizeSmall, fontWeight: FontWeight.w500),)
-                ]),
-
-
-              ]),
-            )
-
-          ]),
+          body: CustomScrollView(
+            slivers: [
+              const SliverToBoxAdapter(child: ProductTitleSectionWidget(),)
+            ],
+          )
     ));
   }
 }

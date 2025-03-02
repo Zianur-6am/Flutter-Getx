@@ -24,7 +24,6 @@ import 'package:flutter_getx/widgets/expantion_tile.dart';
 import 'package:flutter_getx/widgets/show_dialog.dart';
 import 'package:flutter_getx/widgets/snackbar.dart';
 import 'package:get/get.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import 'Food_Delivery_App_Design/features/home/screens/bottom_nav_bar.dart';
 import 'home.dart';

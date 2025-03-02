@@ -54,7 +54,7 @@ class CustomAppBarWidget extends StatelessWidget implements PreferredSizeWidget 
         child: AppBar(
           shadowColor: isRemoveShadow ? null : Theme.of(context).primaryColor.withValues(alpha:.5),
           titleSpacing: 0,
-          title: Text(title!, style: titilliumSemiBold.copyWith(fontSize: Dimensions.fontSizeLarge,
+          title: Text(title!, style: interBold.copyWith(fontSize: Dimensions.fontSizeLarge,
               color: Theme.of(context).textTheme.bodyLarge!.color)),
           centerTitle: true,
           leading: isBackButtonExist ? IconButton(icon: const Icon(Icons.arrow_back_ios, size: Dimensions.iconSizeDefault),
@@ -107,7 +107,7 @@ class CustomAppBarWidget extends StatelessWidget implements PreferredSizeWidget 
           //               Positioned(top: -4, right: -4,
           //                 child: CircleAvatar(radius: 7, backgroundColor: Colors.green,
           //                   child: Text('${cartController.customerCartList.isNotEmpty?cartController.customerCartList[0].cart!.length : 0}',
-          //                       style: robotoRegular.copyWith(color: Theme.of(context).cardColor,
+          //                       style: interRegular.copyWith(color: Theme.of(context).cardColor,
           //                           fontSize: Dimensions.fontSizeSmall)), ),
           //               ),
           //             ],),

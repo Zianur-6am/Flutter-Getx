@@ -159,7 +159,7 @@ class _CustomTextFieldWidgetState extends State<CustomTextFieldWidget> {
           contentPadding:  EdgeInsets.symmetric(vertical: 12.0, horizontal:widget.variant ? 0 : 10),
           alignLabelWithHint: true,
           counterText: '',
-          hintStyle: titilliumRegular.copyWith(color: Theme.of(context).hintColor),
+          hintStyle: interRegular.copyWith(color: Theme.of(context).hintColor),
           errorStyle: const TextStyle(height: 1.5),
           border: widget.formProduct ? InputBorder.none : widget.border ?
           OutlineInputBorder(
@@ -181,13 +181,13 @@ class _CustomTextFieldWidgetState extends State<CustomTextFieldWidget> {
 
 
 
-          labelStyle: titilliumRegular.copyWith(color: Theme.of(context).hintColor),
+          labelStyle: interRegular.copyWith(color: Theme.of(context).hintColor),
 
 
           label: widget.formProduct ? Text.rich(TextSpan(children: [
-            TextSpan(text: widget.hintText??'', style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeLarge)),
+            TextSpan(text: widget.hintText??'', style: interRegular.copyWith(fontSize: Dimensions.fontSizeLarge)),
             if(widget.required && widget.hintText != null)
-              TextSpan(text : ' *', style: robotoRegular.copyWith(color: Theme.of(context).colorScheme.error, fontSize: Dimensions.fontSizeLarge))
+              TextSpan(text : ' *', style: interRegular.copyWith(color: Theme.of(context).colorScheme.error, fontSize: Dimensions.fontSizeLarge))
           ])) : null,
         ),
       ),

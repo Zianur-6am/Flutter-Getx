@@ -41,7 +41,7 @@ class _DigitalProductWidgetState extends State<DigitalProductWidget> {
               items: itemList.map((String value) {
                 return DropdownMenuItem<String>(
                   value: value,
-                  child: Text(value, style: robotoMedium),
+                  child: Text(value, style: interMedium),
                 );
               }).toList(),
               onChanged: (value) {
@@ -88,10 +88,10 @@ class _DigitalProductWidgetState extends State<DigitalProductWidget> {
                       // SizedBox(width: 50,child: Image.asset(Images.upload)),
                       // widget.addProductController!.selectedFileForImport !=null ?
                       // Text(fileNamed != null? fileNamed?.name??'':'${widget.product!.digitalFileReady}',maxLines: 2,overflow: TextOverflow.ellipsis):
-                      // Text(getTranslated('upload_file', context)!, style: robotoRegular.copyWith()),
+                      // Text(getTranslated('upload_file', context)!, style: interRegular.copyWith()),
                       //
                       // widget.product !=null && fileNamed == null ?
-                      // Text(widget.product!.digitalFileReady??'', style: robotoRegular.copyWith()):const SizedBox(),
+                      // Text(widget.product!.digitalFileReady??'', style: interRegular.copyWith()):const SizedBox(),
 
                     ],);
                 }

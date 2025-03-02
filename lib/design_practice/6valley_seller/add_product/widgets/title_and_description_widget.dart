@@ -21,7 +21,7 @@ class _TitleAndDescriptionWidgetState extends State<TitleAndDescriptionWidget> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 2),
             child: Text('Insert language wise product name and description',
-              style: robotoRegular.copyWith(color: Theme.of(context).hintColor,
+              style: interRegular.copyWith(color: Theme.of(context).hintColor,
                 fontSize: Dimensions.fontSizeSmall),),
           ),
           const SizedBox(height: Dimensions.paddingSizeSmall,),

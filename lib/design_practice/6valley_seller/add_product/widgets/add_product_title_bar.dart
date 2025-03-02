@@ -32,7 +32,7 @@ class AddProductTitleBar extends StatelessWidget {
                   ),
                   child: Center(
                     child: Text(addProductController.pages[index],
-                      style: robotoRegular.copyWith(color: addProductController.selectedPageIndex == index ? Theme.of(context).primaryColor: Theme.of(context).hintColor),
+                      style: interRegular.copyWith(color: addProductController.selectedPageIndex == index ? Theme.of(context).primaryColor: Theme.of(context).hintColor),
                     ),
                   ),
                 );

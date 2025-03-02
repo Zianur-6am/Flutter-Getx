@@ -29,7 +29,7 @@ class DropdownDecoratorWidget extends StatelessWidget {
       Positioned(top: 0, left: Dimensions.paddingSizeMedium, child: Container(
         color: Theme.of(context).scaffoldBackgroundColor,
         padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeExtraSmall),
-        child: Text(title ?? 'Not found', style: robotoRegular),
+        child: Text(title ?? 'Not found', style: interRegular),
       )) : const SizedBox.shrink(),
     ]);
   }

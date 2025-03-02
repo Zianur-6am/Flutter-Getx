@@ -15,7 +15,7 @@ class AddProductSectionWidget extends StatelessWidget {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         Padding(
           padding: const EdgeInsets.symmetric(vertical: Dimensions.paddingSizeSmall, horizontal: Dimensions.fontSizeExtraLarge),
-          child: Text(title, style: titleStyle ?? robotoBold.copyWith(fontSize: Dimensions.fontSizeLarge))),
+          child: Text(title, style: titleStyle ?? interBold.copyWith(fontSize: Dimensions.fontSizeLarge))),
 
         Container(
           decoration: isDecoration ? BoxDecoration(

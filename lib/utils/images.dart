@@ -20,6 +20,7 @@ class Images {
   static const String placeholder = 'assets/images/placeholder_1x1.png';
   static const String shareIcon = 'assets/images/share_icon.png';
   static const String backIcon = 'assets/images/back_icon.png';
+  static const String selectedIcon = 'assets/images/selected_icon.png';
 
   //svg
   static const String oneTimeDealImage = 'assets/images/svg/one_time_deal.svg';

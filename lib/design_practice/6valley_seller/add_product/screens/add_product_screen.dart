@@ -95,8 +95,8 @@ class _AddProductScreenState extends State<AddProductScreen> with TickerProvider
                             border: Border(bottom: BorderSide(color: Theme.of(context).primaryColor, width: 2,),
                             ),
                           ),
-                          unselectedLabelStyle: robotoRegular.copyWith(color: Theme.of(context).hintColor,),
-                          labelStyle: robotoBold.copyWith(fontSize: Dimensions.fontSizeLarge,
+                          unselectedLabelStyle: interRegular.copyWith(color: Theme.of(context).hintColor,),
+                          labelStyle: interBold.copyWith(fontSize: Dimensions.fontSizeLarge,
                             color: Theme.of(context).disabledColor,),
                           tabs: addProductController.tabBarNames.map((name) => Tab(child: Text(name))).toList(),
                         ),
@@ -140,7 +140,7 @@ class _AddProductScreenState extends State<AddProductScreen> with TickerProvider
                                     return DropdownMenuItem<String>(
                                       value: item,
                                       child: Text(item ?? '',
-                                        style: robotoMedium,
+                                        style: interMedium,
                                       ),
                                     );
                                   }).toList(),
@@ -171,7 +171,7 @@ class _AddProductScreenState extends State<AddProductScreen> with TickerProvider
                                   },
                                   child: Padding(
                                     padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeExtraSmall),
-                                    child: Text('Generate Code', style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeDefault, color: Theme.of(context).primaryColor)),
+                                    child: Text('Generate Code', style: interMedium.copyWith(fontSize: Dimensions.fontSizeDefault, color: Theme.of(context).primaryColor)),
                                   ),
                                 ),
                               ],
@@ -385,7 +385,7 @@ class _AddProductScreenState extends State<AddProductScreen> with TickerProvider
                                 items: deliveryTypeList.map((String value) {
                                   return DropdownMenuItem<String>(
                                       value: value,
-                                      child: Text(value, style: robotoMedium)
+                                      child: Text(value, style: interMedium)
                                   );
                                 }).toList(),
                                 onChanged: (value) {

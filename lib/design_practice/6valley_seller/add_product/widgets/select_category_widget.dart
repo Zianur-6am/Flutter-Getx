@@ -40,7 +40,7 @@ class SelectCategoryWidgetState extends State<SelectCategoryWidget> {
                           return DropdownMenuItem<String>(
                             value: item,
                             child: Text(item ?? '',
-                              style: robotoMedium,
+                              style: interMedium,
                             ),
                           );
                         }).toList(),
@@ -68,7 +68,7 @@ class SelectCategoryWidgetState extends State<SelectCategoryWidget> {
                     return DropdownMenuItem<String>(
                       value: item,
                       child: Text(item ?? '',
-                        style: robotoMedium,
+                        style: interMedium,
                       ),
                     );
                   }).toList(),
@@ -98,7 +98,7 @@ class SelectCategoryWidgetState extends State<SelectCategoryWidget> {
                     return DropdownMenuItem<String>(
                       value: item,
                       child: Text(item ?? '',
-                        style: robotoMedium,
+                        style: interMedium,
                       ),
                     );
                   }).toList(),
