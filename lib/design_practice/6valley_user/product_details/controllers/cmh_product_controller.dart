@@ -33,6 +33,25 @@ class CmhProductController extends GetxController implements GetxService {
   int get selectedSizeIndex => _selectedSizeIndex;
 
 
+  final String _description = 'The fuel filter in your car is an imp asdjkhjkahs jahsdjka shdkjash dkortant '
+      'component in keeping your engine running clean and efficiently. '
+      'It removes impurities from the fuel before it to '
+      'reaches the combustion chamber, preventing buildup impurities from the other thinks.'
+      'Flutter is a popular open-source UI toolkit for building native mobile apps for iOS and Android. '
+      ;
+
+
+  final int _descriptionLength = 0;
+  bool _isDescriptionExpandable = false;
+  bool _isDescriptionExpanded = false;
+  final String? _descriptionImage = 'https://picsum.photos/250?image=9';
+  int get descriptionLength => _descriptionLength;
+  String get description => _description;
+  bool get isDescriptionExpandable => _isDescriptionExpandable;
+  String? get descriptionImage => _descriptionImage;
+  bool get isDescriptionExpanded => _isDescriptionExpanded;
+
+
   void updateSelectedColorIndex(int index, {bool isUpdate = true}){
     _selectedColorIndex = index;
 
@@ -47,6 +66,21 @@ class CmhProductController extends GetxController implements GetxService {
     if(isUpdate){
       update();
     }
+  }
+
+  void calculationDescriptionExpandable (){
+
+    if(_description.length > 460 || (descriptionImage != null && descriptionImage!.isNotEmpty)){
+      _isDescriptionExpandable = true;
+    }else{
+      _isDescriptionExpandable = false;
+    }
+  }
+
+
+  void setDescriptionExpanded(){
+    _isDescriptionExpanded = !_isDescriptionExpanded;
+    update();
   }
 
 }

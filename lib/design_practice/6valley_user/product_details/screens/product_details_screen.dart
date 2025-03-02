@@ -4,6 +4,7 @@ import 'package:flutter_getx/common/basewidgets/sliver_header_delegate.dart';
 import 'package:flutter_getx/common/enum/cmh_product_description_tabbar_enum.dart';
 import 'package:flutter_getx/design_practice/6valley_user/product_details/controllers/cmh_product_controller.dart';
 import 'package:flutter_getx/design_practice/6valley_user/product_details/widgets/cmh_product_details_carousel_widget.dart';
+import 'package:flutter_getx/design_practice/6valley_user/product_details/widgets/product_description_widget.dart';
 import 'package:flutter_getx/design_practice/6valley_user/product_details/widgets/product_title_section_widget.dart';
 import 'package:flutter_getx/helper/color_helper.dart';
 import 'package:flutter_getx/helper/extension_helper.dart';
@@ -92,10 +93,14 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> with TickerPr
 
             ];
           },
-          body: CustomScrollView(
-            slivers: [
-              const SliverToBoxAdapter(child: ProductTitleSectionWidget(),)
-            ],
+          body: SingleChildScrollView(
+            child: Column(
+              children: [
+                ProductTitleSectionWidget(),
+
+                ProductDescriptionWidget(),
+              ],
+            ),
           )
     ));
   }
