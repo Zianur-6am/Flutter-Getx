@@ -21,6 +21,13 @@ class Images {
   static const String shareIcon = 'assets/images/share_icon.png';
   static const String backIcon = 'assets/images/back_icon.png';
   static const String selectedIcon = 'assets/images/selected_icon.png';
+  static const String customerHelenaImage = 'assets/images/customer_helena_image.png';
+  static const String shoeImage = 'assets/images/shoe_image.png';
+  static const String replyImage = 'assets/images/reply_image.png';
+  static const String apexIcon = 'assets/images/apex_icon.png';
+  static const String authenticIcon = 'assets/images/authentic_icon.png';
+  static const String paymentIcon = 'assets/images/payment_icon.png';
+  static const String returnIcon = 'assets/images/return_icon.png';
 
   //svg
   static const String oneTimeDealImage = 'assets/images/svg/one_time_deal.svg';

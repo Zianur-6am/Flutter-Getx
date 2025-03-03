@@ -30,7 +30,7 @@ class ProductTitleSectionWidget extends StatelessWidget {
 
               Text(
                 'product_name'.tr,
-                style: const TextStyle(
+                style: interRegular.copyWith(
                   fontSize: Dimensions.fontSizeDefault,
                   fontWeight: FontWeight.w600,
                   overflow: TextOverflow.ellipsis,
@@ -42,67 +42,73 @@ class ProductTitleSectionWidget extends StatelessWidget {
               Divider(color: Theme.of(context).primaryColor.withValues(alpha: 0.1)),
               const SizedBox(height: Dimensions.paddingSizeSmall),
 
-              Row(
-                children: [
-                  Expanded(
-                    flex: 1,
-                    child: Row(
-                      children: [
-                        const Icon(Icons.star, size: Dimensions.iconSizeSmall, color: Colors.orange),
-                        const SizedBox(width: Dimensions.paddingSizeExtraSmall),
-                        Text('rating'.tr, style: const TextStyle(fontWeight: FontWeight.w500, fontSize: Dimensions.fontSizeSmall)),
-                        const SizedBox(width: Dimensions.paddingSizeExtraSmall),
-                        Text(
-                          '(9.2k+ Rev)',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w400,
-                            fontSize: Dimensions.fontSizeSmall,
-                            color: Theme.of(context).hintColor,
-                          ),
+              Row(children: [
+
+                Expanded(
+                  flex: 1,
+                  child: Row(
+                    children: [
+                      const Icon(Icons.star, size: Dimensions.iconSizeSmall, color: Colors.orange),
+                      const SizedBox(width: Dimensions.paddingSizeExtraSmall),
+                      Text('rating'.tr, style: interRegular.copyWith(fontWeight: FontWeight.w500, fontSize: Dimensions.fontSizeSmall)),
+                      const SizedBox(width: Dimensions.paddingSizeExtraSmall),
+                      Text(
+                        '(9.2k+ Rev)',
+                        style: interRegular.copyWith(
+                          fontWeight: FontWeight.w400,
+                          fontSize: Dimensions.fontSizeSmall,
+                          color: Theme.of(context).hintColor,
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                  Container(height: 15, width: 1, color: Theme.of(context).hintColor),
-                  Expanded(
-                    flex: 1,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Text('22.5k+', style: TextStyle(fontWeight: FontWeight.w500, fontSize: Dimensions.fontSizeSmall)),
-                        const SizedBox(width: Dimensions.paddingSizeExtraSmall),
-                        Text(
-                          'Orders',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w400,
-                            fontSize: Dimensions.fontSizeSmall,
-                            color: Theme.of(context).hintColor,
-                          ),
+                ),
+
+                Container(height: 15, width: 1, color: Theme.of(context).hintColor),
+
+                Expanded(
+                  flex: 1,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text('22.5k+', style: interRegular.copyWith(fontWeight: FontWeight.w500, fontSize: Dimensions.fontSizeSmall)),
+                      const SizedBox(width: Dimensions.paddingSizeExtraSmall),
+
+                      Text(
+                        'Orders',
+                        style: interRegular.copyWith(
+                          fontWeight: FontWeight.w400,
+                          fontSize: Dimensions.fontSizeSmall,
+                          color: Theme.of(context).hintColor,
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                  Container(height: 15, width: 1, color: Theme.of(context).hintColor),
-                  Expanded(
-                    flex: 1,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Text('120', style: TextStyle(fontWeight: FontWeight.w500, fontSize: Dimensions.fontSizeSmall)),
-                        const SizedBox(width: Dimensions.paddingSizeExtraSmall),
-                        Text(
-                          'Wish Listed',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w400,
-                            fontSize: Dimensions.fontSizeSmall,
-                            color: Theme.of(context).hintColor,
-                          ),
+                ),
+
+                Container(height: 15, width: 1, color: Theme.of(context).hintColor),
+
+                Expanded(
+                  flex: 1,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+
+                      Text('120', style: interRegular.copyWith(fontWeight: FontWeight.w500, fontSize: Dimensions.fontSizeSmall)),
+                      const SizedBox(width: Dimensions.paddingSizeExtraSmall),
+
+                      Text(
+                        'Wish Listed',
+                        style: interRegular.copyWith(
+                          fontWeight: FontWeight.w400,
+                          fontSize: Dimensions.fontSizeSmall,
+                          color: Theme.of(context).hintColor,
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                ),
+              ]),
               const SizedBox(height: Dimensions.paddingSizeSmall),
 
               Divider(color: Theme.of(context).primaryColor.withValues(alpha: 0.1)),
@@ -110,7 +116,7 @@ class ProductTitleSectionWidget extends StatelessWidget {
 
               Text(
                 'available_in'.tr,
-                style: TextStyle(
+                style: interRegular.copyWith(
                   color: Theme.of(context).hintColor,
                   fontSize: Dimensions.fontSizeSmall,
                   fontWeight: FontWeight.w600,
@@ -121,7 +127,7 @@ class ProductTitleSectionWidget extends StatelessWidget {
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text('color'.tr, style: const TextStyle(fontSize: Dimensions.fontSizeSmall, fontWeight: FontWeight.w500)),
+                  Text('color'.tr, style: interRegular.copyWith(fontSize: Dimensions.fontSizeSmall, fontWeight: FontWeight.w500)),
                   const SizedBox(width: Dimensions.paddingSizeSmall),
 
                   Expanded(
@@ -132,7 +138,6 @@ class ProductTitleSectionWidget extends StatelessWidget {
                           if (cmhProductController.hexColors.isEmpty) {
                             return const Center(child: Text('No colors available'));
                           }
-
                           return ListView.separated(
                             itemBuilder: (context, index) {
                               final bool isSelected = cmhProductController.selectedColorIndex == index;
@@ -143,13 +148,16 @@ class ProductTitleSectionWidget extends StatelessWidget {
                                   padding: const EdgeInsets.all(Dimensions.paddingSizeExtraSmall),
                                   decoration: BoxDecoration(
                                     shape: BoxShape.circle,
-                                    color: color,
-                                    border: isSelected ? Border.all(
-                                      color: color.withValues(alpha: 0.2),
-                                      width: 2,
-                                    ) : null,
+                                    color: isSelected ? color.withValues(alpha: 0.2) : Theme.of(context).cardColor,
                                   ),
-                                  child: Center(child: isSelected ? const CustomAssetImageWidget(Images.selectedIcon) : SizedBox(height: 20, width: 20,)),
+                                  child: Container(
+                                    padding: const EdgeInsets.all(2),
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: color,
+                                    ),
+                                    child: Center(child: isSelected ? const CustomAssetImageWidget(Images.selectedIcon) : const SizedBox(height: 20, width: 20)),
+                                  ),
                                 ),
                               );
                             },
@@ -169,7 +177,7 @@ class ProductTitleSectionWidget extends StatelessWidget {
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text('size'.tr, style: const TextStyle(fontSize: Dimensions.fontSizeSmall, fontWeight: FontWeight.w500)),
+                  Text('size'.tr, style: interRegular.copyWith(fontSize: Dimensions.fontSizeSmall, fontWeight: FontWeight.w500)),
                   const SizedBox(width: Dimensions.paddingSizeDefault),
 
                   Expanded(
@@ -191,6 +199,7 @@ class ProductTitleSectionWidget extends StatelessWidget {
                                   width: 30,
                                   decoration: BoxDecoration(
                                     shape: BoxShape.circle,
+                                    border: isSelected ? Border.all(color: Theme.of(context).primaryColor, width: 1) : null,
                                     color: isSelected ? Theme.of(context).primaryColor : Theme.of(context).primaryColor.withValues(alpha: 0.2),
                                     boxShadow: isSelected ? [
                                       BoxShadow(
@@ -244,7 +253,7 @@ class _PriceSection extends StatelessWidget {
         Flexible(
           flex: 4,
           child: Text('product_price'.tr,
-            style: const TextStyle(fontSize: Dimensions.fontSizeExtraLarge, fontWeight: FontWeight.w700),
+            style: interRegular.copyWith(fontSize: Dimensions.fontSizeExtraLarge, fontWeight: FontWeight.w700),
           ),
         ),
         const SizedBox(width: Dimensions.paddingSizeSmall),
@@ -252,7 +261,7 @@ class _PriceSection extends StatelessWidget {
         Flexible(
           flex: 4,
           child: Text('discount'.tr,
-            style: TextStyle(
+            style: interRegular.copyWith(
                 fontSize: Dimensions.fontSizeSmall,
                 fontWeight: FontWeight.w400,
                 decoration: TextDecoration.lineThrough,
@@ -273,7 +282,7 @@ class _PriceSection extends StatelessWidget {
               color: Theme.of(context).colorScheme.error.withValues(alpha: 0.05),
             ),
             child: Text('discount_percentage'.tr,
-              style: TextStyle(fontSize: Dimensions.fontSizeSmall, fontWeight: FontWeight.w700, color: Theme.of(context).colorScheme.error),
+              style: interRegular.copyWith(fontSize: Dimensions.fontSizeSmall, fontWeight: FontWeight.w700, color: Theme.of(context).colorScheme.error),
             ),
           ),
         ),

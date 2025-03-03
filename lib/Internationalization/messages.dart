@@ -39,7 +39,8 @@ class Messages extends Translations{
       'shop_now' : 'Shop Now >',
       'available_in' : 'Available In',
       'color' : 'Color',
-      'size' : 'Size'
+      'size' : 'Size',
+      'details' : 'Details'
 
     },
     'hi_IN' : {

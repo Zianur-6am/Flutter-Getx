@@ -2,14 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_getx/common/basewidgets/custom_asset_image_widget.dart';
 import 'package:flutter_getx/common/basewidgets/sliver_header_delegate.dart';
 import 'package:flutter_getx/common/enum/cmh_product_description_tabbar_enum.dart';
+import 'package:flutter_getx/design_practice/6valley_user/home_screen/widgets/inner_new_arrivals_tab_view_widget.dart';
 import 'package:flutter_getx/design_practice/6valley_user/product_details/controllers/cmh_product_controller.dart';
 import 'package:flutter_getx/design_practice/6valley_user/product_details/widgets/cmh_product_details_carousel_widget.dart';
+import 'package:flutter_getx/design_practice/6valley_user/product_details/widgets/cmh_store_description_widget.dart';
+import 'package:flutter_getx/design_practice/6valley_user/product_details/widgets/policy_section_widget.dart';
 import 'package:flutter_getx/design_practice/6valley_user/product_details/widgets/product_description_widget.dart';
+import 'package:flutter_getx/design_practice/6valley_user/product_details/widgets/product_review_section_widget.dart';
 import 'package:flutter_getx/design_practice/6valley_user/product_details/widgets/product_title_section_widget.dart';
+import 'package:flutter_getx/design_practice/6valley_user/product_details/widgets/similar_product_widget.dart';
 import 'package:flutter_getx/helper/color_helper.dart';
 import 'package:flutter_getx/helper/extension_helper.dart';
 import 'package:flutter_getx/utils/dimensions.dart';
 import 'package:flutter_getx/utils/images.dart';
+import 'package:flutter_getx/utils/styles.dart';
 import 'package:get/get.dart';
 import 'package:get/get_utils/get_utils.dart';
 
@@ -21,7 +27,7 @@ class ProductDetailScreen extends StatefulWidget {
 }
 
 class _ProductDetailScreenState extends State<ProductDetailScreen> with TickerProviderStateMixin {
-  ScrollController _scrollController = ScrollController();
+  final ScrollController _scrollController = ScrollController();
 
   final double _flexibleSpaceHeight = 375; // Height of the flexibleSpace
   bool _isFlexibleSpaceVisible = true;
@@ -58,15 +64,15 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> with TickerPr
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: NestedScrollView(
-        controller: _scrollController,
+        body: NestedScrollView(
+          controller: _scrollController,
           headerSliverBuilder: (context, _) {
             return [
               SliverAppBar(
                 floating: true,
                 pinned: true,
                 automaticallyImplyLeading: false,
-                title: Text(_isFlexibleSpaceVisible ? '' : 'product_name'.tr, style: const TextStyle(
+                title: Text(_isFlexibleSpaceVisible ? '' : 'product_name'.tr, style: interRegular.copyWith(
                     fontSize: Dimensions.fontSizeSmall,
                     fontWeight: FontWeight.w500,
                     overflow: TextOverflow.ellipsis
@@ -86,23 +92,34 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> with TickerPr
                   SizedBox(width: 10),
                 ],
 
-                backgroundColor: _isFlexibleSpaceVisible ? Colors.transparent : Theme.of(context).colorScheme.onPrimary,
+                backgroundColor: _isFlexibleSpaceVisible ? Colors.transparent : Theme.of(context).cardColor,
               ),
-
-
-
             ];
           },
-          body: SingleChildScrollView(
+          body: const SingleChildScrollView(
+            physics: NeverScrollableScrollPhysics(),
             child: Column(
               children: [
                 ProductTitleSectionWidget(),
+                SizedBox(height: Dimensions.paddingSizeSmall),
 
                 ProductDescriptionWidget(),
+                SizedBox(height: Dimensions.paddingSizeSmall),
+
+                ProductReviewSectionWidget(),
+                SizedBox(height: Dimensions.paddingSizeSmall),
+
+                PolicySectionWidget(),
+                SizedBox(height: Dimensions.paddingSizeSmall),
+
+                CmhStoreDescriptionWidget(),
+                SizedBox(height: Dimensions.paddingSizeSmall),
+
+                SimilarProductWidget(),
               ],
             ),
           )
-    ));
+        ));
   }
 }
 
@@ -212,7 +229,7 @@ class _PriceSection extends StatelessWidget {
         Flexible(
           flex: 4,
           child: Text('product_price'.tr,
-            style: const TextStyle(fontSize: Dimensions.fontSizeExtraLarge, fontWeight: FontWeight.w700),
+            style: interRegular.copyWith(fontSize: Dimensions.fontSizeExtraLarge, fontWeight: FontWeight.w700),
           ),
         ),
         const SizedBox(width: Dimensions.paddingSizeSmall),
@@ -220,7 +237,7 @@ class _PriceSection extends StatelessWidget {
         Flexible(
           flex: 4,
           child: Text('discount'.tr,
-            style: TextStyle(
+            style: interRegular.copyWith(
                 fontSize: Dimensions.fontSizeSmall,
                 fontWeight: FontWeight.w400,
                 decoration: TextDecoration.lineThrough,
@@ -241,7 +258,7 @@ class _PriceSection extends StatelessWidget {
               color: Theme.of(context).colorScheme.error.withValues(alpha: 0.05),
             ),
             child: Text('discount_percentage'.tr,
-              style: TextStyle(fontSize: Dimensions.fontSizeSmall, fontWeight: FontWeight.w700, color: Theme.of(context).colorScheme.error),
+              style: interRegular.copyWith(fontSize: Dimensions.fontSizeSmall, fontWeight: FontWeight.w700, color: Theme.of(context).colorScheme.error),
             ),
           ),
         ),

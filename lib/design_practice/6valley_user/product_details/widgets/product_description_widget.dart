@@ -34,22 +34,12 @@ class _ProductDescriptionWidgetState extends State<ProductDescriptionWidget> {
               color: Theme.of(context).cardColor,
               boxShadow: [
                 BoxShadow(
-                  color: Theme.of(context).textTheme.bodyMedium!.color!.withOpacity(0.05),
+                  color: Theme.of(context).textTheme.bodyMedium!.color!.withValues(alpha: 0.05),
                   offset: const Offset(0,3),
                   blurRadius: 15,
                   spreadRadius: -3,
                 ),
               ],
-
-                gradient: LinearGradient(
-                    colors: [
-                      Theme.of(context).cardColor.withValues(alpha: 0.0),
-                      Theme.of(context).cardColor.withValues(alpha: 0.0),
-                      Theme.of(context).cardColor
-                    ],
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter
-                ),
 
             ),
             height: cmhProductController.isDescriptionExpandable
@@ -66,11 +56,11 @@ class _ProductDescriptionWidgetState extends State<ProductDescriptionWidget> {
 
                       Text('details'.tr, style: interSemiBold.copyWith(
                         fontSize: Dimensions.fontSizeDefault,
-                        color: Theme.of(context).textTheme.bodyMedium?.color?.withOpacity(0.7),
-                      ),),
+                        color: Theme.of(context).textTheme.bodyMedium?.color?.withValues(alpha:0.7),
+                      )),
                       const SizedBox(height: Dimensions.paddingSizeSmall),
 
-                      Divider(height: 1, color: Theme.of(context).primaryColor.withOpacity(0.09)),
+                      Divider(height: 1, color: Theme.of(context).primaryColor.withValues(alpha:0.09)),
                       const SizedBox(height: Dimensions.paddingSizeSmall),
 
                       if (cmhProductController.description.isNotEmpty) ...[
@@ -81,6 +71,7 @@ class _ProductDescriptionWidgetState extends State<ProductDescriptionWidget> {
                         ),),
                         const SizedBox(height: Dimensions.paddingSizeSmall),
                       ],
+
                       cmhProductController.descriptionImage != null &&
                           cmhProductController.descriptionImage!.isNotEmpty
                           ? SizedBox(
@@ -93,6 +84,23 @@ class _ProductDescriptionWidgetState extends State<ProductDescriptionWidget> {
                           : const SizedBox.shrink(),
                       const SizedBox(height: Dimensions.paddingSizeDefault),
                     ],
+                    ),
+                  ),
+                ),
+
+                Positioned.fill(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      gradient: !cmhProductController.isDescriptionExpanded ? LinearGradient(
+                          colors: [
+                            Theme.of(context).cardColor.withValues(alpha: 0.0),
+                            Theme.of(context).cardColor.withValues(alpha: 0.0),
+                            Theme.of(context).cardColor.withValues(alpha: 0.0),
+                            Theme.of(context).cardColor
+                          ],
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter
+                      ) : null,
                     ),
                   ),
                 ),
@@ -127,6 +135,7 @@ class _ProductDescriptionWidgetState extends State<ProductDescriptionWidget> {
                   ),
                 )
                     : const SizedBox(),
+
               ],
             ),
           );

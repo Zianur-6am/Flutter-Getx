@@ -103,7 +103,7 @@ class ProductCardGridWidget extends StatelessWidget {
                               padding: const EdgeInsets.all(Dimensions.paddingSizeSmall),
                               child: Icon(
                                 Icons.favorite_outlined, color: Theme.of(context).colorScheme.error,
-                                size: Dimensions.iconSizeSmall,
+                                size: Dimensions.iconSizeDefault,
                               ),
                             ),
                           ),

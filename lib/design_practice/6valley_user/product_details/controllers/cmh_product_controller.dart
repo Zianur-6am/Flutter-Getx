@@ -1,3 +1,4 @@
+import 'package:flutter_getx/utils/images.dart';
 import 'package:get/get.dart';
 
 class CmhProductController extends GetxController implements GetxService {
@@ -51,6 +52,10 @@ class CmhProductController extends GetxController implements GetxService {
   String? get descriptionImage => _descriptionImage;
   bool get isDescriptionExpanded => _isDescriptionExpanded;
 
+  List<String> productImages = [Images.watchImage, Images.laptop, Images.shoeImage];
+
+  bool _isReviewExpanded = false;
+  bool get isReviewExpanded => _isReviewExpanded;
 
   void updateSelectedColorIndex(int index, {bool isUpdate = true}){
     _selectedColorIndex = index;
@@ -80,6 +85,12 @@ class CmhProductController extends GetxController implements GetxService {
 
   void setDescriptionExpanded(){
     _isDescriptionExpanded = !_isDescriptionExpanded;
+    update();
+  }
+
+
+  void toggleReviewExpanded(){
+    _isReviewExpanded = !_isReviewExpanded;
     update();
   }
 
