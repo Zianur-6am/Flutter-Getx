@@ -82,7 +82,7 @@ class ProductCardWidget extends StatelessWidget {
                     ],
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.all(Dimensions.paddingSizeSmall),
+                    padding: const EdgeInsets.all(Dimensions.paddingSizeExtraSmall),
                     child: Icon(
                       Icons.favorite_outlined, color: Theme.of(context).colorScheme.error,
                       size: Dimensions.iconSizeDefault,
